@@ -736,29 +736,13 @@
 
     <script>
         let dictionaryMap = null;
-        let loadPromise = null;
+        let dataPromise = null;
+        let dictionaryData = null; // Biến mới để lưu dữ liệu từ vựng từ JSON
         let currentVocabPage = 1;
         let currentSentencePage = 1;
         const WORDS_PER_PAGE = 30;
         const SENTENCES_PER_PAGE = 10;
-
-        const localExamples = {
-            '作': { words: [{ chinese: '工作', meaning: 'công việc' }, { chinese: '作业', meaning: 'bài tập' }, { chinese: '制作', meaning: 'chế tác, làm ra' }, { chinese: '合作', meaning: 'hợp tác' }, { chinese: '创作', meaning: 'sáng tác' }, { chinese: '作用', meaning: 'tác dụng' }], sentences: [{ chinese: '我在一家公司工作。', vietnamese: 'Tôi làm việc tại một công ty.' }, { chinese: '学生要完成作业。', vietnamese: 'Học sinh phải hoàn thành bài tập.' }, { chinese: '我们需要合作。', vietnamese: 'Chúng ta cần hợp tác.' }] },
-            '工': { words: [{ chinese: '工作', meaning: 'công việc' }, { chinese: '工人', meaning: 'công nhân' }, { chinese: '工厂', meaning: 'nhà máy' }, { chinese: '手工', meaning: 'thủ công' }, { chinese: '工具', meaning: 'công cụ' }, { chinese: '工程', meaning: 'công trình' }], sentences: [{ chinese: '他是一个工人。', vietnamese: 'Anh ấy là một công nhân.' }, { chinese: '这个工厂很大。', vietnamese: 'Nhà máy này rất lớn.' }] },
-            '做': { words: [{ chinese: '做事', meaning: 'làm việc' }, { chinese: '做饭', meaning: 'nấu cơm' }, { chinese: '做梦', meaning: 'mơ' }, { chinese: '制做', meaning: 'chế tạo' }, { chinese: '做人', meaning: 'làm người' }, { chinese: '做到', meaning: 'làm được' }], sentences: [{ chinese: '妈妈在做饭。', vietnamese: 'Mẹ đang nấu cơm.' }, { chinese: '我要做一个好人。', vietnamese: 'Tôi muốn làm một người tốt.' }] },
-            '山': { words: [{ chinese: '高山', meaning: 'núi cao' }, { chinese: '山水', meaning: 'sơn thủy' }, { chinese: '火山', meaning: 'núi lửa' }, { chinese: '山顶', meaning: 'đỉnh núi' }, { chinese: '登山', meaning: 'leo núi' }, { chinese: '山脉', meaning: 'dãy núi' }], sentences: [{ chinese: '这座山很高。', vietnamese: 'Ngọn núi này rất cao.' }, { chinese: '我喜欢登山。', vietnamese: 'Tôi thích leo núi.' }] },
-            '水': { words: [{ chinese: '水果', meaning: 'hoa quả' }, { chinese: '喝水', meaning: 'uống nước' }, { chinese: '水平', meaning: 'trình độ' }, { chinese: '山水', meaning: 'sơn thủy' }, { chinese: '开水', meaning: 'nước sôi' }], sentences: [{ chinese: '我想喝水。', vietnamese: 'Tôi muốn uống nước.' }, { chinese: '水果很甜。', vietnamese: 'Hoa quả rất ngọt.' }] },
-            '火': { words: [{ chinese: '火车', meaning: 'tàu hỏa' }, { chinese: '火山', meaning: 'núi lửa' }, { chinese: '生火', meaning: 'đốt lửa' }, { chinese: '火热', meaning: 'nóng bỏng' }, { chinese: '大火', meaning: 'lửa lớn' }], sentences: [{ chinese: '我坐火车回家。', vietnamese: 'Tôi đi tàu hỏa về nhà.' }, { chinese: '小心大火！', vietnamese: 'Cẩn thận lửa lớn!' }] },
-            '大': { words: [{ chinese: '大小', meaning: 'to nhỏ' }, { chinese: '大学', meaning: 'đại học' }, { chinese: '大人', meaning: 'người lớn' }, { chinese: '大家', meaning: 'mọi người' }, { chinese: '长大', meaning: 'lớn lên' }, { chinese: '大概', meaning: 'có lẽ' }], sentences: [{ chinese: '他上大学了。', vietnamese: 'Anh ấy đã vào đại học.' }, { chinese: '大家都很高兴。', vietnamese: 'Mọi người đều rất vui.' }] },
-            '小': { words: [{ chinese: '大小', meaning: 'to nhỏ' }, { chinese: '小孩', meaning: 'trẻ em' }, { chinese: '小心', meaning: 'cẩn thận' }, { chinese: '小说', meaning: 'tiểu thuyết' }, { chinese: '小时', meaning: 'giờ' }], sentences: [{ chinese: '这个小孩很可爱。', vietnamese: 'Đứa trẻ này rất dễ thương.' }, { chinese: '小心过马路。', vietnamese: 'Cẩn thận khi qua đường.' }] },
-            '你': { words: [{ chinese: '你好', meaning: 'xin chào' }, { chinese: '你们', meaning: 'các bạn' }, { chinese: '你的', meaning: 'của bạn' }], sentences: [{ chinese: '你好吗？', vietnamese: 'Bạn có khỏe không?' }, { chinese: '你们是学生吗？', vietnamese: 'Các bạn có phải học sinh không?' }] },
-            '好': { words: [{ chinese: '你好', meaning: 'xin chào' }, { chinese: '好的', meaning: 'được rồi' }, { chinese: '很好', meaning: 'rất tốt' }, { chinese: '好人', meaning: 'người tốt' }, { chinese: '好看', meaning: 'đẹp' }, { chinese: '好吃', meaning: 'ngon' }], sentences: [{ chinese: '今天天气很好。', vietnamese: 'Hôm nay thời tiết rất tốt.' }, { chinese: '这本书很好看。', vietnamese: 'Cuốn sách này rất hay.' }] },
-            '人': { words: [{ chinese: '人们', meaning: 'mọi người' }, { chinese: '好人', meaning: 'người tốt' }, { chinese: '大人', meaning: 'người lớn' }, { chinese: '个人', meaning: 'cá nhân' }, { chinese: '做人', meaning: 'làm người' }], sentences: [{ chinese: '人们都很友好。', vietnamese: 'Mọi người đều rất thân thiện.' }, { chinese: '他是个好人。', vietnamese: 'Anh ấy là người tốt.' }] },
-            '我': { words: [{ chinese: '我们', meaning: 'chúng tôi' }, { chinese: '我的', meaning: 'của tôi' }, { chinese: '自我', meaning: 'bản thân' }], sentences: [{ chinese: '我是学生。', vietnamese: 'Tôi là học sinh.' }, { chinese: '我们一起学习。', vietnamese: 'Chúng tôi cùng nhau học tập.' }] },
-            '学': { words: [{ chinese: '学习', meaning: 'học tập' }, { chinese: '学生', meaning: 'học sinh' }, { chinese: '大学', meaning: 'đại học' }, { chinese: '学校', meaning: 'trường học' }, { chinese: '数学', meaning: 'toán học' }], sentences: [{ chinese: '我在学校学习。', vietnamese: 'Tôi học ở trường.' }, { chinese: '学习中文很有趣。', vietnamese: 'Học tiếng Trung rất thú vị.' }] },
-            '恶': { words: [{ chinese: '恶心', meaning: 'buồn nôn' }, { chinese: '恶劣', meaning: 'tồi tệ' }, { chinese: '罪恶', meaning: 'tội ác' }, { chinese: '恶意', meaning: 'ác ý' }, { chinese: '险恶', meaning: 'hiểm ác' }], sentences: [{ chinese: '天气恶劣。', vietnamese: 'Thời tiết tồi tệ.' }, { chinese: '这是恶意行为。', vietnamese: 'Đây là hành vi ác ý.' }] }
-        };
-
+        
         const radicalData = {
             '山': { radical: '山', meaning: 'núi', strokes: 3, position: 'độc lập' },
             '大': { radical: '大', meaning: 'lớn', strokes: 3, position: 'độc lập' },
@@ -828,6 +812,23 @@
             } catch (error) { 
                 console.error('Error loading dictionary:', error); 
             } 
+        }
+
+        // Hàm mới để load dữ liệu từ file JSON
+        async function loadData() {
+            if (dataPromise) return dataPromise;
+            dataPromise = new Promise(async (resolve, reject) => {
+                try {
+                    const response = await fetch('tuvung.json');
+                    if (!response.ok) throw new Error('Failed to load tuvung.json');
+                    dictionaryData = await response.json();
+                    resolve();
+                } catch (error) {
+                    console.error('Error loading tuvung.json:', error);
+                    reject(error);
+                }
+            });
+            return dataPromise;
         }
         
         function playAudio(text, lang = 'zh-CN') { 
@@ -911,10 +912,12 @@
         });
         
         async function triggerSearch(input) { 
-            if (!loadPromise) { 
-                loadPromise = loadDictionary(); 
+            if (!dataPromise) { 
+                await loadData(); 
             } 
-            await loadPromise; 
+            if (!dictionaryMap) {
+                await loadDictionary();
+            }
             
             const writerSection = document.getElementById('writer-section'); 
             writerSection.innerHTML = ''; // Clear previous content
@@ -1019,7 +1022,6 @@
                 </div>
             `;
             
-            // HanziWriter needs to be created after the element is in the DOM.
             setTimeout(() => {
                 const writer = HanziWriter.create(`writer-${char}`, char, { 
                     width: 220, 
@@ -1066,7 +1068,7 @@
         }
         
         function createExamplesSection(char) { 
-            const examples = localExamples[char]; 
+            const examples = dictionaryData[char]; 
             if (!examples) { 
                 return `<div class="examples-section"><div class="examples-title">📚 Từ vựng và ví dụ</div><div class="loading">Chưa có ví dụ cho chữ này trong cơ sở dữ liệu</div></div>`; 
             } 
@@ -1108,10 +1110,10 @@
         function getPinyinFallback(char) { 
             const pinyinMap = { 
                 '山': 'shān', '大': 'dà', '小': 'xiǎo', '你': 'nǐ', '我': 'wǒ', '他': 'tā', 
-                '好': 'hǎo', '人': 'rén', '土': 'tǔ', '水': 'shuǐ', '火': 'huǒ', '天': 'tiān', 
-                '地': 'dì', '作': 'zuò', '工': 'gōng', '做': 'zuò', '业': 'yè', '职': 'zhí', 
-                'xué': 'xué', '们': 'men', 'huì': 'huì', 'bù': 'bù', 'shì': 'shì', 'de': 'de',
-                '恶': 'è', '点': 'diǎn', 'zhōng': 'zhōng', 'guó': 'guó', 'wén': 'wén', 'nián': 'nián',
+                '好': 'hǎo', '人': 'rén', '土': 'tǔ', '水': 'shuǐ', '火': 'huǒ', 'tiān': 'tiān', 
+                'dì': 'dì', 'zuò': 'zuò', 'gōng': 'gōng', 'zuò': 'zuò', 'yè': 'yè', 'zhí': 'zhí', 
+                'xué': 'xué', 'men': 'men', 'huì': 'huì', 'bù': 'bù', 'shì': 'shì', 'de': 'de',
+                'è': 'è', 'diǎn': 'diǎn', 'zhōng': 'zhōng', 'guó': 'guó', 'wén': 'wén', 'nián': 'nián',
                 'yuè': 'yuè', 'rì': 'rì', 'shí': 'shí', 'fēn': 'fēn', 'zhǒng': 'zhǒng',
                 'xiǎng': 'xiǎng', 'kàn': 'kàn', 'tīng': 'tīng', 'shuō': 'shuō', 'lái': 'lái',
                 'qù': 'qù', 'shàng': 'shàng', 'xià': 'xià', 'qián': 'qián', 'hòu': 'hòu',
@@ -1143,11 +1145,11 @@
         
         function generateVocabularyPage(page = 1) {
             const vocabContainer = document.getElementById('page-vocab');
-            const characters = Object.keys(localExamples);
+            const characters = Object.keys(dictionaryData);
             let allWords = [];
             characters.forEach(char => {
-                if (localExamples[char].words) {
-                    allWords = allWords.concat(localExamples[char].words);
+                if (dictionaryData[char].words) {
+                    allWords = allWords.concat(dictionaryData[char].words);
                 }
             });
 
@@ -1200,11 +1202,11 @@
 
         function generateSentencesPage(page = 1) {
             const sentencesContainer = document.getElementById('page-sentences');
-            const characters = Object.keys(localExamples);
+            const characters = Object.keys(dictionaryData);
             let allSentences = [];
             characters.forEach(char => {
-                if (localExamples[char].sentences) {
-                    allSentences = allSentences.concat(localExamples[char].sentences);
+                if (dictionaryData[char].sentences) {
+                    allSentences = allSentences.concat(dictionaryData[char].sentences);
                 }
             });
 
@@ -1267,12 +1269,29 @@
                 button.classList.add('active');
                 const pageId = button.dataset.page;
                 document.getElementById(pageId).classList.add('active');
+
+                // Tái tạo nội dung khi chuyển tab
+                if (pageId === 'page-vocab') {
+                    generateVocabularyPage(currentVocabPage);
+                } else if (pageId === 'page-sentences') {
+                    generateSentencesPage(currentSentencePage);
+                }
             });
         });
 
-        document.addEventListener('DOMContentLoaded', function() {
-            generateVocabularyPage();
-            generateSentencesPage();
+        document.addEventListener('DOMContentLoaded', async function() {
+            try {
+                // Tải dữ liệu khi trang vừa load
+                await loadData();
+                await loadDictionary();
+                console.log('Dữ liệu từ vựng đã được tải thành công!');
+                // Tạo nội dung ban đầu cho các tab
+                generateVocabularyPage();
+                generateSentencesPage();
+            } catch (error) {
+                console.error('Không thể tải dữ liệu:', error);
+                // Có thể hiển thị thông báo lỗi cho người dùng
+            }
             
             const cards = document.querySelectorAll('.category-card');
             cards.forEach((card, index) => {
