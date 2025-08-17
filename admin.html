@@ -20,7 +20,11 @@
         th, td { padding: 12px; border: 1px solid #ddd; text-align: left; }
         th { background-color: #667eea; color: white; }
         tr:nth-child(even) { background-color: #f9f9f9; }
-        .action-buttons button { padding: 5px 10px; font-size: 14px; margin-right: 5px; }
+        .action-buttons button { padding: 5px 10px; font-size: 14px; margin-right: 5px; background: #667eea; }
+        .action-buttons button.delete { background: #d9534f; }
+        .search-container { display: flex; gap: 10px; margin-bottom: 20px; }
+        .search-container input { flex: 1; }
+        .button-group { display: flex; gap: 10px; margin-top: 15px; }
     </style>
 </head>
 <body>
@@ -29,30 +33,38 @@
         <form id="word-form">
             <div class="form-group">
                 <label for="hanzi">Chữ Hán:</label>
-                <input type="text" id="hanzi" required>
+                <input type="text" id="hanzi" placeholder="Nhập chữ Hán của từ vựng (ví dụ: 学)" required>
             </div>
             <div class="form-group">
                 <label for="hanviet">Hán Việt:</label>
-                <input type="text" id="hanviet">
+                <input type="text" id="hanviet" placeholder="Hán Việt (ví dụ: Học)">
             </div>
             <div class="form-group">
-                <label for="words">Từ vựng (JSON):</label>
-                <textarea id="words" rows="5"></textarea>
+                <label for="words">Từ vựng (dạng JSON):</label>
+                <textarea id="words" rows="5" placeholder='[{"chinese": "学习", "meaning": "học tập", "category": ["học tập"]}]'></textarea>
             </div>
             <div class="form-group">
-                <label for="sentences">Ví dụ câu (JSON):</label>
-                <textarea id="sentences" rows="5"></textarea>
+                <label for="sentences">Ví dụ câu (dạng JSON):</label>
+                <textarea id="sentences" rows="5" placeholder='[{"chinese": "他喜欢学习。", "vietnamese": "Anh ấy thích học tập.", "category": ["học tập"]}]'></textarea>
             </div>
-            <button type="submit">Thêm / Sửa</button>
+            <div class="button-group">
+                <button type="submit">Thêm / Cập nhật</button>
+                <button type="button" onclick="clearForm()">Làm mới</button>
+            </div>
         </form>
         <div id="message"></div>
         
-        <h2>Danh sách từ vựng hiện tại</h2>
+        <h2>Danh sách từ vựng</h2>
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Tìm kiếm từ vựng để sửa (ví dụ: học, kỹ sư, tiếng trung)">
+            <button id="search-btn">Tìm kiếm</button>
+        </div>
         <table id="vocab-table">
             <thead>
                 <tr>
                     <th>Chữ Hán</th>
                     <th>Hán Việt</th>
+                    <th>Từ vựng</th>
                     <th>Hành động</th>
                 </tr>
             </thead>
@@ -65,30 +77,41 @@
         const form = document.getElementById('word-form');
         const messageDiv = document.getElementById('message');
         const vocabTableBody = document.querySelector('#vocab-table tbody');
+        let fullData = null;
+
+        function normalizeString(str) {
+            if (!str) return '';
+            return str.toLowerCase()
+                      .normalize('NFD')
+                      .replace(/[\u0300-\u036f]/g, "")
+                      .replace(/đ/g, 'd').replace(/Đ/g, 'D');
+        }
 
         async function loadData() {
             try {
-                const response = await fetch('tuvungcu.json');
+                const response = await fetch('tuvung1.json');
                 if (!response.ok) throw new Error('Không thể tải dữ liệu từ vựng.');
-                const data = await response.json();
-                renderTable(data);
-                return data;
+                fullData = await response.json();
+                renderTable(fullData);
             } catch (error) {
                 showMessage('Lỗi: ' + error.message, 'error');
-                return null;
             }
         }
 
         function renderTable(data) {
             vocabTableBody.innerHTML = '';
-            for (const hanzi in data) {
+            const sortedKeys = Object.keys(data).sort();
+            for (const hanzi of sortedKeys) {
+                const entry = data[hanzi];
+                const words = entry.words ? entry.words.map(w => w.chinese).join(', ') : '';
                 const row = document.createElement('tr');
                 row.innerHTML = `
                     <td>${hanzi}</td>
-                    <td>${data[hanzi].hanviet}</td>
+                    <td>${entry.hanviet || ''}</td>
+                    <td>${words}</td>
                     <td class="action-buttons">
                         <button onclick="editEntry('${hanzi}')">Sửa</button>
-                        <button onclick="deleteEntry('${hanzi}')">Xóa</button>
+                        <button class="delete" onclick="deleteEntry('${hanzi}')">Xóa</button>
                     </td>
                 `;
                 vocabTableBody.appendChild(row);
@@ -96,28 +119,45 @@
         }
 
         async function editEntry(hanzi) {
-            const data = await loadData();
-            if (!data || !data[hanzi]) return;
+            if (!fullData || !fullData[hanzi]) return;
             
             document.getElementById('hanzi').value = hanzi;
-            document.getElementById('hanviet').value = data[hanzi].hanviet || '';
-            document.getElementById('words').value = JSON.stringify(data[hanzi].words || [], null, 2);
-            document.getElementById('sentences').value = JSON.stringify(data[hanzi].sentences || [], null, 2);
-            document.getElementById('hanzi').readOnly = true; // Ngăn người dùng sửa chữ Hán
+            document.getElementById('hanviet').value = fullData[hanzi].hanviet || '';
+            document.getElementById('words').value = JSON.stringify(fullData[hanzi].words || [], null, 2);
+            document.getElementById('sentences').value = JSON.stringify(fullData[hanzi].sentences || [], null, 2);
+            document.getElementById('hanzi').readOnly = true;
+            document.getElementById('hanzi').style.backgroundColor = '#e9ecef';
+            showMessage('Đang chỉnh sửa từ "' + hanzi + '". Vui lòng chỉnh sửa và ấn "Cập nhật".', 'success');
+        }
+
+        function clearForm() {
+            form.reset();
+            document.getElementById('hanzi').readOnly = false;
+            document.getElementById('hanzi').style.backgroundColor = '#fff';
+            document.getElementById('message').style.display = 'none';
         }
 
         async function deleteEntry(hanzi) {
-            if (!confirm('Bạn có chắc chắn muốn xóa mục này không?')) return;
-            // Vẫn cần backend để thực hiện việc xóa
-            showMessage('Chức năng xóa yêu cầu backend.', 'error');
+            if (!confirm('Bạn có chắc chắn muốn xóa mục "' + hanzi + '" không?')) return;
+            // Chức năng này yêu cầu backend
+            showMessage('Chức năng xóa yêu cầu backend để lưu thay đổi.', 'error');
         }
 
         form.addEventListener('submit', async function(event) {
             event.preventDefault();
             const hanzi = document.getElementById('hanzi').value;
             const hanviet = document.getElementById('hanviet').value;
-            const words = JSON.parse(document.getElementById('words').value || '[]');
-            const sentences = JSON.parse(document.getElementById('sentences').value || '[]');
+            
+            let words = [];
+            let sentences = [];
+            
+            try {
+                words = JSON.parse(document.getElementById('words').value || '[]');
+                sentences = JSON.parse(document.getElementById('sentences').value || '[]');
+            } catch (e) {
+                showMessage('Lỗi: Dữ liệu JSON không hợp lệ. Vui lòng kiểm tra lại cú pháp.', 'error');
+                return;
+            }
 
             const newData = {
                 hanviet: hanviet,
@@ -126,8 +166,53 @@
             };
 
             // Bước này chỉ là mô phỏng, trên thực tế phải gửi dữ liệu tới backend
-            showMessage('Đã gửi dữ liệu, nhưng không thể lưu vì thiếu backend.', 'error');
+            showMessage('Dữ liệu đã được gửi nhưng không thể lưu vì thiếu backend. Bạn cần một server để lưu thay đổi vào file JSON.', 'error');
             console.log('Dữ liệu cần gửi:', { [hanzi]: newData });
+        });
+
+        document.getElementById('search-btn').addEventListener('click', () => {
+            const query = normalizeString(document.getElementById('search-input').value.trim());
+            if (!query) {
+                renderTable(fullData);
+                return;
+            }
+
+            const filteredData = {};
+            for (const hanzi in fullData) {
+                const entry = fullData[hanzi];
+                let match = false;
+                
+                // Check Hanzi
+                if (hanzi.includes(query)) match = true;
+                
+                // Check Hanviet
+                if (entry.hanviet && normalizeString(entry.hanviet).includes(query)) match = true;
+                
+                // Check words and meanings
+                if (entry.words) {
+                    for (const word of entry.words) {
+                        if (word.chinese.includes(query) || normalizeString(word.meaning).includes(query)) {
+                            match = true;
+                            break;
+                        }
+                    }
+                }
+
+                // Check sentences and translations
+                if (entry.sentences) {
+                    for (const sentence of entry.sentences) {
+                        if (sentence.chinese.includes(query) || normalizeString(sentence.vietnamese).includes(query)) {
+                            match = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (match) {
+                    filteredData[hanzi] = entry;
+                }
+            }
+            renderTable(filteredData);
         });
 
         function showMessage(msg, type) {
@@ -138,7 +223,7 @@
         }
 
         // Tải dữ liệu khi trang được mở
-        loadData();
+        document.addEventListener('DOMContentLoaded', loadData);
     </script>
 </body>
 </html>
