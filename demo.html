@@ -736,7 +736,7 @@
         <div id="page-vocab" class="page-content">
             <div class="search-section">
                 <div class="search-bar">
-                    <input type="text" id="vocab-search-input" class="input-search" placeholder="Tìm kiếm từ vựng (ví dụ: công việc, 你好)">
+                    <input type="text" id="search-input" class="input-search" placeholder="Tìm kiếm từ vựng và ví dụ (ví dụ: xin chao, 你好)">
                 </div>
             </div>
             <div class="content-wrapper"></div>
@@ -745,7 +745,7 @@
         <div id="page-sentences" class="page-content">
             <div class="search-section">
                 <div class="search-bar">
-                    <input type="text" id="sentences-search-input" class="input-search" placeholder="Tìm kiếm ví dụ câu (ví dụ: Tôi thích, 你好吗)">
+                    <input type="text" id="search-input" class="input-search" placeholder="Tìm kiếm từ vựng và ví dụ (ví dụ: xin chao, 你好)">
                 </div>
             </div>
             <div class="content-wrapper"></div>
@@ -1149,7 +1149,7 @@
         function getPinyinFallback(char) { 
             const pinyinMap = { 
                 '山': 'shān', '大': 'dà', '小': 'xiǎo', '你': 'nǐ', '我': 'wǒ', '他': 'tā', 
-                '好': 'hǎo', '人': 'rén', '土': 'tǔ', '水': 'shuǐ', '火': 'huǒ', 'tiān': 'tiān', 
+                '好': 'hǎo', '人': 'rén', '土': 'tǔ', '水': 'shuǐ', 'huǒ': 'huǒ', 'tiān': 'tiān', 
                 'dì': 'dì', 'zuò': 'zuò', 'gōng': 'gōng', 'zuò': 'zuò', 'yè': 'yè', 'zhí': 'zhí', 
                 'xué': 'xué', 'men': 'men', 'huì': 'huì', 'bù': 'bù', 'shì': 'shì', 'de': 'de',
                 'è': 'è', 'diǎn': 'diǎn', 'zhōng': 'zhōng', 'guó': 'guó', 'wén': 'wén', 'nián': 'nián',
@@ -1182,6 +1182,13 @@
             } 
         }
         
+        function normalizeString(str) {
+            return str.toLowerCase()
+                      .normalize('NFD')
+                      .replace(/[\u0300-\u036f]/g, "")
+                      .replace(/đ/g, 'd').replace(/Đ/g, 'D');
+        }
+
         function generateVocabularyPage(dataToDisplay = allWords, page = 1) {
             const vocabContainer = document.querySelector('#page-vocab .content-wrapper');
             const totalItems = dataToDisplay.length;
@@ -1215,32 +1222,46 @@
             const vocabContainer = document.querySelector('#page-vocab .content-wrapper');
             let paginationHtml = `<div class="pagination-controls">`;
 
-            paginationHtml += `<button class="pagination-btn" onclick="goToVocabPage(${currentPage - 1}, ${JSON.stringify(data)})" ${currentPage === 1 ? 'disabled' : ''}>&larr; Trước</button>`;
+            paginationHtml += `<button class="pagination-btn" onclick="goToVocabPage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>&larr; Trước</button>`;
 
             for (let i = 1; i <= totalPages; i++) {
-                paginationHtml += `<button class="pagination-btn ${i === currentPage ? 'active' : ''}" onclick="goToVocabPage(${i}, ${JSON.stringify(data)})">${i}</button>`;
+                paginationHtml += `<button class="pagination-btn ${i === currentPage ? 'active' : ''}" onclick="goToVocabPage(${i})">${i}</button>`;
             }
 
-            paginationHtml += `<button class="pagination-btn" onclick="goToVocabPage(${currentPage + 1}, ${JSON.stringify(data)})" ${currentPage === totalPages ? 'disabled' : ''}>Sau &rarr;</button>`;
+            paginationHtml += `<button class="pagination-btn" onclick="goToVocabPage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>Sau &rarr;</button>`;
             
             paginationHtml += `</div>`;
 
             vocabContainer.innerHTML += paginationHtml;
         }
 
-        function goToVocabPage(page, data) {
+        function goToVocabPage(page) {
             currentVocabPage = page;
-            generateVocabularyPage(data, currentVocabPage);
+            generateVocabularyPage(filteredWords, currentVocabPage);
         }
 
-        function searchVocab() {
-            const query = document.getElementById('vocab-search-input').value.toLowerCase();
-            filteredWords = allWords.filter(word => 
-                word.chinese.toLowerCase().includes(query) || 
-                word.meaning.toLowerCase().includes(query)
-            );
-            currentVocabPage = 1;
-            generateVocabularyPage(filteredWords, currentVocabPage);
+        function searchAll() {
+            const activeTab = document.querySelector('.tab-btn.active').dataset.page;
+            const query = document.getElementById('search-input').value;
+            const normalizedQuery = normalizeString(query);
+
+            if (activeTab === 'page-vocab') {
+                filteredWords = allWords.filter(word => {
+                    const normalizedMeaning = normalizeString(word.meaning);
+                    return word.chinese.toLowerCase().includes(normalizedQuery) ||
+                           normalizedMeaning.includes(normalizedQuery);
+                });
+                currentVocabPage = 1;
+                generateVocabularyPage(filteredWords, currentVocabPage);
+            } else if (activeTab === 'page-sentences') {
+                filteredSentences = allSentences.filter(sentence => {
+                    const normalizedVietnamese = normalizeString(sentence.vietnamese);
+                    return sentence.chinese.toLowerCase().includes(normalizedQuery) ||
+                           normalizedVietnamese.includes(normalizedQuery);
+                });
+                currentSentencePage = 1;
+                generateSentencesPage(filteredSentences, currentSentencePage);
+            }
         }
 
         function generateSentencesPage(dataToDisplay = allSentences, page = 1) {
@@ -1276,31 +1297,21 @@
             const sentencesContainer = document.querySelector('#page-sentences .content-wrapper');
             let paginationHtml = `<div class="pagination-controls">`;
 
-            paginationHtml += `<button class="pagination-btn" onclick="goToSentencePage(${currentPage - 1}, ${JSON.stringify(data)})" ${currentPage === 1 ? 'disabled' : ''}>&larr; Trước</button>`;
+            paginationHtml += `<button class="pagination-btn" onclick="goToSentencePage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>&larr; Trước</button>`;
 
             for (let i = 1; i <= totalPages; i++) {
-                paginationHtml += `<button class="pagination-btn ${i === currentPage ? 'active' : ''}" onclick="goToSentencePage(${i}, ${JSON.stringify(data)})">${i}</button>`;
+                paginationHtml += `<button class="pagination-btn ${i === currentPage ? 'active' : ''}" onclick="goToSentencePage(${i})">${i}</button>`;
             }
 
-            paginationHtml += `<button class="pagination-btn" onclick="goToSentencePage(${currentPage + 1}, ${JSON.stringify(data)})" ${currentPage === totalPages ? 'disabled' : ''}>Sau &rarr;</button>`;
+            paginationHtml += `<button class="pagination-btn" onclick="goToSentencePage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>Sau &rarr;</button>`;
             
             paginationHtml += `</div>`;
 
             sentencesContainer.innerHTML += paginationHtml;
         }
 
-        function goToSentencePage(page, data) {
+        function goToSentencePage(page) {
             currentSentencePage = page;
-            generateSentencesPage(data, currentSentencePage);
-        }
-
-        function searchSentences() {
-            const query = document.getElementById('sentences-search-input').value.toLowerCase();
-            filteredSentences = allSentences.filter(sentence => 
-                sentence.chinese.toLowerCase().includes(query) || 
-                sentence.vietnamese.toLowerCase().includes(query)
-            );
-            currentSentencePage = 1;
             generateSentencesPage(filteredSentences, currentSentencePage);
         }
 
@@ -1317,18 +1328,29 @@
                 const pageId = button.dataset.page;
                 document.getElementById(pageId).classList.add('active');
 
+                // Clear search bar and reset to all data when switching tabs
+                const searchInput = document.getElementById('search-input');
+                if (searchInput) {
+                    searchInput.value = '';
+                }
+
                 if (pageId === 'page-vocab') {
-                    document.getElementById('vocab-search-input').value = '';
-                    searchVocab();
+                    filteredWords = [...allWords];
+                    currentVocabPage = 1;
+                    generateVocabularyPage(filteredWords);
                 } else if (pageId === 'page-sentences') {
-                    document.getElementById('sentences-search-input').value = '';
-                    searchSentences();
+                    filteredSentences = [...allSentences];
+                    currentSentencePage = 1;
+                    generateSentencesPage(filteredSentences);
                 }
             });
         });
 
-        document.getElementById('vocab-search-input').addEventListener('keyup', searchVocab);
-        document.getElementById('sentences-search-input').addEventListener('keyup', searchSentences);
+        // Use a single event listener for the shared search input
+        const searchInput = document.getElementById('search-input');
+        if (searchInput) {
+            searchInput.addEventListener('keyup', searchAll);
+        }
 
         document.addEventListener('DOMContentLoaded', async function() {
             try {
@@ -1354,15 +1376,15 @@
             });
         });
 
-        const searchBar = document.querySelector('#page-hanzi .search-section');
+        const hanziSearchBar = document.querySelector('#page-hanzi .search-section');
         const inputChar = document.getElementById('input-char');
         inputChar.addEventListener('focus', function() { 
-            searchBar.style.transform = 'translateY(-2px)'; 
-            searchBar.style.boxShadow = '0 15px 40px rgba(0, 0, 0, 0.15)'; 
+            hanziSearchBar.style.transform = 'translateY(-2px)'; 
+            hanziSearchBar.style.boxShadow = '0 15px 40px rgba(0, 0, 0, 0.15)'; 
         });
         inputChar.addEventListener('blur', function() { 
-            searchBar.style.transform = 'translateY(0)'; 
-            searchBar.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.1)'; 
+            hanziSearchBar.style.transform = 'translateY(0)'; 
+            hanziSearchBar.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.1)'; 
         });
     </script>
 </body>
