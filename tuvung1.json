@@ -1,0 +1,129 @@
+{
+  "山": {
+    "hanviet": "sơn",
+    "words": [
+      {
+        "chinese": "山水",
+        "meaning": "sơn thủy",
+        "category": "thiên nhiên"
+      },
+      {
+        "chinese": "登山",
+        "meaning": "leo núi",
+        "category": "thể thao, thiên nhiên"
+      }
+    ],
+    "sentences": [
+      {
+        "chinese": "山很高。",
+        "vietnamese": "Núi rất cao.",
+        "category": "cơ bản, thiên nhiên"
+      }
+    ]
+  },
+  "做": {
+    "hanviet": "tố",
+    "words": [
+      {
+        "chinese": "做作业",
+        "meaning": "làm bài tập",
+        "category": "học tập"
+      }
+    ],
+    "sentences": [
+      {
+        "chinese": "我做作业了。",
+        "vietnamese": "Tôi làm bài tập rồi.",
+        "category": "học tập"
+      }
+    ]
+  },
+  "旅": {
+    "hanviet": "lữ",
+    "words": [
+      {
+        "chinese": "旅游",
+        "meaning": "du lịch",
+        "category": "du lịch"
+      },
+      {
+        "chinese": "旅行社",
+        "meaning": "công ty du lịch",
+        "category": "du lịch"
+      }
+    ],
+    "sentences": [
+      {
+        "chinese": "我们一起去旅游。",
+        "vietnamese": "Chúng ta cùng đi du lịch nhé.",
+        "category": "du lịch"
+      }
+    ]
+  },
+  "技": {
+    "hanviet": "kỹ",
+    "words": [
+      {
+        "chinese": "技术",
+        "meaning": "kỹ thuật",
+        "category": "kỹ thuật"
+      },
+      {
+        "chinese": "科技",
+        "meaning": "khoa học công nghệ",
+        "category": "kỹ thuật, công nghệ"
+      }
+    ],
+    "sentences": [
+      {
+        "chinese": "他是一名技术员。",
+        "vietnamese": "Anh ấy là một kỹ thuật viên.",
+        "category": "kỹ thuật"
+      }
+    ]
+  },
+  "学": {
+    "hanviet": "học",
+    "words": [
+      {
+        "chinese": "学校",
+        "meaning": "trường học",
+        "category": "học tập"
+      },
+      {
+        "chinese": "学生",
+        "meaning": "học sinh",
+        "category": "học tập"
+      }
+    ],
+    "sentences": [
+      {
+        "chinese": "我在学校学习。",
+        "vietnamese": "Tôi học ở trường.",
+        "category": "học tập"
+      }
+    ]
+  },
+  "教": {
+    "hanviet": "giáo",
+    "words": [
+      {
+        "chinese": "教师",
+        "meaning": "giáo viên",
+        "category": "học tập"
+      },
+      {
+        "chinese": "教授",
+        "meaning": "giáo sư",
+        "category": "học tập"
+      }
+    ],
+    "sentences": [
+      {
+        "chinese": "这位老师教得很好。",
+        "vietnamese": "Giáo viên này dạy rất tốt.",
+        "category": "học tập"
+      }
+    ]
+  }
+}
