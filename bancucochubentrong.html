@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>汉字学习 - Học chữ Hán</title>
+    <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
+    <script src="https://unpkg.com/pinyin-pro@3.20.1/dist/index.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .title h1 {
+            color: white;
+            font-size: 48px;
+            font-weight: bold;
+        }
+        
+        .panda {
+            font-size: 48px;
+        }
+        
+        .subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+
+        .tab-nav {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .tab-btn {
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: 600;
+            color: white;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .tab-btn.active {
+            background: white;
+            color: #667eea;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .page-content {
+            display: none;
+        }
+
+        .page-content.active {
+            display: block;
+        }
+
+        .search-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .search-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            font-size: 20px;
+            color: #333;
+            font-weight: 600;
+        }
+        
+        .search-bar {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        #input-char {
+            flex: 1;
+            padding: 15px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s;
+        }
+        
+        #input-char:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .search-btn {
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .search-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .search-hint {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .category-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .category-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .category-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .toggle-arrow {
+            font-size: 14px;
+            color: #666;
+            transition: transform 0.3s ease;
+        }
+        
+        .category-card.collapsed .toggle-arrow {
+            transform: rotate(-90deg);
+        }
+        
+        .char-grid {
+            overflow: hidden;
+            transition: all 0.3s ease;
+            max-height: 200px;
+        }
+        
+        .category-card.collapsed .char-grid {
+            max-height: 0;
+            margin-top: 0;
+        }
+        
+        .category-icon {
+            font-size: 20px;
+        }
+        
+        .char-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+            gap: 10px;
+        }
+        
+        .char-button {
+            aspect-ratio: 1;
+            border: none;
+            border-radius: 12px;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .char-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .char-button:active {
+            transform: scale(0.95);
+        }
+        
+        .work .char-button { background: linear-gradient(45deg, #36D1DC, #5B86E5); }
+        .nature .char-button { background: linear-gradient(45deg, #11998E, #38EF7D); }
+        .people .char-button { background: linear-gradient(45deg, #FC466B, #3F5EFB); }
+        .basic .char-button { background: linear-gradient(45deg, #FDBB2D, #22C1C3); }
+        
+        .writer-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        
+        /* New styles for multi-character results */
+        .char-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+        .char-tab-btn {
+            padding: 10px 15px;
+            font-size: 24px;
+            font-weight: bold;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: color 0.2s, transform 0.2s;
+            color: #999;
+            transform: translateY(2px);
+        }
+        .char-tab-btn.active {
+            color: #667eea;
+            border-bottom: 2px solid #667eea;
+            transform: translateY(0);
+        }
+        .char-content-container {
+            position: relative;
+            min-height: 400px; /* Adjusted for better layout */
+        }
+        .character-display {
+            display: none; /* Hide all by default */
+            grid-template-columns: 250px 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        .character-display.active {
+            display: grid; /* Show active one */
+        }
+        
+        .writer-container {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .writer-div {
+            width: 220px;
+            height: 220px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            background: white;
+        }
+        
+        .info-panel h3 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        
+        .info-item {
+            display: flex;
+            margin-bottom: 15px;
+        }
+        
+        .info-label {
+            font-weight: 600;
+            color: #666;
+            width: 120px;
+            flex-shrink: 0;
+        }
+        
+        .info-value {
+            color: #333;
+            flex: 1;
+        }
+        
+        .pinyin-display {
+            font-size: 18px;
+            color: #2196F3;
+            font-weight: bold;
+        }
+        
+        .radical-display {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .radical-char {
+            font-size: 20px;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+        
+        .radical-meaning {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .writer-controls {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .control-btn {
+            padding: 10px 20px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: transform 0.2s;
+        }
+        
+        .control-btn:hover {
+            transform: translateY(-1px);
+        }
+        
+        .examples-section {
+            margin-top: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .examples-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        
+        .word-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .word-item {
+            background: white;
+            padding: 12px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            position: relative;
+        }
+        
+        .word-item:hover {
+            background: #e3f2fd;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .word-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            flex: 1;
+        }
+        
+        .word-chinese {
+            font-weight: bold;
+            color: #333;
+            margin-right: 10px;
+            font-size: 16px;
+        }
+        .word-pinyin {
+            font-size: 14px;
+            color: #2196F3;
+            margin-bottom: 5px;
+        }
+        
+        .word-meaning {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .audio-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: all 0.2s;
+            color: #667eea;
+            opacity: 0.7;
+            position: absolute;
+            top: 5px;
+            right: 5px;
+        }
+        
+        .audio-btn:hover {
+            background: #e3f2fd;
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        
+        .sentence-examples {
+            border-top: 1px solid #e0e0e0;
+            padding-top: 15px;
+        }
+        
+        .sentence-item {
+            margin-bottom: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            border-left: 3px solid #4caf50;
+            position: relative;
+        }
+        
+        .sentence-audio {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        
+        .sentence-chinese {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 16px;
+            padding-right: 40px;
+        }
+        
+        .sentence-pinyin {
+            font-size: 14px;
+            color: #2196F3;
+            margin-bottom: 5px;
+        }
+        
+        .sentence-vietnamese {
+            color: #666;
+            font-style: italic;
+            font-size: 14px;
+        }
+        
+        .loading {
+            color: #999;
+            font-style: italic;
+        }
+
+        .vocab-char-section {
+            margin-bottom: 30px;
+            border-left: 4px solid #667eea;
+            padding-left: 20px;
+        }
+        .vocab-char-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        #page-sentences {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        .sentences-char-section {
+            margin-bottom: 30px;
+            border-left: 4px solid #4caf50;
+            padding-left: 20px;
+        }
+        .sentences-char-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .sentences-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+        }
+
+        .pagination-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+            padding-top: 10px;
+            border-top: 1px solid #e0e0e0;
+        }
+        .pagination-btn {
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            background-color: #f8f9fa;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .pagination-btn:hover:not(.active) {
+            background-color: #e0e0e0;
+        }
+        .pagination-btn.active {
+            background-color: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding: 20px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 14px;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 20px;
+            transition: transform 0.2s;
+            display: inline-block;
+        }
+        
+        .footer-links a:hover {
+            transform: scale(1.2);
+        }
+
+
+        @media (max-width: 768px) {
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .character-display {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .title h1 {
+                font-size: 32px;
+            }
+            
+            .char-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="title">
+                <h1>汉字学习</h1>
+                <div class="panda">🐼</div>
+            </div>
+            <div class="subtitle">Khám phá thế giới chữ Hán một cách dễ dàng</div>
+        </div>
+
+        <div class="tab-nav">
+            <button class="tab-btn active" data-page="page-hanzi">✏️ Học chữ Hán</button>
+            <button class="tab-btn" data-page="page-vocab">📚 Bảng từ vựng</button>
+            <button class="tab-btn" data-page="page-sentences">💬 Ví dụ câu</button>
+        </div>
+        
+        <div id="page-hanzi" class="page-content active">
+            <div class="search-section">
+                <div class="search-title">
+                    <span>🔍</span>
+                    <span>Tìm kiếm chữ Hán</span>
+                </div>
+                <div class="search-bar">
+                    <input type="text" id="input-char" placeholder="Nhập chữ Hán bạn muốn học (ví dụ: 山, 作, 工)">
+                    <button type="button" class="search-btn" id="search-btn">Học ngay</button>
+                </div>
+                <div class="search-hint">
+                    💡 Meo: Bạn có thể nhập một hoặc nhiều chữ Hán cùng lúc
+                </div>
+            </div>
+            
+            <div class="categories-grid">
+                <div class="category-card work collapsed">
+                    <div class="category-header" onclick="toggleCategory(this)">
+                        <div class="category-title"><span class="category-icon">💼</span><span>Công việc & Học tập</span></div>
+                        <span class="toggle-arrow">▼</span>
+                    </div>
+                    <div class="char-grid">
+                        <button class="char-button" data-char="作">作</button> 
+                        <button class="char-button" data-char="工">工</button> 
+                        <button class="char-button" data-char="做">做</button> 
+                        <button class="char-button" data-char="业">业</button> 
+                        <button class="char-button" data-char="职">职</button> 
+                        <button class="char-button" data-char="学">学</button>
+                        <button class="char-button" data-char="点">点</button>
+                        <button class="char-button" data-char="中">中</button>
+                        <button class="char-button" data-char="文">文</button>
+                    </div>
+                </div>
+                <div class="category-card nature collapsed">
+                    <div class="category-header" onclick="toggleCategory(this)">
+                        <div class="category-title"><span class="category-icon">🏔️</span><span>Thiên nhiên & Thế giới</span></div>
+                        <span class="toggle-arrow">▼</span>
+                    </div>
+                    <div class="char-grid">
+                        <button class="char-button" data-char="山">山</button> 
+                        <button class="char-button" data-char="水">水</button> 
+                        <button class="char-button" data-char="火">火</button> 
+                        <button class="char-button" data-char="土">土</button> 
+                        <button class="char-button" data-char="天">天</button> 
+                        <button class="char-button" data-char="地">地</button>
+                    </div>
+                </div>
+                <div class="category-card people collapsed">
+                    <div class="category-header" onclick="toggleCategory(this)">
+                        <div class="category-title"><span class="category-icon">👥</span><span>Con người & Xã hội</span></div>
+                        <span class="toggle-arrow">▼</span>
+                    </div>
+                    <div class="char-grid">
+                        <button class="char-button" data-char="人">人</button> 
+                        <button class="char-button" data-char="你">你</button> 
+                        <button class="char-button" data-char="我">我</button> 
+                        <button class="char-button" data-char="他">他</button> 
+                        <button class="char-button" data-char="们">们</button> 
+                        <button class="char-button" data-char="会">会</button>
+                    </div>
+                </div>
+                <div class="category-card basic collapsed">
+                    <div class="category-header" onclick="toggleCategory(this)">
+                        <div class="category-title"><span class="category-icon">🔤</span><span>Chữ cơ bản</span></div>
+                        <span class="toggle-arrow">▼</span>
+                    </div>
+                    <div class="char-grid">
+                        <button class="char-button" data-char="大">大</button> 
+                        <button class="char-button" data-char="小">小</button> 
+                        <button class="char-button" data-char="好">好</button> 
+                        <button class="char-button" data-char="不">不</button> 
+                        <button class="char-button" data-char="是">是</button> 
+                        <button class="char-button" data-char="的">的</button>
+                    </div>
+                </div>
+            </div>
+            <div id="writer-section" class="writer-section" style="display: none;"></div>
+        </div>
+
+        <div id="page-vocab" class="page-content">
+        </div>
+
+        <div id="page-sentences" class="page-content">
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>© 2024 Hanzi App | Tác giả: [Tên của bạn]</p>
+        <div class="footer-links">
+            <a href="https://www.facebook.com/" target="_blank">📘</a>
+            <a href="https://github.com/" target="_blank">🐙</a>
+        </div>
+    </footer>
+
+    <script>
+        let dictionaryMap = null;
+        let loadPromise = null;
+        let currentVocabPage = 1;
+        let currentSentencePage = 1;
+        const WORDS_PER_PAGE = 30;
+        const SENTENCES_PER_PAGE = 10;
+
+        const localExamples = {
+            '作': { words: [{ chinese: '工作', meaning: 'công việc' }, { chinese: '作业', meaning: 'bài tập' }, { chinese: '制作', meaning: 'chế tác, làm ra' }, { chinese: '合作', meaning: 'hợp tác' }, { chinese: '创作', meaning: 'sáng tác' }, { chinese: '作用', meaning: 'tác dụng' }], sentences: [{ chinese: '我在一家公司工作。', vietnamese: 'Tôi làm việc tại một công ty.' }, { chinese: '学生要完成作业。', vietnamese: 'Học sinh phải hoàn thành bài tập.' }, { chinese: '我们需要合作。', vietnamese: 'Chúng ta cần hợp tác.' }] },
+            '工': { words: [{ chinese: '工作', meaning: 'công việc' }, { chinese: '工人', meaning: 'công nhân' }, { chinese: '工厂', meaning: 'nhà máy' }, { chinese: '手工', meaning: 'thủ công' }, { chinese: '工具', meaning: 'công cụ' }, { chinese: '工程', meaning: 'công trình' }], sentences: [{ chinese: '他是一个工人。', vietnamese: 'Anh ấy là một công nhân.' }, { chinese: '这个工厂很大。', vietnamese: 'Nhà máy này rất lớn.' }] },
+            '做': { words: [{ chinese: '做事', meaning: 'làm việc' }, { chinese: '做饭', meaning: 'nấu cơm' }, { chinese: '做梦', meaning: 'mơ' }, { chinese: '制做', meaning: 'chế tạo' }, { chinese: '做人', meaning: 'làm người' }, { chinese: '做到', meaning: 'làm được' }], sentences: [{ chinese: '妈妈在做饭。', vietnamese: 'Mẹ đang nấu cơm.' }, { chinese: '我要做一个好人。', vietnamese: 'Tôi muốn làm một người tốt.' }] },
+            '山': { words: [{ chinese: '高山', meaning: 'núi cao' }, { chinese: '山水', meaning: 'sơn thủy' }, { chinese: '火山', meaning: 'núi lửa' }, { chinese: '山顶', meaning: 'đỉnh núi' }, { chinese: '登山', meaning: 'leo núi' }, { chinese: '山脉', meaning: 'dãy núi' }], sentences: [{ chinese: '这座山很高。', vietnamese: 'Ngọn núi này rất cao.' }, { chinese: '我喜欢登山。', vietnamese: 'Tôi thích leo núi.' }] },
+            '水': { words: [{ chinese: '水果', meaning: 'hoa quả' }, { chinese: '喝水', meaning: 'uống nước' }, { chinese: '水平', meaning: 'trình độ' }, { chinese: '山水', meaning: 'sơn thủy' }, { chinese: '开水', meaning: 'nước sôi' }], sentences: [{ chinese: '我想喝水。', vietnamese: 'Tôi muốn uống nước.' }, { chinese: '水果很甜。', vietnamese: 'Hoa quả rất ngọt.' }] },
+            '火': { words: [{ chinese: '火车', meaning: 'tàu hỏa' }, { chinese: '火山', meaning: 'núi lửa' }, { chinese: '生火', meaning: 'đốt lửa' }, { chinese: '火热', meaning: 'nóng bỏng' }, { chinese: '大火', meaning: 'lửa lớn' }], sentences: [{ chinese: '我坐火车回家。', vietnamese: 'Tôi đi tàu hỏa về nhà.' }, { chinese: '小心大火！', vietnamese: 'Cẩn thận lửa lớn!' }] },
+            '大': { words: [{ chinese: '大小', meaning: 'to nhỏ' }, { chinese: '大学', meaning: 'đại học' }, { chinese: '大人', meaning: 'người lớn' }, { chinese: '大家', meaning: 'mọi người' }, { chinese: '长大', meaning: 'lớn lên' }, { chinese: '大概', meaning: 'có lẽ' }], sentences: [{ chinese: '他上大学了。', vietnamese: 'Anh ấy đã vào đại học.' }, { chinese: '大家都很高兴。', vietnamese: 'Mọi người đều rất vui.' }] },
+            '小': { words: [{ chinese: '大小', meaning: 'to nhỏ' }, { chinese: '小孩', meaning: 'trẻ em' }, { chinese: '小心', meaning: 'cẩn thận' }, { chinese: '小说', meaning: 'tiểu thuyết' }, { chinese: '小时', meaning: 'giờ' }], sentences: [{ chinese: '这个小孩很可爱。', vietnamese: 'Đứa trẻ này rất dễ thương.' }, { chinese: '小心过马路。', vietnamese: 'Cẩn thận khi qua đường.' }] },
+            '你': { words: [{ chinese: '你好', meaning: 'xin chào' }, { chinese: '你们', meaning: 'các bạn' }, { chinese: '你的', meaning: 'của bạn' }], sentences: [{ chinese: '你好吗？', vietnamese: 'Bạn có khỏe không?' }, { chinese: '你们是学生吗？', vietnamese: 'Các bạn có phải học sinh không?' }] },
+            '好': { words: [{ chinese: '你好', meaning: 'xin chào' }, { chinese: '好的', meaning: 'được rồi' }, { chinese: '很好', meaning: 'rất tốt' }, { chinese: '好人', meaning: 'người tốt' }, { chinese: '好看', meaning: 'đẹp' }, { chinese: '好吃', meaning: 'ngon' }], sentences: [{ chinese: '今天天气很好。', vietnamese: 'Hôm nay thời tiết rất tốt.' }, { chinese: '这本书很好看。', vietnamese: 'Cuốn sách này rất hay.' }] },
+            '人': { words: [{ chinese: '人们', meaning: 'mọi người' }, { chinese: '好人', meaning: 'người tốt' }, { chinese: '大人', meaning: 'người lớn' }, { chinese: '个人', meaning: 'cá nhân' }, { chinese: '做人', meaning: 'làm người' }], sentences: [{ chinese: '人们都很友好。', vietnamese: 'Mọi người đều rất thân thiện.' }, { chinese: '他是个好人。', vietnamese: 'Anh ấy là người tốt.' }] },
+            '我': { words: [{ chinese: '我们', meaning: 'chúng tôi' }, { chinese: '我的', meaning: 'của tôi' }, { chinese: '自我', meaning: 'bản thân' }], sentences: [{ chinese: '我是学生。', vietnamese: 'Tôi là học sinh.' }, { chinese: '我们一起学习。', vietnamese: 'Chúng tôi cùng nhau học tập.' }] },
+            '学': { words: [{ chinese: '学习', meaning: 'học tập' }, { chinese: '学生', meaning: 'học sinh' }, { chinese: '大学', meaning: 'đại học' }, { chinese: '学校', meaning: 'trường học' }, { chinese: '数学', meaning: 'toán học' }], sentences: [{ chinese: '我在学校学习。', vietnamese: 'Tôi học ở trường.' }, { chinese: '学习中文很有趣。', vietnamese: 'Học tiếng Trung rất thú vị.' }] },
+            '恶': { words: [{ chinese: '恶心', meaning: 'buồn nôn' }, { chinese: '恶劣', meaning: 'tồi tệ' }, { chinese: '罪恶', meaning: 'tội ác' }, { chinese: '恶意', meaning: 'ác ý' }, { chinese: '险恶', meaning: 'hiểm ác' }], sentences: [{ chinese: '天气恶劣。', vietnamese: 'Thời tiết tồi tệ.' }, { chinese: '这是恶意行为。', vietnamese: 'Đây là hành vi ác ý.' }] }
+        };
+
+        const radicalData = {
+            '山': { radical: '山', meaning: 'núi', strokes: 3, position: 'độc lập' },
+            '大': { radical: '大', meaning: 'lớn', strokes: 3, position: 'độc lập' },
+            '小': { radical: '小', meaning: 'nhỏ', strokes: 3, position: 'độc lập' },
+            '你': { radical: '亻', meaning: 'người', strokes: 2, position: 'bên trái' },
+            '我': { radical: '戈', meaning: 'thương', strokes: 4, position: 'bên phải' },
+            '他': { radical: '亻', meaning: 'người', strokes: 2, position: 'bên trái' },
+            '好': { radical: '女', meaning: 'con gái', strokes: 3, position: 'bên trái' },
+            '人': { radical: '人', meaning: 'người', strokes: 2, position: 'độc lập' },
+            '土': { radical: '土', meaning: 'đất', strokes: 3, position: 'độc lập' },
+            '水': { radical: '水', meaning: 'nước', strokes: 4, position: 'độc lập' },
+            '火': { radical: '火', meaning: 'lửa', strokes: 4, position: 'độc lập' },
+            '天': { radical: '大', meaning: 'lớn', strokes: 3, position: 'phía dưới' },
+            '地': { radical: '土', meaning: 'đất', strokes: 3, position: 'bên trái' },
+            '作': { radical: '亻', meaning: 'người', strokes: 2, position: 'bên trái' },
+            '工': { radical: '工', meaning: 'thợ', strokes: 3, position: 'độc lập' },
+            '做': { radical: '亻', meaning: 'người', strokes: 2, position: 'bên trái' },
+            '业': { radical: '一', meaning: 'một', strokes: 1, position: 'phía trên' },
+            '职': { radical: '耳', meaning: 'tai', strokes: 6, position: 'bên trái' },
+            '学': { radical: '子', meaning: 'con', strokes: 3, position: 'phía dưới' },
+            '们': { radical: '亻', meaning: 'người', strokes: 2, position: 'bên trái' },
+            '会': { radical: '人', meaning: 'người', strokes: 2, position: 'phía trên' },
+            '不': { radical: '一', meaning: 'một', strokes: 1, position: 'phía trên' },
+            '是': { radical: '日', meaning: 'mặt trời', strokes: 4, position: 'phía trên' },
+            '的': { radical: '白', meaning: 'trắng', strokes: 5, position: 'bên trái' },
+            '恶': { radical: '心', meaning: 'tim, lòng', strokes: 4, position: 'phía dưới' },
+            '点': { radical: '灬', meaning: 'lửa nhỏ', strokes: 4, position: 'phía dưới' },
+            '中': { radical: '丨', meaning: 'thẳng', strokes: 1, position: 'giữa' },
+            '国': { radical: '囗', meaning: 'vây quanh', strokes: 3, position: 'bao quanh' },
+            '文': { radical: '文', meaning: 'văn', strokes: 4, position: 'độc lập' },
+            '年': { radical: '干', meaning: 'khô', strokes: 3, position: 'phía trên' },
+            '月': { radical: '月', meaning: 'mặt trăng', strokes: 4, position: 'độc lập' },
+            '日': { radical: '日', meaning: 'mặt trời', strokes: 4, position: 'độc lập' },
+            '时': { radical: '日', meaning: 'mặt trời', strokes: 4, position: 'bên trái' },
+            '分': { radical: '八', meaning: 'tám', strokes: 2, position: 'phía trên' },
+            '种': { radical: '禾', meaning: 'lúa', strokes: 5, position: 'bên trái' },
+            '想': { radical: '心', meaning: 'tim', strokes: 4, position: 'phía dưới' },
+            '看': { radical: '目', meaning: 'mắt', strokes: 5, position: 'phía dưới' },
+            '听': { radical: '口', meaning: 'miệng', strokes: 3, position: 'bên trái' },
+            '说': { radical: '讠', meaning: 'lời nói', strokes: 2, position: 'bên trái' },
+            '来': { radical: '木', meaning: 'cây', strokes: 4, position: 'phía trên' },
+            '去': { radical: '土', meaning: 'đất', strokes: 3, position: 'phía dưới' },
+            '上': { radical: '一', meaning: 'một', strokes: 1, position: 'phía dưới' },
+            '下': { radical: '一', meaning: 'một', strokes: 1, position: 'phía trên' },
+            '前': { radical: '刂', meaning: 'dao', strokes: 2, position: 'bên phải' },
+            '后': { radical: '口', meaning: 'miệng', strokes: 3, position: 'phía trên' },
+            '左': { radical: '工', meaning: 'thợ', strokes: 3, position: 'phía dưới' },
+            '右': { radical: '口', meaning: 'miệng', strokes: 3, position: 'phía trên' }
+        };
+
+        async function loadDictionary() { 
+            if (dictionaryMap) return; 
+            dictionaryMap = new Map(); 
+            try { 
+                const response = await fetch('https://raw.githubusercontent.com/skishore/makemeahanzi/master/dictionary.txt'); 
+                if (!response.ok) throw new Error('Failed to load dictionary'); 
+                const text = await response.text(); 
+                const lines = text.trim().split('\n'); 
+                for (let line of lines) { 
+                    if (line) { 
+                        const entry = JSON.parse(line); 
+                        if (entry.character && entry.decomposition) { 
+                            dictionaryMap.set(entry.character, entry); 
+                        } 
+                    } 
+                } 
+            } catch (error) { 
+                console.error('Error loading dictionary:', error); 
+            } 
+        }
+        
+        function playAudio(text, lang = 'zh-CN') { 
+            if ('speechSynthesis' in window) { 
+                speechSynthesis.cancel(); 
+                const utterance = new SpeechSynthesisUtterance(text); 
+                utterance.lang = lang; 
+                utterance.rate = 0.8; 
+                utterance.pitch = 1; 
+                utterance.volume = 1; 
+                speechSynthesis.speak(utterance); 
+            } else { 
+                alert('Trình duyệt không hỗ trợ phát âm'); 
+            } 
+        }
+
+        function getPinyinWithTone(char) {
+            try {
+                if (typeof window.pinyinPro !== 'undefined' && window.pinyinPro.pinyin) {
+                    const pinyin = window.pinyinPro.pinyin(char, { 
+                        toneType: 'symbol',
+                        type: 'array'
+                    });
+                    if (pinyin && pinyin.length > 0) {
+                        return pinyin.join(' ');
+                    }
+                }
+                
+                if (typeof pinyinPro !== 'undefined') {
+                    const pinyin = pinyinPro.pinyin(char, { 
+                        toneType: 'symbol',
+                        type: 'array'
+                    });
+                    if (pinyin && pinyin.length > 0) {
+                        return pinyin.join(' ');
+                    }
+                }
+            } catch (error) {
+                console.log('Lỗi pinyin-pro:', error);
+            }
+            
+            return getPinyinFallback(char);
+        }
+
+        function getComponentsInfo(char) {
+            const entry = dictionaryMap.get(char);
+            if (entry && entry.decomposition) {
+                const components = entry.decomposition.split('');
+                const filteredComponents = components.filter(c => c !== '?' && !['⿰', '⿱', '⿲', '⿳', '⿴', '⿵', '⿶', '⿷', '⿸', '⿹', '⿺', '⿻'].includes(c));
+                return filteredComponents.map(comp => {
+                    const hanViet = getHanViet(comp);
+                    return {
+                        char: comp,
+                        meaning: hanViet
+                    };
+                });
+            }
+            return null;
+        }
+
+        document.getElementById('search-btn').addEventListener('click', async function() { 
+            const input = document.getElementById('input-char').value.trim(); 
+            if (!input) return; 
+            await triggerSearch(input); 
+        });
+        
+        document.getElementById('input-char').addEventListener('keypress', async function(e) { 
+            if (e.key === 'Enter') { 
+                const input = this.value.trim(); 
+                if (!input) return; 
+                await triggerSearch(input); 
+            } 
+        });
+        
+        document.querySelectorAll('.char-button').forEach(button => { 
+            button.addEventListener('click', async function() { 
+                const char = this.dataset.char; 
+                document.getElementById('input-char').value = char; 
+                await triggerSearch(char); 
+            }); 
+        });
+        
+        async function triggerSearch(input) { 
+            if (!loadPromise) { 
+                loadPromise = loadDictionary(); 
+            } 
+            await loadPromise; 
+            
+            const writerSection = document.getElementById('writer-section'); 
+            writerSection.innerHTML = ''; // Clear previous content
+            writerSection.style.display = 'block'; 
+            writerSection.scrollIntoView({ behavior: 'smooth', block: 'start' }); 
+            
+            const uniqueChars = [...new Set(input.split(''))].filter(isChineseChar);
+            
+            if (uniqueChars.length === 0) {
+                writerSection.style.display = 'none';
+                return;
+            }
+
+            // Create tabs and content container
+            const tabsContainer = document.createElement('div');
+            tabsContainer.className = 'char-tabs';
+            const contentContainer = document.createElement('div');
+            contentContainer.className = 'char-content-container';
+
+            writerSection.appendChild(tabsContainer);
+            writerSection.appendChild(contentContainer);
+
+            uniqueChars.forEach((char, index) => {
+                // Create tab button
+                const tabBtn = document.createElement('button');
+                tabBtn.className = 'char-tab-btn';
+                tabBtn.textContent = char;
+                tabBtn.dataset.char = char;
+                tabsContainer.appendChild(tabBtn);
+
+                // Create and append character content
+                const charContent = createCharacterContent(char);
+                contentContainer.appendChild(charContent);
+
+                if (index === 0) {
+                    tabBtn.classList.add('active');
+                    charContent.classList.add('active');
+                }
+
+                // Add click event listener to the tab
+                tabBtn.addEventListener('click', () => {
+                    // Remove active class from all tabs and content
+                    document.querySelectorAll('.char-tab-btn').forEach(btn => btn.classList.remove('active'));
+                    document.querySelectorAll('.character-display').forEach(content => content.classList.remove('active'));
+
+                    // Add active class to clicked tab and corresponding content
+                    tabBtn.classList.add('active');
+                    charContent.classList.add('active');
+                });
+            });
+        }
+        
+        function createCharacterContent(char) {
+            const writerDiv = document.createElement('div');
+            writerDiv.className = 'character-display';
+            const examplesHtml = createExamplesSection(char);
+            
+            const pinyinInfo = getPinyinWithTone(char);
+            const hanVietInfo = getHanViet(char);
+            const componentsInfo = getComponentsInfo(char);
+
+            let componentsHtml = '<div class="info-value">Chưa có thông tin phân tách</div>';
+            if (componentsInfo && componentsInfo.length > 0) {
+                const componentChars = componentsInfo.map(c => `<span class="radical-char">${c.char}</span>`).join('+');
+                const componentMeanings = componentsInfo.map(c => `${c.char} (${c.meaning})`).join(', ');
+                componentsHtml = `
+                    <div class="info-value">
+                        <div class="radical-display">
+                            ${componentChars}
+                        </div>
+                        <div class="radical-meaning" style="margin-top: 5px;">
+                            ${componentMeanings}
+                        </div>
+                    </div>
+                `;
+            }
+
+            writerDiv.innerHTML = `
+                <div class="writer-container">
+                    <div class="writer-div" id="writer-${char}"></div>
+                </div>
+                <div class="info-panel">
+                    <h3>🔍 Chữ: ${char}</h3>
+                    <div class="info-item">
+                        <div class="info-label">🇻🇳 Hán Việt:</div>
+                        <div class="info-value">${hanVietInfo}</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">🗣️ Pinyin:</div>
+                        <div class="info-value pinyin-display">${pinyinInfo}</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">🧩 Thành phần:</div>
+                        ${componentsHtml}
+                    </div>
+                    <div class="writer-controls" id="controls-${char}">
+                        <button class="control-btn">🔄 Vẽ lại</button>
+                        <button class="control-btn">✏️ Tập viết</button>
+                        <button class="control-btn">🔊 Nghe</button>
+                    </div>
+                    ${examplesHtml}
+                </div>
+            `;
+            
+            // HanziWriter needs to be created after the element is in the DOM.
+            setTimeout(() => {
+                const writer = HanziWriter.create(`writer-${char}`, char, { 
+                    width: 220, 
+                    height: 220, 
+                    padding: 10, 
+                    strokeColor: '#333', 
+                    radicalColor: '#168F16', 
+                    showOutline: true, 
+                    showCharacter: true, 
+                    strokeAnimationSpeed: 1, 
+                    delayBetweenStrokes: 200 
+                }); 
+                
+                writer.animateCharacter(); 
+                
+                const controls = writerDiv.querySelector(`#controls-${char}`); 
+                controls.querySelector('button:nth-child(1)').addEventListener('click', () => { 
+                    writer.animateCharacter(); 
+                }); 
+                controls.querySelector('button:nth-child(2)').addEventListener('click', () => { 
+                    writer.quiz({ 
+                        showHintAfterMisses: 3, 
+                        highlightOnComplete: true, 
+                        onComplete: function() { 
+                            alert('🎉 Tuyệt vời! Bạn đã viết đúng chữ ' + char); 
+                        } 
+                    }); 
+                }); 
+                controls.querySelector('button:nth-child(3)').addEventListener('click', () => { 
+                    playAudio(char); 
+                }); 
+            
+                const wordItems = writerDiv.querySelectorAll('.word-item'); 
+                wordItems.forEach(item => { 
+                    item.addEventListener('click', async function() { 
+                        const chinese = this.querySelector('.word-chinese').textContent; 
+                        document.getElementById('input-char').value = chinese; 
+                        await triggerSearch(chinese); 
+                    }); 
+                });
+            }, 0);
+            
+            return writerDiv;
+        }
+        
+        function createExamplesSection(char) { 
+            const examples = localExamples[char]; 
+            if (!examples) { 
+                return `<div class="examples-section"><div class="examples-title">📚 Từ vựng và ví dụ</div><div class="loading">Chưa có ví dụ cho chữ này trong cơ sở dữ liệu</div></div>`; 
+            } 
+            
+            const wordsHtml = examples.words.map(word => `
+                <div class="word-item">
+                    <button class="audio-btn" onclick="playAudio('${word.chinese}')">🔊</button>
+                    <div class="word-pinyin">${getPinyinWithTone(word.chinese)}</div>
+                    <div class="word-chinese">${word.chinese}</div>
+                    <div class="word-meaning">${word.meaning}</div>
+                </div>`).join(''); 
+            
+            const sentencesHtml = examples.sentences.map(sentence => `
+                <div class="sentence-item">
+                    <button class="audio-btn sentence-audio" onclick="playAudio('${sentence.chinese}')">🔊</button>
+                    <div class="sentence-pinyin">${getPinyinWithTone(sentence.chinese)}</div>
+                    <div class="sentence-chinese">${sentence.chinese}</div>
+                    <div class="sentence-vietnamese">${sentence.vietnamese}</div>
+                </div>`).join(''); 
+            
+            return `<div class="examples-section"><div class="examples-title">📚 Từ vựng phổ biến</div><div class="word-examples">${wordsHtml}</div><div class="sentence-examples"><div class="examples-title">💬 Ví dụ câu</div>${sentencesHtml}</div></div>`; 
+        }
+        
+        function getHanViet(char) { 
+            const hanVietMap = { 
+                '山': 'Sơn', '大': 'Đại', '小': 'Tiểu', '你': 'Ngươi', '我': 'Ngã', '他': 'Tha', 
+                '好': 'Hảo', '人': 'Nhân', '土': 'Thổ', '水': 'Thủy', '火': 'Hỏa', '天': 'Thiên', 
+                '地': 'Địa', '作': 'Tác', '工': 'Công', '做': 'Tố', '业': 'Nghiệp', '职': 'Chức', 
+                '学': 'Học', '们': 'Môn', '会': 'Hội', '不': 'Bất', '是': 'Thị', '的': 'Đích',
+                '恶': 'Ác', '点': 'Điểm', '中': 'Trung', '国': 'Quốc', '文': 'Văn', '年': 'Niên',
+                '月': 'Nguyệt', '日': 'Nhật', '时': 'Thời', '分': 'Phân', '种': 'Chủng', 
+                '想': 'Tưởng', '看': 'Khán', '听': 'Thính', '说': 'Thuyết', '来': 'Lai',
+                '去': 'Khứ', '上': 'Thượng', '下': 'Hạ', '前': 'Tiền', '后': 'Hậu',
+                '左': 'Tả', '右': 'Hữu'
+            }; 
+            return hanVietMap[char] || 'Chưa có Hán Việt'; 
+        }
+        
+        function getPinyinFallback(char) { 
+            const pinyinMap = { 
+                '山': 'shān', '大': 'dà', '小': 'xiǎo', '你': 'nǐ', '我': 'wǒ', '他': 'tā', 
+                '好': 'hǎo', '人': 'rén', '土': 'tǔ', '水': 'shuǐ', '火': 'huǒ', '天': 'tiān', 
+                '地': 'dì', '作': 'zuò', '工': 'gōng', '做': 'zuò', '业': 'yè', '职': 'zhí', 
+                'xué': 'xué', '们': 'men', 'huì': 'huì', 'bù': 'bù', 'shì': 'shì', 'de': 'de',
+                '恶': 'è', '点': 'diǎn', 'zhōng': 'zhōng', 'guó': 'guó', 'wén': 'wén', 'nián': 'nián',
+                'yuè': 'yuè', 'rì': 'rì', 'shí': 'shí', 'fēn': 'fēn', 'zhǒng': 'zhǒng',
+                'xiǎng': 'xiǎng', 'kàn': 'kàn', 'tīng': 'tīng', 'shuō': 'shuō', 'lái': 'lái',
+                'qù': 'qù', 'shàng': 'shàng', 'xià': 'xià', 'qián': 'qián', 'hòu': 'hòu',
+                'zuǒ': 'zuǒ', 'yòu': 'yòu'
+            }; 
+            return pinyinMap[char] || 'Chưa có pinyin'; 
+        }
+        
+        function isChineseChar(char) { 
+            return /[\u4e00-\u9fff]/.test(char); 
+        }
+        
+        function toggleCategory(header) { 
+            const categoryCard = header.closest('.category-card'); 
+            categoryCard.classList.toggle('collapsed'); 
+            if (!categoryCard.classList.contains('collapsed')) { 
+                const charButtons = categoryCard.querySelectorAll('.char-button'); 
+                charButtons.forEach((button, index) => { 
+                    button.style.opacity = '0'; 
+                    button.style.transform = 'scale(0.8)'; 
+                    setTimeout(() => { 
+                        button.style.transition = 'all 0.3s ease'; 
+                        button.style.opacity = '1'; 
+                        button.style.transform = 'scale(1)'; 
+                    }, index * 50); 
+                }); 
+            } 
+        }
+        
+        function generateVocabularyPage(page = 1) {
+            const vocabContainer = document.getElementById('page-vocab');
+            const characters = Object.keys(localExamples);
+            let allWords = [];
+            characters.forEach(char => {
+                if (localExamples[char].words) {
+                    allWords = allWords.concat(localExamples[char].words);
+                }
+            });
+
+            const totalPages = Math.ceil(allWords.length / WORDS_PER_PAGE);
+            const startIndex = (page - 1) * WORDS_PER_PAGE;
+            const endIndex = startIndex + WORDS_PER_PAGE;
+            const wordsToDisplay = allWords.slice(startIndex, endIndex);
+
+            let html = `
+                <div class="vocab-char-section">
+                    <h2 class="vocab-char-title">Bảng từ vựng</h2>
+                    <div class="vocab-grid">
+                        ${wordsToDisplay.map(word => `
+                            <div class="word-item">
+                                <button class="audio-btn" onclick="playAudio('${word.chinese}')">🔊</button>
+                                <div class="word-pinyin">${getPinyinWithTone(word.chinese)}</div>
+                                <div class="word-chinese">${word.chinese}</div>
+                                <div class="word-meaning" style="font-size: 14px; color: #666;">${word.meaning}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+            
+            vocabContainer.innerHTML = html;
+            setupVocabularyPagination(totalPages, page);
+        }
+
+        function setupVocabularyPagination(totalPages, currentPage) {
+            const vocabContainer = document.getElementById('page-vocab');
+            let paginationHtml = `<div class="pagination-controls">`;
+
+            paginationHtml += `<button class="pagination-btn" onclick="goToVocabPage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>&larr; Trước</button>`;
+
+            for (let i = 1; i <= totalPages; i++) {
+                paginationHtml += `<button class="pagination-btn ${i === currentPage ? 'active' : ''}" onclick="goToVocabPage(${i})">${i}</button>`;
+            }
+
+            paginationHtml += `<button class="pagination-btn" onclick="goToVocabPage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>Sau &rarr;</button>`;
+            
+            paginationHtml += `</div>`;
+
+            vocabContainer.innerHTML += paginationHtml;
+        }
+
+        function goToVocabPage(page) {
+            currentVocabPage = page;
+            generateVocabularyPage(currentVocabPage);
+        }
+
+        function generateSentencesPage(page = 1) {
+            const sentencesContainer = document.getElementById('page-sentences');
+            const characters = Object.keys(localExamples);
+            let allSentences = [];
+            characters.forEach(char => {
+                if (localExamples[char].sentences) {
+                    allSentences = allSentences.concat(localExamples[char].sentences);
+                }
+            });
+
+            const totalPages = Math.ceil(allSentences.length / SENTENCES_PER_PAGE);
+            const startIndex = (page - 1) * SENTENCES_PER_PAGE;
+            const endIndex = startIndex + SENTENCES_PER_PAGE;
+            const sentencesToDisplay = allSentences.slice(startIndex, endIndex);
+
+            let html = `
+                <div class="sentences-char-section">
+                    <h2 class="sentences-char-title">Ví dụ câu</h2>
+                    <div class="sentences-list">
+                        ${sentencesToDisplay.map(sentence => `
+                            <div class="sentence-item">
+                                <button class="audio-btn sentence-audio" onclick="playAudio('${sentence.chinese}')">🔊</button>
+                                <div class="sentence-pinyin">${getPinyinWithTone(sentence.chinese)}</div>
+                                <div class="sentence-chinese">${sentence.chinese}</div>
+                                <div class="sentence-vietnamese">${sentence.vietnamese}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+
+            sentencesContainer.innerHTML = html;
+            setupSentencesPagination(totalPages, page);
+        }
+        
+        function setupSentencesPagination(totalPages, currentPage) {
+            const sentencesContainer = document.getElementById('page-sentences');
+            let paginationHtml = `<div class="pagination-controls">`;
+
+            paginationHtml += `<button class="pagination-btn" onclick="goToSentencePage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>&larr; Trước</button>`;
+
+            for (let i = 1; i <= totalPages; i++) {
+                paginationHtml += `<button class="pagination-btn ${i === currentPage ? 'active' : ''}" onclick="goToSentencePage(${i})">${i}</button>`;
+            }
+
+            paginationHtml += `<button class="pagination-btn" onclick="goToSentencePage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>Sau &rarr;</button>`;
+            
+            paginationHtml += `</div>`;
+
+            sentencesContainer.innerHTML += paginationHtml;
+        }
+
+        function goToSentencePage(page) {
+            currentSentencePage = page;
+            generateSentencesPage(currentSentencePage);
+        }
+
+
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const pages = document.querySelectorAll('.page-content');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                pages.forEach(page => page.classList.remove('active'));
+
+                button.classList.add('active');
+                const pageId = button.dataset.page;
+                document.getElementById(pageId).classList.add('active');
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            generateVocabularyPage();
+            generateSentencesPage();
+            
+            const cards = document.querySelectorAll('.category-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.6s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+
+        const searchBar = document.querySelector('.search-section');
+        const inputChar = document.getElementById('input-char');
+        inputChar.addEventListener('focus', function() { 
+            searchBar.style.transform = 'translateY(-2px)'; 
+            searchBar.style.boxShadow = '0 15px 40px rgba(0, 0, 0, 0.15)'; 
+        });
+        inputChar.addEventListener('blur', function() { 
+            searchBar.style.transform = 'translateY(0)'; 
+            searchBar.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.1)'; 
+        });
+    </script>
+</body>
+</html>
