@@ -815,10 +815,6 @@
         let dictionaryData = null; 
         let allWords = [];
         let allSentences = [];
-        let filteredWords = [];
-        let filteredSentences = [];
-        let currentVocabPage = 1;
-        let currentSentencePage = 1;
         
         const WORDS_PER_PAGE = 30;
         const SENTENCES_PER_PAGE = 10;
@@ -917,9 +913,6 @@
                             });
                         }
                     });
-
-                    filteredWords = [...allWords];
-                    filteredSentences = [...allSentences];
                     
                     resolve();
                 } catch (error) {
@@ -1187,7 +1180,6 @@
                 <div class="sentence-item">
                     <button class="audio-btn sentence-audio" onclick="playAudio('${sentence.chinese}')">🔊</button>
                     <div class="sentence-pinyin">${getPinyinWithTone(sentence.chinese)}</div>
-                    <div class="sentence-chinese">${sentence.chinese}</div>
                     <div class="sentence-vietnamese">${sentence.vietnamese}</div>
                 </div>`).join(''); 
             
@@ -1246,10 +1238,6 @@
             const activeTab = document.querySelector('.page-content.active');
             const contentWrapper = activeTab.querySelector('.content-wrapper');
             const searchInput = activeTab.querySelector('.input-search');
-
-            // Reset pagination to page 1 for search results
-            currentVocabPage = 1;
-            currentSentencePage = 1;
 
             if (!contentWrapper) return;
             
@@ -1310,21 +1298,19 @@
             const contentWrapper = activeTab.querySelector('.content-wrapper');
             if (!contentWrapper) return;
 
+            const activePageId = activeTab.id;
+
             // Reset category button state
-            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll(`#${activePageId} .filter-btn`).forEach(btn => btn.classList.remove('active'));
             const allBtn = activeTab.querySelector('[data-category="all"]');
             if (allBtn) {
                 allBtn.classList.add('active');
             }
 
-            // Reset filtered data
-            filteredWords = [...allWords];
-            filteredSentences = [...allSentences];
-            
-            if (activeTab.id === 'page-vocab') {
-                generateVocabularyPage(filteredWords);
-            } else if (activeTab.id === 'page-sentences') {
-                generateSentencesPage(filteredSentences);
+            if (activePageId === 'page-vocab') {
+                generateVocabularyPage(allWords);
+            } else if (activePageId === 'page-sentences') {
+                generateSentencesPage(allSentences);
             }
         }
         
@@ -1361,27 +1347,11 @@
             document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
         }
 
-        function filterAndRenderContent(category) {
-            const activePage = document.querySelector('.page-content.active');
-            const contentWrapper = activePage.querySelector('.content-wrapper');
-            const searchInput = activePage.querySelector('.input-search');
-
-            // Clear search input when filtering
-            searchInput.value = '';
-
-            if (category === 'all') {
-                filteredWords = [...allWords];
-                filteredSentences = [...allSentences];
-            } else {
-                filteredWords = allWords.filter(word => word.category && word.category.includes(category));
-                filteredSentences = allSentences.filter(sentence => sentence.category && sentence.category.includes(category));
-            }
-
-            if (activePage.id === 'page-vocab') {
-                generateVocabularyPage(filteredWords);
-            } else if (activePage.id === 'page-sentences') {
-                generateSentencesPage(filteredSentences);
-            }
+        function filterContent(category) {
+            const words = allWords.filter(word => word.category && word.category.includes(category));
+            const sentences = allSentences.filter(sentence => sentence.category && sentence.category.includes(category));
+            
+            renderCombinedResults(words, sentences);
         }
 
         function generateVocabularyPage(dataToDisplay = allWords, page = 1) {
@@ -1497,24 +1467,23 @@
                 button.classList.add('active');
                 const pageId = button.dataset.page;
                 document.getElementById(pageId).classList.add('active');
-
+                
                 // Clear search bar and reset to all data when switching tabs
                 const searchInput = document.querySelector('.input-search');
                 if (searchInput) {
                     searchInput.value = '';
                 }
                 
-                // Reset category button state
+                // Reset category button state and render combined results
                 document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
                 const allBtn = document.querySelector(`#${pageId} [data-category="all"]`);
                 if (allBtn) {
                     allBtn.classList.add('active');
                 }
-
-                if (pageId === 'page-vocab') {
-                    generateVocabularyPage(allWords);
-                } else if (pageId === 'page-sentences') {
-                    generateSentencesPage(allSentences);
+                
+                // When switching to vocab or sentences tab, always filter by 'all' first.
+                if (pageId === 'page-vocab' || pageId === 'page-sentences') {
+                    filterContent('all');
                 }
             });
         });
@@ -1532,7 +1501,7 @@
                 this.classList.add('active');
                 
                 const category = this.dataset.category;
-                filterAndRenderContent(category);
+                filterContent(category);
             });
         });
 
@@ -1542,9 +1511,8 @@
                 await loadDictionary();
                 console.log('Dữ liệu từ vựng và câu đã được tải thành công!');
                 
-                // Khởi tạo trang với tất cả dữ liệu
-                generateVocabularyPage(allWords);
-                generateSentencesPage(allSentences);
+                // Tải trang từ vựng và câu theo chủ đề "tất cả" ngay từ đầu
+                filterContent('all');
 
             } catch (error) {
                 console.error('Không thể tải dữ liệu:', error);
