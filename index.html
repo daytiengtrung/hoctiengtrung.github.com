@@ -976,7 +976,10 @@
             const examplesHtml = createExamplesSection(char);
             
             const pinyinInfo = getPinyinWithTone(char);
-            const hanVietInfo = getHanViet(char);
+            
+            // Lấy Hán Việt từ dữ liệu JSON
+            const hanVietInfo = dictionaryData[char] && dictionaryData[char].hanviet ? dictionaryData[char].hanviet : 'Chưa có Hán Việt';
+
             const componentsInfo = getComponentsInfo(char);
 
             let componentsHtml = '<div class="info-value">Chưa có thông tin phân tách</div>';
@@ -1093,18 +1096,9 @@
         }
         
         function getHanViet(char) { 
-            const hanVietMap = { 
-                '山': 'Sơn', '大': 'Đại', '小': 'Tiểu', '你': 'Ngươi', '我': 'Ngã', '他': 'Tha', 
-                '好': 'Hảo', '人': 'Nhân', '土': 'Thổ', '水': 'Thủy', '火': 'Hỏa', '天': 'Thiên', 
-                '地': 'Địa', '作': 'Tác', '工': 'Công', '做': 'Tố', '业': 'Nghiệp', '职': 'Chức', 
-                '学': 'Học', '们': 'Môn', '会': 'Hội', '不': 'Bất', '是': 'Thị', '的': 'Đích',
-                '恶': 'Ác', '点': 'Điểm', '中': 'Trung', '国': 'Quốc', '文': 'Văn', '年': 'Niên',
-                '月': 'Nguyệt', '日': 'Nhật', '时': 'Thời', '分': 'Phân', '种': 'Chủng', 
-                '想': 'Tưởng', '看': 'Khán', '听': 'Thính', '说': 'Thuyết', '来': 'Lai',
-                '去': 'Khứ', '上': 'Thượng', '下': 'Hạ', '前': 'Tiền', '后': 'Hậu',
-                '左': 'Tả', '右': 'Hữu'
-            }; 
-            return hanVietMap[char] || 'Chưa có Hán Việt'; 
+            // Lấy Hán Việt từ dữ liệu JSON
+            const hanViet = dictionaryData[char] && dictionaryData[char].hanviet ? dictionaryData[char].hanviet : '';
+            return hanViet || 'Chưa có Hán Việt'; 
         }
         
         function getPinyinFallback(char) { 
