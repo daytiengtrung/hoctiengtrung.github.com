@@ -736,7 +736,7 @@
         <div id="page-vocab" class="page-content">
             <div class="search-section">
                 <div class="search-bar">
-                    <input type="text" id="search-input" class="input-search" placeholder="Tìm kiếm từ vựng và ví dụ (ví dụ: xin chao, 你好)">
+                    <input type="text" id="search-input" class="input-search" placeholder="Tìm kiếm từ vựng và ví dụ (ví dụ: ni hao, xin chao)">
                 </div>
             </div>
             <div class="content-wrapper"></div>
@@ -745,7 +745,7 @@
         <div id="page-sentences" class="page-content">
             <div class="search-section">
                 <div class="search-bar">
-                    <input type="text" id="search-input" class="input-search" placeholder="Tìm kiếm từ vựng và ví dụ (ví dụ: xin chao, 你好)">
+                    <input type="text" id="search-input" class="input-search" placeholder="Tìm kiếm từ vựng và ví dụ (ví dụ: ni hao, xin chao)">
                 </div>
             </div>
             <div class="content-wrapper"></div>
@@ -802,7 +802,7 @@
             '恶': { radical: '心', meaning: 'tim, lòng', strokes: 4, position: 'phía dưới' },
             '点': { radical: '灬', meaning: 'lửa nhỏ', strokes: 4, position: 'phía dưới' },
             '中': { radical: '丨', meaning: 'thẳng', strokes: 1, position: 'giữa' },
-            '国': { radical: '囗', meaning: 'vây quanh', strokes: 3, position: 'bao quanh' },
+            '국': { radical: '囗', meaning: 'vây quanh', strokes: 3, position: 'bao quanh' },
             '文': { radical: '文', meaning: 'văn', strokes: 4, position: 'độc lập' },
             '年': { radical: '干', meaning: 'khô', strokes: 3, position: 'phía trên' },
             '月': { radical: '月', meaning: 'mặt trăng', strokes: 4, position: 'độc lập' },
@@ -1148,8 +1148,8 @@
         
         function getPinyinFallback(char) { 
             const pinyinMap = { 
-                '山': 'shān', '大': 'dà', '小': 'xiǎo', '你': 'nǐ', '我': 'wǒ', '他': 'tā', 
-                '好': 'hǎo', '人': 'rén', '土': 'tǔ', '水': 'shuǐ', 'huǒ': 'huǒ', 'tiān': 'tiān', 
+                '山': 'shān', '大': 'dà', '小': 'xiǎo', '你': 'nǐ', '我': 'wǒ', 'ta': 'tā', 
+                'hǎo': 'hǎo', 'rén': 'rén', 'tǔ': 'tǔ', 'shuǐ': 'shuǐ', 'huǒ': 'huǒ', 'tiān': 'tiān', 
                 'dì': 'dì', 'zuò': 'zuò', 'gōng': 'gōng', 'zuò': 'zuò', 'yè': 'yè', 'zhí': 'zhí', 
                 'xué': 'xué', 'men': 'men', 'huì': 'huì', 'bù': 'bù', 'shì': 'shì', 'de': 'de',
                 'è': 'è', 'diǎn': 'diǎn', 'zhōng': 'zhōng', 'guó': 'guó', 'wén': 'wén', 'nián': 'nián',
@@ -1242,22 +1242,36 @@
 
         function searchAll() {
             const activeTab = document.querySelector('.tab-btn.active').dataset.page;
-            const query = document.getElementById('search-input').value;
+            const query = document.getElementById('search-input').value.trim();
             const normalizedQuery = normalizeString(query);
 
             if (activeTab === 'page-vocab') {
                 filteredWords = allWords.filter(word => {
+                    const pinyinWithTones = getPinyinWithTone(word.chinese);
+                    const normalizedPinyin = normalizeString(pinyinWithTones);
+
+                    const pinyinMatches = normalizedPinyin.includes(normalizedQuery);
+                    const chineseMatches = word.chinese.includes(query);
+                    
                     const normalizedMeaning = normalizeString(word.meaning);
-                    return word.chinese.toLowerCase().includes(normalizedQuery) ||
-                           normalizedMeaning.includes(normalizedQuery);
+                    const meaningMatches = normalizedMeaning.includes(normalizedQuery);
+                    
+                    return chineseMatches || pinyinMatches || meaningMatches;
                 });
                 currentVocabPage = 1;
                 generateVocabularyPage(filteredWords, currentVocabPage);
             } else if (activeTab === 'page-sentences') {
                 filteredSentences = allSentences.filter(sentence => {
+                    const pinyinWithTones = getPinyinWithTone(sentence.chinese);
+                    const normalizedPinyin = normalizeString(pinyinWithTones);
+                    
+                    const pinyinMatches = normalizedPinyin.includes(normalizedQuery);
+                    const chineseMatches = sentence.chinese.includes(query);
+
                     const normalizedVietnamese = normalizeString(sentence.vietnamese);
-                    return sentence.chinese.toLowerCase().includes(normalizedQuery) ||
-                           normalizedVietnamese.includes(normalizedQuery);
+                    const vietnameseMatches = normalizedVietnamese.includes(normalizedQuery);
+
+                    return chineseMatches || pinyinMatches || vietnameseMatches;
                 });
                 currentSentencePage = 1;
                 generateSentencesPage(filteredSentences, currentSentencePage);
