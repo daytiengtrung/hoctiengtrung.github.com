@@ -68,7 +68,7 @@
 
         async function loadData() {
             try {
-                const response = await fetch('tuvung.json');
+                const response = await fetch('tuvungcu.json');
                 if (!response.ok) throw new Error('Không thể tải dữ liệu từ vựng.');
                 const data = await response.json();
                 renderTable(data);
