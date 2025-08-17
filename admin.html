@@ -113,7 +113,7 @@
 
         async function loadData() {
             try {
-                const response = await fetch('tuvung1.json');
+                const response = await fetch('tuvung.json');
                 if (!response.ok) throw new Error('Không thể tải dữ liệu từ vựng.');
                 fullData = await response.json();
                 renderTable(fullData);
