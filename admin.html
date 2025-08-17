@@ -10,7 +10,7 @@
         h1 { text-align: center; color: #667eea; margin-bottom: 20px; }
         .form-group { margin-bottom: 15px; }
         label { display: block; font-weight: 600; margin-bottom: 5px; }
-        input[type="text"], textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; font-size: 16px; }
+        input[type="text"] { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; font-size: 16px; }
         button { padding: 12px 25px; border: none; border-radius: 8px; background: #667eea; color: white; font-size: 16px; font-weight: bold; cursor: pointer; transition: background 0.3s; }
         button:hover { background: #5a66d4; }
         #message { margin-top: 20px; padding: 15px; border-radius: 8px; text-align: center; display: none; }
@@ -25,6 +25,9 @@
         .search-container { display: flex; gap: 10px; margin-bottom: 20px; }
         .search-container input { flex: 1; }
         .button-group { display: flex; gap: 10px; margin-top: 15px; }
+        .list-section { margin-top: 20px; }
+        .list-item { display: flex; gap: 10px; align-items: center; margin-bottom: 5px; }
+        .list-item input { flex: 1; }
     </style>
 </head>
 <body>
@@ -32,21 +35,40 @@
         <h1>🛠️ Quản lý Từ vựng & Câu</h1>
         <form id="word-form">
             <div class="form-group">
-                <label for="hanzi">Chữ Hán:</label>
+                <label for="hanzi">Chữ Hán chính:</label>
                 <input type="text" id="hanzi" placeholder="Nhập chữ Hán của từ vựng (ví dụ: 学)" required>
             </div>
             <div class="form-group">
                 <label for="hanviet">Hán Việt:</label>
                 <input type="text" id="hanviet" placeholder="Hán Việt (ví dụ: Học)">
             </div>
-            <div class="form-group">
-                <label for="words">Từ vựng (dạng JSON):</label>
-                <textarea id="words" rows="5" placeholder='[{"chinese": "学习", "meaning": "học tập", "category": ["học tập"]}]'></textarea>
+            
+            <div class="list-section">
+                <h3>Từ vựng liên quan</h3>
+                <div id="words-list">
+                    <div class="list-item">
+                        <input type="text" class="word-chinese" placeholder="Từ vựng tiếng Trung">
+                        <input type="text" class="word-vietnamese" placeholder="Nghĩa tiếng Việt">
+                        <input type="text" class="word-category" placeholder="Phân loại (cách nhau bởi dấu phẩy)">
+                        <button type="button" class="remove-btn">-</button>
+                    </div>
+                </div>
+                <button type="button" id="add-word-btn">Thêm từ vựng mới</button>
             </div>
-            <div class="form-group">
-                <label for="sentences">Ví dụ câu (dạng JSON):</label>
-                <textarea id="sentences" rows="5" placeholder='[{"chinese": "他喜欢学习。", "vietnamese": "Anh ấy thích học tập.", "category": ["học tập"]}]'></textarea>
+
+            <div class="list-section">
+                <h3>Ví dụ câu</h3>
+                <div id="sentences-list">
+                    <div class="list-item">
+                        <input type="text" class="sentence-chinese" placeholder="Câu tiếng Trung">
+                        <input type="text" class="sentence-vietnamese" placeholder="Nghĩa tiếng Việt">
+                        <input type="text" class="sentence-category" placeholder="Phân loại (cách nhau bởi dấu phẩy)">
+                        <button type="button" class="remove-btn">-</button>
+                    </div>
+                </div>
+                <button type="button" id="add-sentence-btn">Thêm câu mới</button>
             </div>
+
             <div class="button-group">
                 <button type="submit">Thêm / Cập nhật</button>
                 <button type="button" onclick="clearForm()">Làm mới</button>
@@ -56,7 +78,7 @@
         
         <h2>Danh sách từ vựng</h2>
         <div class="search-container">
-            <input type="text" id="search-input" placeholder="Tìm kiếm từ vựng để sửa (ví dụ: học, kỹ sư, tiếng trung)">
+            <input type="text" id="search-input" placeholder="Tìm kiếm từ vựng để sửa">
             <button id="search-btn">Tìm kiếm</button>
         </div>
         <table id="vocab-table">
@@ -77,6 +99,8 @@
         const form = document.getElementById('word-form');
         const messageDiv = document.getElementById('message');
         const vocabTableBody = document.querySelector('#vocab-table tbody');
+        const wordsList = document.getElementById('words-list');
+        const sentencesList = document.getElementById('sentences-list');
         let fullData = null;
 
         function normalizeString(str) {
@@ -118,15 +142,56 @@
             }
         }
 
+        function addInputRow(list, type) {
+            const newItem = document.createElement('div');
+            newItem.className = 'list-item';
+            const chinesePlaceholder = type === 'word' ? 'Từ vựng tiếng Trung' : 'Câu tiếng Trung';
+            const vietnamesePlaceholder = type === 'word' ? 'Nghĩa tiếng Việt' : 'Nghĩa tiếng Việt';
+            const categoryPlaceholder = 'Phân loại (cách nhau bởi dấu phẩy)';
+            newItem.innerHTML = `
+                <input type="text" class="${type}-chinese" placeholder="${chinesePlaceholder}">
+                <input type="text" class="${type}-vietnamese" placeholder="${vietnamesePlaceholder}">
+                <input type="text" class="${type}-category" placeholder="${categoryPlaceholder}">
+                <button type="button" class="remove-btn">-</button>
+            `;
+            list.appendChild(newItem);
+            newItem.querySelector('.remove-btn').addEventListener('click', () => newItem.remove());
+        }
+
+        document.getElementById('add-word-btn').addEventListener('click', () => addInputRow(wordsList, 'word'));
+        document.getElementById('add-sentence-btn').addEventListener('click', () => addInputRow(sentencesList, 'sentence'));
+
         async function editEntry(hanzi) {
             if (!fullData || !fullData[hanzi]) return;
             
+            clearForm();
+            
+            const entry = fullData[hanzi];
             document.getElementById('hanzi').value = hanzi;
-            document.getElementById('hanviet').value = fullData[hanzi].hanviet || '';
-            document.getElementById('words').value = JSON.stringify(fullData[hanzi].words || [], null, 2);
-            document.getElementById('sentences').value = JSON.stringify(fullData[hanzi].sentences || [], null, 2);
+            document.getElementById('hanviet').value = entry.hanviet || '';
             document.getElementById('hanzi').readOnly = true;
             document.getElementById('hanzi').style.backgroundColor = '#e9ecef';
+            
+            // Populate words
+            wordsList.innerHTML = '';
+            (entry.words || []).forEach(word => {
+                addInputRow(wordsList, 'word');
+                const lastItem = wordsList.lastElementChild;
+                lastItem.querySelector('.word-chinese').value = word.chinese;
+                lastItem.querySelector('.word-vietnamese').value = word.meaning;
+                lastItem.querySelector('.word-category').value = (word.category || []).join(', ');
+            });
+
+            // Populate sentences
+            sentencesList.innerHTML = '';
+            (entry.sentences || []).forEach(sentence => {
+                addInputRow(sentencesList, 'sentence');
+                const lastItem = sentencesList.lastElementChild;
+                lastItem.querySelector('.sentence-chinese').value = sentence.chinese;
+                lastItem.querySelector('.sentence-vietnamese').value = sentence.vietnamese;
+                lastItem.querySelector('.sentence-category').value = (sentence.category || []).join(', ');
+            });
+
             showMessage('Đang chỉnh sửa từ "' + hanzi + '". Vui lòng chỉnh sửa và ấn "Cập nhật".', 'success');
         }
 
@@ -135,41 +200,46 @@
             document.getElementById('hanzi').readOnly = false;
             document.getElementById('hanzi').style.backgroundColor = '#fff';
             document.getElementById('message').style.display = 'none';
+            
+            // Clear all dynamically added rows
+            wordsList.innerHTML = '';
+            sentencesList.innerHTML = '';
+            addInputRow(wordsList, 'word');
+            addInputRow(sentencesList, 'sentence');
         }
-
-        async function deleteEntry(hanzi) {
-            if (!confirm('Bạn có chắc chắn muốn xóa mục "' + hanzi + '" không?')) return;
-            // Chức năng này yêu cầu backend
-            showMessage('Chức năng xóa yêu cầu backend để lưu thay đổi.', 'error');
-        }
-
+        
         form.addEventListener('submit', async function(event) {
             event.preventDefault();
             const hanzi = document.getElementById('hanzi').value;
             const hanviet = document.getElementById('hanviet').value;
             
-            let words = [];
-            let sentences = [];
+            const words = Array.from(wordsList.querySelectorAll('.list-item')).map(item => {
+                const chinese = item.querySelector('.word-chinese').value;
+                const meaning = item.querySelector('.word-vietnamese').value;
+                const category = item.querySelector('.word-category').value.split(',').map(s => s.trim()).filter(s => s);
+                return { chinese, meaning, category };
+            }).filter(word => word.chinese);
+
+            const sentences = Array.from(sentencesList.querySelectorAll('.list-item')).map(item => {
+                const chinese = item.querySelector('.sentence-chinese').value;
+                const vietnamese = item.querySelector('.sentence-vietnamese').value;
+                const category = item.querySelector('.sentence-category').value.split(',').map(s => s.trim()).filter(s => s);
+                return { chinese, vietnamese, category };
+            }).filter(sentence => sentence.chinese);
+
+            const newData = { hanviet, words, sentences };
             
-            try {
-                words = JSON.parse(document.getElementById('words').value || '[]');
-                sentences = JSON.parse(document.getElementById('sentences').value || '[]');
-            } catch (e) {
-                showMessage('Lỗi: Dữ liệu JSON không hợp lệ. Vui lòng kiểm tra lại cú pháp.', 'error');
+            // Frontend validation for empty fields
+            if (!hanzi.trim()) {
+                showMessage('Lỗi: Chữ Hán không được để trống.', 'error');
                 return;
             }
 
-            const newData = {
-                hanviet: hanviet,
-                words: words,
-                sentences: sentences
-            };
-
-            // Bước này chỉ là mô phỏng, trên thực tế phải gửi dữ liệu tới backend
-            showMessage('Dữ liệu đã được gửi nhưng không thể lưu vì thiếu backend. Bạn cần một server để lưu thay đổi vào file JSON.', 'error');
+            // MOCK: This part still needs a backend to save data.
+            showMessage('Dữ liệu đã được tạo. Bạn cần một server để lưu thay đổi vào file JSON.', 'error');
             console.log('Dữ liệu cần gửi:', { [hanzi]: newData });
         });
-
+        
         document.getElementById('search-btn').addEventListener('click', () => {
             const query = normalizeString(document.getElementById('search-input').value.trim());
             if (!query) {
@@ -182,13 +252,8 @@
                 const entry = fullData[hanzi];
                 let match = false;
                 
-                // Check Hanzi
-                if (hanzi.includes(query)) match = true;
+                if (hanzi.includes(query) || (entry.hanviet && normalizeString(entry.hanviet).includes(query))) match = true;
                 
-                // Check Hanviet
-                if (entry.hanviet && normalizeString(entry.hanviet).includes(query)) match = true;
-                
-                // Check words and meanings
                 if (entry.words) {
                     for (const word of entry.words) {
                         if (word.chinese.includes(query) || normalizeString(word.meaning).includes(query)) {
@@ -198,7 +263,6 @@
                     }
                 }
 
-                // Check sentences and translations
                 if (entry.sentences) {
                     for (const sentence of entry.sentences) {
                         if (sentence.chinese.includes(query) || normalizeString(sentence.vietnamese).includes(query)) {
@@ -222,8 +286,12 @@
             messageDiv.style.display = 'block';
         }
 
-        // Tải dữ liệu khi trang được mở
-        document.addEventListener('DOMContentLoaded', loadData);
+        document.addEventListener('DOMContentLoaded', () => {
+            loadData();
+            // Initial call to set up the first row
+            addInputRow(wordsList, 'word');
+            addInputRow(sentencesList, 'sentence');
+        });
     </script>
 </body>
 </html>
