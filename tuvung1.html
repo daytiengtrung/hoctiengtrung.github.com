@@ -781,8 +781,8 @@
                     <button class="filter-btn" data-category="kỹ thuật">Kỹ thuật 🛠️</button>
                     <button class="filter-btn" data-category="học tập">Học tập 📚</button>
                 </div>
+                <div class="content-wrapper"></div>
             </div>
-            <div class="content-wrapper"></div>
         </div>
 
         <div id="page-sentences" class="page-content">
@@ -796,8 +796,8 @@
                     <button class="filter-btn" data-category="kỹ thuật">Kỹ thuật 🛠️</button>
                     <button class="filter-btn" data-category="học tập">Học tập 📚</button>
                 </div>
+                <div class="content-wrapper"></div>
             </div>
-            <div class="content-wrapper"></div>
         </div>
     </div>
 
@@ -816,6 +816,11 @@
         let allWords = [];
         let allSentences = [];
         
+        let filteredWords = [];
+        let filteredSentences = [];
+        let currentVocabPage = 1;
+        let currentSentencePage = 1;
+
         const WORDS_PER_PAGE = 30;
         const SENTENCES_PER_PAGE = 10;
         
@@ -1173,7 +1178,7 @@
                     <button class="audio-btn" onclick="playAudio('${word.chinese}')">🔊</button>
                     <div class="word-pinyin">${getPinyinWithTone(word.chinese)}</div>
                     <div class="word-chinese">${word.chinese}</div>
-                    <div class="word-meaning">${word.meaning}</div>
+                    <div class="word-meaning" style="font-size: 14px; color: #666;">${word.meaning}</div>
                 </div>`).join(''); 
             
             const sentencesHtml = examples.sentences.map(sentence => `
@@ -1228,6 +1233,7 @@
         }
         
         function normalizeString(str) {
+            if (!str) return '';
             return str.toLowerCase()
                       .normalize('NFD')
                       .replace(/[\u0300-\u036f]/g, "")
@@ -1295,28 +1301,33 @@
         function clearSearchResults() {
             const activeTab = document.querySelector('.page-content.active');
             if (!activeTab) return;
-            const contentWrapper = activeTab.querySelector('.content-wrapper');
-            if (!contentWrapper) return;
-
-            const activePageId = activeTab.id;
+            const searchInput = activeTab.querySelector('.input-search');
+            if (searchInput) {
+                searchInput.value = '';
+            }
 
             // Reset category button state
-            document.querySelectorAll(`#${activePageId} .filter-btn`).forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll(`#${activeTab.id} .filter-btn`).forEach(btn => btn.classList.remove('active'));
             const allBtn = activeTab.querySelector('[data-category="all"]');
             if (allBtn) {
                 allBtn.classList.add('active');
             }
 
-            if (activePageId === 'page-vocab') {
-                generateVocabularyPage(allWords);
-            } else if (activePageId === 'page-sentences') {
-                generateSentencesPage(allSentences);
+            if (activeTab.id === 'page-vocab') {
+                filteredWords = allWords;
+                currentVocabPage = 1;
+                generateVocabularyPage(filteredWords);
+            } else if (activeTab.id === 'page-sentences') {
+                filteredSentences = allSentences;
+                currentSentencePage = 1;
+                generateSentencesPage(filteredSentences);
             }
         }
         
         function searchAll(event) {
             const query = event.target.value.trim();
             if (query === '') {
+                // Return to default state if search query is empty
                 clearSearchResults();
                 return;
             }
@@ -1348,17 +1359,25 @@
         }
 
         function filterContent(category) {
-            const words = allWords.filter(word => word.category && word.category.includes(category));
-            const sentences = allSentences.filter(sentence => sentence.category && sentence.category.includes(category));
-            
-            renderCombinedResults(words, sentences);
+            if (category === 'all') {
+                filteredWords = allWords;
+                filteredSentences = allSentences;
+                currentVocabPage = 1;
+                currentSentencePage = 1;
+                generateVocabularyPage(filteredWords);
+                generateSentencesPage(filteredSentences);
+            } else {
+                const words = allWords.filter(word => word.category && word.category.includes(category));
+                const sentences = allSentences.filter(sentence => sentence.category && sentence.category.includes(category));
+                renderCombinedResults(words, sentences);
+            }
         }
 
-        function generateVocabularyPage(dataToDisplay = allWords, page = 1) {
+        function generateVocabularyPage(dataToDisplay = allWords) {
             const vocabContainer = document.querySelector('#page-vocab .content-wrapper');
             const totalItems = dataToDisplay.length;
             const totalPages = Math.ceil(totalItems / WORDS_PER_PAGE);
-            const startIndex = (page - 1) * WORDS_PER_PAGE;
+            const startIndex = (currentVocabPage - 1) * WORDS_PER_PAGE;
             const endIndex = startIndex + WORDS_PER_PAGE;
             const wordsToDisplay = dataToDisplay.slice(startIndex, endIndex);
 
@@ -1380,7 +1399,7 @@
             `;
             
             vocabContainer.innerHTML = html;
-            setupVocabularyPagination(totalPages, page, dataToDisplay);
+            setupVocabularyPagination(totalPages, currentVocabPage, dataToDisplay);
         }
 
         function setupVocabularyPagination(totalPages, currentPage, data) {
@@ -1389,9 +1408,23 @@
 
             paginationHtml += `<button class="pagination-btn" onclick="goToVocabPage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>&larr; Trước</button>`;
 
-            for (let i = 1; i <= totalPages; i++) {
+            let startPage = Math.max(1, currentPage - 2);
+            let endPage = Math.min(totalPages, currentPage + 2);
+            
+            if (startPage > 1) {
+                paginationHtml += `<button class="pagination-btn" onclick="goToVocabPage(1)">1</button>`;
+                if (startPage > 2) paginationHtml += `<span>...</span>`;
+            }
+
+            for (let i = startPage; i <= endPage; i++) {
                 paginationHtml += `<button class="pagination-btn ${i === currentPage ? 'active' : ''}" onclick="goToVocabPage(${i})">${i}</button>`;
             }
+
+            if (endPage < totalPages) {
+                if (endPage < totalPages - 1) paginationHtml += `<span>...</span>`;
+                paginationHtml += `<button class="pagination-btn" onclick="goToVocabPage(${totalPages})">${totalPages}</button>`;
+            }
+
 
             paginationHtml += `<button class="pagination-btn" onclick="goToVocabPage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>Sau &rarr;</button>`;
             
@@ -1402,14 +1435,14 @@
 
         function goToVocabPage(page) {
             currentVocabPage = page;
-            generateVocabularyPage(filteredWords, currentVocabPage);
+            generateVocabularyPage(filteredWords);
         }
 
-        function generateSentencesPage(dataToDisplay = allSentences, page = 1) {
+        function generateSentencesPage(dataToDisplay = allSentences) {
             const sentencesContainer = document.querySelector('#page-sentences .content-wrapper');
             const totalItems = dataToDisplay.length;
             const totalPages = Math.ceil(totalItems / SENTENCES_PER_PAGE);
-            const startIndex = (page - 1) * SENTENCES_PER_PAGE;
+            const startIndex = (currentSentencePage - 1) * SENTENCES_PER_PAGE;
             const endIndex = startIndex + SENTENCES_PER_PAGE;
             const sentencesToDisplay = dataToDisplay.slice(startIndex, endIndex);
 
@@ -1431,7 +1464,7 @@
             `;
 
             sentencesContainer.innerHTML = html;
-            setupSentencesPagination(totalPages, page, dataToDisplay);
+            setupSentencesPagination(totalPages, currentSentencePage, dataToDisplay);
         }
         
         function setupSentencesPagination(totalPages, currentPage, data) {
@@ -1440,8 +1473,21 @@
 
             paginationHtml += `<button class="pagination-btn" onclick="goToSentencePage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>&larr; Trước</button>`;
 
-            for (let i = 1; i <= totalPages; i++) {
+            let startPage = Math.max(1, currentPage - 2);
+            let endPage = Math.min(totalPages, currentPage + 2);
+            
+            if (startPage > 1) {
+                paginationHtml += `<button class="pagination-btn" onclick="goToSentencePage(1)">1</button>`;
+                if (startPage > 2) paginationHtml += `<span>...</span>`;
+            }
+            
+            for (let i = startPage; i <= endPage; i++) {
                 paginationHtml += `<button class="pagination-btn ${i === currentPage ? 'active' : ''}" onclick="goToSentencePage(${i})">${i}</button>`;
+            }
+
+            if (endPage < totalPages) {
+                if (endPage < totalPages - 1) paginationHtml += `<span>...</span>`;
+                paginationHtml += `<button class="pagination-btn" onclick="goToSentencePage(${totalPages})">${totalPages}</button>`;
             }
 
             paginationHtml += `<button class="pagination-btn" onclick="goToSentencePage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>Sau &rarr;</button>`;
@@ -1453,7 +1499,7 @@
 
         function goToSentencePage(page) {
             currentSentencePage = page;
-            generateSentencesPage(filteredSentences, currentSentencePage);
+            generateSentencesPage(filteredSentences);
         }
 
         const tabButtons = document.querySelectorAll('.tab-btn');
@@ -1468,22 +1514,23 @@
                 const pageId = button.dataset.page;
                 document.getElementById(pageId).classList.add('active');
                 
-                // Clear search bar and reset to all data when switching tabs
-                const searchInput = document.querySelector('.input-search');
-                if (searchInput) {
-                    searchInput.value = '';
-                }
-                
-                // Reset category button state and render combined results
+                // Reset search bar and category buttons when switching tabs
+                document.querySelectorAll('.input-search').forEach(input => input.value = '');
                 document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
                 const allBtn = document.querySelector(`#${pageId} [data-category="all"]`);
                 if (allBtn) {
                     allBtn.classList.add('active');
                 }
                 
-                // When switching to vocab or sentences tab, always filter by 'all' first.
-                if (pageId === 'page-vocab' || pageId === 'page-sentences') {
-                    filterContent('all');
+                // Load the full list with pagination for Vocab and Sentences tabs
+                if (pageId === 'page-vocab') {
+                    filteredWords = allWords;
+                    currentVocabPage = 1;
+                    generateVocabularyPage(filteredWords);
+                } else if (pageId === 'page-sentences') {
+                    filteredSentences = allSentences;
+                    currentSentencePage = 1;
+                    generateSentencesPage(filteredSentences);
                 }
             });
         });
@@ -1501,7 +1548,30 @@
                 this.classList.add('active');
                 
                 const category = this.dataset.category;
-                filterContent(category);
+                
+                // Clear search input when a filter button is clicked
+                const searchInput = this.closest('.search-section').querySelector('.input-search');
+                if(searchInput) {
+                    searchInput.value = '';
+                }
+
+                if (category === 'all') {
+                    // Revert to paginated view
+                    if(this.closest('#page-vocab')) {
+                        filteredWords = allWords;
+                        currentVocabPage = 1;
+                        generateVocabularyPage(filteredWords);
+                    } else if (this.closest('#page-sentences')) {
+                        filteredSentences = allSentences;
+                        currentSentencePage = 1;
+                        generateSentencesPage(filteredSentences);
+                    }
+                } else {
+                    // Switch to combined results for filtered content
+                    const words = allWords.filter(word => word.category && word.category.includes(category));
+                    const sentences = allSentences.filter(sentence => sentence.category && sentence.category.includes(category));
+                    renderCombinedResults(words, sentences);
+                }
             });
         });
 
@@ -1511,8 +1581,11 @@
                 await loadDictionary();
                 console.log('Dữ liệu từ vựng và câu đã được tải thành công!');
                 
-                // Tải trang từ vựng và câu theo chủ đề "tất cả" ngay từ đầu
-                filterContent('all');
+                // Tải trang từ vựng và câu mặc định khi khởi động
+                filteredWords = allWords;
+                filteredSentences = allSentences;
+                generateVocabularyPage(allWords);
+                generateSentencesPage(allSentences);
 
             } catch (error) {
                 console.error('Không thể tải dữ liệu:', error);
