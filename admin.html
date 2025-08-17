@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Quản lý Từ vựng</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #f4f7f9; color: #333; padding: 20px; }
+        .container { max-width: 800px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        h1 { text-align: center; color: #667eea; margin-bottom: 20px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; font-weight: 600; margin-bottom: 5px; }
+        input[type="text"], textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; font-size: 16px; }
+        button { padding: 12px 25px; border: none; border-radius: 8px; background: #667eea; color: white; font-size: 16px; font-weight: bold; cursor: pointer; transition: background 0.3s; }
+        button:hover { background: #5a66d4; }
+        #message { margin-top: 20px; padding: 15px; border-radius: 8px; text-align: center; display: none; }
+        .success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 12px; border: 1px solid #ddd; text-align: left; }
+        th { background-color: #667eea; color: white; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+        .action-buttons button { padding: 5px 10px; font-size: 14px; margin-right: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🛠️ Quản lý Từ vựng & Câu</h1>
+        <form id="word-form">
+            <div class="form-group">
+                <label for="hanzi">Chữ Hán:</label>
+                <input type="text" id="hanzi" required>
+            </div>
+            <div class="form-group">
+                <label for="hanviet">Hán Việt:</label>
+                <input type="text" id="hanviet">
+            </div>
+            <div class="form-group">
+                <label for="words">Từ vựng (JSON):</label>
+                <textarea id="words" rows="5"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="sentences">Ví dụ câu (JSON):</label>
+                <textarea id="sentences" rows="5"></textarea>
+            </div>
+            <button type="submit">Thêm / Sửa</button>
+        </form>
+        <div id="message"></div>
+        
+        <h2>Danh sách từ vựng hiện tại</h2>
+        <table id="vocab-table">
+            <thead>
+                <tr>
+                    <th>Chữ Hán</th>
+                    <th>Hán Việt</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody>
+                </tbody>
+        </table>
+    </div>
+
+    <script>
+        const form = document.getElementById('word-form');
+        const messageDiv = document.getElementById('message');
+        const vocabTableBody = document.querySelector('#vocab-table tbody');
+
+        async function loadData() {
+            try {
+                const response = await fetch('tuvung.json');
+                if (!response.ok) throw new Error('Không thể tải dữ liệu từ vựng.');
+                const data = await response.json();
+                renderTable(data);
+                return data;
+            } catch (error) {
+                showMessage('Lỗi: ' + error.message, 'error');
+                return null;
+            }
+        }
+
+        function renderTable(data) {
+            vocabTableBody.innerHTML = '';
+            for (const hanzi in data) {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${hanzi}</td>
+                    <td>${data[hanzi].hanviet}</td>
+                    <td class="action-buttons">
+                        <button onclick="editEntry('${hanzi}')">Sửa</button>
+                        <button onclick="deleteEntry('${hanzi}')">Xóa</button>
+                    </td>
+                `;
+                vocabTableBody.appendChild(row);
+            }
+        }
+
+        async function editEntry(hanzi) {
+            const data = await loadData();
+            if (!data || !data[hanzi]) return;
+            
+            document.getElementById('hanzi').value = hanzi;
+            document.getElementById('hanviet').value = data[hanzi].hanviet || '';
+            document.getElementById('words').value = JSON.stringify(data[hanzi].words || [], null, 2);
+            document.getElementById('sentences').value = JSON.stringify(data[hanzi].sentences || [], null, 2);
+            document.getElementById('hanzi').readOnly = true; // Ngăn người dùng sửa chữ Hán
+        }
+
+        async function deleteEntry(hanzi) {
+            if (!confirm('Bạn có chắc chắn muốn xóa mục này không?')) return;
+            // Vẫn cần backend để thực hiện việc xóa
+            showMessage('Chức năng xóa yêu cầu backend.', 'error');
+        }
+
+        form.addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const hanzi = document.getElementById('hanzi').value;
+            const hanviet = document.getElementById('hanviet').value;
+            const words = JSON.parse(document.getElementById('words').value || '[]');
+            const sentences = JSON.parse(document.getElementById('sentences').value || '[]');
+
+            const newData = {
+                hanviet: hanviet,
+                words: words,
+                sentences: sentences
+            };
+
+            // Bước này chỉ là mô phỏng, trên thực tế phải gửi dữ liệu tới backend
+            showMessage('Đã gửi dữ liệu, nhưng không thể lưu vì thiếu backend.', 'error');
+            console.log('Dữ liệu cần gửi:', { [hanzi]: newData });
+        });
+
+        function showMessage(msg, type) {
+            messageDiv.textContent = msg;
+            messageDiv.className = '';
+            messageDiv.classList.add(type);
+            messageDiv.style.display = 'block';
+        }
+
+        // Tải dữ liệu khi trang được mở
+        loadData();
+    </script>
+</body>
+</html>
