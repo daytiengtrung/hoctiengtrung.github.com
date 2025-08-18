@@ -303,7 +303,7 @@
             border-radius: 12px;
             padding: 15px;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             justify-content: center;
         }
         
@@ -709,7 +709,7 @@
             <div id="writer-section" class="writer-section" style="display: none;"></div>
             
             <div class="categories-grid">
-                <div class="category-card work collapsed">
+                <div class="category-card work">
                     <div class="category-header" onclick="toggleCategory(this)">
                         <div class="category-title"><span class="category-icon">💼</span><span>Công việc & Học tập</span></div>
                         <span class="toggle-arrow">▼</span>
@@ -726,7 +726,7 @@
                         <button class="char-button" data-char="文">文</button>
                     </div>
                 </div>
-                <div class="category-card nature collapsed">
+                <div class="category-card nature">
                     <div class="category-header" onclick="toggleCategory(this)">
                         <div class="category-title"><span class="category-icon">🏔️</span><span>Thiên nhiên & Thế giới</span></div>
                         <span class="toggle-arrow">▼</span>
@@ -740,7 +740,7 @@
                         <button class="char-button" data-char="地">地</button>
                     </div>
                 </div>
-                <div class="category-card people collapsed">
+                <div class="category-card people">
                     <div class="category-header" onclick="toggleCategory(this)">
                         <div class="category-title"><span class="category-icon">👥</span><span>Con người & Xã hội</span></div>
                         <span class="toggle-arrow">▼</span>
@@ -754,7 +754,7 @@
                         <button class="char-button" data-char="会">会</button>
                     </div>
                 </div>
-                <div class="category-card basic collapsed">
+                <div class="category-card basic">
                     <div class="category-header" onclick="toggleCategory(this)">
                         <div class="category-title"><span class="category-icon">🔤</span><span>Chữ cơ bản</span></div>
                         <span class="toggle-arrow">▼</span>
@@ -768,6 +768,49 @@
                         <button class="char-button" data-char="的">的</button>
                     </div>
                 </div>
+                    
+
+                   <div class="category-card basic">
+                    <div class="category-header" onclick="toggleCategory(this)">
+                        <div class="category-title"><span class="category-icon">🔤</span><span>Chữ cơ bản</span></div>
+                        <span class="toggle-arrow">▼</span>
+                    </div>
+                    <div class="char-grid">
+                        <button class="char-button" data-char="大">大</button> 
+                        <button class="char-button" data-char="小">小</button> 
+                        <button class="char-button" data-char="好">好</button> 
+                        <button class="char-button" data-char="不">不</button> 
+                        <button class="char-button" data-char="是">是</button> 
+                        <button class="char-button" data-char="的">的</button>
+                    </div>
+                </div>
+                  
+
+
+                      <div class="category-card basic">
+                    <div class="category-header" onclick="toggleCategory(this)">
+                        <div class="category-title"><span class="category-icon">🔤</span><span>Chữ cơ bản</span></div>
+                        <span class="toggle-arrow">▼</span>
+                    </div>
+                    <div class="char-grid">
+                        <button class="char-button" data-char="大">大</button> 
+                        <button class="char-button" data-char="小">小</button> 
+                        <button class="char-button" data-char="好">好</button> 
+                        <button class="char-button" data-char="不">不</button> 
+                        <button class="char-button" data-char="是">是</button> 
+                        <button class="char-button" data-char="的">的</button>
+                    </div>
+                </div>
+
+
+
+
+
+                   
+
+
+
+
             </div>
         </div>
 
@@ -1022,7 +1065,10 @@
             writerSection.style.display = 'block'; 
             
             // Thêm lệnh cuộn trang ở đây
-            writerSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            setTimeout(() => {
+    writerSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}, 50);
+
             
             const uniqueChars = [...new Set(input.split(''))].filter(isChineseChar);
             
@@ -1188,6 +1234,7 @@
                 <div class="sentence-item">
                     <button class="audio-btn sentence-audio" onclick="playAudio('${sentence.chinese}')">🔊</button>
                     <div class="sentence-pinyin">${getPinyinWithTone(sentence.chinese)}</div>
+                    <div class="sentence-chinese">${sentence.chinese}</div>
                     <div class="sentence-vietnamese">${sentence.vietnamese}</div>
                 </div>`).join(''); 
             
@@ -1196,7 +1243,7 @@
         
         function getHanViet(char) { 
             const hanViet = dictionaryData[char] && dictionaryData[char].hanviet ? dictionaryData[char].hanviet : '';
-            return hanViet || 'Chưa có Hán Việt'; 
+            return hanViet || 'Chưa có nghĩa'; 
         }
         
         function getPinyinFallback(char) { 
