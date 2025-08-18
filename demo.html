@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>汉字学习 - Học chữ Hán</title>
+    <title>Học chữ Hán</title>
+    <meta name="description" content="Trang web học chữ Hán trực tuyến miễn phí. Tìm hiểu cách viết, từ vựng và câu ví dụ.">
     <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
     <script src="https://unpkg.com/pinyin-pro@3.20.1/dist/index.js"></script>
     <style>
@@ -17,7 +18,7 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            padding: 20px;
+            padding: 5px;
         }
         
         .container {
@@ -93,7 +94,7 @@
 
         .search-section {
             background: rgba(255, 255, 255, 0.95);
-            padding: 30px;
+            padding: 10px;
             border-radius: 20px;
             margin-bottom: 30px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -534,14 +535,14 @@
 
         #page-vocab {
             background: rgba(255, 255, 255, 0.98);
-            padding: 30px;
+            padding: 10px;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
         #page-sentences {
             background: rgba(255, 255, 255, 0.98);
-            padding: 30px;
+            padding: 5px;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
@@ -558,8 +559,20 @@
         }
         .sentences-list {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 15px;
+        }
+        .section-separator {
+            width: 100%;
+            height: 1px;
+            background-color: #e0e0e0;
+            margin: 40px 0;
+        }
+        .search-results-info {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #666;
         }
 
         .pagination-controls {
@@ -616,7 +629,32 @@
             font-size: 14px;
             color: #666;
         }
-
+        /* New styles for category buttons */
+        .category-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .filter-btn {
+            padding: 10px 20px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            background-color: white;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 14px;
+        }
+        .filter-btn:hover {
+            background-color: #f0f0f0;
+        }
+        .filter-btn.active {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border-color: #667eea;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
 
         @media (max-width: 768px) {
             .categories-grid {
@@ -668,9 +706,11 @@
                     💡 Meo: Bạn có thể nhập một hoặc nhiều chữ Hán cùng lúc
                 </div>
             </div>
+
+            <div id="writer-section" class="writer-section" style="display: none;"></div>
             
             <div class="categories-grid">
-                <div class="category-card work collapsed">
+                <div class="category-card work">
                     <div class="category-header" onclick="toggleCategory(this)">
                         <div class="category-title"><span class="category-icon">💼</span><span>Công việc & Học tập</span></div>
                         <span class="toggle-arrow">▼</span>
@@ -710,9 +750,9 @@
                         <button class="char-button" data-char="人">人</button> 
                         <button class="char-button" data-char="你">你</button> 
                         <button class="char-button" data-char="我">我</button> 
-                        <button class="char-button" data-char="他">他</button> 
-                        <button class="char-button" data-char="们">们</button> 
-                        <button class="char-button" data-char="会">会</button>
+                        <button class="char-button" data-char="ta">他</button> 
+                        <button class="char-button" data-char="men">们</button> 
+                        <button class="char-button" data-char="huì">会</button>
                     </div>
                 </div>
                 <div class="category-card basic collapsed">
@@ -721,108 +761,61 @@
                         <span class="toggle-arrow">▼</span>
                     </div>
                     <div class="char-grid">
-                        <button class="char-button" data-char="大">大</button> 
-                        <button class="char-button" data-char="小">小</button> 
-                        <button class="char-button" data-char="好">好</button> 
-                        <button class="char-button" data-char="不">不</button> 
-                        <button class="char-button" data-char="是">是</button> 
-                        <button class="char-button" data-char="的">的</button>
+                        <button class="char-button" data-char="da">大</button> 
+                        <button class="char-button" data-char="xiao">小</button> 
+                        <button class="char-button" data-char="hao">好</button> 
+                        <button class="char-button" data-char="bu">不</button> 
+                        <button class="char-button" data-char="shi">是</button> 
+                        <button class="char-button" data-char="de">的</button>
                     </div>
                 </div>
             </div>
-            <div id="writer-section" class="writer-section" style="display: none;"></div>
         </div>
 
         <div id="page-vocab" class="page-content">
             <div class="search-section">
                 <div class="search-bar">
-                    <input type="text" id="search-input" class="input-search" placeholder="Tìm kiếm từ vựng và ví dụ (ví dụ: ni hao, xin chao)">
+                    <input type="text" class="input-search" placeholder="Tìm kiếm từ vựng và ví dụ (ví dụ: ni hao, xin chao)">
                 </div>
+                <div class="category-buttons">
+                    <button class="filter-btn active" data-category="all">Tất cả</button>
+                    <button class="filter-btn" data-category="du lịch">Du lịch ✈️</button>
+                    <button class="filter-btn" data-category="kỹ thuật">Kỹ thuật 🛠️</button>
+                    <button class="filter-btn" data-category="học tập">Học tập 📚</button>
+                </div>
+                <div class="content-wrapper"></div>
             </div>
-            <div class="content-wrapper"></div>
         </div>
 
         <div id="page-sentences" class="page-content">
             <div class="search-section">
                 <div class="search-bar">
-                    <input type="text" id="search-input" class="input-search" placeholder="Tìm kiếm từ vựng và ví dụ (ví dụ: ni hao, xin chao)">
+                    <input type="text" class="input-search" placeholder="Tìm kiếm từ vựng và ví dụ (ví dụ: ni hao, xin chao)">
                 </div>
+                <div class="category-buttons">
+                    <button class="filter-btn active" data-category="all">Tất cả</button>
+                    <button class="filter-btn" data-category="du lịch">Du lịch ✈️</button>
+                    <button class="filter-btn" data-category="kỹ thuật">Kỹ thuật 🛠️</button>
+                    <button class="filter-btn" data-category="học tập">Học tập 📚</button>
+                </div>
+                <div class="content-wrapper"></div>
             </div>
-            <div class="content-wrapper"></div>
         </div>
     </div>
 
     <footer class="footer">
-        <p>© 2024 Hanzi App | Tác giả: [Tên của bạn]</p>
+        <p>© 2025 Học Tiếng trung | Tác giả: Nghĩa Anh</p>
         <div class="footer-links">
-            <a href="https://www.facebook.com/" target="_blank">📘</a>
-            <a href="https://github.com/" target="_blank">🐙</a>
+            <a href="https://www.facebook.com/profile.php?id=100007963391487" target="_blank">📘</a>
+            <a href="/" target="_blank">🐙</a>
         </div>
     </footer>
 
     <script>
         let dictionaryMap = null;
-        let dataPromise = null;
-        let dictionaryData = null; 
-        let allWords = [];
-        let allSentences = [];
-        let currentVocabPage = 1;
-        let currentSentencePage = 1;
-        let filteredWords = [];
-        let filteredSentences = [];
-        
-        const WORDS_PER_PAGE = 30;
-        const SENTENCES_PER_PAGE = 10;
-        
-        const radicalData = {
-            '山': { radical: '山', meaning: 'núi', strokes: 3, position: 'độc lập' },
-            '大': { radical: '大', meaning: 'lớn', strokes: 3, position: 'độc lập' },
-            '小': { radical: '小', meaning: 'nhỏ', strokes: 3, position: 'độc lập' },
-            '你': { radical: '亻', meaning: 'người', strokes: 2, position: 'bên trái' },
-            '我': { radical: '戈', meaning: 'thương', strokes: 4, position: 'bên phải' },
-            '他': { radical: '亻', meaning: 'người', strokes: 2, position: 'bên trái' },
-            '好': { radical: '女', meaning: 'con gái', strokes: 3, position: 'bên trái' },
-            '人': { radical: '人', meaning: 'người', strokes: 2, position: 'độc lập' },
-            '土': { radical: '土', meaning: 'đất', strokes: 3, position: 'độc lập' },
-            '水': { radical: '水', meaning: 'nước', strokes: 4, position: 'độc lập' },
-            '火': { radical: '火', meaning: 'lửa', strokes: 4, position: 'độc lập' },
-            '天': { radical: '大', meaning: 'lớn', strokes: 3, position: 'phía dưới' },
-            '地': { radical: '土', meaning: 'đất', strokes: 3, position: 'bên trái' },
-            '作': { radical: '亻', meaning: 'người', strokes: 2, position: 'bên trái' },
-            '工': { radical: '工', meaning: 'thợ', strokes: 3, position: 'độc lập' },
-            '做': { radical: '亻', meaning: 'người', strokes: 2, position: 'bên trái' },
-            '业': { radical: '一', meaning: 'một', strokes: 1, position: 'phía trên' },
-            '职': { radical: '耳', meaning: 'tai', strokes: 6, position: 'bên trái' },
-            '学': { radical: '子', meaning: 'con', strokes: 3, position: 'phía dưới' },
-            '们': { radical: '亻', meaning: 'người', strokes: 2, position: 'bên trái' },
-            '会': { radical: '人', meaning: 'người', strokes: 2, position: 'phía trên' },
-            '不': { radical: '一', meaning: 'một', strokes: 1, position: 'phía trên' },
-            '是': { radical: '日', meaning: 'mặt trời', strokes: 4, position: 'phía trên' },
-            '的': { radical: '白', meaning: 'trắng', strokes: 5, position: 'bên trái' },
-            '恶': { radical: '心', meaning: 'tim, lòng', strokes: 4, position: 'phía dưới' },
-            '点': { radical: '灬', meaning: 'lửa nhỏ', strokes: 4, position: 'phía dưới' },
-            '中': { radical: '丨', meaning: 'thẳng', strokes: 1, position: 'giữa' },
-            '국': { radical: '囗', meaning: 'vây quanh', strokes: 3, position: 'bao quanh' },
-            '文': { radical: '文', meaning: 'văn', strokes: 4, position: 'độc lập' },
-            '年': { radical: '干', meaning: 'khô', strokes: 3, position: 'phía trên' },
-            '月': { radical: '月', meaning: 'mặt trăng', strokes: 4, position: 'độc lập' },
-            '日': { radical: '日', meaning: 'mặt trời', strokes: 4, position: 'độc lập' },
-            '时': { radical: '日', meaning: 'mặt trời', strokes: 4, position: 'bên trái' },
-            '分': { radical: '八', meaning: 'tám', strokes: 2, position: 'phía trên' },
-            '种': { radical: '禾', meaning: 'lúa', strokes: 5, position: 'bên trái' },
-            '想': { radical: '心', meaning: 'tim', strokes: 4, position: 'phía dưới' },
-            '看': { radical: '目', meaning: 'mắt', strokes: 5, position: 'phía dưới' },
-            '听': { radical: '口', meaning: 'miệng', strokes: 3, position: 'bên trái' },
-            '说': { radical: '讠', meaning: 'lời nói', strokes: 2, position: 'bên trái' },
-            '来': { radical: '木', meaning: 'cây', strokes: 4, position: 'phía trên' },
-            '去': { radical: '土', meaning: 'đất', strokes: 3, position: 'phía dưới' },
-            '上': { radical: '一', meaning: 'một', strokes: 1, position: 'phía dưới' },
-            '下': { radical: '一', meaning: 'một', strokes: 1, position: 'phía trên' },
-            '前': { radical: '刂', meaning: 'dao', strokes: 2, position: 'bên phải' },
-            '后': { radical: '口', meaning: 'miệng', strokes: 3, position: 'phía trên' },
-            '左': { radical: '工', meaning: 'thợ', strokes: 3, position: 'phía dưới' },
-            '右': { radical: '口', meaning: 'miệng', strokes: 3, position: 'phía trên' }
-        };
+        let dataIndex = null;
+        let loadedData = {}; // Cache to store loaded data
+        let hanVietData = null; // To store Hán Việt data
 
         async function loadDictionary() { 
             if (dictionaryMap) return; 
@@ -845,203 +838,153 @@
             } 
         }
 
-        async function loadData() {
-            if (dataPromise) return dataPromise;
-            dataPromise = new Promise(async (resolve, reject) => {
-                try {
-                    const response = await fetch('tuvung.json');
-                    if (!response.ok) throw new Error('Failed to load tuvung.json');
-                    dictionaryData = await response.json();
+        async function loadHanVietData() {
+            if (hanVietData) return;
+            try {
+                const response = await fetch('./hanviet.json');
+                if (!response.ok) throw new Error('Failed to load hanviet.json');
+                hanVietData = await response.json();
+            } catch (error) {
+                console.error('Error loading hanviet data:', error);
+                hanVietData = {}; // Fallback to an empty object
+            }
+        }
 
-                    // Extract all words and sentences into flat arrays
-                    allWords = [];
-                    allSentences = [];
-                    Object.keys(dictionaryData).forEach(char => {
-                        if (dictionaryData[char].words) {
-                            allWords = allWords.concat(dictionaryData[char].words);
-                        }
-                        if (dictionaryData[char].sentences) {
-                            allSentences = allSentences.concat(dictionaryData[char].sentences);
-                        }
-                    });
-                    
-                    filteredWords = [...allWords];
-                    filteredSentences = [...allSentences];
-
-                    resolve();
-                } catch (error) {
-                    console.error('Error loading tuvung.json:', error);
-                    reject(error);
-                }
-            });
-            return dataPromise;
+        async function loadDataIndex() {
+            if (dataIndex) return;
+            try {
+                const response = await fetch('./index.json');
+                if (!response.ok) throw new Error('Failed to load index.json');
+                dataIndex = await response.json();
+            } catch (error) {
+                console.error('Error loading data index:', error);
+            }
         }
         
-        function playAudio(text, lang = 'zh-CN') { 
-            if ('speechSynthesis' in window) { 
-                speechSynthesis.cancel(); 
-                const utterance = new SpeechSynthesisUtterance(text); 
-                utterance.lang = lang; 
-                utterance.rate = 0.8; 
-                utterance.pitch = 1; 
-                utterance.volume = 1; 
-                speechSynthesis.speak(utterance); 
-            } else { 
-                alert('Trình duyệt không hỗ trợ phát âm'); 
-            } 
+        async function fetchCharacterDataFile(char) {
+            if (!dataIndex) await loadDataIndex();
+            
+            const fileName = dataIndex[char];
+            if (!fileName) {
+                return null;
+            }
+
+            if (loadedData[fileName]) {
+                return loadedData[fileName];
+            }
+
+            try {
+                const response = await fetch(`./${fileName}`);
+                if (!response.ok) throw new Error(`Failed to load ${fileName}`);
+                const data = await response.json();
+                loadedData[fileName] = data;
+                return data;
+            } catch (error) {
+                console.error(`Error fetching data for ${char}:`, error);
+                return null;
+            }
+        }
+        
+        function getHanViet(char) {
+            return hanVietData[char] || null;
         }
 
         function getPinyinWithTone(char) {
-            try {
-                if (typeof window.pinyinPro !== 'undefined' && window.pinyinPro.pinyin) {
-                    const pinyin = window.pinyinPro.pinyin(char, { 
-                        toneType: 'symbol',
-                        type: 'array'
-                    });
-                    if (pinyin && pinyin.length > 0) {
-                        return pinyin.join(' ');
-                    }
-                }
-                
-                if (typeof pinyinPro !== 'undefined') {
-                    const pinyin = pinyinPro.pinyin(char, { 
-                        toneType: 'symbol',
-                        type: 'array'
-                    });
-                    if (pinyin && pinyin.length > 0) {
-                        return pinyin.join(' ');
-                    }
-                }
-            } catch (error) {
-                console.log('Lỗi pinyin-pro:', error);
-            }
-            
-            return getPinyinFallback(char);
+            const pinyinString = pinyin(char, { toneType: 'num', type: 'array' }).join(' ');
+            return pinyinString;
         }
 
+        function toggleCategory(header) {
+            header.closest('.category-card').classList.toggle('collapsed');
+        }
+
+        function isChineseChar(char) {
+            return /[\u4e00-\u9fff]/.test(char);
+        }
+
+        function createExamplesSection(char, charData) {
+            const words = charData && charData.words ? charData.words : [];
+            const sentences = charData && charData.sentences ? charData.sentences : [];
+            
+            let examplesHtml = '';
+            if (words.length > 0 || sentences.length > 0) {
+                examplesHtml += `
+                    <div class="examples-section">
+                        <div class="examples-title">📚 Từ vựng và ví dụ</div>
+                        <div class="word-examples">
+                `;
+                words.forEach(word => {
+                    const pinyinWord = getPinyinWithTone(word.hanzi);
+                    examplesHtml += `
+                        <div class="word-item" data-word="${word.hanzi}">
+                            <div class="word-content">
+                                <span class="word-chinese">${word.hanzi}</span>
+                                <span class="word-pinyin">${pinyinWord}</span>
+                                <span class="word-meaning">${word.meaning}</span>
+                            </div>
+                            <button class="audio-btn" data-text="${word.hanzi}">🔊</button>
+                        </div>
+                    `;
+                });
+                examplesHtml += `</div>`;
+                
+                if (sentences.length > 0) {
+                    examplesHtml += `
+                        <div class="sentence-examples">
+                    `;
+                    sentences.forEach(sentence => {
+                        const pinyinSentence = getPinyinWithTone(sentence.chinese);
+                        examplesHtml += `
+                            <div class="sentence-item">
+                                <button class="audio-btn sentence-audio" data-text="${sentence.chinese}">🔊</button>
+                                <div class="sentence-chinese">${sentence.chinese}</div>
+                                <div class="sentence-pinyin">${pinyinSentence}</div>
+                                <div class="sentence-vietnamese">${sentence.vietnamese}</div>
+                            </div>
+                        `;
+                    });
+                    examplesHtml += `</div>`;
+                }
+                
+                examplesHtml += `</div>`;
+            } else {
+                examplesHtml = `<div class="examples-section"><div class="examples-title">📚 Từ vựng và ví dụ</div><div class="loading">Chưa có ví dụ cho chữ này trong cơ sở dữ liệu</div></div>`;
+            }
+
+            return examplesHtml;
+        }
+        
         function getComponentsInfo(char) {
             const entry = dictionaryMap.get(char);
             if (entry && entry.decomposition) {
                 const components = entry.decomposition.split('');
-                const filteredComponents = components.filter(c => c !== '?' && !['⿰', '⿱', '⿲', '⿳', '⿴', '⿵', '⿶', '⿷', '⿸', '⿹', '⿺', '⿻'].includes(c));
-                return filteredComponents.map(comp => {
+                const filteredComponents = components.filter(c => !['⿰', '⿱', '⿲', '⿳', '⿴', '⿵', '⿶', '⿷', '⿸', '⿹', '⿺', '⿻', '?'].includes(c));
+                const uniqueComponents = [...new Set(filteredComponents)];
+                
+                return uniqueComponents.map(comp => {
                     const hanViet = getHanViet(comp);
                     return {
                         char: comp,
-                        meaning: hanViet
+                        meaning: hanViet || 'Chưa có nghĩa'
                     };
                 });
             }
             return null;
         }
 
-        document.getElementById('search-btn').addEventListener('click', async function() { 
-            const input = document.getElementById('input-char').value.trim(); 
-            if (!input) return; 
-            await triggerSearch(input); 
-        });
-        
-        document.getElementById('input-char').addEventListener('keypress', async function(e) { 
-            if (e.key === 'Enter') { 
-                const input = this.value.trim(); 
-                if (!input) return; 
-                await triggerSearch(input); 
-            } 
-        });
-        
-        document.querySelectorAll('.char-button').forEach(button => { 
-            button.addEventListener('click', async function() { 
-                const char = this.dataset.char; 
-                document.getElementById('input-char').value = char; 
-                await triggerSearch(char); 
-            }); 
-        });
-        
-        async function triggerSearch(input) { 
-            if (!dataPromise) { 
-                await loadData(); 
-            } 
-            if (!dictionaryMap) {
-                await loadDictionary();
-            }
-            
-            const writerSection = document.getElementById('writer-section'); 
-            writerSection.innerHTML = ''; // Clear previous content
-            writerSection.style.display = 'block'; 
-            writerSection.scrollIntoView({ behavior: 'smooth', block: 'start' }); 
-            
-            const uniqueChars = [...new Set(input.split(''))].filter(isChineseChar);
-            
-            if (uniqueChars.length === 0) {
-                writerSection.style.display = 'none';
-                return;
-            }
-
-            // Create tabs and content container
-            const tabsContainer = document.createElement('div');
-            tabsContainer.className = 'char-tabs';
-            const contentContainer = document.createElement('div');
-            contentContainer.className = 'char-content-container';
-
-            writerSection.appendChild(tabsContainer);
-            writerSection.appendChild(contentContainer);
-
-            uniqueChars.forEach((char, index) => {
-                // Create tab button
-                const tabBtn = document.createElement('button');
-                tabBtn.className = 'char-tab-btn';
-                tabBtn.textContent = char;
-                tabBtn.dataset.char = char;
-                tabsContainer.appendChild(tabBtn);
-
-                // Create and append character content
-                const charContent = createCharacterContent(char);
-                contentContainer.appendChild(charContent);
-
-                if (index === 0) {
-                    tabBtn.classList.add('active');
-                    charContent.classList.add('active');
-                }
-
-                // Add click event listener to the tab
-                tabBtn.addEventListener('click', () => {
-                    // Remove active class from all tabs and content
-                    document.querySelectorAll('.char-tab-btn').forEach(btn => btn.classList.remove('active'));
-                    document.querySelectorAll('.character-display').forEach(content => content.classList.remove('active'));
-
-                    // Add active class to clicked tab and corresponding content
-                    tabBtn.classList.add('active');
-                    charContent.classList.add('active');
-                });
-            });
-        }
-        
-        function createCharacterContent(char) {
+        function createCharacterContent(char, charData) {
             const writerDiv = document.createElement('div');
             writerDiv.className = 'character-display';
-            const examplesHtml = createExamplesSection(char);
             
             const pinyinInfo = getPinyinWithTone(char);
-            
-            // Lấy Hán Việt từ dữ liệu JSON
-            const hanVietInfo = dictionaryData[char] && dictionaryData[char].hanviet ? dictionaryData[char].hanviet : 'Chưa có Hán Việt';
-
+            const hanVietInfo = charData && charData.hanviet ? charData.hanviet : 'Chưa có Hán Việt';
             const componentsInfo = getComponentsInfo(char);
+            const examplesHtml = createExamplesSection(char, charData);
 
             let componentsHtml = '<div class="info-value">Chưa có thông tin phân tách</div>';
             if (componentsInfo && componentsInfo.length > 0) {
-                const componentChars = componentsInfo.map(c => `<span class="radical-char">${c.char}</span>`).join('+');
-                const componentMeanings = componentsInfo.map(c => `${c.char} (${c.meaning})`).join(', ');
-                componentsHtml = `
-                    <div class="info-value">
-                        <div class="radical-display">
-                            ${componentChars}
-                        </div>
-                        <div class="radical-meaning" style="margin-top: 5px;">
-                            ${componentMeanings}
-                        </div>
-                    </div>
-                `;
+                const combinedComponents = componentsInfo.map(c => `${c.char} (${c.meaning})`).join(', ');
+                componentsHtml = `<div class="info-value">${combinedComponents}</div>`;
             }
 
             writerDiv.innerHTML = `
@@ -1063,15 +1006,77 @@
                         ${componentsHtml}
                     </div>
                     <div class="writer-controls" id="controls-${char}">
-                        <button class="control-btn">🔄 Vẽ lại</button>
-                        <button class="control-btn">✏️ Tập viết</button>
-                        <button class="control-btn">🔊 Nghe</button>
+                        <button class="control-btn play-btn">🔄 Vẽ lại</button>
+                        <button class="control-btn quiz-btn">✏️ Tập viết</button>
+                        <button class="control-btn audio-btn">🔊 Nghe</button>
                     </div>
                     ${examplesHtml}
                 </div>
             `;
             
+            return writerDiv;
+        }
+
+        async function triggerSearch(input) {
+            const writerSection = document.getElementById('writer-section');
+            const tabsContainer = document.createElement('div');
+            tabsContainer.className = 'char-tabs';
+            const contentContainer = document.createElement('div');
+            contentContainer.className = 'char-content-container';
+            
+            writerSection.innerHTML = '';
+            writerSection.style.display = 'block';
+            
+            const uniqueChars = [...new Set(input.split(''))].filter(isChineseChar);
+
+            // Cập nhật URL và tiêu đề trang cho SEO
+            if (uniqueChars.length > 0) {
+                const char = uniqueChars[0];
+                updatePageMetadata(char);
+                const url = new URL(window.location.href);
+                url.searchParams.set('char', char);
+                window.history.pushState({}, '', url);
+            } else {
+                updatePageMetadata(null);
+                const url = new URL(window.location.href);
+                url.searchParams.delete('char');
+                window.history.pushState({}, '', url);
+                writerSection.style.display = 'none';
+                return;
+            }
+
+            if (uniqueChars.length > 1) {
+                writerSection.appendChild(tabsContainer);
+            }
+            writerSection.appendChild(contentContainer);
+            
             setTimeout(() => {
+                writerSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 50);
+
+            const contentPromises = uniqueChars.map(async (char) => {
+                const charDataFile = await fetchCharacterDataFile(char);
+                const charData = charDataFile ? charDataFile[char] : null;
+                const tabBtn = document.createElement('button');
+                tabBtn.className = 'char-tab-btn';
+                tabBtn.textContent = char;
+                tabBtn.dataset.char = char;
+                tabsContainer.appendChild(tabBtn);
+                const charContent = createCharacterContent(char, charData);
+                charContent.id = `content-${char}`;
+                contentContainer.appendChild(charContent);
+                return { char, charContent, tabBtn };
+            });
+
+            const results = await Promise.all(contentPromises);
+
+            if (results.length > 0) {
+                const firstResult = results[0];
+                firstResult.charContent.classList.add('active');
+                if (firstResult.tabBtn) firstResult.tabBtn.classList.add('active');
+            }
+
+            results.forEach(({ char, charContent }) => {
                 const writer = HanziWriter.create(`writer-${char}`, char, { 
                     width: 220, 
                     height: 220, 
@@ -1085,12 +1090,12 @@
                 }); 
                 
                 writer.animateCharacter(); 
-                
-                const controls = writerDiv.querySelector(`#controls-${char}`); 
-                controls.querySelector('button:nth-child(1)').addEventListener('click', () => { 
+
+                const controls = charContent.querySelector(`#controls-${char}`);
+                controls.querySelector('.play-btn').addEventListener('click', () => { 
                     writer.animateCharacter(); 
                 }); 
-                controls.querySelector('button:nth-child(2)').addEventListener('click', () => { 
+                controls.querySelector('.quiz-btn').addEventListener('click', () => { 
                     writer.quiz({ 
                         showHintAfterMisses: 3, 
                         highlightOnComplete: true, 
@@ -1099,11 +1104,11 @@
                         } 
                     }); 
                 }); 
-                controls.querySelector('button:nth-child(3)').addEventListener('click', () => { 
+                controls.querySelector('.audio-btn').addEventListener('click', () => { 
                     playAudio(char); 
-                }); 
+                });
             
-                const wordItems = writerDiv.querySelectorAll('.word-item'); 
+                const wordItems = charContent.querySelectorAll('.word-item'); 
                 wordItems.forEach(item => { 
                     item.addEventListener('click', async function() { 
                         const chinese = this.querySelector('.word-chinese').textContent; 
@@ -1111,294 +1116,106 @@
                         await triggerSearch(chinese); 
                     }); 
                 });
-            }, 0);
-            
-            return writerDiv;
-        }
-        
-        function createExamplesSection(char) { 
-            const examples = dictionaryData[char]; 
-            if (!examples) { 
-                return `<div class="examples-section"><div class="examples-title">📚 Từ vựng và ví dụ</div><div class="loading">Chưa có ví dụ cho chữ này trong cơ sở dữ liệu</div></div>`; 
-            } 
-            
-            const wordsHtml = examples.words.map(word => `
-                <div class="word-item">
-                    <button class="audio-btn" onclick="playAudio('${word.chinese}')">🔊</button>
-                    <div class="word-pinyin">${getPinyinWithTone(word.chinese)}</div>
-                    <div class="word-chinese">${word.chinese}</div>
-                    <div class="word-meaning">${word.meaning}</div>
-                </div>`).join(''); 
-            
-            const sentencesHtml = examples.sentences.map(sentence => `
-                <div class="sentence-item">
-                    <button class="audio-btn sentence-audio" onclick="playAudio('${sentence.chinese}')">🔊</button>
-                    <div class="sentence-pinyin">${getPinyinWithTone(sentence.chinese)}</div>
-                    <div class="sentence-chinese">${sentence.chinese}</div>
-                    <div class="sentence-vietnamese">${sentence.vietnamese}</div>
-                </div>`).join(''); 
-            
-            return `<div class="examples-section"><div class="examples-title">📚 Từ vựng phổ biến</div><div class="word-examples">${wordsHtml}</div><div class="sentence-examples"><div class="examples-title">💬 Ví dụ câu</div>${sentencesHtml}</div></div>`; 
-        }
-        
-        function getHanViet(char) { 
-            const hanViet = dictionaryData[char] && dictionaryData[char].hanviet ? dictionaryData[char].hanviet : '';
-            return hanViet || 'Chưa có Hán Việt'; 
-        }
-        
-        function getPinyinFallback(char) { 
-            const pinyinMap = { 
-                '山': 'shān', '大': 'dà', '小': 'xiǎo', '你': 'nǐ', '我': 'wǒ', 'ta': 'tā', 
-                'hǎo': 'hǎo', 'rén': 'rén', 'tǔ': 'tǔ', 'shuǐ': 'shuǐ', 'huǒ': 'huǒ', 'tiān': 'tiān', 
-                'dì': 'dì', 'zuò': 'zuò', 'gōng': 'gōng', 'zuò': 'zuò', 'yè': 'yè', 'zhí': 'zhí', 
-                'xué': 'xué', 'men': 'men', 'huì': 'huì', 'bù': 'bù', 'shì': 'shì', 'de': 'de',
-                'è': 'è', 'diǎn': 'diǎn', 'zhōng': 'zhōng', 'guó': 'guó', 'wén': 'wén', 'nián': 'nián',
-                'yuè': 'yuè', 'rì': 'rì', 'shí': 'shí', 'fēn': 'fēn', 'zhǒng': 'zhǒng',
-                'xiǎng': 'xiǎng', 'kàn': 'kàn', 'tīng': 'tīng', 'shuō': 'shuō', 'lái': 'lái',
-                'qù': 'qù', 'shàng': 'shàng', 'xià': 'xià', 'qián': 'qián', 'hòu': 'hòu',
-                'zuǒ': 'zuǒ', 'yòu': 'yòu'
-            }; 
-            return pinyinMap[char] || 'Chưa có pinyin'; 
-        }
-        
-        function isChineseChar(char) { 
-            return /[\u4e00-\u9fff]/.test(char); 
-        }
-        
-        function toggleCategory(header) { 
-            const categoryCard = header.closest('.category-card'); 
-            categoryCard.classList.toggle('collapsed'); 
-            if (!categoryCard.classList.contains('collapsed')) { 
-                const charButtons = categoryCard.querySelectorAll('.char-button'); 
-                charButtons.forEach((button, index) => { 
-                    button.style.opacity = '0'; 
-                    button.style.transform = 'scale(0.8)'; 
-                    setTimeout(() => { 
-                        button.style.transition = 'all 0.3s ease'; 
-                        button.style.opacity = '1'; 
-                        button.style.transform = 'scale(1)'; 
-                    }, index * 50); 
-                }); 
-            } 
-        }
-        
-        function normalizeString(str) {
-            return str.toLowerCase()
-                      .normalize('NFD')
-                      .replace(/[\u0300-\u036f]/g, "")
-                      .replace(/đ/g, 'd').replace(/Đ/g, 'D');
-        }
+            });
 
-        function generateVocabularyPage(dataToDisplay = allWords, page = 1) {
-            const vocabContainer = document.querySelector('#page-vocab .content-wrapper');
-            const totalItems = dataToDisplay.length;
-            const totalPages = Math.ceil(totalItems / WORDS_PER_PAGE);
-            const startIndex = (page - 1) * WORDS_PER_PAGE;
-            const endIndex = startIndex + WORDS_PER_PAGE;
-            const wordsToDisplay = dataToDisplay.slice(startIndex, endIndex);
-
-            let html = `
-                <div class="search-results-info">Tìm thấy ${totalItems} từ vựng</div>
-                <div class="vocab-char-section">
-                    <h2 class="vocab-char-title">Bảng từ vựng</h2>
-                    <div class="vocab-grid">
-                        ${wordsToDisplay.map(word => `
-                            <div class="word-item">
-                                <button class="audio-btn" onclick="playAudio('${word.chinese}')">🔊</button>
-                                <div class="word-pinyin">${getPinyinWithTone(word.chinese)}</div>
-                                <div class="word-chinese">${word.chinese}</div>
-                                <div class="word-meaning" style="font-size: 14px; color: #666;">${word.meaning}</div>
-                            </div>
-                        `).join('')}
-                    </div>
-                </div>
-            `;
-            
-            vocabContainer.innerHTML = html;
-            setupVocabularyPagination(totalPages, page, dataToDisplay);
-        }
-
-        function setupVocabularyPagination(totalPages, currentPage, data) {
-            const vocabContainer = document.querySelector('#page-vocab .content-wrapper');
-            let paginationHtml = `<div class="pagination-controls">`;
-
-            paginationHtml += `<button class="pagination-btn" onclick="goToVocabPage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>&larr; Trước</button>`;
-
-            for (let i = 1; i <= totalPages; i++) {
-                paginationHtml += `<button class="pagination-btn ${i === currentPage ? 'active' : ''}" onclick="goToVocabPage(${i})">${i}</button>`;
-            }
-
-            paginationHtml += `<button class="pagination-btn" onclick="goToVocabPage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>Sau &rarr;</button>`;
-            
-            paginationHtml += `</div>`;
-
-            vocabContainer.innerHTML += paginationHtml;
-        }
-
-        function goToVocabPage(page) {
-            currentVocabPage = page;
-            generateVocabularyPage(filteredWords, currentVocabPage);
-        }
-
-        function searchAll() {
-            const activeTab = document.querySelector('.tab-btn.active').dataset.page;
-            const query = document.getElementById('search-input').value.trim();
-            const normalizedQuery = normalizeString(query);
-
-            if (activeTab === 'page-vocab') {
-                filteredWords = allWords.filter(word => {
-                    const pinyinWithTones = getPinyinWithTone(word.chinese);
-                    const normalizedPinyin = normalizeString(pinyinWithTones);
-
-                    const pinyinMatches = normalizedPinyin.includes(normalizedQuery);
-                    const chineseMatches = word.chinese.includes(query);
+            tabsContainer.addEventListener('click', (event) => {
+                const target = event.target;
+                if (target.classList.contains('char-tab-btn')) {
+                    document.querySelectorAll('.char-tab-btn').forEach(btn => btn.classList.remove('active'));
+                    document.querySelectorAll('.character-display').forEach(display => display.classList.remove('active'));
                     
-                    const normalizedMeaning = normalizeString(word.meaning);
-                    const meaningMatches = normalizedMeaning.includes(normalizedQuery);
-                    
-                    return chineseMatches || pinyinMatches || meaningMatches;
-                });
-                currentVocabPage = 1;
-                generateVocabularyPage(filteredWords, currentVocabPage);
-            } else if (activeTab === 'page-sentences') {
-                filteredSentences = allSentences.filter(sentence => {
-                    const pinyinWithTones = getPinyinWithTone(sentence.chinese);
-                    const normalizedPinyin = normalizeString(pinyinWithTones);
-                    
-                    const pinyinMatches = normalizedPinyin.includes(normalizedQuery);
-                    const chineseMatches = sentence.chinese.includes(query);
-
-                    const normalizedVietnamese = normalizeString(sentence.vietnamese);
-                    const vietnameseMatches = normalizedVietnamese.includes(normalizedQuery);
-
-                    return chineseMatches || pinyinMatches || vietnameseMatches;
-                });
-                currentSentencePage = 1;
-                generateSentencesPage(filteredSentences, currentSentencePage);
-            }
-        }
-
-        function generateSentencesPage(dataToDisplay = allSentences, page = 1) {
-            const sentencesContainer = document.querySelector('#page-sentences .content-wrapper');
-            const totalItems = dataToDisplay.length;
-            const totalPages = Math.ceil(totalItems / SENTENCES_PER_PAGE);
-            const startIndex = (page - 1) * SENTENCES_PER_PAGE;
-            const endIndex = startIndex + SENTENCES_PER_PAGE;
-            const sentencesToDisplay = dataToDisplay.slice(startIndex, endIndex);
-
-            let html = `
-                <div class="search-results-info">Tìm thấy ${totalItems} ví dụ câu</div>
-                <div class="sentences-char-section">
-                    <h2 class="sentences-char-title">Ví dụ câu</h2>
-                    <div class="sentences-list">
-                        ${sentencesToDisplay.map(sentence => `
-                            <div class="sentence-item">
-                                <button class="audio-btn sentence-audio" onclick="playAudio('${sentence.chinese}')">🔊</button>
-                                <div class="sentence-pinyin">${getPinyinWithTone(sentence.chinese)}</div>
-                                <div class="sentence-chinese">${sentence.chinese}</div>
-                                <div class="sentence-vietnamese">${sentence.vietnamese}</div>
-                            </div>
-                        `).join('')}
-                    </div>
-                </div>
-            `;
-
-            sentencesContainer.innerHTML = html;
-            setupSentencesPagination(totalPages, page, dataToDisplay);
-        }
-        
-        function setupSentencesPagination(totalPages, currentPage, data) {
-            const sentencesContainer = document.querySelector('#page-sentences .content-wrapper');
-            let paginationHtml = `<div class="pagination-controls">`;
-
-            paginationHtml += `<button class="pagination-btn" onclick="goToSentencePage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>&larr; Trước</button>`;
-
-            for (let i = 1; i <= totalPages; i++) {
-                paginationHtml += `<button class="pagination-btn ${i === currentPage ? 'active' : ''}" onclick="goToSentencePage(${i})">${i}</button>`;
-            }
-
-            paginationHtml += `<button class="pagination-btn" onclick="goToSentencePage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>Sau &rarr;</button>`;
-            
-            paginationHtml += `</div>`;
-
-            sentencesContainer.innerHTML += paginationHtml;
-        }
-
-        function goToSentencePage(page) {
-            currentSentencePage = page;
-            generateSentencesPage(filteredSentences, currentSentencePage);
-        }
-
-
-        const tabButtons = document.querySelectorAll('.tab-btn');
-        const pages = document.querySelectorAll('.page-content');
-
-        tabButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                tabButtons.forEach(btn => btn.classList.remove('active'));
-                pages.forEach(page => page.classList.remove('active'));
-
-                button.classList.add('active');
-                const pageId = button.dataset.page;
-                document.getElementById(pageId).classList.add('active');
-
-                // Clear search bar and reset to all data when switching tabs
-                const searchInput = document.getElementById('search-input');
-                if (searchInput) {
-                    searchInput.value = '';
-                }
-
-                if (pageId === 'page-vocab') {
-                    filteredWords = [...allWords];
-                    currentVocabPage = 1;
-                    generateVocabularyPage(filteredWords);
-                } else if (pageId === 'page-sentences') {
-                    filteredSentences = [...allSentences];
-                    currentSentencePage = 1;
-                    generateSentencesPage(filteredSentences);
+                    target.classList.add('active');
+                    document.getElementById(`content-${target.dataset.char}`).classList.add('active');
                 }
             });
-        });
-
-        // Use a single event listener for the shared search input
-        const searchInput = document.getElementById('search-input');
-        if (searchInput) {
-            searchInput.addEventListener('keyup', searchAll);
         }
+        
+        // HÀM MỚI CHO SEO
+        function updatePageMetadata(char) {
+            const titleTag = document.querySelector('title');
+            const descriptionTag = document.querySelector('meta[name="description"]');
+
+            if (char) {
+                const hanViet = getHanViet(char);
+                titleTag.textContent = `Học chữ Hán: ${char}${hanViet ? ' (' + hanViet + ')' : ''} - 汉字学习`;
+                if (descriptionTag) {
+                    descriptionTag.content = `Tìm hiểu cách viết, từ vựng và câu ví dụ với chữ Hán ${char}${hanViet ? ' (' + hanViet + ')' : ''}.`;
+                }
+            } else {
+                titleTag.textContent = '汉字学习 - Học chữ Hán';
+                if (descriptionTag) {
+                    descriptionTag.content = 'Trang web học chữ Hán trực tuyến miễn phí.';
+                }
+            }
+        }
+        // KẾT THÚC HÀM MỚI
 
         document.addEventListener('DOMContentLoaded', async function() {
-            try {
-                await loadData();
-                await loadDictionary();
-                console.log('Dữ liệu từ vựng và câu đã được tải thành công!');
-                // Initialize pages with all data
-                generateVocabularyPage(allWords);
-                generateSentencesPage(allSentences);
-            } catch (error) {
-                console.error('Không thể tải dữ liệu:', error);
+            await loadHanVietData();
+            await loadDictionary();
+            await loadDataIndex();
+
+            const searchBtn = document.getElementById('search-btn');
+            const inputChar = document.getElementById('input-char');
+            const charButtons = document.querySelectorAll('.char-button');
+
+            // THÊM: Xử lý tham số URL khi trang tải
+            const params = new URLSearchParams(window.location.search);
+            const charFromURL = params.get('char');
+            if (charFromURL) {
+                inputChar.value = charFromURL;
+                triggerSearch(charFromURL);
             }
-            
-            const cards = document.querySelectorAll('.category-card');
-            cards.forEach((card, index) => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(20px)';
-                setTimeout(() => {
-                    card.style.transition = 'all 0.6s ease';
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                }, index * 100);
+
+            searchBtn.addEventListener('click', () => {
+                triggerSearch(inputChar.value);
+            });
+
+            inputChar.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    triggerSearch(inputChar.value);
+                }
+            });
+
+            charButtons.forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const char = event.target.dataset.char;
+                    inputChar.value = char;
+                    triggerSearch(char);
+                });
+            });
+
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const pageContents = document.querySelectorAll('.page-content');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    pageContents.forEach(page => page.classList.remove('active'));
+                    
+                    button.classList.add('active');
+                    document.getElementById(button.dataset.page).classList.add('active');
+                });
             });
         });
 
-        const hanziSearchBar = document.querySelector('#page-hanzi .search-section');
-        const inputChar = document.getElementById('input-char');
-        inputChar.addEventListener('focus', function() { 
-            hanziSearchBar.style.transform = 'translateY(-2px)'; 
-            hanziSearchBar.style.boxShadow = '0 15px 40px rgba(0, 0, 0, 0.15)'; 
-        });
-        inputChar.addEventListener('blur', function() { 
-            hanziSearchBar.style.transform = 'translateY(0)'; 
-            hanziSearchBar.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.1)'; 
+        function playAudio(text, lang = 'zh-CN') { 
+            if ('speechSynthesis' in window) { 
+                speechSynthesis.cancel(); 
+                const utterance = new SpeechSynthesisUtterance(text); 
+                utterance.lang = lang; 
+                speechSynthesis.speak(utterance); 
+            } else { 
+                alert('Trình duyệt của bạn không hỗ trợ tính năng đọc văn bản.'); 
+            } 
+        } 
+        
+        document.addEventListener('click', function(event) {
+            const target = event.target;
+            if (target.classList.contains('audio-btn') && !target.classList.contains('control-btn')) {
+                const textToSpeak = target.dataset.text;
+                playAudio(textToSpeak);
+            }
         });
     </script>
 </body>
