@@ -1,297 +1,224 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel - Quản lý Từ vựng</title>
-    <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #f4f7f9; color: #333; padding: 20px; }
-        .container { max-width: 800px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        h1 { text-align: center; color: #667eea; margin-bottom: 20px; }
-        .form-group { margin-bottom: 15px; }
-        label { display: block; font-weight: 600; margin-bottom: 5px; }
-        input[type="text"] { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; font-size: 16px; }
-        button { padding: 12px 25px; border: none; border-radius: 8px; background: #667eea; color: white; font-size: 16px; font-weight: bold; cursor: pointer; transition: background 0.3s; }
-        button:hover { background: #5a66d4; }
-        #message { margin-top: 20px; padding: 15px; border-radius: 8px; text-align: center; display: none; }
-        .success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
-        .error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        th, td { padding: 12px; border: 1px solid #ddd; text-align: left; }
-        th { background-color: #667eea; color: white; }
-        tr:nth-child(even) { background-color: #f9f9f9; }
-        .action-buttons button { padding: 5px 10px; font-size: 14px; margin-right: 5px; background: #667eea; }
-        .action-buttons button.delete { background: #d9534f; }
-        .search-container { display: flex; gap: 10px; margin-bottom: 20px; }
-        .search-container input { flex: 1; }
-        .button-group { display: flex; gap: 10px; margin-top: 15px; }
-        .list-section { margin-top: 20px; }
-        .list-item { display: flex; gap: 10px; align-items: center; margin-bottom: 5px; }
-        .list-item input { flex: 1; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - Quản lý Từ vựng (Offline)</title>
+  <style>
+    body { font-family: sans-serif; background: #f4f7f9; padding: 20px; }
+    .container { max-width: 900px; margin: auto; background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); }
+    h1 { text-align: center; color: #667eea; }
+    label { font-weight: bold; }
+    input[type="text"], input[type="file"] { width: 100%; padding: 8px; margin: 5px 0; border: 1px solid #ccc; border-radius: 6px; }
+    button { padding: 10px 15px; margin-top: 10px; border: none; border-radius: 6px; background: #667eea; color: white; cursor: pointer; }
+    button:hover { background: #5a66d4; }
+    #message { margin-top: 10px; padding: 10px; border-radius: 6px; display: none; }
+    .success { background: #d4edda; color: #155724; }
+    .error { background: #f8d7da; color: #721c24; }
+    table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+    th, td { border: 1px solid #ddd; padding: 8px; }
+    th { background: #667eea; color: white; }
+    .list-item { display: flex; gap: 5px; margin: 5px 0; }
+    .list-item input { flex: 1; }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>🛠️ Quản lý Từ vựng & Câu</h1>
-        <form id="word-form">
-            <div class="form-group">
-                <label for="hanzi">Chữ Hán chính:</label>
-                <input type="text" id="hanzi" placeholder="Nhập chữ Hán của từ vựng (ví dụ: 学)" required>
-            </div>
-            <div class="form-group">
-                <label for="hanviet">Hán Việt:</label>
-                <input type="text" id="hanviet" placeholder="Hán Việt (ví dụ: Học)">
-            </div>
-            
-            <div class="list-section">
-                <h3>Từ vựng liên quan</h3>
-                <div id="words-list">
-                    <div class="list-item">
-                        <input type="text" class="word-chinese" placeholder="Từ vựng tiếng Trung">
-                        <input type="text" class="word-vietnamese" placeholder="Nghĩa tiếng Việt">
-                        <input type="text" class="word-category" placeholder="Phân loại (cách nhau bởi dấu phẩy)">
-                        <button type="button" class="remove-btn">-</button>
-                    </div>
-                </div>
-                <button type="button" id="add-word-btn">Thêm từ vựng mới</button>
-            </div>
+<div class="container">
+  <h1>🛠️ Quản lý Từ vựng & Câu</h1>
 
-            <div class="list-section">
-                <h3>Ví dụ câu</h3>
-                <div id="sentences-list">
-                    <div class="list-item">
-                        <input type="text" class="sentence-chinese" placeholder="Câu tiếng Trung">
-                        <input type="text" class="sentence-vietnamese" placeholder="Nghĩa tiếng Việt">
-                        <input type="text" class="sentence-category" placeholder="Phân loại (cách nhau bởi dấu phẩy)">
-                        <button type="button" class="remove-btn">-</button>
-                    </div>
-                </div>
-                <button type="button" id="add-sentence-btn">Thêm câu mới</button>
-            </div>
+  <!-- Khu vực nhập file -->
+  <div style="margin-bottom:15px;">
+    <label>Nhập file JSON:</label>
+    <input type="file" id="jsonFile" accept=".json">
+  </div>
 
-            <div class="button-group">
-                <button type="submit">Thêm / Cập nhật</button>
-                <button type="button" onclick="clearForm()">Làm mới</button>
-            </div>
-        </form>
-        <div id="message"></div>
-        
-        <h2>Danh sách từ vựng</h2>
-        <div class="search-container">
-            <input type="text" id="search-input" placeholder="Tìm kiếm từ vựng để sửa">
-            <button id="search-btn">Tìm kiếm</button>
-        </div>
-        <table id="vocab-table">
-            <thead>
-                <tr>
-                    <th>Chữ Hán</th>
-                    <th>Hán Việt</th>
-                    <th>Từ vựng</th>
-                    <th>Hành động</th>
-                </tr>
-            </thead>
-            <tbody>
-                </tbody>
-        </table>
+  <form id="word-form">
+    <label>Chữ Hán chính:</label>
+    <input type="text" id="hanzi" required placeholder="Ví dụ: 学">
+    
+    <label>Hán Việt:</label>
+    <input type="text" id="hanviet" placeholder="Ví dụ: Học">
+
+    <h3>Từ vựng liên quan</h3>
+    <div id="words-list"></div>
+    <button type="button" id="add-word-btn">+ Thêm từ vựng</button>
+
+    <h3>Ví dụ câu</h3>
+    <div id="sentences-list"></div>
+    <button type="button" id="add-sentence-btn">+ Thêm câu</button>
+
+    <div style="margin-top:15px; display:flex; gap:10px;">
+      <button type="submit">💾 Lưu</button>
+      <button type="button" onclick="clearForm()">Làm mới</button>
+      <button type="button" onclick="exportJSON()">⬇️ Xuất JSON</button>
     </div>
+  </form>
 
-    <script>
-        const form = document.getElementById('word-form');
-        const messageDiv = document.getElementById('message');
-        const vocabTableBody = document.querySelector('#vocab-table tbody');
-        const wordsList = document.getElementById('words-list');
-        const sentencesList = document.getElementById('sentences-list');
-        let fullData = null;
+  <div id="message"></div>
 
-        function normalizeString(str) {
-            if (!str) return '';
-            return str.toLowerCase()
-                      .normalize('NFD')
-                      .replace(/[\u0300-\u036f]/g, "")
-                      .replace(/đ/g, 'd').replace(/Đ/g, 'D');
-        }
+  <h2>Danh sách từ vựng</h2>
+  <input type="text" id="search-input" placeholder="Tìm kiếm...">
+  <button id="search-btn">Tìm</button>
 
-        async function loadData() {
-            try {
-                const response = await fetch('tuvung.json');
-                if (!response.ok) throw new Error('Không thể tải dữ liệu từ vựng.');
-                fullData = await response.json();
-                renderTable(fullData);
-            } catch (error) {
-                showMessage('Lỗi: ' + error.message, 'error');
-            }
-        }
+  <table>
+    <thead><tr><th>Chữ Hán</th><th>Hán Việt</th><th>Từ vựng</th><th>Hành động</th></tr></thead>
+    <tbody id="vocab-table"></tbody>
+  </table>
+</div>
 
-        function renderTable(data) {
-            vocabTableBody.innerHTML = '';
-            const sortedKeys = Object.keys(data).sort();
-            for (const hanzi of sortedKeys) {
-                const entry = data[hanzi];
-                const words = entry.words ? entry.words.map(w => w.chinese).join(', ') : '';
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${hanzi}</td>
-                    <td>${entry.hanviet || ''}</td>
-                    <td>${words}</td>
-                    <td class="action-buttons">
-                        <button onclick="editEntry('${hanzi}')">Sửa</button>
-                        <button class="delete" onclick="deleteEntry('${hanzi}')">Xóa</button>
-                    </td>
-                `;
-                vocabTableBody.appendChild(row);
-            }
-        }
+<script>
+let fullData = {};
+const vocabTableBody = document.getElementById("vocab-table");
+const wordsList = document.getElementById("words-list");
+const sentencesList = document.getElementById("sentences-list");
+const messageDiv = document.getElementById("message");
 
-        function addInputRow(list, type) {
-            const newItem = document.createElement('div');
-            newItem.className = 'list-item';
-            const chinesePlaceholder = type === 'word' ? 'Từ vựng tiếng Trung' : 'Câu tiếng Trung';
-            const vietnamesePlaceholder = type === 'word' ? 'Nghĩa tiếng Việt' : 'Nghĩa tiếng Việt';
-            const categoryPlaceholder = 'Phân loại (cách nhau bởi dấu phẩy)';
-            newItem.innerHTML = `
-                <input type="text" class="${type}-chinese" placeholder="${chinesePlaceholder}">
-                <input type="text" class="${type}-vietnamese" placeholder="${vietnamesePlaceholder}">
-                <input type="text" class="${type}-category" placeholder="${categoryPlaceholder}">
-                <button type="button" class="remove-btn">-</button>
-            `;
-            list.appendChild(newItem);
-            newItem.querySelector('.remove-btn').addEventListener('click', () => newItem.remove());
-        }
+function showMessage(msg, type) {
+  messageDiv.textContent = msg;
+  messageDiv.className = type;
+  messageDiv.style.display = "block";
+}
 
-        document.getElementById('add-word-btn').addEventListener('click', () => addInputRow(wordsList, 'word'));
-        document.getElementById('add-sentence-btn').addEventListener('click', () => addInputRow(sentencesList, 'sentence'));
+function addInputRow(list, type) {
+  const div = document.createElement("div");
+  div.className = "list-item";
+  div.innerHTML = `
+    <input type="text" class="${type}-chinese" placeholder="${type==='word'?'Từ vựng tiếng Trung':'Câu tiếng Trung'}">
+    <input type="text" class="${type}-vietnamese" placeholder="Nghĩa tiếng Việt">
+    <input type="text" class="${type}-category" placeholder="Phân loại (cách nhau bởi dấu phẩy)">
+    <button type="button" onclick="this.parentNode.remove()">-</button>
+  `;
+  list.appendChild(div);
+}
 
-        async function editEntry(hanzi) {
-            if (!fullData || !fullData[hanzi]) return;
-            
-            clearForm();
-            
-            const entry = fullData[hanzi];
-            document.getElementById('hanzi').value = hanzi;
-            document.getElementById('hanviet').value = entry.hanviet || '';
-            document.getElementById('hanzi').readOnly = true;
-            document.getElementById('hanzi').style.backgroundColor = '#e9ecef';
-            
-            // Populate words
-            wordsList.innerHTML = '';
-            (entry.words || []).forEach(word => {
-                addInputRow(wordsList, 'word');
-                const lastItem = wordsList.lastElementChild;
-                lastItem.querySelector('.word-chinese').value = word.chinese;
-                lastItem.querySelector('.word-vietnamese').value = word.meaning;
-                lastItem.querySelector('.word-category').value = (word.category || []).join(', ');
-            });
+document.getElementById("add-word-btn").onclick = ()=> addInputRow(wordsList,"word");
+document.getElementById("add-sentence-btn").onclick = ()=> addInputRow(sentencesList,"sentence");
 
-            // Populate sentences
-            sentencesList.innerHTML = '';
-            (entry.sentences || []).forEach(sentence => {
-                addInputRow(sentencesList, 'sentence');
-                const lastItem = sentencesList.lastElementChild;
-                lastItem.querySelector('.sentence-chinese').value = sentence.chinese;
-                lastItem.querySelector('.sentence-vietnamese').value = sentence.vietnamese;
-                lastItem.querySelector('.sentence-category').value = (sentence.category || []).join(', ');
-            });
+function renderTable(data) {
+  vocabTableBody.innerHTML = '';
+  Object.keys(data).sort().forEach(hanzi=>{
+    const entry = data[hanzi];
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${hanzi}</td>
+      <td>${entry.hanviet||''}</td>
+      <td>${entry.words.map(w=>w.chinese).join(", ")}</td>
+      <td>
+        <button onclick="editEntry('${hanzi}')">Sửa</button>
+        <button onclick="deleteEntry('${hanzi}')">Xóa</button>
+      </td>
+    `;
+    vocabTableBody.appendChild(row);
+  });
+}
 
-            showMessage('Đang chỉnh sửa từ "' + hanzi + '". Vui lòng chỉnh sửa và ấn "Cập nhật".', 'success');
-        }
+function deleteEntry(hanzi) {
+  if (confirm("Bạn có chắc chắn muốn xóa từ '" + hanzi + "' không?")) {
+    delete fullData[hanzi];
+    localStorage.setItem("tuvung", JSON.stringify(fullData));
+    renderTable(fullData);
+    showMessage("🗑️ Đã xóa từ '" + hanzi + "'", "success");
+  }
+}
 
-        function clearForm() {
-            form.reset();
-            document.getElementById('hanzi').readOnly = false;
-            document.getElementById('hanzi').style.backgroundColor = '#fff';
-            document.getElementById('message').style.display = 'none';
-            
-            // Clear all dynamically added rows
-            wordsList.innerHTML = '';
-            sentencesList.innerHTML = '';
-            addInputRow(wordsList, 'word');
-            addInputRow(sentencesList, 'sentence');
-        }
-        
-        form.addEventListener('submit', async function(event) {
-            event.preventDefault();
-            const hanzi = document.getElementById('hanzi').value;
-            const hanviet = document.getElementById('hanviet').value;
-            
-            const words = Array.from(wordsList.querySelectorAll('.list-item')).map(item => {
-                const chinese = item.querySelector('.word-chinese').value;
-                const meaning = item.querySelector('.word-vietnamese').value;
-                const category = item.querySelector('.word-category').value.split(',').map(s => s.trim()).filter(s => s);
-                return { chinese, meaning, category };
-            }).filter(word => word.chinese);
 
-            const sentences = Array.from(sentencesList.querySelectorAll('.list-item')).map(item => {
-                const chinese = item.querySelector('.sentence-chinese').value;
-                const vietnamese = item.querySelector('.sentence-vietnamese').value;
-                const category = item.querySelector('.sentence-category').value.split(',').map(s => s.trim()).filter(s => s);
-                return { chinese, vietnamese, category };
-            }).filter(sentence => sentence.chinese);
+function clearForm(){
+  document.getElementById("word-form").reset();
+  document.getElementById("hanzi").readOnly = false;
+  wordsList.innerHTML = ""; sentencesList.innerHTML="";
+  addInputRow(wordsList,"word"); addInputRow(sentencesList,"sentence");
+}
 
-            const newData = { hanviet, words, sentences };
-            
-            // Frontend validation for empty fields
-            if (!hanzi.trim()) {
-                showMessage('Lỗi: Chữ Hán không được để trống.', 'error');
-                return;
-            }
+function editEntry(hanzi){
+  clearForm();
+  const entry=fullData[hanzi];
+  document.getElementById("hanzi").value=hanzi;
+  document.getElementById("hanviet").value=entry.hanviet||"";
+  document.getElementById("hanzi").readOnly=true;
+  entry.words.forEach(w=>{
+    addInputRow(wordsList,"word");
+    const last=wordsList.lastElementChild;
+    last.querySelector(".word-chinese").value=w.chinese;
+    last.querySelector(".word-vietnamese").value=w.meaning;
+    last.querySelector(".word-category").value=(w.category||[]).join(", ");
+  });
+  entry.sentences.forEach(s=>{
+    addInputRow(sentencesList,"sentence");
+    const last=sentencesList.lastElementChild;
+    last.querySelector(".sentence-chinese").value=s.chinese;
+    last.querySelector(".sentence-vietnamese").value=s.vietnamese;
+    last.querySelector(".sentence-category").value=(s.category||[]).join(", ");
+  });
+}
 
-            // MOCK: This part still needs a backend to save data.
-            showMessage('Dữ liệu đã được tạo. Bạn cần một server để lưu thay đổi vào file JSON.', 'error');
-            console.log('Dữ liệu cần gửi:', { [hanzi]: newData });
-        });
-        
-        document.getElementById('search-btn').addEventListener('click', () => {
-            const query = normalizeString(document.getElementById('search-input').value.trim());
-            if (!query) {
-                renderTable(fullData);
-                return;
-            }
+document.getElementById("word-form").onsubmit=e=>{
+  e.preventDefault();
+  const hanzi=document.getElementById("hanzi").value.trim();
+  if(!hanzi) return showMessage("❌ Chữ Hán không được trống","error");
+  const hanviet=document.getElementById("hanviet").value.trim();
+  const words=[...wordsList.querySelectorAll(".list-item")].map(i=>{
+    const c=i.querySelector(".word-chinese").value.trim();
+    const m=i.querySelector(".word-vietnamese").value.trim();
+    const cat=i.querySelector(".word-category").value.split(",").map(s=>s.trim()).filter(s=>s);
+    if(!c&&!m) return null; return {chinese:c,meaning:m,category:cat};
+  }).filter(Boolean);
+  const sentences=[...sentencesList.querySelectorAll(".list-item")].map(i=>{
+    const c=i.querySelector(".sentence-chinese").value.trim();
+    const v=i.querySelector(".sentence-vietnamese").value.trim();
+    const cat=i.querySelector(".sentence-category").value.split(",").map(s=>s.trim()).filter(s=>s);
+    if(!c&&!v) return null; return {chinese:c,vietnamese:v,category:cat};
+  }).filter(Boolean);
+  fullData[hanzi]={hanviet,words,sentences};
+  localStorage.setItem("tuvung",JSON.stringify(fullData));
+  showMessage("✅ Đã lưu vào LocalStorage","success");
+  renderTable(fullData); clearForm();
+};
 
-            const filteredData = {};
-            for (const hanzi in fullData) {
-                const entry = fullData[hanzi];
-                let match = false;
-                
-                if (hanzi.includes(query) || (entry.hanviet && normalizeString(entry.hanviet).includes(query))) match = true;
-                
-                if (entry.words) {
-                    for (const word of entry.words) {
-                        if (word.chinese.includes(query) || normalizeString(word.meaning).includes(query)) {
-                            match = true;
-                            break;
-                        }
-                    }
-                }
+document.getElementById("search-btn").onclick=()=>{
+  const q=document.getElementById("search-input").value.trim().toLowerCase();
+  if(!q) return renderTable(fullData);
+  const filtered={};
+  for(const h in fullData){
+    const e=fullData[h];
+    if(h.includes(q) || (e.hanviet||"").toLowerCase().includes(q) ||
+      e.words.some(w=>w.chinese.includes(q)||w.meaning.toLowerCase().includes(q)) ||
+      e.sentences.some(s=>s.chinese.includes(q)||s.vietnamese.toLowerCase().includes(q))
+    ) filtered[h]=e;
+  }
+  renderTable(filtered);
+};
 
-                if (entry.sentences) {
-                    for (const sentence of entry.sentences) {
-                        if (sentence.chinese.includes(query) || normalizeString(sentence.vietnamese).includes(query)) {
-                            match = true;
-                            break;
-                        }
-                    }
-                }
+function exportJSON(){
+  const blob=new Blob([JSON.stringify(fullData,null,2)],{type:"application/json"});
+  const a=document.createElement("a");
+  a.href=URL.createObjectURL(blob); a.download="tuvung.json"; a.click();
+  URL.revokeObjectURL(a.href);
+}
 
-                if (match) {
-                    filteredData[hanzi] = entry;
-                }
-            }
-            renderTable(filteredData);
-        });
+// 📌 Nhập file JSON
+document.getElementById("jsonFile").addEventListener("change",e=>{
+  const file=e.target.files[0];
+  if(!file) return;
+  const reader=new FileReader();
+  reader.onload=()=>{
+    try{
+      fullData=JSON.parse(reader.result);
+      localStorage.setItem("tuvung",JSON.stringify(fullData));
+      renderTable(fullData);
+      showMessage("✅ Đã nhập file JSON thành công","success");
+    }catch(err){
+      showMessage("❌ Lỗi đọc file JSON","error");
+    }
+  };
+  reader.readAsText(file);
+});
 
-        function showMessage(msg, type) {
-            messageDiv.textContent = msg;
-            messageDiv.className = '';
-            messageDiv.classList.add(type);
-            messageDiv.style.display = 'block';
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            loadData();
-            // Initial call to set up the first row
-            addInputRow(wordsList, 'word');
-            addInputRow(sentencesList, 'sentence');
-        });
-    </script>
+// Khi load trang
+window.onload=()=>{
+  const saved=localStorage.getItem("tuvung");
+  if(saved){ fullData=JSON.parse(saved); renderTable(fullData);}
+  clearForm();
+};
+</script>
 </body>
 </html>
