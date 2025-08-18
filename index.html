@@ -138,7 +138,7 @@
             color: white;
             border: none;
             border-radius: 12px;
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 600;
             cursor: pointer;
             transition: transform 0.2s;
@@ -329,13 +329,14 @@
         .info-label {
             font-weight: 600;
             color: #666;
-            width: 120px;
+            width: 110px;
             flex-shrink: 0;
         }
         
         .info-value {
-            color: #333;
+            color: #d80e0e;
             flex: 1;
+			font-weight: bold;
         }
         
         .pinyin-display {
@@ -625,7 +626,7 @@
         .search-results-info {
             text-align: center;
             margin-bottom: 20px;
-            font-size: 14px;
+            font-size: 24px;
             color: #666;
         }
         /* New styles for category buttons */
@@ -1116,105 +1117,95 @@
             });
         }
         
-        function createCharacterContent(char) {
-            const writerDiv = document.createElement('div');
-            writerDiv.className = 'character-display';
-            const examplesHtml = createExamplesSection(char);
-            
-            const pinyinInfo = getPinyinWithTone(char);
-            
-            // Lấy Hán Việt từ dữ liệu JSON
-            const hanVietInfo = dictionaryData[char] && dictionaryData[char].hanviet ? dictionaryData[char].hanviet : 'Chưa có Hán Việt';
+                       function createCharacterContent(char) {
+    const writerDiv = document.createElement('div');
+    writerDiv.className = 'character-display';
+    const examplesHtml = createExamplesSection(char);
+    
+    const pinyinInfo = getPinyinWithTone(char);
+    const hanVietInfo = dictionaryData[char] && dictionaryData[char].hanviet ? dictionaryData[char].hanviet : 'Chưa có Hán Việt';
+    const componentsInfo = getComponentsInfo(char);
 
-            const componentsInfo = getComponentsInfo(char);
+    let componentsHtml = '<div class="info-value">Chưa có thông tin phân tách</div>';
+    if (componentsInfo && componentsInfo.length > 0) {
+        // Gộp bộ thủ và nghĩa của nó vào một chuỗi duy nhất
+        const combinedComponents = componentsInfo.map(c => `${c.char} (${c.meaning})`).join(', ');
+        componentsHtml = `
+            <div class="info-value">${combinedComponents}</div>
+        `;
+    }
 
-            let componentsHtml = '<div class="info-value">Chưa có thông tin phân tách</div>';
-            if (componentsInfo && componentsInfo.length > 0) {
-                const componentChars = componentsInfo.map(c => `<span class="radical-char">${c.char}</span>`).join('+');
-                const componentMeanings = componentsInfo.map(c => `${c.char} (${c.meaning})`).join(', ');
-                componentsHtml = `
-                    <div class="info-value">
-                        <div class="radical-display">
-                            ${componentChars}
-                        </div>
-                        <div class="radical-meaning" style="margin-top: 5px;">
-                            ${componentMeanings}
-                        </div>
-                    </div>
-                `;
-            }
-
-            writerDiv.innerHTML = `
-                <div class="writer-container">
-                    <div class="writer-div" id="writer-${char}"></div>
-                </div>
-                <div class="info-panel">
-                    <h3>🔍 Chữ: ${char}</h3>
-                    <div class="info-item">
-                        <div class="info-label">🗣️ Việt Nam:</div>
-                        <div class="info-value">${hanVietInfo}</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-label">🗣️ Pinyin:</div>
-                        <div class="info-value pinyin-display">${pinyinInfo}</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-label">🧩 Bộ Thủ:</div>
-                        ${componentsHtml}
-                    </div>
-                    <div class="writer-controls" id="controls-${char}">
-                        <button class="control-btn">🔄 Vẽ lại</button>
-                        <button class="control-btn">✏️ Tập viết</button>
-                        <button class="control-btn">🔊 Nghe</button>
-                    </div>
-                    ${examplesHtml}
-                </div>
-            `;
-            
-            setTimeout(() => {
-                const writer = HanziWriter.create(`writer-${char}`, char, { 
-                    width: 220, 
-                    height: 220, 
-                    padding: 10, 
-                    strokeColor: '#333', 
-                    radicalColor: '#168F16', 
-                    showOutline: true, 
-                    showCharacter: true, 
-                    strokeAnimationSpeed: 1, 
-                    delayBetweenStrokes: 200 
-                }); 
-                
-                writer.animateCharacter(); 
-                
-                const controls = writerDiv.querySelector(`#controls-${char}`); 
-                controls.querySelector('button:nth-child(1)').addEventListener('click', () => { 
-                    writer.animateCharacter(); 
-                }); 
-                controls.querySelector('button:nth-child(2)').addEventListener('click', () => { 
-                    writer.quiz({ 
-                        showHintAfterMisses: 3, 
-                        highlightOnComplete: true, 
-                        onComplete: function() { 
-                            alert('🎉 Tuyệt vời! Bạn đã viết đúng chữ ' + char); 
-                        } 
-                    }); 
-                }); 
-                controls.querySelector('button:nth-child(3)').addEventListener('click', () => { 
-                    playAudio(char); 
-                }); 
-            
-                const wordItems = writerDiv.querySelectorAll('.word-item'); 
-                wordItems.forEach(item => { 
-                    item.addEventListener('click', async function() { 
-                        const chinese = this.querySelector('.word-chinese').textContent; 
-                        document.getElementById('input-char').value = chinese; 
-                        await triggerSearch(chinese); 
-                    }); 
-                });
-            }, 0);
-            
-            return writerDiv;
-        }
+    writerDiv.innerHTML = `
+        <div class="writer-container">
+            <div class="writer-div" id="writer-${char}"></div>
+        </div>
+        <div class="info-panel">
+            <h3>🔍 Chữ: ${char}</h3>
+            <div class="info-item">
+                <div class="info-label">🗣️ Dịch:</div>
+                <div class="info-value">${hanVietInfo}</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">🗣️ Pinyin:</div>
+                <div class="info-value pinyin-display">${pinyinInfo}</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">🧩 Bộ thủ:</div>
+                ${componentsHtml}
+            </div>
+            <div class="writer-controls" id="controls-${char}">
+                <button class="control-btn">🔄 Vẽ lại</button>
+                <button class="control-btn">✏️ Tập viết</button>
+                <button class="control-btn">🔊 Nghe</button>
+            </div>
+            ${examplesHtml}
+        </div>
+    `;
+    
+    setTimeout(() => {
+        const writer = HanziWriter.create(`writer-${char}`, char, { 
+            width: 220, 
+            height: 220, 
+            padding: 10, 
+            strokeColor: '#333', 
+            radicalColor: '#168F16', 
+            showOutline: true, 
+            showCharacter: true, 
+            strokeAnimationSpeed: 1, 
+            delayBetweenStrokes: 200 
+        }); 
+        
+        writer.animateCharacter(); 
+        
+        const controls = writerDiv.querySelector(`#controls-${char}`); 
+        controls.querySelector('button:nth-child(1)').addEventListener('click', () => { 
+            writer.animateCharacter(); 
+        }); 
+        controls.querySelector('button:nth-child(2)').addEventListener('click', () => { 
+            writer.quiz({ 
+                showHintAfterMisses: 3, 
+                highlightOnComplete: true, 
+                onComplete: function() { 
+                    alert('🎉 Tuyệt vời! Bạn đã viết đúng chữ ' + char); 
+                } 
+            }); 
+        }); 
+        controls.querySelector('button:nth-child(3)').addEventListener('click', () => { 
+            playAudio(char); 
+        }); 
+    
+        const wordItems = writerDiv.querySelectorAll('.word-item'); 
+        wordItems.forEach(item => { 
+            item.addEventListener('click', async function() { 
+                const chinese = this.querySelector('.word-chinese').textContent; 
+                document.getElementById('input-char').value = chinese; 
+                await triggerSearch(chinese); 
+            }); 
+        });
+    }, 0);
+    
+    return writerDiv;
+}
         
         function createExamplesSection(char) { 
             const examples = dictionaryData[char]; 
