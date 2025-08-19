@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Học chữ Hán - 汉字学习</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+        }
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+        p {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.2em;
+        }
+        .search-box {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .search-input {
+            padding: 12px 20px;
+            font-size: 1em;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            outline: none;
+            width: 300px;
+        }
+        .search-btn {
+            padding: 12px 20px;
+            font-size: 1em;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .search-btn:hover {
+            background: #5a6ac2;
+        }
+        .info {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Học chữ Hán</h1>
+        <p>Tìm kiếm một chữ Hán để luyện viết và học từ vựng!</p>
+        <div class="search-box">
+            <input type="text" id="searchInput" class="search-input" placeholder="Nhập một chữ Hán...">
+            <button class="search-btn" onclick="searchHanzi()">Tìm kiếm</button>
+        </div>
+        <div class="info">Ví dụ: 我, 你, 他</div>
+    </div>
+
+    <script>
+        function searchHanzi() {
+            const hanzi = document.getElementById('searchInput').value.trim();
+            if (hanzi) {
+                // Chuyển hướng đến trang tĩnh tương ứng
+                window.location.href = `/chu-han/${hanzi}.html`;
+            }
+        }
+        
+        // Bắt sự kiện nhấn Enter
+        document.getElementById('searchInput').addEventListener('keyup', (event) => {
+            if (event.key === 'Enter') {
+                searchHanzi();
+            }
+        });
+    </script>
+</body>
+</html>
