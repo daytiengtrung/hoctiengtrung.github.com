@@ -2,10 +2,8 @@ const fs = require('fs');
 const path = require('path');
 const pinyinPro = require('pinyin-pro');
 
-// Đọc dữ liệu từ file JSON
-const dictionaryData = require('./data/tuvung.json');
-const dictionaryMap = JSON.parse(fs.readFileSync(path.resolve(__dirname, './data/dictionary.json'), 'utf-8'));
-const radicalData = require('./data/radicalData.json'); // Sử dụng dữ liệu bộ thủ tĩnh
+// Đọc dữ liệu từ file tuvung.json
+const dictionaryData = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'data', 'tuvung.json'), 'utf-8'));
 
 // Đọc mẫu HTML
 const template = fs.readFileSync(path.join(__dirname, 'src', 'template.html'), 'utf-8');
@@ -13,19 +11,10 @@ const template = fs.readFileSync(path.join(__dirname, 'src', 'template.html'), '
 // Tạo thư mục đầu ra nếu chưa có
 const outputDir = 'public/chu-han';
 if (!fs.existsSync('public')) fs.mkdirSync('public');
-if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir);
+if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir, { recursive: true });
 
-// Hàm lấy thông tin bộ thủ
+// Hàm lấy thông tin bộ thủ (không phụ thuộc vào file ngoài)
 function getComponentsInfo(char) {
-    const entry = dictionaryMap[char];
-    if (entry && entry.decomposition) {
-        const components = entry.decomposition.split('');
-        const filteredComponents = components.filter(c => !['⿰', '⿱', '⿲', '⿳', '⿴', '⿵', '⿶', '⿷', '⿸', '⿹', '⿺', '⿻'].includes(c));
-        return filteredComponents.map(comp => {
-            const hanViet = radicalData[comp] ? radicalData[comp].hanviet : 'Không rõ';
-            return `${comp} (${hanViet})`;
-        }).join(', ');
-    }
     return 'Chưa có thông tin phân tách';
 }
 
@@ -69,5 +58,12 @@ for (const char in dictionaryData) {
     // Ghi tệp HTML vào thư mục 'public/chu-han'
     fs.writeFileSync(path.join(outputDir, `${char}.html`), finalHtml);
 }
+
+// Tạo trang chủ (index.html) trong thư mục public
+// Đọc nội dung từ tệp index.html nguồn
+const indexHtmlContent = fs.readFileSync(path.join(__dirname, 'index.html'), 'utf-8');
+
+// Ghi nội dung vào tệp public/index.html
+fs.writeFileSync(path.join('public', 'index.html'), indexHtmlContent);
 
 console.log('Tạo tất cả các trang HTML thành công!');
