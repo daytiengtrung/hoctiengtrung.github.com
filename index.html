@@ -35,7 +35,7 @@
             align-items: center;
             justify-content: center;
             gap: 15px;
-            margin-bottom: 15px;
+            margin-bottom: 5px;
         }
         
         .title h1 {
@@ -58,7 +58,7 @@
             display: flex;
             justify-content: center;
             gap: 10px;
-            margin-bottom: 30px;
+            margin-bottom: 10px;
         }
 
         .tab-btn {
@@ -70,6 +70,7 @@
             border: none;
             border-radius: 12px;
             cursor: pointer;
+			text-decoration: none;
             transition: all 0.3s ease;
         }
 
@@ -693,6 +694,10 @@
             <button class="tab-btn active" data-page="page-hanzi">✏️ Học chữ Hán</button>
             <button class="tab-btn" data-page="page-vocab">📚 Bảng từ vựng</button>
             <button class="tab-btn" data-page="page-sentences">💬 Ví dụ câu</button>
+        </div>
+		
+		 <div class="tab-nav">
+			<a href="https://tinhluongtaowine.vercel.app" class="tab-btn" target="_blank" data-page="page-hanzi">🌐 Tính Lương</a>
         </div>
         
         <div id="page-hanzi" class="page-content active">
