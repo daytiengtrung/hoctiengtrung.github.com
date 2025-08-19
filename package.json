@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "build": "node generate.js"
+  },
+  "dependencies": {
+    "pinyin-pro": "^3.20.1",
+    "hanzi-writer": "^3.5.1"
+  }
+}
