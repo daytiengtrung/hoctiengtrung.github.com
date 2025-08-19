@@ -2,13 +2,15 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Chuyển hướng...</title>
+    <title>Đang chuyển hướng...</title>
     <script>
+        // Lưu lại đường dẫn gốc vào bộ nhớ tạm của trình duyệt
         sessionStorage.redirect = location.href;
+        // Chuyển hướng về trang chủ
         location.replace(location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '') + '/');
     </script>
 </head>
 <body>
-    <p>Chuyển hướng...</p>
+    <p>Nếu bạn không được chuyển hướng tự động, vui lòng <a href="/">nhấn vào đây</a>.</p>
 </body>
 </html>
