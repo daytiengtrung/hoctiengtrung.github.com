@@ -573,21 +573,61 @@
         </div>
     </div>
 
+    <footer class="footer">
+        <p>© 2025 Học Tiếng trung | Tác giả: Nghĩa Anh</p>
+        <div class="footer-links">
+            <a href="https://www.facebook.com/profile.php?id=100007963391487" target="_blank">📘</a>
+            <a href="/" target="_blank">🐙</a>
+        </div>
+    </footer>
+
     <script>
         const localExamples = {
-            '作': { words: [{ chinese: '工作', meaning: 'công việc 2' }, { chinese: '作业', meaning: 'bài tập' }, { chinese: '制作', meaning: 'chế tác, làm ra' }, { chinese: '合作', meaning: 'hợp tác' }, { chinese: '创作', meaning: 'sáng tác' }, { chinese: '作用', meaning: 'tác dụng' }], sentences: [{ chinese: '我在一家公司工作。', vietnamese: 'Tôi làm việc tại một công ty.' }, { chinese: '学生要完成作业。', vietnamese: 'Học sinh phải hoàn thành bài tập.' }, { chinese: '我们需要合作。', vietnamese: 'Chúng ta cần hợp tác.' }] },
+            '作': { words: [{ chinese: '工作', meaning: 'công việc' }, { chinese: '作业', meaning: 'bài tập' }, { chinese: '制作', meaning: 'chế tác, làm ra' }, { chinese: '合作', meaning: 'hợp tác' }, { chinese: '创作', meaning: 'sáng tác' }, { chinese: '作用', meaning: 'tác dụng' }], sentences: [{ chinese: '我在一家公司工作。', vietnamese: 'Tôi làm việc tại một công ty.' }, { chinese: '学生要完成作业。', vietnamese: 'Học sinh phải hoàn thành bài tập.' }, { chinese: '我们需要合作。', vietnamese: 'Chúng ta cần hợp tác.' }] },
             '工': { words: [{ chinese: '工作', meaning: 'công việc' }, { chinese: '工人', meaning: 'công nhân' }, { chinese: '工厂', meaning: 'nhà máy' }, { chinese: '手工', meaning: 'thủ công' }, { chinese: '工具', meaning: 'công cụ' }, { chinese: '工程', meaning: 'công trình' }], sentences: [{ chinese: '他是一个工人。', vietnamese: 'Anh ấy là một công nhân.' }, { chinese: '这个工厂很大。', vietnamese: 'Nhà máy này rất lớn.' }] },
             '做': { words: [{ chinese: '做事', meaning: 'làm việc' }, { chinese: '做饭', meaning: 'nấu cơm' }, { chinese: '做梦', meaning: 'mơ' }, { chinese: '制做', meaning: 'chế tạo' }, { chinese: '做人', meaning: 'làm người' }, { chinese: '做到', meaning: 'làm được' }], sentences: [{ chinese: '妈妈在做饭。', vietnamese: 'Mẹ đang nấu cơm.' }, { chinese: '我要做一个好人。', vietnamese: 'Tôi muốn làm một người tốt.' }] },
-            '山': { words: [{ chinese: '高山', meaning: 'núi cao' }, { chinese: '山水', meaning: 'sơn thủy' }, { chinese: '火山', meaning: 'núi lửa' }, { chinese: '山顶', meaning: 'đỉnh núi' }, { chinese: '登山', meaning: 'leo núi' }, { chinese: '山脉', meaning: 'dãy núi' }], sentences: [{ chinese: '这座山很高。', vietnamese: 'Ngọn núi này rất cao.' }, { chinese: 'Tôi喜欢登山。', vietnamese: 'Tôi thích leo núi.' }] },
+            '山': { words: [{ chinese: '高山', meaning: 'núi cao' }, { chinese: '山水', meaning: 'sơn thủy' }, { chinese: '火山', meaning: 'núi lửa' }, { chinese: '山顶', meaning: 'đỉnh núi' }, { chinese: '登山', meaning: 'leo núi' }, { chinese: '山脉', meaning: 'dãy núi' }], sentences: [{ chinese: '这座山很高。', vietnamese: 'Ngọn núi này rất cao.' }, { chinese: 'Tôi thích登山。', vietnamese: 'Tôi thích leo núi.' }] },
             '水': { words: [{ chinese: '水果', meaning: 'hoa quả' }, { chinese: '喝水', meaning: 'uống nước' }, { chinese: '水平', meaning: 'trình độ' }, { chinese: '山水', meaning: 'sơn thủy' }, { chinese: '开水', meaning: 'nước sôi' }], sentences: [{ chinese: '我想喝水。', vietnamese: 'Tôi muốn uống nước.' }, { chinese: '水果很甜。', vietnamese: 'Hoa quả rất ngọt.' }] },
             '火': { words: [{ chinese: '火车', meaning: 'tàu hỏa' }, { chinese: '火山', meaning: 'núi lửa' }, { chinese: '生火', meaning: 'đốt lửa' }, { chinese: '火热', meaning: 'nóng bỏng' }, { chinese: '大火', meaning: 'lửa lớn' }], sentences: [{ chinese: '我坐火车回家。', vietnamese: 'Tôi đi tàu hỏa về nhà.' }, { chinese: '小心大火！', vietnamese: 'Cẩn thận lửa lớn!' }] },
             '大': { words: [{ chinese: '大小', meaning: 'to nhỏ' }, { chinese: '大学', meaning: 'đại học' }, { chinese: '大人', meaning: 'người lớn' }, { chinese: '大家', meaning: 'mọi người' }, { chinese: '长大', meaning: 'lớn lên' }, { chinese: '大概', meaning: 'có lẽ' }], sentences: [{ chinese: '他上大学了。', vietnamese: 'Anh ấy đã vào đại học.' }, { chinese: '大家都很高兴。', vietnamese: 'Mọi người đều rất vui.' }] },
             '小': { words: [{ chinese: '大小', meaning: 'to nhỏ' }, { chinese: '小孩', meaning: 'trẻ em' }, { chinese: '小心', meaning: 'cẩn thận' }, { chinese: '小说', meaning: 'tiểu thuyết' }, { chinese: '小时', meaning: 'giờ' }], sentences: [{ chinese: '这个小孩很可爱。', vietnamese: 'Đứa trẻ này rất dễ thương.' }, { chinese: '小心过马路。', vietnamese: 'Cẩn thận khi qua đường.' }] },
             '你': { words: [{ chinese: '你好', meaning: 'xin chào' }, { chinese: '你们', meaning: 'các bạn' }, { chinese: '你的', meaning: 'của bạn' }], sentences: [{ chinese: '你好吗？', vietnamese: 'Bạn có khỏe không?' }, { chinese: '你们是学生吗？', vietnamese: 'Các bạn có phải học sinh không?' }] },
             '好': { words: [{ chinese: '你好', meaning: 'xin chào' }, { chinese: '好的', meaning: 'được rồi' }, { chinese: '很好', meaning: 'rất tốt' }, { chinese: '好人', meaning: 'người tốt' }, { chinese: '好看', meaning: 'đẹp' }, { chinese: '好吃', meaning: 'ngon' }], sentences: [{ chinese: '今天天气很好。', vietnamese: 'Hôm nay thời tiết rất tốt.' }, { chinese: '这本书很好看。', vietnamese: 'Cuốn sách này rất hay.' }] },
-            '人': { words: [{ chinese: '人们', meaning: 'mọi người' }, { chinese: '好人', meaning: 'người tốt' }, { chinese: '大人', meaning: 'người lớn' }, { chinese: '个人', meaning: 'cá nhân' }, { chinese: '做人', meaning: 'làm người' }], sentences: [{ chinese: '人们都很友好。', vietnamese: 'Mọi người đều rất thân thiện.' }, { chinese: '他是个好人。', vietnamese: 'Anh ấy là người tốt.' }] },
-            '我': { words: [{ chinese: '我们', meaning: 'chúng tôi' }, { chinese: '我的', meaning: 'của tôi' }, { chinese: '自我', meaning: 'bản thân' }], sentences: [{ chinese: '我是学生。', vietnamese: 'Tôi là học sinh.' }, { chinese: 'Chúng tôi cùng nhau học tập.', vietnamese: 'Chúng tôi cùng nhau học tập.' }] },
-            '学': { words: [{ chinese: '学习', meaning: 'học tập' }, { chinese: '学生', meaning: 'học sinh' }, { chinese: '大学', meaning: 'đại học' }, { chinese: '学校', meaning: 'trường học' }, { chinese: '数学', meaning: 'toán học' }], sentences: [{ chinese: '我在学校学习。', vietnamese: 'Tôi học ở trường.' }, { chinese: '学习中文很有趣。', vietnamese: 'Học tiếng Trung rất thú vị.' }] }
+            '人': { words: [{ chinese: '人们', meaning: 'mọi người' }, { chinese: '好人', meaning: 'người tốt' }, { chinese: '大人', meaning: 'người lớn' }, { chinese: '个人', meaning: 'cá nhân' }, { chinese: '做人', meaning: 'làm người' }], sentences: [{ chinese: 'Mọi người đều rất thân thiện.', vietnamese: 'Mọi người đều rất thân thiện.' }, { chinese: '他是个好人。', vietnamese: 'Anh ấy là người tốt.' }] },
+            '我': { words: [{ chinese: '我们', meaning: 'chúng tôi' }, { chinese: '我的', meaning: 'của tôi' }, { chinese: '自我', meaning: 'bản thân' }], sentences: [{ chinese: '我是学生。', vietnamese: 'Tôi là học sinh.' }, { chinese: '我们一起学习。', vietnamese: 'Chúng tôi cùng nhau học tập.' }] },
+            '学': { words: [{ chinese: '学习', meaning: 'học tập' }, { chinese: '学生', meaning: 'học sinh' }, { chinese: '大学', meaning: 'đại học' }, { chinese: '学校', meaning: 'trường học' }, { chinese: '数学', meaning: 'toán học' }], sentences: [{ chinese: '我在学校学习。', vietnamese: 'Tôi học ở trường.' }, { chinese: '学习中文很有趣。', vietnamese: 'Học tiếng Trung rất thú vị.' }] },
+            '们': { words: [{ chinese: '我们', meaning: 'chúng tôi' }, { chinese: '你们', meaning: 'các bạn' }, { chinese: '他们', meaning: 'họ' }], sentences: [{ chinese: '我们一起去。', vietnamese: 'Chúng tôi cùng đi.' }, { chinese: '他们是我的朋友。', vietnamese: 'Họ là bạn của tôi.' }] },
+            '会': { words: [{ chinese: '开会', meaning: 'họp' }, { chinese: '机会', meaning: 'cơ hội' }, { chinese: '学会', meaning: 'học được' }], sentences: [{ chinese: '今天我们要开会。', vietnamese: 'Hôm nay chúng ta sẽ họp.' }, { chinese: '我学会了中文。', vietnamese: 'Tôi đã học được tiếng Trung.' }] },
+            '不': { words: [{ chinese: '不好', meaning: 'không tốt' }, { chinese: '不用', meaning: 'không cần' }, { chinese: '不是', meaning: 'không phải là' }], sentences: [{ chinese: '这个东西不好。', vietnamese: 'Cái này không tốt.' }, { chinese: '不用谢。', vietnamese: 'Không cần cảm ơn.' }] },
+            '是': { words: [{ chinese: '是不是', meaning: 'phải không' }, { chinese: '真是', meaning: 'thật là' }, { chinese: '可是', meaning: 'nhưng' }], sentences: [{ chinese: '你是不是学生？', vietnamese: 'Bạn có phải là học sinh không?' }, { chinese: '这真是太好了。', vietnamese: 'Cái này thật sự rất tốt.' }] },
+            '的': { words: [{ chinese: '我的', meaning: 'của tôi' }, { chinese: '他的', meaning: 'của anh ấy' }, { chinese: '他们的', meaning: 'của họ' }], sentences: [{ chinese: '这是我的书。', vietnamese: 'Đây là sách của tôi.' }, { chinese: '他们的家在这里。', vietnamese: 'Nhà của họ ở đây.' }] }
+        };
+
+        const radicalData = {
+            '山': { radical: '山', meaning: 'núi', strokes: 3, position: 'độc lập' },
+            '大': { radical: '大', meaning: 'lớn', strokes: 3, position: 'độc lập' },
+            '小': { radical: '小', meaning: 'nhỏ', strokes: 3, position: 'độc lập' },
+            '你': { radical: '亻', meaning: 'người', strokes: 2, position: 'bên trái' },
+            '我': { radical: '戈', meaning: 'thương', strokes: 4, position: 'bên phải' },
+            '他': { radical: '亻', meaning: 'người', strokes: 2, position: 'bên trái' },
+            '好': { radical: '女', meaning: 'con gái', strokes: 3, position: 'bên trái' },
+            '人': { radical: '人', meaning: 'người', strokes: 2, position: 'độc lập' },
+            '土': { radical: '土', meaning: 'đất', strokes: 3, position: 'độc lập' },
+            '水': { radical: '水', meaning: 'nước', strokes: 4, position: 'độc lập' },
+            '火': { radical: '火', meaning: 'lửa', strokes: 4, position: 'độc lập' },
+            '天': { radical: '大', meaning: 'lớn', strokes: 3, position: 'phía dưới' },
+            '地': { radical: '土', meaning: 'đất', strokes: 3, position: 'bên trái' },
+            '作': { radical: '亻', meaning: 'người', strokes: 2, position: 'bên trái' },
+            '工': { radical: '工', meaning: 'thợ', strokes: 3, position: 'độc lập' },
+            '做': { radical: '亻', meaning: 'người', strokes: 2, position: 'bên trái' },
+            '业': { radical: '一', meaning: 'một', strokes: 1, position: 'phía trên' },
+            '职': { radical: '耳', meaning: 'tai', strokes: 6, position: 'bên trái' },
+            '学': { radical: '子', meaning: 'con', strokes: 3, position: 'phía dưới' },
+            '们': { radical: '亻', meaning: 'người', strokes: 2, position: 'bên trái' },
+            '会': { radical: '人', meaning: 'người', strokes: 2, position: 'phía trên' },
+            '不': { radical: '一', meaning: 'một', strokes: 1, position: 'phía trên' },
+            '是': { radical: '日', meaning: 'mặt trời', strokes: 4, position: 'phía trên' },
+            '的': { radical: '白', meaning: 'trắng', strokes: 5, position: 'bên trái' }
         };
 
         // Hàm phát âm
