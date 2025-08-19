@@ -250,6 +250,13 @@
     "hanviet": "Nhân (người)",
     "words": [
       {
+        "chinese": "别人",
+        "meaning": "người khác",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
         "chinese": "人类",
         "meaning": "loài người",
         "category": [
@@ -262,6 +269,41 @@
         "category": [
           "công việc"
         ]
+      },
+      {
+        "chinese": "病人",
+        "meaning": "Người bệnh",
+        "category": [
+          "bệnh viện"
+        ]
+      },
+      {
+        "chinese": "家人",
+        "meaning": "Người nhà",
+        "category": [
+          "gia đình"
+        ]
+      },
+      {
+        "chinese": "老人",
+        "meaning": "Người Già",
+        "category": [
+          "gia đình"
+        ]
+      },
+      {
+        "chinese": "男人",
+        "meaning": "Nam nhân",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "女人",
+        "meaning": "Nữ nhân",
+        "category": [
+          "giao tiếp"
+        ]
       }
     ],
     "sentences": [
@@ -269,14 +311,14 @@
         "chinese": "每个人都有自己的梦想。",
         "vietnamese": "Mỗi người đều có ước mơ của riêng mình.",
         "category": [
-          "xã hội"
+          "giao tiếp"
         ]
       },
       {
-        "chinese": "我们都是中国人。",
-        "vietnamese": "Chúng tôi đều là người Trung Quốc.",
+        "chinese": "我们都是越南人",
+        "vietnamese": "Chúng tôi đều là người Việt Nam.",
         "category": [
-          "xã hội"
+          "giao tiếp"
         ]
       }
     ]
