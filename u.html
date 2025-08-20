@@ -1837,7 +1837,8 @@ async function triggerSearch(input) {
     // ---- thêm đoạn này để đổi URL ----
     const url = new URL(window.location);
     url.searchParams.set("word", input);
-    window.history.pushState({}, "", url);
+	window.history.pushState({}, "", `/search/word/${encodeURIComponent(input)}`);
+
     // ---------------------------------
 
     const writerSection = document.getElementById('writer-section');
@@ -1886,6 +1887,14 @@ async function triggerSearch(input) {
     });
 }
 
+
+
+
+
+
+
+
+		
 		
     </script>
 </body>
