@@ -1829,6 +1829,34 @@ window.addEventListener("DOMContentLoaded", async () => {
     }
 });
 
+
+
+
+
+
+
+
+
+
+
+ function updateMeta(word) {
+  document.title = `${word} - Học tiếng Trung`;
+
+  let desc = document.querySelector("meta[name='description']");
+  if (!desc) {
+    desc = document.createElement("meta");
+    desc.name = "description";
+    document.head.appendChild(desc);
+  }
+  desc.content = `Học chữ Hán "${word}" với cách viết, ví dụ và nghĩa tiếng Trung.`;
+}
+
+
+		
+
+
+		
+		
 // Sửa triggerSearch để cập nhật URL khi tìm kiếm
 async function triggerSearch(input) {
     if (!dataPromise) await loadData();
