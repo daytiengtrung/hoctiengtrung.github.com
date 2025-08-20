@@ -1816,6 +1816,77 @@
             hanziSearchBar.style.transform = 'translateY(0)'; 
             hanziSearchBar.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.1)'; 
         });
+
+
+
+// Khi trang load, kiểm tra nếu có ?word=... thì tự động tìm
+window.addEventListener("DOMContentLoaded", async () => {
+    const params = new URLSearchParams(window.location.search);
+    const word = params.get("word");
+    if (word) {
+        document.getElementById("input-char").value = word;
+        await triggerSearch(word);
+    }
+});
+
+// Sửa triggerSearch để cập nhật URL khi tìm kiếm
+async function triggerSearch(input) {
+    if (!dataPromise) await loadData();
+    if (!dictionaryMap) await loadDictionary();
+
+    // ---- thêm đoạn này để đổi URL ----
+    const url = new URL(window.location);
+    url.searchParams.set("word", input);
+    window.history.pushState({}, "", url);
+    // ---------------------------------
+
+    const writerSection = document.getElementById('writer-section');
+    writerSection.innerHTML = '';
+    writerSection.style.display = 'block';
+
+    setTimeout(() => {
+        writerSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 50);
+
+    const uniqueChars = [...new Set(input.split(''))].filter(isChineseChar);
+    if (uniqueChars.length === 0) {
+        writerSection.style.display = 'none';
+        return;
+    }
+
+    const tabsContainer = document.createElement('div');
+    tabsContainer.className = 'char-tabs';
+    const contentContainer = document.createElement('div');
+    contentContainer.className = 'char-content-container';
+
+    writerSection.appendChild(tabsContainer);
+    writerSection.appendChild(contentContainer);
+
+    uniqueChars.forEach((char, index) => {
+        const tabBtn = document.createElement('button');
+        tabBtn.className = 'char-tab-btn';
+        tabBtn.textContent = char;
+        tabBtn.dataset.char = char;
+        tabsContainer.appendChild(tabBtn);
+
+        const charContent = createCharacterContent(char);
+        contentContainer.appendChild(charContent);
+
+        if (index === 0) {
+            tabBtn.classList.add('active');
+            charContent.classList.add('active');
+        }
+
+        tabBtn.addEventListener('click', () => {
+            document.querySelectorAll('.char-tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.character-display').forEach(content => content.classList.remove('active'));
+            tabBtn.classList.add('active');
+            charContent.classList.add('active');
+        });
+    });
+}
+
+		
     </script>
 </body>
 </html>
