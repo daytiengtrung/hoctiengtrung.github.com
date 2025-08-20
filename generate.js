@@ -60,10 +60,7 @@ for (const char in dictionaryData) {
 }
 
 // Tạo trang chủ (index.html) trong thư mục public
-// Đọc nội dung từ tệp index.html nguồn
 const indexHtmlContent = fs.readFileSync(path.join(__dirname, 'index.html'), 'utf-8');
-
-// Ghi nội dung vào tệp public/index.html
 fs.writeFileSync(path.join('public', 'index.html'), indexHtmlContent);
 
 console.log('Tạo tất cả các trang HTML thành công!');
