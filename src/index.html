@@ -974,7 +974,7 @@
             if (dataPromise) return dataPromise;
             dataPromise = new Promise(async (resolve, reject) => {
                 try {
-                    const response = await fetch('./tuvung.json');
+                    const response = await fetch('/tuvung.json');
                     if (!response.ok) throw new Error('Failed to load tuvung.json');
                     dictionaryData = await response.json();
 
