@@ -1894,6 +1894,15 @@ async function triggerSearch(input) {
 
 
 
+window.addEventListener("DOMContentLoaded", async () => {
+    const path = window.location.pathname;
+    const match = path.match(/^\/search\/word\/(.+)$/);
+    if (match) {
+        const word = decodeURIComponent(match[1]);
+        document.getElementById("input-char").value = word;
+        await triggerSearch(word);
+    }
+});
 		
 		
     </script>
