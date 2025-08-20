@@ -1936,6 +1936,7 @@ async function triggerSearch(input) {
     if (!dictionaryMap) await loadDictionary();
 
     await triggerSearch(word);
+	   updateMeta(word); // 👉 title mô tả chữ hán
   }
 });
 
