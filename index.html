@@ -1859,16 +1859,18 @@ window.addEventListener("DOMContentLoaded", async () => {
 		
 // Sửa triggerSearch để cập nhật URL khi tìm kiếm
 async function triggerSearch(input, updateUrl = true) {
-    if (!dataPromise) await loadData();
-    if (!dictionaryMap) await loadDictionary();
+  if (!dataPromise) await loadData();
+  if (!dictionaryMap) await loadDictionary();
 
-    // ---- thêm đoạn này để đổi URL ----
-    const url = new URL(window.location);
-    url.searchParams.set("word", input);
-	
-	
- window.history.pushState({}, "", `/search/word/${encodeURIComponent(input)}.html`);
-    updateMeta(input);
+  if (updateUrl) {
+    window.history.pushState({}, "", `/search/word/${encodeURIComponent(input)}.html`);
+  }
+
+  updateMeta(input);
+
+  // ... phần render chữ như cũ
+}
+ 
 
     // ---------------------------------
 
