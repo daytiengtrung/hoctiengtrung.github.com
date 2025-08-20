@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>汉字学习 - Học chữ Hán</title>
-    <script src="data/writer.min.js"></script>
-    <script src="data/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
+    <script src="https://unpkg.com/pinyin-pro@3.20.1/dist/index.js"></script>
     <style>
         * {
             margin: 0;
@@ -1080,7 +1080,7 @@
             if (dictionaryMap) return; 
             dictionaryMap = new Map(); 
             try { 
-                const response = await fetch('data/dictionary.txt'); 
+                const response = await fetch('https://raw.githubusercontent.com/skishore/makemeahanzi/master/dictionary.txt'); 
                 if (!response.ok) throw new Error('Failed to load dictionary'); 
                 const text = await response.text(); 
                 const lines = text.trim().split('\n'); 
@@ -1101,8 +1101,8 @@
             if (dataPromise) return dataPromise;
             dataPromise = new Promise(async (resolve, reject) => {
                 try {
-                    const response = await fetch('data/base.json');
-                    if (!response.ok) throw new Error('Failed to load base.json');
+                    const response = await fetch('https://hoctiengtrung.vercel.app/tuvung.json');
+                    if (!response.ok) throw new Error('Failed to load tuvung.json');
                     dictionaryData = await response.json();
 
                     // Extract all words and sentences into flat arrays
@@ -1123,7 +1123,7 @@
                     
                     resolve();
                 } catch (error) {
-                    console.error('Error loading base.json:', error);
+                    console.error('Error loading tuvung.json:', error);
                     reject(error);
                 }
             });
@@ -1370,9 +1370,14 @@
                 return `<div class="examples-section"><div class="examples-title">📚 Từ vựng và ví dụ</div><div class="loading">Chưa có ví dụ cho chữ này trong cơ sở dữ liệu</div></div>`; 
             } 
             
+			
+			
+			
+			
+
             const wordsHtml = examples.words.map(word => `
                 <div class="word-item">
-                    <button class="audio-btn" onclick="playAudio('${word.chinese}')">🔊</button>
+                    <button class="audio-btn" onclick="event.stopPropagation(); playAudio('${word.chinese}')">🔊</button>
                     <div class="word-pinyin">${getPinyinWithTone(word.chinese)}</div>
                     <div class="word-chinese">${word.chinese}</div>
                     <div class="word-meaning" style="font-size: 14px; color: #666;">${word.meaning}</div>
