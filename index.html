@@ -1858,7 +1858,7 @@ window.addEventListener("DOMContentLoaded", async () => {
 		
 		
 // Sửa triggerSearch để cập nhật URL khi tìm kiếm
-async function triggerSearch(input) {
+async function triggerSearch(input, updateUrl = true) {
     if (!dataPromise) await loadData();
     if (!dictionaryMap) await loadDictionary();
 
@@ -1926,7 +1926,6 @@ async function triggerSearch(input) {
 
      window.addEventListener("DOMContentLoaded", async () => {
   const path = window.location.pathname;
-  // Hỗ trợ cả dạng /search/word/xxx và /search/word/xxx.html
   const match = path.match(/^\/search\/word\/(.+?)(?:\.html)?$/);
   if (match) {
     const word = decodeURIComponent(match[1]);
@@ -1935,10 +1934,12 @@ async function triggerSearch(input) {
     if (!dataPromise) await loadData();
     if (!dictionaryMap) await loadDictionary();
 
-    await triggerSearch(word);
-	   updateMeta(word); // 👉 title mô tả chữ hán
+    // chỉ render, không pushState nữa
+    await triggerSearch(word, false);
+    updateMeta(word);
   }
 });
+
 
 
 
