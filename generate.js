@@ -2,10 +2,10 @@ const fs = require('fs');
 const path = require('path');
 const pinyinPro = require('pinyin-pro');
 
-// Đọc dữ liệu từ file tuvung.json
+// Đọc dữ liệu từ file tuvung.json (trong thư mục data)
 const dictionaryData = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'data', 'tuvung.json'), 'utf-8'));
 
-// Đọc mẫu HTML
+// Đọc mẫu HTML (trong thư mục src)
 const template = fs.readFileSync(path.join(__dirname, 'src', 'template.html'), 'utf-8');
 
 // Tạo thư mục đầu ra nếu chưa có
@@ -60,7 +60,8 @@ for (const char in dictionaryData) {
 }
 
 // Tạo trang chủ (index.html) trong thư mục public
-const indexHtmlContent = fs.readFileSync(path.join(__dirname, 'index.html'), 'utf-8');
+// Thay đổi đường dẫn để đọc file index.html từ thư mục src
+const indexHtmlContent = fs.readFileSync(path.join(__dirname, 'src', 'index.html'), 'utf-8');
 fs.writeFileSync(path.join('public', 'index.html'), indexHtmlContent);
 
 console.log('Tạo tất cả các trang HTML thành công!');
