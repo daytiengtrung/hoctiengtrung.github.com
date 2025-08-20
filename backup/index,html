@@ -1,1 +1,6 @@
-
+File cần dùng
+    <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
+    <script src="https://unpkg.com/pinyin-pro@3.20.1/dist/index.js"></script>
+    https://raw.githubusercontent.com/skishore/makemeahanzi/master/dictionary.txt
+           
+       
