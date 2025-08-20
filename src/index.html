@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Học chữ Hán - 汉字学习</title>
+    <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -22,21 +23,14 @@
             padding: 40px;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            color: #333;
-            font-size: 3em;
-            margin-bottom: 10px;
-        }
-        p {
-            color: #666;
-            margin-bottom: 30px;
-            font-size: 1.2em;
+            max-width: 800px;
+            width: 90%;
         }
         .search-box {
             display: flex;
             justify-content: center;
             gap: 10px;
+            margin-bottom: 20px;
         }
         .search-input {
             padding: 12px 20px;
@@ -44,7 +38,7 @@
             border: 2px solid #ddd;
             border-radius: 8px;
             outline: none;
-            width: 300px;
+            width: 100%;
         }
         .search-btn {
             padding: 12px 20px;
@@ -59,10 +53,38 @@
         .search-btn:hover {
             background: #5a6ac2;
         }
-        .info {
-            margin-top: 20px;
-            font-size: 0.9em;
-            color: #888;
+        #results {
+            margin-top: 30px;
+            text-align: left;
+        }
+        .result-container {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            color: #333;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .hanzi-display {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .writer-div {
+            width: 150px;
+            height: 150px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+        }
+        .hanzi-info {
+            flex-grow: 1;
+        }
+        .hanzi-info h2 {
+            margin: 0 0 10px;
+            font-size: 2.5em;
+        }
+        .hanzi-info p {
+            margin: 0;
+            font-size: 1.2em;
         }
     </style>
 </head>
@@ -74,21 +96,64 @@
             <input type="text" id="searchInput" class="search-input" placeholder="Nhập một chữ Hán...">
             <button class="search-btn" onclick="searchHanzi()">Tìm kiếm</button>
         </div>
-        <div class="info">Ví dụ: 我, 你, 他</div>
+        <div id="results"></div>
     </div>
 
     <script>
-        function searchHanzi() {
+        async function searchHanzi() {
             const hanzi = document.getElementById('searchInput').value.trim();
-            if (hanzi) {
-                window.location.href = `/chu-han/${hanzi}.html`;
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = 'Đang tìm kiếm...';
+
+            if (!hanzi) {
+                resultsDiv.innerHTML = '<p style="color:red; text-align:center;">Vui lòng nhập một chữ Hán.</p>';
+                return;
+            }
+
+            try {
+                const response = await fetch(`/api/hanzi?char=${hanzi}`);
+                
+                if (response.status === 404) {
+                    resultsDiv.innerHTML = `<p style="color:red; text-align:center;">Không tìm thấy dữ liệu cho chữ "${hanzi}".</p>`;
+                    return;
+                }
+
+                if (!response.ok) {
+                    throw new Error('Lỗi server');
+                }
+
+                const data = await response.json();
+                displayResults(data, hanzi);
+            } catch (error) {
+                resultsDiv.innerHTML = `<p style="color:red; text-align:center;">Đã xảy ra lỗi: ${error.message}</p>`;
+                console.error('Error fetching data:', error);
             }
         }
-        document.getElementById('searchInput').addEventListener('keyup', (event) => {
-            if (event.key === 'Enter') {
-                searchHanzi();
-            }
-        });
+
+        function displayResults(data, char) {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = `
+                <div class="result-container">
+                    <div class="hanzi-display">
+                        <div class="writer-div" id="writer-div"></div>
+                        <div class="hanzi-info">
+                            <h2>${char}</h2>
+                            <p><strong>Phiên âm:</strong> ${data.pinyin || 'N/A'}</p>
+                            <p><strong>Hán Việt:</strong> ${data.hanviet || 'N/A'}</p>
+                            <p><strong>Nghĩa:</strong> ${data.meaning || 'N/A'}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Khởi tạo HanziWriter
+            HanziWriter.create('writer-div', char, {
+                width: 150,
+                height: 150,
+                padding: 10,
+                strokeColor: '#333'
+            }).animateCharacter();
+        }
     </script>
 </body>
 </html>
