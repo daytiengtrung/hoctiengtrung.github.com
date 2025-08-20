@@ -1857,8 +1857,7 @@ window.addEventListener("DOMContentLoaded", async () => {
 
 		
 		
-// Sửa triggerSearch để cập nhật URL khi tìm kiếm
-async function triggerSearch(input, updateUrl = true) {
+  async function triggerSearch(input, updateUrl = true) {
   if (!dataPromise) await loadData();
   if (!dictionaryMap) await loadDictionary();
 
@@ -1868,8 +1867,9 @@ async function triggerSearch(input, updateUrl = true) {
 
   updateMeta(input);
 
-  // ... phần render chữ như cũ
+  // 👉 đoạn render chữ giữ nguyên
 }
+
  
 
     // ---------------------------------
@@ -1929,7 +1929,9 @@ async function triggerSearch(input, updateUrl = true) {
      window.addEventListener("DOMContentLoaded", async () => {
   const path = window.location.pathname;
   const match = path.match(/^\/search\/word\/(.+?)(?:\.html)?$/);
-  if (match) {
+
+    
+		 if (match) {
     const word = decodeURIComponent(match[1]);
     document.getElementById("input-char").value = word;
 
