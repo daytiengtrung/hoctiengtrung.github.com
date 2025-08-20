@@ -81,12 +81,9 @@
         function searchHanzi() {
             const hanzi = document.getElementById('searchInput').value.trim();
             if (hanzi) {
-                // Chuyển hướng đến trang tĩnh tương ứng
                 window.location.href = `/chu-han/${hanzi}.html`;
             }
         }
-        
-        // Bắt sự kiện nhấn Enter
         document.getElementById('searchInput').addEventListener('keyup', (event) => {
             if (event.key === 'Enter') {
                 searchHanzi();
