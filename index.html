@@ -164,7 +164,7 @@
         
         .category-card {
             background: rgba(255, 255, 255, 0.95);
-            padding: 20px;
+            padding: 20px 10px 20px 20px;
             border-radius: 16px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
@@ -222,7 +222,7 @@
     grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
     gap: 10px;
     overflow-y: auto; /* Thay đổi ở đây */
-    max-height: 240px; /* Thêm dòng này để giới hạn chiều cao */
+    max-height: 160px; /* Thêm dòng này để giới hạn chiều cao */
     padding-right: 15px; /* Thêm khoảng trống để tránh nút bị che bởi thanh cuộn */
               }
         
@@ -611,7 +611,7 @@
             text-align: center;
             color: rgba(255, 255, 255, 0.8);
             border-top: 1px solid rgba(255, 255, 255, 0.2);
-            font-size: 14px;
+            font-size: 24px;
         }
         
         .footer-links a {
@@ -684,8 +684,10 @@
     <div class="container">
         <div class="header">
             <div class="title">
-                <h1>汉字学习</h1>
-                <div class="panda">🐼</div>
+              <a href="/" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 15px;">
+               <h1>汉字学习</h1>
+                 <div class="panda">🐼</div>
+                   </a>
             </div>
             <div class="subtitle">Khám phá thế giới chữ Hán một cách dễ dàng</div>
         </div>
@@ -720,12 +722,12 @@
             <div class="categories-grid">
                 <div class="category-card work">
                     <div class="category-header" onclick="toggleCategory(this)">
-                        <div class="category-title"><span class="category-icon">💼</span><span>Bộ Thủ Nhân 人(亻) </span></div>
+                        <div class="category-title"><span class="category-icon">👥</span><span>Bộ Thủ : Nhân - 人(亻) </span></div>
                         <span class="toggle-arrow">▼</span>
                     </div>
                     <div class="char-grid">
-                        <button class="char-button" data-char="人">人</button> 
-                        <button class="char-button" data-char="他">他</button> 
+                        <button class="char-button" data-char="     人     ">     人             </button> 
+                        <button class="char-button" data-char="他">他       </button> 
                         <button class="char-button" data-char="个">个</button> 
                         <button class="char-button" data-char="们">们</button> 
                         <button class="char-button" data-char="会">会</button> 
@@ -759,60 +761,109 @@
                 </div>
                 <div class="category-card nature">
                     <div class="category-header" onclick="toggleCategory(this)">
-                        <div class="category-title"><span class="category-icon">🏔️</span><span>Thiên nhiên & Thế giới</span></div>
+                        <div class="category-title"><span class="category-icon">🏔️</span><span>Bộ Thủ : Khẩu - 口(kǒu) </span></div>
                         <span class="toggle-arrow">▼</span>
                     </div>
                     <div class="char-grid">
-                        <button class="char-button" data-char="山">山</button> 
-                        <button class="char-button" data-char="水">水</button> 
-                        <button class="char-button" data-char="火">火</button> 
-                        <button class="char-button" data-char="土">土</button> 
-                        <button class="char-button" data-char="天">天</button> 
-                        <button class="char-button" data-char="地">地</button>
+                        <button class="char-button" data-char="和">和</button> 
+                        <button class="char-button" data-char="后">后</button> 
+                        <button class="char-button" data-char="同">同</button> 
+                        <button class="char-button" data-char="名">名</button> 
+                        <button class="char-button" data-char="听">听</button> 
+                        <button class="char-button" data-char="告">告</button>
+                        <button class="char-button" data-char="呢">呢</button>
+                        <button class="char-button" data-char="叫">叫</button>
+                        <button class="char-button" data-char="商">商</button>
+						<button class="char-button" data-char="吗">吗</button> 
+                        <button class="char-button" data-char="吧">吧</button> 
+                        <button class="char-button" data-char="吃">吃</button> 
+                        <button class="char-button" data-char="号">号</button> 
+                        <button class="char-button" data-char="哪">哪</button>
+                        <button class="char-button" data-char="喜">喜</button>
+                        <button class="char-button" data-char="右">右</button>
+                        <button class="char-button" data-char="哥">哥</button>
+						<button class="char-button" data-char="喝">喝</button> 
+                        <button class="char-button" data-char="唱">唱</button> 
+                        <button class="char-button" data-char="可">可</button> 
+                        <button class="char-button" data-char="只">只</button> 
+                        <button class="char-button" data-char="向">向</button>
+                        <button class="char-button" data-char="合">合</button>
+                        <button class="char-button" data-char="司">司</button>
+                        <button class="char-button" data-char="周">周</button>
+						<button class="char-button" data-char="响">响</button> 
+                        <button class="char-button" data-char="句">句</button> 
+                        <button class="char-button" data-char="啊">啊</button> 
+                        <button class="char-button" data-char="味">味</button> 
                     </div>
                 </div>
                 <div class="category-card people">
                     <div class="category-header" onclick="toggleCategory(this)">
-                        <div class="category-title"><span class="category-icon">👥</span><span>Con người & Xã hội</span></div>
+                        <div class="category-title"><span class="category-icon">💼</span><span>Bộ thủ : Đại - 大(dà)</span></div>
                         <span class="toggle-arrow">▼</span>
                     </div>
                     <div class="char-grid">
-                        <button class="char-button" data-char="人">人</button> 
-                        <button class="char-button" data-char="你">你</button> 
-                        <button class="char-button" data-char="我">我</button> 
-                        <button class="char-button" data-char="他">他</button> 
-                        <button class="char-button" data-char="们">们</button> 
-                        <button class="char-button" data-char="会">会</button>
+                        <button class="char-button" data-char="     大    ">      大            </button> 
+<button class="char-button" data-char="     天     ">     天            </button> 
+<button class="char-button" data-char="     太     ">     太            </button> 
+<button class="char-button" data-char="     头     ">     头           </button> 
+<button class="char-button" data-char="     套     ">     套           </button> 
+<button class="char-button" data-char="     失     ">     失           </button> 
+<button class="char-button" data-char="     夫     ">     夫           </button> 
+<button class="char-button" data-char="     奇     ">     奇           </button> 
+<button class="char-button" data-char="     奖    ">      奖             </button> 
+<button class="char-button" data-char="     奋     ">     奋            </button> 
+<button class="char-button" data-char="     央     ">     央           </button> 
+<button class="char-button" data-char="     奈     ">     奈            </button> 
+<button class="char-button" data-char="     夹     ">     夹            </button> 
+<button class="char-button" data-char="     夺     ">     夺            </button> 
+<button class="char-button" data-char="     奔     ">     奔             </button> 
+<button class="char-button" data-char="     奉     ">     奉             </button> 
+<button class="char-button" data-char="     秦    ">      秦            </button> 
+<button class="char-button" data-char="     奥     ">     奥             </button> 
+<button class="char-button" data-char="     契     ">     契             </button> 
+<button class="char-button" data-char="     夸     ">     夸             </button> 
+<button class="char-button" data-char="     夷     ">     夷             </button> 
+<button class="char-button" data-char="     奠     ">     奠           </button> 
+<button class="char-button" data-char="     奢     ">     奢            </button> 
+
                     </div>
                 </div>
                 <div class="category-card basic">
                     <div class="category-header" onclick="toggleCategory(this)">
-                        <div class="category-title"><span class="category-icon">🔤</span><span>Chữ cơ bản</span></div>
+                        <div class="category-title"><span class="category-icon">🔤</span><span>Bộ Thủ : Nhi - 儿(ér)</span></div>
                         <span class="toggle-arrow">▼</span>
                     </div>
                     <div class="char-grid">
-                        <button class="char-button" data-char="大">大</button> 
-                        <button class="char-button" data-char="小">小</button> 
-                        <button class="char-button" data-char="好">好</button> 
-                        <button class="char-button" data-char="不">不</button> 
-                        <button class="char-button" data-char="是">是</button> 
-                        <button class="char-button" data-char="的">的</button>
+             <button class="char-button" data-char="     先    ">      先            </button> 
+			 <button class="char-button" data-char="     光     ">     光            </button> 
+             <button class="char-button" data-char="     兄     ">     兄           </button> 
+             <button class="char-button" data-char="     党    ">      党            </button> 					
+             <button class="char-button" data-char="     允     ">     允             </button> 
+             <button class="char-button" data-char="     兆     ">     兆             </button> 
+             <button class="char-button" data-char="     兜     ">     兜             </button> 
+             <button class="char-button" data-char="     兢     ">     兢             </button> 
                     </div>
                 </div>
                     
 
                    <div class="category-card basic">
                     <div class="category-header" onclick="toggleCategory(this)">
-                        <div class="category-title"><span class="category-icon">🔤</span><span>Chữ cơ bản</span></div>
+                        <div class="category-title"><span class="category-icon">🔤</span><span>Bộ Thủ : Con - 子(zǐ)</span></div>
                         <span class="toggle-arrow">▼</span>
                     </div>
                     <div class="char-grid">
-                        <button class="char-button" data-char="大">大</button> 
-                        <button class="char-button" data-char="小">小</button> 
-                        <button class="char-button" data-char="好">好</button> 
-                        <button class="char-button" data-char="不">不</button> 
-                        <button class="char-button" data-char="是">是</button> 
-                        <button class="char-button" data-char="的">的</button>
+                        			
+             <button class="char-button" data-char="     学     ">     学             </button> 
+			 <button class="char-button" data-char="     字     ">     字             </button> 
+			 <button class="char-button" data-char="     孩     ">     孩             </button> 
+			 <button class="char-button" data-char="     存     ">     存             </button> 
+			 <button class="char-button" data-char="     孙     ">     孙             </button> 
+			 <button class="char-button" data-char="     季     ">     季             </button> 
+			 <button class="char-button" data-char="     孤     ">     孤             </button> 
+			 <button class="char-button" data-char="     孕     ">     孕             </button> 
+			 <button class="char-button" data-char="     孝     ">     孝             </button> 
+			 <button class="char-button" data-char="     孵     ">     孵             </button> 
+			 <button class="char-button" data-char="     孪     ">     孪             </button>
                     </div>
                 </div>
                   
@@ -820,20 +871,87 @@
 
                       <div class="category-card basic">
                     <div class="category-header" onclick="toggleCategory(this)">
-                        <div class="category-title"><span class="category-icon">🔤</span><span>Chữ cơ bản</span></div>
+                        <div class="category-title"><span class="category-icon">🔤</span><span>Bộ Thủ : Thân - 身(shēn)</span></div>
                         <span class="toggle-arrow">▼</span>
                     </div>
                     <div class="char-grid">
-                        <button class="char-button" data-char="大">大</button> 
-                        <button class="char-button" data-char="小">小</button> 
-                        <button class="char-button" data-char="好">好</button> 
-                        <button class="char-button" data-char="不">不</button> 
-                        <button class="char-button" data-char="是">是</button> 
-                        <button class="char-button" data-char="的">的</button>
+                        <button class="char-button" data-char="     身     ">     身             </button> 
+			 <button class="char-button" data-char="     躺     ">     躺             </button> 
+			 <button class="char-button" data-char="     躲     ">     躲             </button> 
+			 <button class="char-button" data-char="     躯     ">     躯             </button> 
+			 <button class="char-button" data-char="     躬     ">     躬             </button> 
                     </div>
                 </div>
-
-
+                 
+				 
+				     <div class="category-card basic">
+                    <div class="category-header" onclick="toggleCategory(this)">
+                        <div class="category-title"><span class="category-icon">🔤</span><span>Bộ Thủ : Thủ - 手(扌)</span></div>
+                        <span class="toggle-arrow">▼</span>
+                    </div>
+                    <div class="char-grid">
+                        <button class="char-button" data-char="     打     ">     打             </button> 
+			 <button class="char-button" data-char="     找     ">     找             </button>
+			 <button class="char-button" data-char="     拿     ">     拿             </button> 
+			 <button class="char-button" data-char="     提     ">     提             </button> 
+			 <button class="char-button" data-char="     报     ">     报             </button> 
+			 <button class="char-button" data-char="     才     ">     才             </button> 
+			 <button class="char-button" data-char="     接     ">     接             </button> 
+			 <button class="char-button" data-char="     拉     ">     拉             </button> 
+			 <button class="char-button" data-char="     推     ">     推             </button> 
+			 <button class="char-button" data-char="     护     ">     护             </button> 
+			 <button class="char-button" data-char="     排     ">     排             </button>
+			 <button class="char-button" data-char="     换     ">     换             </button> 
+			 <button class="char-button" data-char="     掉     ">     掉             </button>
+			 <button class="char-button" data-char="     挺     ">     挺             </button> 
+			 <button class="char-button" data-char="     把     ">     把             </button> 
+			 <button class="char-button" data-char="     指     ">     指             </button> 
+			 <button class="char-button" data-char="     据     ">     据             </button> 
+			 <button class="char-button" data-char="     持     ">     持             </button> 
+			 <button class="char-button" data-char="     技     ">     技             </button> 
+			 <button class="char-button" data-char="     批     ">     批             </button> 
+			 <button class="char-button" data-char="     按     ">     按             </button> 
+			 <button class="char-button" data-char="     抓     ">     抓             </button>
+			 <button class="char-button" data-char="     握     ">     握             </button> 
+			 <button class="char-button" data-char="     拍     ">     拍             </button>
+			 <button class="char-button" data-char="     挂     ">     挂             </button> 
+			 <button class="char-button" data-char="     播     ">     播             </button> 
+			 <button class="char-button" data-char="     搬     ">     搬             </button> 
+			 <button class="char-button" data-char="     投     ">     投             </button> 
+			 <button class="char-button" data-char="     担     ">     担             </button> 
+                    </div>
+                </div>
+				
+				
+				   <div class="category-card basic">
+                    <div class="category-header" onclick="toggleCategory(this)">
+                        <div class="category-title"><span class="category-icon">🔤</span><span>Bộ Thủ : Thân - 身(shēn)</span></div>
+                        <span class="toggle-arrow">▼</span>
+                    </div>
+                    <div class="char-grid">
+                        <button class="char-button" data-char="     身     ">     身             </button> 
+			 <button class="char-button" data-char="     躺     ">     躺             </button> 
+			 <button class="char-button" data-char="     躲     ">     躲             </button> 
+			 <button class="char-button" data-char="     躯     ">     躯             </button> 
+			 <button class="char-button" data-char="     躬     ">     躬             </button> 
+                    </div>
+                </div>
+                  
+				   <div class="category-card basic">
+                    <div class="category-header" onclick="toggleCategory(this)">
+                        <div class="category-title"><span class="category-icon">🔤</span><span>Bộ Thủ : Thân - 身(shēn)</span></div>
+                        <span class="toggle-arrow">▼</span>
+                    </div>
+                    <div class="char-grid">
+                        <button class="char-button" data-char="     身     ">     身             </button> 
+			 <button class="char-button" data-char="     躺     ">     躺             </button> 
+			 <button class="char-button" data-char="     躲     ">     躲             </button> 
+			 <button class="char-button" data-char="     躯     ">     躯             </button> 
+			 <button class="char-button" data-char="     躬     ">     躬             </button> 
+                    </div>
+                </div>
+                  
+                  
 
 
 
