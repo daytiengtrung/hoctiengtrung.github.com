@@ -1840,7 +1840,7 @@ window.addEventListener("DOMContentLoaded", async () => {
 
 
  function updateMeta(word) {
-  document.title = `${word} - Học tiếng Trung`;
+  document.title = `Học tiếng trung với từ "${word}"`;
 
   let desc = document.querySelector("meta[name='description']");
   if (!desc) {
@@ -1868,7 +1868,7 @@ async function triggerSearch(input) {
 	
 	
  window.history.pushState({}, "", `/search/word/${encodeURIComponent(input)}.html`);
-
+    updateMeta(input);
 
     // ---------------------------------
 
