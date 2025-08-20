@@ -1,5 +1,5 @@
 {
   "rewrites": [
-    { "source": "/search/word/:word", "destination": "/" }
+    { "source": "/search/word/:word.html", "destination": "/" }
   ]
 }
