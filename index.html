@@ -1895,10 +1895,10 @@ async function triggerSearch(input) {
 
 
 
-     
- window.addEventListener("DOMContentLoaded", async () => {
+     window.addEventListener("DOMContentLoaded", async () => {
   const path = window.location.pathname;
-  const match = path.match(/^\/search\/word\/(.+)\.html$/); // có .html
+  // Hỗ trợ cả dạng /search/word/xxx và /search/word/xxx.html
+  const match = path.match(/^\/search\/word\/(.+?)(?:\.html)?$/);
   if (match) {
     const word = decodeURIComponent(match[1]);
     document.getElementById("input-char").value = word;
@@ -1909,6 +1909,7 @@ async function triggerSearch(input) {
     await triggerSearch(word);
   }
 });
+
 
 
 
