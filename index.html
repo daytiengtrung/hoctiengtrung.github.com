@@ -1893,16 +1893,22 @@ async function triggerSearch(input) {
 
 
 
+     window.addEventListener("DOMContentLoaded", async () => {
+  const path = window.location.pathname;
+  const match = path.match(/^\/search\/word\/(.+)$/);
+  if (match) {
+    const word = decodeURIComponent(match[1]);
+    document.getElementById("input-char").value = word;
 
-window.addEventListener("DOMContentLoaded", async () => {
-    const path = window.location.pathname;
-    const match = path.match(/^\/search\/word\/(.+)$/);
-    if (match) {
-        const word = decodeURIComponent(match[1]);
-        document.getElementById("input-char").value = word;
-        await triggerSearch(word);
-    }
+    // đảm bảo dữ liệu đã load trước khi tìm kiếm
+    if (!dataPromise) await loadData();
+    if (!dictionaryMap) await loadDictionary();
+
+    await triggerSearch(word);
+  }
 });
+
+
 		
 		
     </script>
