@@ -1,7 +1,6 @@
-module.exports = {
-  async rewrites() {
-    return [
-      { source: '/search/word/:word.html', destination: '/search/word/:word' }
-    ]
-  }
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true
 };
+
+module.exports = nextConfig;
