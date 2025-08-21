@@ -1839,10 +1839,11 @@ window.addEventListener("DOMContentLoaded", async () => {
 
 
 
- 
 
+		function updateMeta(word) {
+  // giữ nguyên title
+  document.title = `Học chữ hán với từ "${word}" - Học Tiếng Trung`;
 
-	function updateMeta(word) {
   let descText = "";
 
   if (dictionaryMap && dictionaryMap[word]) {
@@ -1870,16 +1871,16 @@ window.addEventListener("DOMContentLoaded", async () => {
              + (example ? `Ví dụ câu: ${example}.` : "");
   }
 
-  // 👉 cập nhật meta description
+  // cập nhật meta description (SEO)
   let desc = document.querySelector("meta[name='description']");
   if (!desc) {
     desc = document.createElement("meta");
     desc.name = "description";
     document.head.appendChild(desc);
   }
-  desc.content = descText || `Học chữ Hán "${word}" với cách viết, ví dụ và nghĩa tiếng Trung.`;
+  desc.content = descText || `Học chữ Hán "${word}" với cách viết, ví dụ và nghĩa tiếng Trung dễ dàng miễn phí.`;
 }
-	
+
 
 
 		
