@@ -1839,22 +1839,23 @@ window.addEventListener("DOMContentLoaded", async () => {
 
 
 
- function updateMeta(word) {
-  let pinyin = "";
-  let hanViet = "";
-  let mean = "";
+ 
+
+
+	function updateMeta(word) {
   let descText = "";
 
   if (dictionaryMap && dictionaryMap[word]) {
     const entry = dictionaryMap[word];
-    pinyin = entry.pinyin || "";
-    hanViet = entry.hanviet || "";
-    mean = entry.mean || "";
+    const mean = entry.mean || "";
 
     // Lấy 2 từ vựng phổ biến đầu tiên
     let words = "";
     if (entry.words && entry.words.length > 0) {
-      words = entry.words.slice(0, 2).map(w => `${w.chinese} (${w.pinyin}: ${w.meaning})`).join("; ");
+      words = entry.words
+        .slice(0, 2)
+        .map(w => `${w.chinese} (${w.pinyin}: ${w.meaning})`)
+        .join("; ");
     }
 
     // Lấy 1 ví dụ câu
@@ -1864,15 +1865,12 @@ window.addEventListener("DOMContentLoaded", async () => {
       example = `${ex.chinese} (${ex.pinyin}: ${ex.meaning})`;
     }
 
-    descText = `Học chữ Hán "${word}" (${pinyin}, ${hanViet}) nghĩa là "${mean}". `
+    descText = `Học chữ Hán "${word}" nghĩa là "${mean}". `
              + (words ? `Ví dụ từ vựng: ${words}. ` : "")
              + (example ? `Ví dụ câu: ${example}.` : "");
   }
 
-  // Cập nhật title
-  document.title = `${word} (${pinyin}, ${hanViet}) - Học tiếng Trung`;
-
-  // Cập nhật meta description
+  // 👉 cập nhật meta description
   let desc = document.querySelector("meta[name='description']");
   if (!desc) {
     desc = document.createElement("meta");
@@ -1881,9 +1879,7 @@ window.addEventListener("DOMContentLoaded", async () => {
   }
   desc.content = descText || `Học chữ Hán "${word}" với cách viết, ví dụ và nghĩa tiếng Trung.`;
 }
-
-
-		
+	
 
 
 		
