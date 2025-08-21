@@ -1,0 +1,530 @@
+{
+    "山": {
+        "hanviet": "Sơn",
+        "words": [
+            { "chinese": "火山", "meaning": "núi lửa", "category": ["thiên nhiên"] },
+            { "chinese": "山水", "meaning": "sơn thủy, phong cảnh", "category": ["thiên nhiên"] }
+        ],
+        "sentences": [
+            { "chinese": "这座山很高。", "vietnamese": "Ngọn núi này rất cao.", "category": ["thiên nhiên"] },
+            { "chinese": "我喜欢去爬山。", "vietnamese": "Tôi thích đi leo núi.", "category": ["du lịch", "thiên nhiên"] }
+        ]
+    },
+    "大": {
+        "hanviet": "Đại",
+        "words": [
+            { "chinese": "大学", "meaning": "đại học", "category": ["học tập"] },
+            { "chinese": "大家", "meaning": "mọi người", "category": ["xã hội"] }
+        ],
+        "sentences": [
+            { "chinese": "我们是大学生。", "vietnamese": "Chúng tôi là sinh viên đại học.", "category": ["học tập"] },
+            { "chinese": "大家早上好！", "vietnamese": "Chào buổi sáng mọi người!", "category": ["xã hội"] }
+        ]
+    },
+    "小": {
+        "hanviet": "Tiểu",
+        "words": [
+            { "chinese": "小吃", "meaning": "đồ ăn vặt", "category": ["du lịch"] },
+            { "chinese": "小孩儿", "meaning": "trẻ con", "category": ["xã hội"] }
+        ],
+        "sentences": [
+            { "chinese": "这里的小吃很好吃。", "vietnamese": "Đồ ăn vặt ở đây rất ngon.", "category": ["du lịch"] },
+            { "chinese": "这个小孩儿很可爱。", "vietnamese": "Đứa trẻ này rất đáng yêu.", "category": ["xã hội"] }
+        ]
+    },
+    "你": {
+        "hanviet": "Nễ",
+        "words": [
+            { "chinese": "你们", "meaning": "các bạn", "category": ["xã hội"] },
+            { "chinese": "你好", "meaning": "xin chào", "category": ["xã hội"] }
+        ],
+        "sentences": [
+            { "chinese": "你们好吗？", "vietnamese": "Các bạn khỏe không?", "category": ["xã hội"] },
+            { "chinese": "谢谢你！", "vietnamese": "Cảm ơn bạn!", "category": ["xã hội"] }
+        ]
+    },
+    "我": {
+        "hanviet": "Ngã",
+        "words": [
+            { "chinese": "我们", "meaning": "chúng ta, chúng tôi", "category": ["xã hội"] },
+            { "chinese": "我自己", "meaning": "chính tôi", "category": ["xã hội"] }
+        ],
+        "sentences": [
+            { "chinese": "我们一起学习吧。", "vietnamese": "Chúng ta cùng học nhé.", "category": ["xã hội", "học tập"] },
+            { "chinese": "我爱吃米饭。", "vietnamese": "Tôi thích ăn cơm.", "category": ["xã hội"] }
+        ]
+    },
+    "他": {
+        "hanviet": "Tha",
+        "words": [
+            { "chinese": "他们", "meaning": "bọn họ", "category": ["xã hội"] },
+            { "chinese": "他家", "meaning": "nhà của anh ấy", "category": ["xã hội"] }
+        ],
+        "sentences": [
+            { "chinese": "他是我的朋友。", "vietnamese": "Anh ấy là bạn của tôi.", "category": ["xã hội"] },
+            { "chinese": "他们去哪儿了？", "vietnamese": "Bọn họ đi đâu rồi?", "category": ["xã hội"] }
+        ]
+    },
+    "好": {
+        "hanviet": "Hảo",
+        "words": [
+            { "chinese": "爱好", "meaning": "sở thích", "category": ["xã hội"] },
+            { "chinese": "很好", "meaning": "rất tốt", "category": ["xã hội"] }
+        ],
+        "sentences": [
+            { "chinese": "你有什么爱好？", "vietnamese": "Bạn có sở thích gì?", "category": ["xã hội"] },
+            { "chinese": "今天天气很好。", "vietnamese": "Thời tiết hôm nay rất tốt.", "category": ["thiên nhiên"] }
+        ]
+    },
+    "人": {
+        "hanviet": "Nhân",
+        "words": [
+            { "chinese": "人类", "meaning": "loài người", "category": ["xã hội"] },
+            { "chinese": "工人", "meaning": "công nhân", "category": ["công việc"] }
+        ],
+        "sentences": [
+            { "chinese": "每个人都有自己的梦想。", "vietnamese": "Mỗi người đều có ước mơ của riêng mình.", "category": ["xã hội"] },
+            { "chinese": "我们都是中国人。", "vietnamese": "Chúng tôi đều là người Trung Quốc.", "category": ["xã hội"] }
+        ]
+    },
+    "土": {
+        "hanviet": "Thổ",
+        "words": [
+            { "chinese": "土地", "meaning": "đất đai", "category": ["thiên nhiên"] },
+            { "chinese": "土壤", "meaning": "đất", "category": ["thiên nhiên"] }
+        ],
+        "sentences": [
+            { "chinese": "这块土地很肥沃。", "vietnamese": "Mảnh đất này rất màu mỡ.", "category": ["thiên nhiên"] },
+            { "chinese": "请把花种在土里。", "vietnamese": "Hãy trồng hoa vào trong đất.", "category": ["thiên nhiên"] }
+        ]
+    },
+    "水": {
+        "hanviet": "Thủy",
+        "words": [
+            { "chinese": "喝水", "meaning": "uống nước", "category": ["xã hội"] },
+            { "chinese": "海水", "meaning": "nước biển", "category": ["thiên nhiên"] }
+        ],
+        "sentences": [
+            { "chinese": "请给我一杯水。", "vietnamese": "Làm ơn cho tôi một ly nước.", "category": ["xã hội"] },
+            { "chinese": "海水很蓝。", "vietnamese": "Nước biển rất xanh.", "category": ["thiên nhiên"] }
+        ]
+    },
+    "火": {
+        "hanviet": "Hỏa",
+        "words": [
+            { "chinese": "火锅", "meaning": "lẩu", "category": ["ẩm thực"] },
+            { "chinese": "着火", "meaning": "bắt lửa", "category": ["thiên nhiên"] }
+        ],
+        "sentences": [
+            { "chinese": "我们一起吃火锅吧。", "vietnamese": "Chúng ta cùng ăn lẩu đi.", "category": ["ẩm thực"] },
+            { "chinese": "小心火烛。", "vietnamese": "Cẩn thận nến lửa.", "category": ["thiên nhiên"] }
+        ]
+    },
+    "天": {
+        "hanviet": "Thiên",
+        "words": [
+            { "chinese": "天气", "meaning": "thời tiết", "category": ["thiên nhiên"] },
+            { "chinese": "白天", "meaning": "ban ngày", "category": ["thiên nhiên"] }
+        ],
+        "sentences": [
+            { "chinese": "今天天气很好。", "vietnamese": "Thời tiết hôm nay rất tốt.", "category": ["thiên nhiên"] },
+            { "chinese": "白天我们去玩。", "vietnamese": "Ban ngày chúng tôi đi chơi.", "category": ["thiên nhiên", "du lịch"] }
+        ]
+    },
+    "地": {
+        "hanviet": "Địa",
+        "words": [
+            { "chinese": "地铁", "meaning": "tàu điện ngầm", "category": ["giao thông", "du lịch"] },
+            { "chinese": "地球", "meaning": "Trái đất", "category": ["thiên nhiên", "khoa học"] }
+        ],
+        "sentences": [
+            { "chinese": "我坐地铁去公司。", "vietnamese": "Tôi đi tàu điện ngầm đến công ty.", "category": ["giao thông", "công việc"] },
+            { "chinese": "地球是圆的。", "vietnamese": "Trái đất là hình tròn.", "category": ["khoa học"] }
+        ]
+    },
+    "作": {
+        "hanviet": "Tác",
+        "words": [
+            { "chinese": "工作", "meaning": "công việc", "category": ["công việc"] },
+            { "chinese": "作用", "meaning": "tác dụng", "category": ["công việc", "học tập"] }
+        ],
+        "sentences": [
+            { "chinese": "你的工作是什么？", "vietnamese": "Công việc của bạn là gì?", "category": ["công việc"] },
+            { "chinese": "这个方法很有作用。", "vietnamese": "Phương pháp này rất hiệu quả.", "category": ["học tập"] }
+        ]
+    },
+    "工": {
+        "hanviet": "Công",
+        "words": [
+            { "chinese": "工程师", "meaning": "kỹ sư", "category": ["công việc", "kỹ thuật"] },
+            { "chinese": "工厂", "meaning": "nhà máy", "category": ["công việc"] }
+        ],
+        "sentences": [
+            { "chinese": "我是一名工程师。", "vietnamese": "Tôi là một kỹ sư.", "category": ["công việc", "kỹ thuật"] },
+            { "chinese": "这家工厂很大。", "vietnamese": "Nhà máy này rất lớn.", "category": ["công việc"] }
+        ]
+    },
+    "做": {
+        "hanviet": "Tố",
+        "words": [
+            { "chinese": "做饭", "meaning": "nấu cơm", "category": ["sinh hoạt"] },
+            { "chinese": "做什么", "meaning": "làm gì", "category": ["sinh hoạt"] }
+        ],
+        "sentences": [
+            { "chinese": "你会做饭吗？", "vietnamese": "Bạn biết nấu cơm không?", "category": ["sinh hoạt"] },
+            { "chinese": "你周末喜欢做什么？", "vietnamese": "Cuối tuần bạn thích làm gì?", "category": ["sinh hoạt"] }
+        ]
+    },
+    "业": {
+        "hanviet": "Nghiệp",
+        "words": [
+            { "chinese": "作业", "meaning": "bài tập", "category": ["học tập"] },
+            { "chinese": "职业", "meaning": "nghề nghiệp", "category": ["công việc"] }
+        ],
+        "sentences": [
+            { "chinese": "我有很多作业要做。", "vietnamese": "Tôi có nhiều bài tập phải làm.", "category": ["học tập"] },
+            { "chinese": "你的职业是什么？", "vietnamese": "Nghề nghiệp của bạn là gì?", "category": ["công việc"] }
+        ]
+    },
+    "职": {
+        "hanviet": "Chức",
+        "words": [
+            { "chinese": "职务", "meaning": "chức vụ", "category": ["công việc"] },
+            { "chinese": "职员", "meaning": "nhân viên", "category": ["công việc"] }
+        ],
+        "sentences": [
+            { "chinese": "他的职务很高。", "vietnamese": "Chức vụ của anh ấy rất cao.", "category": ["công việc"] },
+            { "chinese": "公司有很多职员。", "vietnamese": "Công ty có rất nhiều nhân viên.", "category": ["công việc"] }
+        ]
+    },
+    "学": {
+        "hanviet": "Học",
+        "words": [
+            { "chinese": "学习", "meaning": "học tập", "category": ["học tập"] },
+            { "chinese": "学校", "meaning": "trường học", "category": ["học tập"] }
+        ],
+        "sentences": [
+            { "chinese": "学习汉语很有趣。", "vietnamese": "Học tiếng Hán rất thú vị.", "category": ["học tập"] },
+            { "chinese": "我每天都去学校。", "vietnamese": "Tôi đi đến trường mỗi ngày.", "category": ["học tập"] }
+        ]
+    },
+    "点": {
+        "hanviet": "Điểm",
+        "words": [
+            { "chinese": "点心", "meaning": "điểm tâm, đồ ăn nhẹ", "category": ["ẩm thực"] },
+            { "chinese": "一点儿", "meaning": "một chút", "category": ["định lượng"] }
+        ],
+        "sentences": [
+            { "chinese": "我想吃点心。", "vietnamese": "Tôi muốn ăn điểm tâm.", "category": ["ẩm thực"] },
+            { "chinese": "请给我一点儿水。", "vietnamese": "Làm ơn cho tôi một chút nước.", "category": ["định lượng"] }
+        ]
+    },
+    "中": {
+        "hanviet": "Trung",
+        "words": [
+            { "chinese": "中国", "meaning": "Trung Quốc", "category": ["đất nước"] },
+            { "chinese": "中间", "meaning": "ở giữa", "category": ["phương hướng"] }
+        ],
+        "sentences": [
+            { "chinese": "我住在中国的北京。", "vietnamese": "Tôi sống ở Bắc Kinh, Trung Quốc.", "category": ["đất nước"] },
+            { "chinese": "他坐在我们中间。", "vietnamese": "Anh ấy ngồi ở giữa chúng tôi.", "category": ["phương hướng"] }
+        ]
+    },
+    "文": {
+        "hanviet": "Văn",
+        "words": [
+            { "chinese": "文化", "meaning": "văn hóa", "category": ["xã hội"] },
+            { "chinese": "中文", "meaning": "tiếng Trung", "category": ["học tập"] }
+        ],
+        "sentences": [
+            { "chinese": "中国文化很有意思。", "vietnamese": "Văn hóa Trung Quốc rất thú vị.", "category": ["xã hội"] },
+            { "chinese": "我正在学习中文。", "vietnamese": "Tôi đang học tiếng Trung.", "category": ["học tập"] }
+        ]
+    },
+    "们": {
+        "hanviet": "Môn",
+        "words": [
+            { "chinese": "我们", "meaning": "chúng tôi, chúng ta", "category": ["xã hội"] },
+            { "chinese": "你们", "meaning": "các bạn", "category": ["xã hội"] },
+            { "chinese": "他们", "meaning": "bọn họ", "category": ["xã hội"] }
+        ],
+        "sentences": [
+            { "chinese": "朋友们，我们一起玩吧！", "vietnamese": "Các bạn ơi, chúng ta cùng chơi đi!", "category": ["xã hội"] }
+        ]
+    },
+    "会": {
+        "hanviet": "Hội",
+        "words": [
+            { "chinese": "开会", "meaning": "họp", "category": ["công việc"] },
+            { "chinese": "机会", "meaning": "cơ hội", "category": ["công việc", "xã hội"] }
+        ],
+        "sentences": [
+            { "chinese": "我明天要开会。", "vietnamese": "Ngày mai tôi phải đi họp.", "category": ["công việc"] },
+            { "chinese": "这是一个很好的机会。", "vietnamese": "Đây là một cơ hội rất tốt.", "category": ["công việc", "xã hội"] }
+        ]
+    },
+    "不": {
+        "hanviet": "Bất",
+        "words": [
+            { "chinese": "不好", "meaning": "không tốt", "category": ["xã hội"] },
+            { "chinese": "不是", "meaning": "không phải", "category": ["xã hội"] }
+        ],
+        "sentences": [
+            { "chinese": "今天我心情不太好。", "vietnamese": "Hôm nay tâm trạng tôi không được tốt lắm.", "category": ["xã hội"] },
+            { "chinese": "他不是中国人。", "vietnamese": "Anh ấy không phải người Trung Quốc.", "category": ["xã hội"] }
+        ]
+    },
+    "是": {
+        "hanviet": "Thị",
+        "words": [
+            { "chinese": "是不是", "meaning": "có phải không", "category": ["hỏi"] },
+            { "chinese": "是啊", "meaning": "đúng vậy", "category": ["hỏi"] }
+        ],
+        "sentences": [
+            { "chinese": "你是学生吗？", "vietnamese": "Bạn là học sinh phải không?", "category": ["hỏi"] },
+            { "chinese": "他是不是医生？", "vietnamese": "Anh ấy có phải là bác sĩ không?", "category": ["hỏi"] }
+        ]
+    },
+    "的": {
+        "hanviet": "Đích",
+        "words": [
+            { "chinese": "我的", "meaning": "của tôi", "category": ["xã hội"] },
+            { "chinese": "漂亮的", "meaning": "xinh đẹp", "category": ["xã hội"] }
+        ],
+        "sentences": [
+            { "chinese": "这是我的书。", "vietnamese": "Đây là sách của tôi.", "category": ["xã hội"] },
+            { "chinese": "她是一个漂亮的女孩子。", "vietnamese": "Cô ấy là một cô gái xinh đẹp.", "category": ["xã hội"] }
+        ]
+    },
+    "来": {
+        "hanviet": "Lai",
+        "words": [
+            { "chinese": "进来", "meaning": "vào trong", "category": ["động từ"] },
+            { "chinese": "回来", "meaning": "trở về", "category": ["động từ"] }
+        ],
+        "sentences": [
+            { "chinese": "请进来坐。", "vietnamese": "Xin mời vào trong ngồi.", "category": ["xã hội"] },
+            { "chinese": "你什么时候回来？", "vietnamese": "Khi nào bạn quay về?", "category": ["xã hội"] }
+        ]
+    },
+    "去": {
+        "hanviet": "Khứ",
+        "words": [
+            { "chinese": "出去", "meaning": "ra ngoài", "category": ["động từ"] },
+            { "chinese": "进去", "meaning": "vào trong", "category": ["động từ"] }
+        ],
+        "sentences": [
+            { "chinese": "我想出去玩。", "vietnamese": "Tôi muốn ra ngoài chơi.", "category": ["xã hội"] },
+            { "chinese": "你去过北京吗？", "vietnamese": "Bạn đã từng đến Bắc Kinh chưa?", "category": ["du lịch"] }
+        ]
+    },
+    "上": {
+        "hanviet": "Thượng",
+        "words": [
+            { "chinese": "上班", "meaning": "đi làm", "category": ["công việc"] },
+            { "chinese": "上学", "meaning": "đi học", "category": ["học tập"] }
+        ],
+        "sentences": [
+            { "chinese": "我早上八点上班。", "vietnamese": "Tôi đi làm lúc 8 giờ sáng.", "category": ["công việc"] },
+            { "chinese": "孩子们去上学了。", "vietnamese": "Lũ trẻ đã đi học rồi.", "category": ["học tập"] }
+        ]
+    },
+    "下": {
+        "hanviet": "Hạ",
+        "words": [
+            { "chinese": "下班", "meaning": "tan làm", "category": ["công việc"] },
+            { "chinese": "下雨", "meaning": "trời mưa", "category": ["thiên nhiên"] }
+        ],
+        "sentences": [
+            { "chinese": "我下午五点下班。", "vietnamese": "Tôi tan làm lúc 5 giờ chiều.", "category": ["công việc"] },
+            { "chinese": "外面下雨了。", "vietnamese": "Bên ngoài trời mưa rồi.", "category": ["thiên nhiên"] }
+        ]
+    },
+    "前": {
+        "hanviet": "Tiền",
+        "words": [
+            { "chinese": "前面", "meaning": "phía trước", "category": ["phương hướng"] },
+            { "chinese": "以前", "meaning": "trước đây", "category": ["thời gian"] }
+        ],
+        "sentences": [
+            { "chinese": "往前走就是。", "vietnamese": "Đi thẳng về phía trước là đến.", "category": ["phương hướng"] },
+            { "chinese": "我以前认识他。", "vietnamese": "Trước đây tôi đã quen anh ấy.", "category": ["xã hội"] }
+        ]
+    },
+    "后": {
+        "hanviet": "Hậu",
+        "words": [
+            { "chinese": "后面", "meaning": "phía sau", "category": ["phương hướng"] },
+            { "chinese": "以后", "meaning": "sau này", "category": ["thời gian"] }
+        ],
+        "sentences": [
+            { "chinese": "请往后看。", "vietnamese": "Xin hãy nhìn về phía sau.", "category": ["phương hướng"] },
+            { "chinese": "你以后想做什么？", "vietnamese": "Sau này bạn muốn làm gì?", "category": ["xã hội"] }
+        ]
+    },
+    "左": {
+        "hanviet": "Tả",
+        "words": [
+            { "chinese": "左边", "meaning": "bên trái", "category": ["phương hướng"] },
+            { "chinese": "左右", "meaning": "trái phải", "category": ["phương hướng"] }
+        ],
+        "sentences": [
+            { "chinese": "请向左转。", "vietnamese": "Xin hãy rẽ sang trái.", "category": ["phương hướng"] },
+            { "chinese": "他坐在我的左边。", "vietnamese": "Anh ấy ngồi bên trái tôi.", "category": ["xã hội"] }
+        ]
+    },
+    "右": {
+        "hanviet": "Hữu",
+        "words": [
+            { "chinese": "右边", "meaning": "bên phải", "category": ["phương hướng"] },
+            { "chinese": "右脚", "meaning": "chân phải", "category": ["bộ phận cơ thể"] }
+        ],
+        "sentences": [
+            { "chinese": "向右拐弯。", "vietnamese": "Rẽ sang phải.", "category": ["phương hướng"] },
+            { "chinese": "他的右脚受伤了。", "vietnamese": "Chân phải của anh ấy bị thương rồi.", "category": ["bộ phận cơ thể"] }
+        ]
+    },
+    "年": {
+        "hanviet": "Niên",
+        "words": [
+            { "chinese": "新年", "meaning": "năm mới", "category": ["thời gian"] },
+            { "chinese": "去年", "meaning": "năm ngoái", "category": ["thời gian"] }
+        ],
+        "sentences": [
+            { "chinese": "新年快乐！", "vietnamese": "Chúc mừng năm mới!", "category": ["xã hội"] },
+            { "chinese": "我们去年认识的。", "vietnamese": "Chúng tôi quen nhau từ năm ngoái.", "category": ["xã hội"] }
+        ]
+    },
+    "月": {
+        "hanviet": "Nguyệt",
+        "words": [
+            { "chinese": "月份", "meaning": "tháng", "category": ["thời gian"] },
+            { "chinese": "月亮", "meaning": "mặt trăng", "category": ["thiên nhiên"] }
+        ],
+        "sentences": [
+            { "chinese": "这个月很忙。", "vietnamese": "Tháng này rất bận rộn.", "category": ["công việc"] },
+            { "chinese": "今晚的月亮很圆。", "vietnamese": "Mặt trăng tối nay rất tròn.", "category": ["thiên nhiên"] }
+        ]
+    },
+    "日": {
+        "hanviet": "Nhật",
+        "words": [
+            { "chinese": "日子", "meaning": "ngày", "category": ["thời gian"] },
+            { "chinese": "生日", "meaning": "sinh nhật", "category": ["xã hội"] }
+        ],
+        "sentences": [
+            { "chinese": "我们每天都有进步。", "vietnamese": "Chúng ta tiến bộ mỗi ngày.", "category": ["học tập"] },
+            { "chinese": "祝你生日快乐！", "vietnamese": "Chúc bạn sinh nhật vui vẻ!", "category": ["xã hội"] }
+        ]
+    },
+    "时": {
+        "hanviet": "Thời",
+        "words": [
+            { "chinese": "时间", "meaning": "thời gian", "category": ["thời gian"] },
+            { "chinese": "时候", "meaning": "lúc, khi", "category": ["thời gian"] }
+        ],
+        "sentences": [
+            { "chinese": "你有什么时候空闲？", "vietnamese": "Khi nào bạn rảnh?", "category": ["xã hội"] },
+            { "chinese": "现在是什么时间？", "vietnamese": "Bây giờ là mấy giờ?", "category": ["thời gian"] }
+        ]
+    },
+    "分": {
+        "hanviet": "Phân",
+        "words": [
+            { "chinese": "分钟", "meaning": "phút", "category": ["thời gian"] },
+            { "chinese": "分公司", "meaning": "công ty con", "category": ["công việc"] }
+        ],
+        "sentences": [
+            { "chinese": "我等了你十分钟。", "vietnamese": "Tôi đã đợi bạn mười phút.", "category": ["thời gian"] },
+            { "chinese": "这家公司有很多分公司。", "vietnamese": "Công ty này có nhiều công ty con.", "category": ["công việc"] }
+        ]
+    },
+    "钟": {
+        "hanviet": "Chung",
+        "words": [
+            { "chinese": "时钟", "meaning": "đồng hồ", "category": ["đồ vật"] },
+            { "chinese": "闹钟", "meaning": "đồng hồ báo thức", "category": ["đồ vật"] }
+        ],
+        "sentences": [
+            { "chinese": "墙上挂着一个时钟。", "vietnamese": "Trên tường treo một chiếc đồng hồ.", "category": ["đồ vật"] },
+            { "chinese": "我的闹钟响了。", "vietnamese": "Đồng hồ báo thức của tôi đã reo.", "category": ["đồ vật"] }
+        ]
+    },
+    "想": {
+        "hanviet": "Tưởng",
+        "words": [
+            { "chinese": "想念", "meaning": "nhớ nhung", "category": ["cảm xúc"] },
+            { "chinese": "想法", "meaning": "ý tưởng", "category": ["tư duy"] }
+        ],
+        "sentences": [
+            { "chinese": "我想念我的家人。", "vietnamese": "Tôi nhớ gia đình tôi.", "category": ["cảm xúc"] },
+            { "chinese": "我有一个好想法。", "vietnamese": "Tôi có một ý tưởng hay.", "category": ["tư duy"] }
+        ]
+    },
+    "看": {
+        "hanviet": "Khán",
+        "words": [
+            { "chinese": "看书", "meaning": "đọc sách", "category": ["học tập"] },
+            { "chinese": "看电视", "meaning": "xem TV", "category": ["giải trí"] }
+        ],
+        "sentences": [
+            { "chinese": "我喜欢看书。", "vietnamese": "Tôi thích đọc sách.", "category": ["học tập"] },
+            { "chinese": "我们一起看电视吧。", "vietnamese": "Chúng ta cùng xem TV đi.", "category": ["giải trí"] }
+        ]
+    },
+    "听": {
+        "hanviet": "Thính",
+        "words": [
+            { "chinese": "听音乐", "meaning": "nghe nhạc", "category": ["giải trí"] },
+            { "chinese": "听力", "meaning": "khả năng nghe", "category": ["học tập"] }
+        ],
+        "sentences": [
+            { "chinese": "你喜欢听什么音乐？", "vietnamese": "Bạn thích nghe nhạc gì?", "category": ["giải trí"] },
+            { "chinese": "我的汉语听力不太好。", "vietnamese": "Khả năng nghe tiếng Hán của tôi không tốt lắm.", "category": ["học tập"] }
+        ]
+    },
+    "说": {
+        "hanviet": "Thuyết",
+        "words": [
+            { "chinese": "说话", "meaning": "nói chuyện", "category": ["giao tiếp"] },
+            { "chinese": "说谎", "meaning": "nói dối", "category": ["giao tiếp"] }
+        ],
+        "sentences": [
+            { "chinese": "请不要说话。", "vietnamese": "Xin đừng nói chuyện.", "category": ["giao tiếp"] },
+            { "chinese": "他总是说实话。", "vietnamese": "Anh ấy luôn nói sự thật.", "category": ["giao tiếp"] }
+        ]
+    },
+    "车": {
+        "hanviet": "Xa",
+        "words": [
+            { "chinese": "汽车", "meaning": "ô tô", "category": ["giao thông"] },
+            { "chinese": "火车", "meaning": "tàu hỏa", "category": ["giao thông"] }
+        ],
+        "sentences": [
+            { "chinese": "我买了一辆新汽车。", "vietnamese": "Tôi đã mua một chiếc ô tô mới.", "category": ["giao thông"] },
+            { "chinese": "我们坐火车去旅行。", "vietnamese": "Chúng tôi đi tàu hỏa để du lịch.", "category": ["giao thông", "du lịch"] }
+        ]
+    },
+    "钱": {
+        "hanviet": "Tiền",
+        "words": [
+            { "chinese": "有钱", "meaning": "có tiền", "category": ["tài chính"] },
+            { "chinese": "花钱", "meaning": "tiêu tiền", "category": ["tài chính"] }
+        ],
+        "sentences": [
+            { "chinese": "他很有钱。", "vietnamese": "Anh ấy rất giàu.", "category": ["tài chính"] },
+            { "chinese": "不要乱花钱。", "vietnamese": "Đừng tiêu tiền bừa bãi.", "category": ["tài chính"] }
+        ]
+    },
+    "吃": {
+        "hanviet": "Cật",
+        "words": [
+            { "chinese": "吃饭", "meaning": "ăn cơm", "category": ["ẩm thực"] },
+            { "chinese": "好吃", "meaning": "ngon", "category": ["ẩm thực"] }
+        ],
+        "sentences": [
+            { "chinese": "我们一起吃饭吧。", "vietnamese": "Chúng ta cùng ăn cơm đi.", "category": ["ẩm thực"] },
+            { "chinese": "这个菜很好吃。", "vietnamese": "Món ăn này rất ngon.", "category": ["ẩm thực"] }
+        ]
+    }
+}
