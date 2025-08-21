@@ -36,7 +36,7 @@
     ]
   },
   "大": {
-    "hanviet": "Đại,Lớn",
+    "hanviet": "Đại",
     "words": [
       {
         "chinese": "大学",
@@ -1735,6 +1735,481 @@
   },
   "亻": {
     "hanviet": "Nhân",
+    "words": [],
+    "sentences": []
+  },
+  "一": {
+    "hanviet": "Nhất",
+    "words": [],
+    "sentences": []
+  },
+  "〡": {
+    "hanviet": "Cổn",
+    "words": [],
+    "sentences": []
+  },
+  "丶": {
+    "hanviet": "Chủ",
+    "words": [],
+    "sentences": []
+  },
+  "丿": {
+    "hanviet": "Phiệt",
+    "words": [],
+    "sentences": []
+  },
+  "乙": {
+    "hanviet": "Ất",
+    "words": [],
+    "sentences": []
+  },
+  "亅": {
+    "hanviet": "Quyết",
+    "words": [],
+    "sentences": []
+  },
+  "二": {
+    "hanviet": "Nhị",
+    "words": [],
+    "sentences": []
+  },
+  "亠": {
+    "hanviet": "Đầu",
+    "words": [],
+    "sentences": []
+  },
+  "儿": {
+    "hanviet": "Nhi",
+    "words": [],
+    "sentences": []
+  },
+  "入": {
+    "hanviet": "Nhập",
+    "words": [],
+    "sentences": []
+  },
+  "八": {
+    "hanviet": "Bát",
+    "words": [],
+    "sentences": []
+  },
+  "冂": {
+    "hanviet": "Quynh",
+    "words": [],
+    "sentences": []
+  },
+  "冖": {
+    "hanviet": "Mịch",
+    "words": [],
+    "sentences": []
+  },
+  "冫": {
+    "hanviet": "Băng",
+    "words": [],
+    "sentences": []
+  },
+  "几": {
+    "hanviet": "Kỷ",
+    "words": [],
+    "sentences": []
+  },
+  "凵": {
+    "hanviet": "Khảm",
+    "words": [],
+    "sentences": []
+  },
+  "刀": {
+    "hanviet": "Đao",
+    "words": [],
+    "sentences": []
+  },
+  "刂": {
+    "hanviet": "Đao",
+    "words": [],
+    "sentences": []
+  },
+  "力": {
+    "hanviet": "Lực",
+    "words": [],
+    "sentences": []
+  },
+  "勹": {
+    "hanviet": "Bao",
+    "words": [],
+    "sentences": []
+  },
+  "匕": {
+    "hanviet": "Chuỷ",
+    "words": [],
+    "sentences": []
+  },
+  "匚": {
+    "hanviet": "Phương",
+    "words": [],
+    "sentences": []
+  },
+  "匸": {
+    "hanviet": "Hệ",
+    "words": [],
+    "sentences": []
+  },
+  "十": {
+    "hanviet": "Thập",
+    "words": [],
+    "sentences": []
+  },
+  "卜": {
+    "hanviet": "Bốc",
+    "words": [],
+    "sentences": []
+  },
+  "卩": {
+    "hanviet": "Tiết",
+    "words": [],
+    "sentences": []
+  },
+  "厂": {
+    "hanviet": "Hán",
+    "words": [],
+    "sentences": []
+  },
+  "厶": {
+    "hanviet": "Khư, tư",
+    "words": [],
+    "sentences": []
+  },
+  "又": {
+    "hanviet": "Hựu",
+    "words": [],
+    "sentences": []
+  },
+  "口": {
+    "hanviet": "Khẩu",
+    "words": [],
+    "sentences": []
+  },
+  "囗": {
+    "hanviet": "Vi",
+    "words": [],
+    "sentences": []
+  },
+  "士": {
+    "hanviet": "Sĩ",
+    "words": [],
+    "sentences": []
+  },
+  "夂": {
+    "hanviet": "Tuy",
+    "words": [],
+    "sentences": []
+  },
+  "夊": {
+    "hanviet": "Truy",
+    "words": [],
+    "sentences": []
+  },
+  "夕": {
+    "hanviet": "Tịch",
+    "words": [],
+    "sentences": []
+  },
+  "女": {
+    "hanviet": "Nữ",
+    "words": [],
+    "sentences": []
+  },
+  "子": {
+    "hanviet": "Tử",
+    "words": [],
+    "sentences": []
+  },
+  "宀": {
+    "hanviet": "Miên",
+    "words": [],
+    "sentences": []
+  },
+  "寸": {
+    "hanviet": "Thốn",
+    "words": [],
+    "sentences": []
+  },
+  "尢": {
+    "hanviet": "Uông",
+    "words": [],
+    "sentences": []
+  },
+  "尸": {
+    "hanviet": "Thi",
+    "words": [],
+    "sentences": []
+  },
+  "屮": {
+    "hanviet": "Triệt",
+    "words": [],
+    "sentences": []
+  },
+  "川": {
+    "hanviet": "Xuyên",
+    "words": [],
+    "sentences": []
+  },
+  "巛": {
+    "hanviet": "Xuyên",
+    "words": [],
+    "sentences": []
+  },
+  "己": {
+    "hanviet": "Kỷ",
+    "words": [],
+    "sentences": []
+  },
+  "巾": {
+    "hanviet": "Cân",
+    "words": [],
+    "sentences": []
+  },
+  "干": {
+    "hanviet": "Can",
+    "words": [],
+    "sentences": []
+  },
+  "幺": {
+    "hanviet": "Yêu",
+    "words": [],
+    "sentences": []
+  },
+  "广": {
+    "hanviet": "Nghiễm",
+    "words": [],
+    "sentences": []
+  },
+  "廴": {
+    "hanviet": "Dẫn",
+    "words": [],
+    "sentences": []
+  },
+  "廾": {
+    "hanviet": "Củng",
+    "words": [],
+    "sentences": []
+  },
+  "弋": {
+    "hanviet": "Dặc",
+    "words": [],
+    "sentences": []
+  },
+  "弓": {
+    "hanviet": "Cung",
+    "words": [],
+    "sentences": []
+  },
+  "彐": {
+    "hanviet": "Kệ",
+    "words": [],
+    "sentences": []
+  },
+  "彡": {
+    "hanviet": "Sam",
+    "words": [],
+    "sentences": []
+  },
+  "彳": {
+    "hanviet": "Xích",
+    "words": [],
+    "sentences": []
+  },
+  "心": {
+    "hanviet": "Tâm",
+    "words": [],
+    "sentences": []
+  },
+  "忄": {
+    "hanviet": "Tâm",
+    "words": [],
+    "sentences": []
+  },
+  "戈": {
+    "hanviet": "Qua",
+    "words": [],
+    "sentences": []
+  },
+  "户": {
+    "hanviet": "Hộ",
+    "words": [],
+    "sentences": []
+  },
+  "手": {
+    "hanviet": "Thủ",
+    "words": [],
+    "sentences": []
+  },
+  "扌": {
+    "hanviet": "Thủ",
+    "words": [],
+    "sentences": []
+  },
+  "支": {
+    "hanviet": "Chi",
+    "words": [],
+    "sentences": []
+  },
+  "攴": {
+    "hanviet": "Phộc",
+    "words": [],
+    "sentences": []
+  },
+  "攵": {
+    "hanviet": "Phộc",
+    "words": [],
+    "sentences": []
+  },
+  "斗": {
+    "hanviet": "Đẩu",
+    "words": [],
+    "sentences": []
+  },
+  "斤": {
+    "hanviet": "Cân",
+    "words": [],
+    "sentences": []
+  },
+  "方": {
+    "hanviet": "Phương",
+    "words": [],
+    "sentences": []
+  },
+  "无": {
+    "hanviet": "Vô",
+    "words": [],
+    "sentences": []
+  },
+  "旡": {
+    "hanviet": "Vô",
+    "words": [],
+    "sentences": []
+  },
+  "曰": {
+    "hanviet": "Viết",
+    "words": [],
+    "sentences": []
+  },
+  "木": {
+    "hanviet": "Mộc",
+    "words": [],
+    "sentences": []
+  },
+  "欠": {
+    "hanviet": "Khiếm",
+    "words": [],
+    "sentences": []
+  },
+  "止": {
+    "hanviet": "Chỉ",
+    "words": [],
+    "sentences": []
+  },
+  "歹": {
+    "hanviet": "Đãi",
+    "words": [],
+    "sentences": []
+  },
+  "殳": {
+    "hanviet": "Thù",
+    "words": [],
+    "sentences": []
+  },
+  "毋": {
+    "hanviet": "Vô",
+    "words": [],
+    "sentences": []
+  },
+  "比": {
+    "hanviet": "Tỷ",
+    "words": [],
+    "sentences": []
+  },
+  "毛": {
+    "hanviet": "Mao",
+    "words": [],
+    "sentences": []
+  },
+  "氏": {
+    "hanviet": "Thị",
+    "words": [],
+    "sentences": []
+  },
+  "气": {
+    "hanviet": "Khí",
+    "words": [],
+    "sentences": []
+  },
+  "氵": {
+    "hanviet": "Thủy",
+    "words": [],
+    "sentences": []
+  },
+  "氺": {
+    "hanviet": "Thủy",
+    "words": [],
+    "sentences": []
+  },
+  "灬": {
+    "hanviet": "Hỏa",
+    "words": [],
+    "sentences": []
+  },
+  "爪": {
+    "hanviet": "Trảo",
+    "words": [],
+    "sentences": []
+  },
+  "父": {
+    "hanviet": "Phụ",
+    "words": [],
+    "sentences": []
+  },
+  "爻": {
+    "hanviet": "Hào",
+    "words": [],
+    "sentences": []
+  },
+  "爿": {
+    "hanviet": "Tường",
+    "words": [],
+    "sentences": []
+  },
+  "丬": {
+    "hanviet": "Tường",
+    "words": [],
+    "sentences": []
+  },
+  "片": {
+    "hanviet": "Phiến",
+    "words": [],
+    "sentences": []
+  },
+  "牙": {
+    "hanviet": "Nha",
+    "words": [],
+    "sentences": []
+  },
+  "牛": {
+    "hanviet": "Ngưu",
+    "words": [],
+    "sentences": []
+  },
+  "牜": {
+    "hanviet": "Ngưu",
+    "words": [],
+    "sentences": []
+  },
+  "犬": {
+    "hanviet": "Khuyển",
+    "words": [],
+    "sentences": []
+  },
+  "犭": {
+    "hanviet": "Khuyển",
     "words": [],
     "sentences": []
   }
