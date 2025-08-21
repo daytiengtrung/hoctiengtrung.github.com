@@ -1839,16 +1839,8 @@ window.addEventListener("DOMContentLoaded", async () => {
 
 
 
-function updateMeta(word) {
-  // lấy từ dictionaryMap
-  let pinyin = "";
-  let hanViet = "";
-  if (dictionaryMap && dictionaryMap[word]) {
-    pinyin = dictionaryMap[word].pinyin || "";
-    hanViet = dictionaryMap[word].hanviet || "";
-  }
-
-  document.title = `${word} (${pinyinInfo}, ${hanViet}) - Học tiếng Trung`;
+ function updateMeta(word) {
+  document.title = `Học chữ hán với từ "${word}" ${pinyinInfo} - Học Tiếng Trung`;
 
   let desc = document.querySelector("meta[name='description']");
   if (!desc) {
@@ -1856,8 +1848,9 @@ function updateMeta(word) {
     desc.name = "description";
     document.head.appendChild(desc);
   }
-  desc.content = `Học chữ Hán "${word}" (${pinyin}, ${hanViet}) với cách viết, ví dụ và nghĩa tiếng Trung.`;
+  desc.content = `Học chữ Hán "${word}" với cách viết, ví dụ và nghĩa tiếng Trung.`;
 }
+
 
 		
 
