@@ -1848,7 +1848,7 @@ function updateMeta(word) {
     hanViet = dictionaryMap[word].hanviet || "";
   }
 
-  document.title = `${word} (${pinyin}, ${hanViet}) - Học tiếng Trung`;
+  document.title = `${word} (${pinyinInfo}, ${hanViet}) - Học tiếng Trung`;
 
   let desc = document.querySelector("meta[name='description']");
   if (!desc) {
