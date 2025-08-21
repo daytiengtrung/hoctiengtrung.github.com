@@ -1839,27 +1839,19 @@ window.addEventListener("DOMContentLoaded", async () => {
 
 
 
-
-		function updateMeta(word) {
-  // giữ nguyên title
+ function updateMeta(word) {
   document.title = `Học chữ hán với từ "${word}" - Học Tiếng Trung`;
 
   let descText = "";
-
   if (dictionaryMap && dictionaryMap[word]) {
     const entry = dictionaryMap[word];
     const mean = entry.mean || "";
 
-    // Lấy 2 từ vựng phổ biến đầu tiên
     let words = "";
     if (entry.words && entry.words.length > 0) {
-      words = entry.words
-        .slice(0, 2)
-        .map(w => `${w.chinese} (${w.pinyin}: ${w.meaning})`)
-        .join("; ");
+      words = entry.words.slice(0, 2).map(w => `${w.chinese} (${w.pinyin}: ${w.meaning})`).join("; ");
     }
 
-    // Lấy 1 ví dụ câu
     let example = "";
     if (entry.examples && entry.examples.length > 0) {
       const ex = entry.examples[0];
@@ -1871,14 +1863,30 @@ window.addEventListener("DOMContentLoaded", async () => {
              + (example ? `Ví dụ câu: ${example}.` : "");
   }
 
-  // cập nhật meta description (SEO)
+  // Meta description
   let desc = document.querySelector("meta[name='description']");
   if (!desc) {
     desc = document.createElement("meta");
     desc.name = "description";
     document.head.appendChild(desc);
   }
-  desc.content = descText || `Học chữ Hán "${word}" với cách viết, ví dụ và nghĩa tiếng Trung dễ dàng miễn phí.`;
+  desc.content = descText;
+
+  // 👉 Open Graph tags
+  setOgMeta("og:title", document.title);
+  setOgMeta("og:description", descText);
+  setOgMeta("og:image", "https://www.vietxinh.net/wp-content/uploads/2024/04/FB_IMG_1714407366812-225x300.jpg"); // ảnh đại diện khi share
+  setOgMeta("og:url", window.location.href);
+}
+
+function setOgMeta(property, content) {
+  let tag = document.querySelector(`meta[property='${property}']`);
+  if (!tag) {
+    tag = document.createElement("meta");
+    tag.setAttribute("property", property);
+    document.head.appendChild(tag);
+  }
+  tag.setAttribute("content", content);
 }
 
 
