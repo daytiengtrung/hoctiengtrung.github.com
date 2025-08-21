@@ -1396,7 +1396,7 @@
         
         function getHanViet(char) { 
             const hanViet = dictionaryData[char] && dictionaryData[char].hanviet ? dictionaryData[char].hanviet : '';
-            return hanViet || 'Chưa có nghĩa'; 
+            return hanViet || 'False'; 
         }
         
         function getPinyinFallback(char) { 
@@ -1840,7 +1840,7 @@ window.addEventListener("DOMContentLoaded", async () => {
 
 
  function updateMeta(word) {
-  document.title = `Học chữ hán với từ "${word}" - Học Tiếng Trung`;
+  document.title = `Học chữ hán với từ "${word}" (${pinyin}, ${hanViet}) - Học Tiếng Trung`;
 
   let desc = document.querySelector("meta[name='description']");
   if (!desc) {
