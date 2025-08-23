@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>汉字学习 - Học chữ Hán</title>
-    <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
-    <script src="https://unpkg.com/pinyin-pro@3.20.1/dist/index.js"></script>
+    <script src="https://hoctiengtrung.vercel.app/data/writer.min.js"></script>
+    <script src="https://hoctiengtrung.vercel.app/data/index.js"></script>
     <style>
         * {
             margin: 0;
@@ -1090,7 +1090,7 @@
             if (dictionaryMap) return; 
             dictionaryMap = new Map(); 
             try { 
-                const response = await fetch('https://raw.githubusercontent.com/skishore/makemeahanzi/master/dictionary.txt'); 
+                const response = await fetch('https://hoctiengtrung.vercel.app/data/dictionary.txt'); 
                 if (!response.ok) throw new Error('Failed to load dictionary'); 
                 const text = await response.text(); 
                 const lines = text.trim().split('\n'); 
@@ -1303,17 +1303,9 @@
     }
 
     writerDiv.innerHTML = `
-  <div class="writer-container">
-    <div class="writer-div" id="writer-${char}">
-      <svg xmlns="http://www.w3.org/2000/svg" width="220" height="220"
-           style="position:absolute;top:0;left:0;z-index:0;">
-        <line x1="0" y1="0" x2="220" y2="220" stroke="#DDD" />
-        <line x1="220" y1="0" x2="0" y2="220" stroke="#DDD" />
-        <line x1="110" y1="0" x2="110" y2="220" stroke="#DDD" />
-        <line x1="0" y1="110" x2="220" y2="110" stroke="#DDD" />
-      </svg>
-    </div>
-  </div>
+        <div class="writer-container">
+            <div class="writer-div" id="writer-${char}"></div>
+        </div>
         <div class="info-panel">
             <h3>🔍 Chữ: ${char}</h3>
             <div class="info-item">
