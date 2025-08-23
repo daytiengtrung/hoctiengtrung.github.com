@@ -147,14 +147,14 @@
         "chinese": "我们",
         "meaning": "chúng ta, chúng tôi",
         "category": [
-          "xã hội"
+          "giao tiếp"
         ]
       },
       {
         "chinese": "我自己",
-        "meaning": "chính tôi",
+        "meaning": "chính tôi, tự mình tôi",
         "category": [
-          "xã hội"
+          "giao tiếp"
         ]
       }
     ],
@@ -163,15 +163,22 @@
         "chinese": "我们一起学习吧。",
         "vietnamese": "Chúng ta cùng học nhé.",
         "category": [
-          "xã hội",
+          "giao tiếp",
           "học tập"
         ]
       },
       {
         "chinese": "我爱吃米饭。",
-        "vietnamese": "Tôi thích ăn cơm.",
+        "vietnamese": "Tôi thích ăn cơm",
         "category": [
-          "xã hội"
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "我喜欢汉语",
+        "vietnamese": "Tôi thích tiếng Trung",
+        "category": [
+          "giao tiếp"
         ]
       }
     ]
@@ -183,31 +190,71 @@
         "chinese": "他们",
         "meaning": "bọn họ",
         "category": [
-          "xã hội"
+          "giao tiếp"
         ]
       },
       {
         "chinese": "他家",
         "meaning": "nhà của anh ấy",
         "category": [
-          "xã hội"
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "你们",
+        "meaning": "Các bạn",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "他来了",
+        "meaning": "Anh ấy đã đến",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "她们",
+        "meaning": "Bọn họ(nữ giới)",
+        "category": [
+          "giao tiếp"
         ]
       }
     ],
     "sentences": [
       {
+        "chinese": "从笔迹上看不出他是男的还是女的",
+        "vietnamese": "Qua nét bút không thể nhìn ra anh ấy là nam hay nữ.",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
         "chinese": "他是我的朋友。",
         "vietnamese": "Anh ấy là bạn của tôi.",
         "category": [
-          "xã hội"
+          "giao tiếp"
         ]
       },
       {
         "chinese": "他们去哪儿了？",
         "vietnamese": "Bọn họ đi đâu rồi?",
         "category": [
-          "xã hội"
+          "giao tiếp"
         ]
+      },
+      {
+        "chinese": "这是我的妈妈，她今年45岁",
+        "vietnamese": "Đây là mẹ của tôi, bà ấy năm nay 45 tuổi",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "她们是好姐妹",
+        "vietnamese": "Các cô ấy là chị em tốt của nhau",
+        "category": []
       }
     ]
   },
@@ -328,14 +375,14 @@
     "words": [
       {
         "chinese": "土地",
-        "meaning": "đất đai",
+        "meaning": "Thổ địa",
         "category": [
           "thiên nhiên"
         ]
       },
       {
         "chinese": "土壤",
-        "meaning": "đất",
+        "meaning": "Thổ nhưỡng",
         "category": [
           "thiên nhiên"
         ]
@@ -856,25 +903,59 @@
     ]
   },
   "会": {
-    "hanviet": "Hội",
+    "hanviet": "Biết,Họp,Hội",
     "words": [
       {
+        "chinese": "会面",
+        "meaning": "Gặp mặt, gặp nhau.",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
         "chinese": "开会",
-        "meaning": "họp",
+        "meaning": "Họp",
         "category": [
           "công việc"
         ]
       },
       {
         "chinese": "机会",
-        "meaning": "cơ hội",
+        "meaning": "Cơ hội",
         "category": [
-          "công việc",
-          "xã hội"
+          "công việc"
+        ]
+      },
+      {
+        "chinese": "误会",
+        "meaning": "Hiểu lầm.",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "会客",
+        "meaning": "Tiếp khách",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "社会",
+        "meaning": "Xã hội",
+        "category": [
+          "giao tiếp"
         ]
       }
     ],
     "sentences": [
+      {
+        "chinese": "今天有一个会。",
+        "vietnamese": "Hôm nay có một cuộc họp.",
+        "category": [
+          "công việc"
+        ]
+      },
       {
         "chinese": "我明天要开会。",
         "vietnamese": "Ngày mai tôi phải đi họp.",
@@ -886,8 +967,70 @@
         "chinese": "这是一个很好的机会。",
         "vietnamese": "Đây là một cơ hội rất tốt.",
         "category": [
-          "công việc",
-          "xã hội"
+          "công việc"
+        ]
+      },
+      {
+        "chinese": "我会说汉语",
+        "vietnamese": "Tôi biết nói tiếng Hán",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "今天会下雨吗？",
+        "vietnamese": "Hôm nay trời có mưa không?",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "明年的计划一定会实现",
+        "vietnamese": "ế hoạch năm tới nhất định sẽ thực hiện.",
+        "category": [
+          "công việc"
+        ]
+      },
+      {
+        "chinese": "你会游泳吗",
+        "vietnamese": "Bạn có biết bơi không?",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "我误会了他的意思",
+        "vietnamese": "Tôi đã hiểu lầm ý anh ấy.",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "昨天没有会着他。",
+        "vietnamese": "Hôm qua không gặp anh ấy",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "今天李校长不会客",
+        "vietnamese": "Hôm nay hiệu trưởng Lý không tiếp khách",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "他最不会说话。",
+        "vietnamese": "Anh ấy không giỏi ăn nói.",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "庙会上有很多小吃。",
+        "vietnamese": "Hội chùa có rất nhiều đồ ăn vặt.",
+        "category": [
+          "giao tiếp"
         ]
       }
     ]
@@ -1670,30 +1813,30 @@
         "chinese": "有钱",
         "meaning": "có tiền",
         "category": [
-          "tài chính"
+          "giao tiếp"
         ]
       },
       {
         "chinese": "花钱",
         "meaning": "tiêu tiền",
         "category": [
-          "tài chính"
+          "giao tiếp"
         ]
       }
     ],
     "sentences": [
       {
         "chinese": "他很有钱。",
-        "vietnamese": "Anh ấy rất giàu.",
+        "vietnamese": "Anh ấy rất nhiều tiền",
         "category": [
-          "tài chính"
+          "giao tiếp"
         ]
       },
       {
         "chinese": "不要乱花钱。",
         "vietnamese": "Đừng tiêu tiền bừa bãi.",
         "category": [
-          "tài chính"
+          "giao tiếp"
         ]
       }
     ]
@@ -2848,144 +2991,4 @@
     "words": [],
     "sentences": []
   },
-  "鳥": {
-    "hanviet": "Điểu",
-    "words": [],
-    "sentences": []
-  },
-  "鸟": {
-    "hanviet": "Điểu",
-    "words": [],
-    "sentences": []
-  },
-  "鹵": {
-    "hanviet": "Lỗ",
-    "words": [],
-    "sentences": []
-  },
-  "鹿": {
-    "hanviet": "Lộc",
-    "words": [],
-    "sentences": []
-  },
-  "麥": {
-    "hanviet": "Mạch",
-    "words": [],
-    "sentences": []
-  },
-  "麦": {
-    "hanviet": "Mạch",
-    "words": [],
-    "sentences": []
-  },
-  "麻": {
-    "hanviet": "Ma",
-    "words": [],
-    "sentences": []
-  },
-  "黃": {
-    "hanviet": "Hoàng",
-    "words": [],
-    "sentences": []
-  },
-  "黍": {
-    "hanviet": "Thử",
-    "words": [],
-    "sentences": []
-  },
-  "黑": {
-    "hanviet": "Hắc",
-    "words": [],
-    "sentences": []
-  },
-  "黹": {
-    "hanviet": "Chỉ",
-    "words": [],
-    "sentences": []
-  },
-  "黽": {
-    "hanviet": "Mãnh",
-    "words": [],
-    "sentences": []
-  },
-  "鼎": {
-    "hanviet": "Đỉnh",
-    "words": [],
-    "sentences": []
-  },
-  "鼓": {
-    "hanviet": "Cổ",
-    "words": [],
-    "sentences": []
-  },
-  "鼠": {
-    "hanviet": "Thử",
-    "words": [],
-    "sentences": []
-  },
-  "鼻": {
-    "hanviet": "Tỵ",
-    "words": [],
-    "sentences": []
-  },
-  "齊": {
-    "hanviet": "Tề",
-    "words": [],
-    "sentences": []
-  },
-  "斉": {
-    "hanviet": "Tề",
-    "words": [],
-    "sentences": []
-  },
-  "齐": {
-    "hanviet": "Tề",
-    "words": [],
-    "sentences": []
-  },
-  "齒": {
-    "hanviet": "Xỉ",
-    "words": [],
-    "sentences": []
-  },
-  "齿": {
-    "hanviet": "Xỉ",
-    "words": [],
-    "sentences": []
-  },
-  "歯": {
-    "hanviet": "Xỉ",
-    "words": [],
-    "sentences": []
-  },
-  "龍": {
-    "hanviet": "Long",
-    "words": [],
-    "sentences": []
-  },
-  "龙": {
-    "hanviet": "Long",
-    "words": [],
-    "sentences": []
-  },
-  "龜": {
-    "hanviet": "Quy",
-    "words": [],
-    "sentences": []
-  },
-  "亀": {
-    "hanviet": "Quy",
-    "words": [],
-    "sentences": []
-  },
-  "龟": {
-    "hanviet": "Quy",
-    "words": [],
-    "sentences": []
-  },
-  "龠": {
-    "hanviet": "Dược",
-    "words": [],
-    "sentences": []
-  }
-}
+  "鳥"
