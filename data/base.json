@@ -224,8 +224,8 @@
     ],
     "sentences": [
       {
-        "chinese": "从笔迹上看不出他是男的还是女的",
-        "vietnamese": "Qua nét bút không thể nhìn ra anh ấy là nam hay nữ.",
+        "chinese": "看不出他是男的还是女的",
+        "vietnamese": "Không thể nhìn ra anh ấy là nam hay nữ.",
         "category": [
           "giao tiếp"
         ]
@@ -254,7 +254,9 @@
       {
         "chinese": "她们是好姐妹",
         "vietnamese": "Các cô ấy là chị em tốt của nhau",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       }
     ]
   },
@@ -3167,47 +3169,65 @@
       {
         "chinese": "他送给我一个黑色的书包。",
         "vietnamese": "Anh ấy tặng tôi một cái cặp sách màu đen.",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "才几个月你就忘了",
         "vietnamese": "Mới có mấy tháng mà cậu đã quên rồi?",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "个个都是好样",
         "vietnamese": "Mỗi người đều giỏi giang.",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "我的一个耳朵好疼啊",
         "vietnamese": "Một bên tai của tôi đau quá.",
-        "category": []
+        "category": [
+          "bệnh viện"
+        ]
       },
       {
         "chinese": "我送给他两个苹果",
         "vietnamese": "Tôi tặng cậu ta hai quả táo.",
-        "category": []
+        "category": [
+          "hoa quả"
+        ]
       },
       {
         "chinese": "世界上只有一个太阳",
         "vietnamese": "Trên thế giới chỉ có một mặt trời.",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "你们要认真地做这个动作",
         "vietnamese": "Các cậu phải nghiêm túc thực hiện động tác này",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "两个月都过去了，他怎么没找我来呢？",
         "vietnamese": "Hai tháng đã trôi qua rồi, sao anh ấy không đến tìm tôi nhỉ?",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "这个蛋糕好好吃啊。",
         "vietnamese": "Cái bánh gato này ngon quá.",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       }
     ]
   }
