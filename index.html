@@ -312,12 +312,24 @@
         }
         
         .writer-div {
-            width: 220px;
-            height: 220px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            background: white;
-        }
+    width: 220px;
+    height: 220px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    background: white;
+
+    /* thêm grid nền */
+    background-image: url('data:image/svg+xml;utf8,
+      <svg xmlns="http://www.w3.org/2000/svg" width="220" height="220">
+        <line x1="0" y1="0" x2="220" y2="220" stroke="%23DDD" />
+        <line x1="220" y1="0" x2="0" y2="220" stroke="%23DDD" />
+        <line x1="110" y1="0" x2="110" y2="220" stroke="%23DDD" />
+        <line x1="0" y1="110" x2="220" y2="110" stroke="%23DDD" />
+      </svg>');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
         
         .info-panel h3 {
             color: #333;
