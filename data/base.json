@@ -109,7 +109,14 @@
     "hanviet": "Bạn",
     "words": [
       {
-        "chinese": "你多岁?",
+        "chinese": "你在哪里",
+        "meaning": "Bạn đang ở đâu",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "你多少岁?",
         "meaning": "Bạn bao nhiêu tuổi?",
         "category": [
           "giao tiếp"
@@ -137,11 +144,16 @@
         ]
       },
       {
-        "chinese": "你们吃什么？",
-        "meaning": "Các bạn ăn gì",
+        "chinese": "你真漂亮",
+        "meaning": "Bạn rất đẹp",
         "category": [
           "giao tiếp"
         ]
+      },
+      {
+        "chinese": "你是谁",
+        "meaning": "bạn là ai",
+        "category": []
       }
     ],
     "sentences": [
@@ -197,6 +209,48 @@
       {
         "chinese": "你们都是大人了，想去哪儿就去哪儿我都不管",
         "vietnamese": "Các con đều lớn cả rồi, muốn đi đâu thì đi tôi không quản nữa",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "你去玩吗",
+        "vietnamese": "bạn có đi chơi không",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "你住在哪里",
+        "vietnamese": "Bạn sống ở đâu",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "你今年多大？",
+        "vietnamese": "Bạn năm nay bao nhiêu tuổi?",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "你们吃什么？",
+        "vietnamese": "Các bạn ăn gì",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "你在干什么",
+        "vietnamese": "bạn đang làm gì",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "你做什么工作",
+        "vietnamese": "bạn làm công việc gì",
         "category": [
           "giao tiếp"
         ]
@@ -700,7 +754,9 @@
       {
         "chinese": "他在学习如何操作电脑",
         "vietnamese": "Anh ấy đang học cách vận hành máy tính.",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       }
     ]
   },
@@ -3723,6 +3779,118 @@
         "vietnamese": "Lẽ ra cô ấy có thể làm tốt hơn",
         "category": [
           "công việc"
+        ]
+      }
+    ]
+  },
+  "体": {
+    "hanviet": "Thể",
+    "words": [
+      {
+        "chinese": "身体",
+        "meaning": "thân thể",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "体育",
+        "meaning": "Thể thao",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "体力",
+        "meaning": "thể lực",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "身体检查",
+        "meaning": "Kiểm tra sức khỏe.",
+        "category": [
+          "bệnh viện"
+        ]
+      },
+      {
+        "chinese": "身体健康",
+        "meaning": "Sức khỏe cơ thể.",
+        "category": [
+          "bệnh viện"
+        ]
+      }
+    ],
+    "sentences": [
+      {
+        "chinese": "身体健康才能工作好",
+        "vietnamese": "Cơ thể khỏe mạnh mới làm việc tốt.",
+        "category": [
+          "công việc"
+        ]
+      },
+      {
+        "chinese": "你的身体怎么样",
+        "vietnamese": "Sức khỏe của bạn thế nào?",
+        "category": [
+          "bệnh viện"
+        ]
+      },
+      {
+        "chinese": "吃苹果ì对身体很好。",
+        "vietnamese": "Ăn táo tốt cho sức khỏe.",
+        "category": [
+          "hoa quả"
+        ]
+      },
+      {
+        "chinese": "运动ì对身体好",
+        "vietnamese": "Tập thể dục tốt cho cơ thể.",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "游泳对身体很有好处。",
+        "vietnamese": "Bơi có lợi cho sức khỏe.",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "身体不适应该休息。",
+        "vietnamese": "Cơ thể không thoải mái nên nghỉ ngơi.",
+        "category": [
+          "công việc"
+        ]
+      },
+      {
+        "chinese": "我们要照顾好自己的身体",
+        "vietnamese": "Chúng ta phải chăm sóc tốt cơ thể mình.",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "我的身体很好。",
+        "vietnamese": "Cơ thể của tôi rất khỏe mạnh.",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "她的身体有点儿不舒服。",
+        "vietnamese": "Cơ thể của cô ấy hơi khó chịu.",
+        "category": [
+          "công việc"
+        ]
+      },
+      {
+        "chinese": "医生说要多锻炼身体。",
+        "vietnamese": "Bác sĩ bảo cần luyện tập cơ thể nhiều hơn.",
+        "category": [
+          "bệnh viện"
         ]
       }
     ]
