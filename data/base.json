@@ -153,7 +153,16 @@
       {
         "chinese": "你是谁",
         "meaning": "bạn là ai",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "你好可爱",
+        "meaning": "bạn rất dễ thương",
+        "category": [
+          "giao tiếp"
+        ]
       }
     ],
     "sentences": [
@@ -672,6 +681,13 @@
     "hanviet": "Tác,Làm",
     "words": [
       {
+        "chinese": "作者",
+        "meaning": "tác giả",
+        "category": [
+          "học tập"
+        ]
+      },
+      {
         "chinese": "操作",
         "meaning": "thao tác",
         "category": [
@@ -709,6 +725,13 @@
       }
     ],
     "sentences": [
+      {
+        "chinese": "这本书的作者是谁？",
+        "vietnamese": "Tác giả cuốn sách này là ai?",
+        "category": [
+          "học tập"
+        ]
+      },
       {
         "chinese": "这里都是我的新作",
         "vietnamese": "Chỗ này đều là tác phẩm mới của tôi",
@@ -756,6 +779,27 @@
         "vietnamese": "Anh ấy đang học cách vận hành máy tính.",
         "category": [
           "công việc"
+        ]
+      },
+      {
+        "chinese": "作者简介",
+        "vietnamese": "tiểu sử tác giả",
+        "category": [
+          "học tập"
+        ]
+      },
+      {
+        "chinese": "著名作者",
+        "vietnamese": "tác giả nổi tiếng",
+        "category": [
+          "học tập"
+        ]
+      },
+      {
+        "chinese": "这位著名的作者已经出版了十本小说。",
+        "vietnamese": "Tác giả nổi tiếng này đã xuất bản mười cuốn tiểu thuyết.",
+        "category": [
+          "học tập"
         ]
       }
     ]
@@ -3787,6 +3831,11 @@
     "hanviet": "Thể",
     "words": [
       {
+        "chinese": "体重",
+        "meaning": "cân nặng",
+        "category": []
+      },
+      {
         "chinese": "身体",
         "meaning": "thân thể",
         "category": [
@@ -3816,10 +3865,22 @@
       },
       {
         "chinese": "身体健康",
-        "meaning": "Sức khỏe cơ thể.",
+        "meaning": "Cơ thể khoẻ mạnh",
         "category": [
           "bệnh viện"
         ]
+      },
+      {
+        "chinese": "体力",
+        "meaning": "Thể lực",
+        "category": [
+          "bệnh viện"
+        ]
+      },
+      {
+        "chinese": "体质",
+        "meaning": "thể chất",
+        "category": []
       }
     ],
     "sentences": [
@@ -3891,6 +3952,172 @@
         "vietnamese": "Bác sĩ bảo cần luyện tập cơ thể nhiều hơn.",
         "category": [
           "bệnh viện"
+        ]
+      }
+    ]
+  },
+  "字": {
+    "hanviet": "Tự",
+    "words": [
+      {
+        "chinese": "字体",
+        "meaning": "kiểu chữ, phông chữ",
+        "category": [
+          "học tập"
+        ]
+      }
+    ],
+    "sentences": []
+  },
+  "具": {
+    "hanviet": "Cụ",
+    "words": [
+      {
+        "chinese": "具体",
+        "meaning": "cụ thể",
+        "category": [
+          "giao tiếp"
+        ]
+      }
+    ],
+    "sentences": []
+  },
+  "什": {
+    "hanviet": "shén",
+    "words": [
+      {
+        "chinese": "什么",
+        "meaning": "cái gì",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "为什么",
+        "meaning": "tại sao",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "干什么",
+        "meaning": "làm gì, để làm gì",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "什么时候",
+        "meaning": "khi nào, lúc nào",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "没什么",
+        "meaning": "không có gì, không sao",
+        "category": [
+          "giao tiếp"
+        ]
+      }
+    ],
+    "sentences": [
+      {
+        "chinese": "你想吃什么？",
+        "vietnamese": "Bạn muốn ăn gì?",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "你的名字是什么",
+        "vietnamese": "Tên của bạn là gì thế?",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "你做什么工作 ?",
+        "vietnamese": "Bạn làm công việc gì?",
+        "category": [
+          "công việc"
+        ]
+      },
+      {
+        "chinese": "你为什么不信我",
+        "vietnamese": "Tại sao bạn không tin tôi",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "星期天你做什么？",
+        "vietnamese": "Chủ nhật bạn làm gì?",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "你 在想什么？",
+        "vietnamese": "Bạn đang nghĩ gì?",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "这是什么",
+        "vietnamese": "Đây là cái gì?",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "他去了什么地方？",
+        "vietnamese": "Anh ấy đã đi đến nơi nào?",
+        "category": [
+          "du lịch"
+        ]
+      },
+      {
+        "chinese": "她买什么礼物？",
+        "vietnamese": "Cô ấy mua quà gì?",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "盒子里有什么",
+        "vietnamese": "Trong hộp có gì?",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "这是什么药？",
+        "vietnamese": "đây là thuốc gì?",
+        "category": [
+          "bệnh viện"
+        ]
+      },
+      {
+        "chinese": "你刚说什么？",
+        "vietnamese": "Bạn vừa nói gì?",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "看不见什么东西",
+        "vietnamese": "không nhìn thấy đồ gì",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "现在是什么时候,你不做饭吗?",
+        "vietnamese": "Bây giờ là mấy giờ rồi, bạn không nấu cơm sao?",
+        "category": [
+          "giao tiếp"
         ]
       }
     ]
