@@ -15,14 +15,14 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Học chữ Hán" />
 <meta property="og:description" content="Học chữ Hán với cách viết,từ vựng,ví dụ câu và nghĩa tiếng Trung." />
-<meta property="og:image" content="https://hoctiengtrung.vercel.app/data/share.png" />
-<meta property="og:url" content="https://hoctiengtrung.vercel.app/" />
+<meta property="og:image" content="https://luyentiengtrung.com/data/share.png" />
+<meta property="og:url" content="https://luyentiengtrung.com/" />
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Học chữ Hán">
 <meta name="twitter:description" content="Học chữ Hán với cách viết,từ vựng, ví dụ và nghĩa tiếng Trung.">
-<meta name="twitter:image" content="https://hoctiengtrung.vercel.app/data/share.png">
+<meta name="twitter:image" content="https://luyentiengtrung.com/data/share.png">
 
 	
 	<!-- Google tag (gtag.js) -->
@@ -36,8 +36,8 @@
 </script>
 	
 	
-	<script src="https://hoctiengtrung.vercel.app/data/writer.min.js"></script>
-    <script src="https://hoctiengtrung.vercel.app/data/index.js"></script>
+	<script src="https://luyentiengtrung.com/data/writer.min.js"></script>
+    <script src="https://luyentiengtrung.com/data/index.js"></script>
     <style>
         * {
             margin: 0;
@@ -1157,7 +1157,7 @@
     
     <div class="support-content">
         <div class="qr-code">
-            <img src="https://hoctiengtrung.vercel.app/data/vietcombank.jpg" alt="Mã QR ủng hộ tác giả" />
+            <img src="https://luyentiengtrung.com/data/vietcombank.jpg" alt="Mã QR ủng hộ tác giả" />
         </div>
         <div class="account-info">
             <p><strong>Số tài khoản:</strong> <span id="accountNumber">0351001084744</span></p>
@@ -1255,7 +1255,7 @@
             if (dictionaryMap) return; 
             dictionaryMap = new Map(); 
             try { 
-                const response = await fetch('https://hoctiengtrung.vercel.app/data/dictionary.txt'); 
+                const response = await fetch('https://luyentiengtrung.com/data/dictionary.txt'); 
                 if (!response.ok) throw new Error('Failed to load dictionary'); 
                 const text = await response.text(); 
                 const lines = text.trim().split('\n'); 
@@ -1276,7 +1276,7 @@
             if (dataPromise) return dataPromise;
             dataPromise = new Promise(async (resolve, reject) => {
                 try {
-                    const response = await fetch('https://hoctiengtrung.vercel.app/data/base.json');
+                    const response = await fetch('https://luyentiengtrung.com/data/base.json');
                     if (!response.ok) throw new Error('Failed to load base.json');
                     dictionaryData = await response.json();
 
@@ -2050,7 +2050,7 @@ window.addEventListener("DOMContentLoaded", async () => {
   // 👉 Open Graph tags
   setOgMeta("og:title", document.title);
   setOgMeta("og:description", descText);
-  setOgMeta("og:image", "https://www.vietxinh.net/wp-content/uploads/2024/04/FB_IMG_1714407366812-225x300.jpg"); // ảnh đại diện khi share
+  setOgMeta("og:image", "https://luyentiengtrung.com/data/vietcombank.jpg"); // ảnh đại diện khi share
   setOgMeta("og:url", window.location.href);
 }
 
