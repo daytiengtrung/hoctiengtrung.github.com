@@ -692,6 +692,103 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
+
+
+
+
+
+
+
+
+
+
+
+/* Container chính, nền trắng và tự động co giãn */
+.support-section {
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Căn chỉnh nội dung QR và tài khoản nằm ngang hàng, căn lề trái */
+.support-content {
+    display: flex;
+    justify-content: center; /* Sửa ở đây để căn lề trái */
+    align-items: flex-start; /* Căn chỉnh nội dung lên đầu (top) */
+    gap: 30px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.qr-code img {
+    max-width: 200px;
+    height: auto;
+    border-radius: 5px;
+}
+
+.account-info {
+    text-align: left;
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.support-section h3 {
+    color: #4a4a4a;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+.support-section p {
+    color: #666;
+    margin-bottom: 10px;
+}
+.qr-code img {
+    width: 180px;
+    height: 200px;
+    border-radius: 5px;
+}
+.account-info {
+    text-align: left; /* Căn chỉnh thông tin tài khoản sang trái */
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+}
+.copy-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+.copy-btn:hover {
+    background-color: #45a049;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         @media (max-width: 768px) {
             .categories-grid {
                 grid-template-columns: 1fr;
@@ -1005,9 +1102,15 @@
                 </div>
                 <div class="category-buttons">
                     <button class="filter-btn active" data-category="all">Tất cả</button>
+					<button class="filter-btn" data-category="giao tiếp">Giao tiếp 🗣️</button>
                     <button class="filter-btn" data-category="du lịch">Du lịch ✈️</button>
                     <button class="filter-btn" data-category="kỹ thuật">Kỹ thuật 🛠️</button>
                     <button class="filter-btn" data-category="học tập">Học tập 📚</button>
+					<button class="filter-btn" data-category="học tập">Công việc 💼</button>
+					<button class="filter-btn" data-category="bệnh viện">Bệnh viện 💊</button>
+					<button class="filter-btn" data-category="hoa quả">Hoa quả 🏔️</button>
+					<button class="filter-btn" data-category="ẩm thực">Ẩm thực 🍜️</button>
+					<button class="filter-btn" data-category="quốc gia">Quốc gia 🌍️</button>
                 </div>
                 <div class="content-wrapper"></div>
             </div>
@@ -1020,9 +1123,16 @@
                 </div>
                 <div class="category-buttons">
                     <button class="filter-btn active" data-category="all">Tất cả</button>
+					<button class="filter-btn" data-category="giao tiếp">Giao tiếp 🗣️</button>
                     <button class="filter-btn" data-category="du lịch">Du lịch ✈️</button>
                     <button class="filter-btn" data-category="kỹ thuật">Kỹ thuật 🛠️</button>
                     <button class="filter-btn" data-category="học tập">Học tập 📚</button>
+					<button class="filter-btn" data-category="học tập">Công việc 💼</button>
+					<button class="filter-btn" data-category="bệnh viện">Bệnh viện 💊</button>
+					<button class="filter-btn" data-category="hoa quả">Hoa quả 🏔️</button>
+					<button class="filter-btn" data-category="ẩm thực">Ẩm thực 🍜️</button>
+					<button class="filter-btn" data-category="quốc gia">Quốc gia 🌍️</button>
+					
                 </div>
                 <div class="content-wrapper"></div>
             </div>
@@ -1037,7 +1147,30 @@
 			<div class="tab-nav">
 			<a href="https://tinhluongtaowine.vercel.app" class="tab-btn" target="_blank" data-page="page-hanzi">🌐 Tính Lương TaoWine</a>
 			
+			
         </div>
+		
+		
+	<div class="container support-section">
+    <h3>💌 Ủng hộ tác giả</h3>
+    <p>Đây là trang Học Tiếng Trung miễn phí không lợi nhuận nếu bạn thấy ứng dụng này hữu ích, hãy ủng hộ tác giả để dự án được duy trì và phát triển nhé!</p>
+    
+    <div class="support-content">
+        <div class="qr-code">
+            <img src="http://hoctiengtrung.vercel.app/data/vietcombank.jpg" alt="Mã QR ủng hộ tác giả" />
+        </div>
+        <div class="account-info">
+            <p><strong>Số tài khoản:</strong> <span id="accountNumber">0351001084744</span></p>
+            <p><strong>Chủ tài khoản:</strong> Tran Van Nghia</p>
+            <p><strong>Ngân hàng:</strong> Vietcombank</p>
+    <button class="copy-btn" onclick="copyToClipboard()">Sao chép số tài khoản</button>
+			
+        </div>
+    </div>
+    
+   
+</div>
+		
 		
         <p>© 2025 🐙 Học Tiếng trung | <a href="https://www.facebook.com/profile.php?id=100007963391487" target="_blank">📘Tác giả: Nghĩa Anh </a></p>
 
@@ -1341,7 +1474,7 @@
         <div class="info-panel">
             <h3>🔍 Chữ: ${char}</h3>
             <div class="info-item">
-                <div class="info-label">🗣️ Dịch:</div>
+                <div class="info-label">💬️ Dịch:</div>
                 <div class="info-value">${hanVietInfo}</div>
             </div>
             <div class="info-item">
@@ -2021,7 +2154,14 @@ async function triggerSearch(input) {
 
 
 
-
+function copyToClipboard() {
+    const accountNumber = document.getElementById('accountNumber').innerText;
+    navigator.clipboard.writeText(accountNumber).then(() => {
+        alert('Đã sao chép số tài khoản ' + accountNumber);
+    }).catch(err => {
+        console.error('Lỗi khi sao chép: ', err);
+    });
+}
 		
 		
     </script>
