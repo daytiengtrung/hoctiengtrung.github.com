@@ -2117,7 +2117,7 @@
         "chinese": "你有什么时候空闲？",
         "vietnamese": "Khi nào bạn rảnh?",
         "category": [
-          "xã hội"
+          "giao tiếp"
         ]
       },
       {
@@ -5056,6 +5056,55 @@
         "vietnamese": "Chúng tôi đã chuẩn bị một vài món quà.",
         "category": [
           "giao tiếp"
+        ]
+      }
+    ]
+  },
+  "秒": {
+    "hanviet": "Giây",
+    "words": [
+      {
+        "chinese": "秒钟",
+        "meaning": "Giây",
+        "category": [
+          "thời gian"
+        ]
+      },
+      {
+        "chinese": "秒鐘錶",
+        "meaning": "đồng hồ bấm giây",
+        "category": [
+          "giao tiếp"
+        ]
+      }
+    ],
+    "sentences": [
+      {
+        "chinese": "一分钟有六十秒",
+        "vietnamese": "Một phút có sáu mươi giây.",
+        "category": [
+          "thời gian"
+        ]
+      },
+      {
+        "chinese": "请等我几秒",
+        "vietnamese": "Xin hãy đợi tôi vài giây.",
+        "category": [
+          "thời gian"
+        ]
+      },
+      {
+        "chinese": "他只用了几秒钟就解决了这个问题。",
+        "vietnamese": "Anh ấy chỉ mất vài giây để giải quyết vấn đề này.",
+        "category": [
+          "thời gian"
+        ]
+      },
+      {
+        "chinese": "现在是两点三十分十五秒",
+        "vietnamese": "Bây giờ là 2 giờ 30 phút 15 giây.",
+        "category": [
+          "thời gian"
         ]
       }
     ]
