@@ -4207,16 +4207,11 @@
         ]
       },
       {
-        "chinese": "体力",
-        "meaning": "Thể lực",
+        "chinese": "体质",
+        "meaning": "thể chất",
         "category": [
           "bệnh viện"
         ]
-      },
-      {
-        "chinese": "体质",
-        "meaning": "thể chất",
-        "category": []
       }
     ],
     "sentences": [
@@ -4235,14 +4230,14 @@
         ]
       },
       {
-        "chinese": "吃苹果ì对身体很好。",
+        "chinese": "吃苹果对身体很好。",
         "vietnamese": "Ăn táo tốt cho sức khỏe.",
         "category": [
           "hoa quả"
         ]
       },
       {
-        "chinese": "运动ì对身体好",
+        "chinese": "运动对身体好",
         "vietnamese": "Tập thể dục tốt cho cơ thể.",
         "category": [
           "giao tiếp"
