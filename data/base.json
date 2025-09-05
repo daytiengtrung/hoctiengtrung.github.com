@@ -5103,5 +5103,111 @@
         ]
       }
     ]
+  },
+  "候": {
+    "hanviet": "Hậu,Hầu",
+    "words": [],
+    "sentences": []
+  },
+  "假": {
+    "hanviet": "Giả,Giá",
+    "words": [],
+    "sentences": []
+  },
+  "介": {
+    "hanviet": "Giới",
+    "words": [],
+    "sentences": []
+  },
+  "休": {
+    "hanviet": "Nghỉ",
+    "words": [],
+    "sentences": []
+  },
+  "以": {
+    "hanviet": "Dĩ",
+    "words": [],
+    "sentences": []
+  },
+  "但": {
+    "hanviet": "Nhưng(nhưng mà)",
+    "words": [],
+    "sentences": []
+  },
+  "使": {
+    "hanviet": "Sử | Sứ",
+    "words": [
+      {
+        "chinese": "使用",
+        "meaning": "Sử dụng",
+        "category": [
+          "giao tiếp"
+        ]
+      }
+    ],
+    "sentences": []
+  },
+  "信": {
+    "hanviet": "Tín | Tin",
+    "words": [],
+    "sentences": []
+  },
+  "位": {
+    "hanviet": "Vị",
+    "words": [],
+    "sentences": []
+  },
+  "件": {
+    "hanviet": "Kiện",
+    "words": [],
+    "sentences": []
+  },
+  "便": {
+    "hanviet": "Tiện",
+    "words": [],
+    "sentences": []
+  },
+  "像": {
+    "hanviet": "Tượng",
+    "words": [],
+    "sentences": []
+  },
+  "例": {
+    "hanviet": "Lệ(thể lệ)",
+    "words": [],
+    "sentences": []
+  },
+  "低": {
+    "hanviet": "Thấp",
+    "words": [
+      {
+        "chinese": "最低",
+        "meaning": "thấp nhất",
+        "category": [
+          "giao tiếp"
+        ]
+      }
+    ],
+    "sentences": []
+  },
+  "倒": {
+    "hanviet": "Đảo",
+    "words": [],
+    "sentences": []
+  },
+  "停": {
+    "hanviet": "Ngưng | Dừng",
+    "words": [],
+    "sentences": []
+  },
+  "份": {
+    "hanviet": "Phần",
+    "words": [],
+    "sentences": []
+  },
+  "何": {
+    "hanviet": "Hà",
+    "words": [],
+    "sentences": []
   }
 }
