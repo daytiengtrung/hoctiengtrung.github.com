@@ -5209,5 +5209,417 @@
     "hanviet": "Hà",
     "words": [],
     "sentences": []
+  },
+  "有": {
+    "hanviet": "Có",
+    "words": [
+      {
+        "chinese": "有没有",
+        "meaning": "Có hay không có",
+        "category": []
+      },
+      {
+        "chinese": "有吗？",
+        "meaning": "Có không",
+        "category": []
+      },
+      {
+        "chinese": "有了",
+        "meaning": "có rồi",
+        "category": []
+      },
+      {
+        "chinese": "有点儿",
+        "meaning": "Có chút",
+        "category": []
+      },
+      {
+        "chinese": "有些",
+        "meaning": "một số",
+        "category": []
+      },
+      {
+        "chinese": "有空",
+        "meaning": "rảnh",
+        "category": []
+      },
+      {
+        "chinese": "有时间",
+        "meaning": "có thời gian",
+        "category": []
+      },
+      {
+        "chinese": "有事",
+        "meaning": "có việc",
+        "category": []
+      },
+      {
+        "chinese": "有钱",
+        "meaning": "có tiền, giàu",
+        "category": []
+      },
+      {
+        "chinese": "有名",
+        "meaning": "nổi tiếng",
+        "category": []
+      },
+      {
+        "chinese": "有意思",
+        "meaning": "thú vị",
+        "category": []
+      },
+      {
+        "chinese": "有用",
+        "meaning": "có ích",
+        "category": []
+      },
+      {
+        "chinese": "有希望",
+        "meaning": "có hy vọng",
+        "category": []
+      },
+      {
+        "chinese": "有可能",
+        "meaning": "có thể, có khả năng",
+        "category": []
+      },
+      {
+        "chinese": "有办法",
+        "meaning": "có cách",
+        "category": []
+      },
+      {
+        "chinese": "有关系",
+        "meaning": "có liên quan",
+        "category": []
+      },
+      {
+        "chinese": "有感觉",
+        "meaning": "có cảm giác",
+        "category": []
+      },
+      {
+        "chinese": "有想法",
+        "meaning": "có ý tưởng",
+        "category": []
+      },
+      {
+        "chinese": "有目标",
+        "meaning": "có mục tiêu",
+        "category": []
+      },
+      {
+        "chinese": "有经验",
+        "meaning": "có kinh nghiệm",
+        "category": []
+      },
+      {
+        "chinese": "有能力",
+        "meaning": "có năng lực",
+        "category": []
+      },
+      {
+        "chinese": "有信心",
+        "meaning": "có tự tin",
+        "category": []
+      },
+      {
+        "chinese": "有责任",
+        "meaning": "có trách nhiệm",
+        "category": []
+      },
+      {
+        "chinese": "有点难",
+        "meaning": "hơi khó",
+        "category": []
+      },
+      {
+        "chinese": "有点奇怪",
+        "meaning": "hơi kỳ lạ",
+        "category": []
+      },
+      {
+        "chinese": "有点过分",
+        "meaning": "hơi quá đáng",
+        "category": []
+      },
+      {
+        "chinese": "有准备",
+        "meaning": "có chuẩn bị",
+        "category": []
+      },
+      {
+        "chinese": "有安排",
+        "meaning": "có sắp xếp",
+        "category": []
+      },
+      {
+        "chinese": "有收获",
+        "meaning": "có thu hoạch",
+        "category": []
+      },
+      {
+        "chinese": "有变化",
+        "meaning": "có thay đổi",
+        "category": []
+      },
+      {
+        "chinese": "有风险",
+        "meaning": "có rủi ro",
+        "category": []
+      },
+      {
+        "chinese": "有毛病",
+        "meaning": "có vấn đề",
+        "category": []
+      },
+      {
+        "chinese": "有本事",
+        "meaning": "có bản lĩnh",
+        "category": []
+      },
+      {
+        "chinese": "有眼光",
+        "meaning": "có con mắt tinh tế",
+        "category": []
+      },
+      {
+        "chinese": "有水平",
+        "meaning": "có trình độ",
+        "category": []
+      },
+      {
+        "chinese": "有品味",
+        "meaning": "có gu thẩm mỹ",
+        "category": []
+      },
+      {
+        "chinese": "有天赋",
+        "meaning": "có thiên phú",
+        "category": []
+      },
+      {
+        "chinese": "有安全感",
+        "meaning": "có cảm giác an toàn/yên tâm",
+        "category": []
+      },
+      {
+        "chinese": "有幸福感",
+        "meaning": "có cảm giác hạnh phúc",
+        "category": []
+      },
+      {
+        "chinese": "有仪式感",
+        "meaning": "có không khí, có cảm giác nghi thức",
+        "category": []
+      },
+      {
+        "chinese": "有的是",
+        "meaning": "đầy ra, nhiều vô kể",
+        "category": []
+      },
+      {
+        "chinese": "有话直说",
+        "meaning": "có gì nói thẳng",
+        "category": []
+      },
+      {
+        "chinese": "有话好说",
+        "meaning": "có gì bình tĩnh nói",
+        "category": []
+      },
+      {
+        "chinese": "有来有往",
+        "meaning": "có qua có lại",
+        "category": []
+      },
+      {
+        "chinese": "有礼貌",
+        "meaning": "lịch sự",
+        "category": []
+      },
+      {
+        "chinese": "有耐心",
+        "meaning": "kiên nhẫn",
+        "category": []
+      },
+      {
+        "chinese": "有信念",
+        "meaning": "có niềm tin",
+        "category": []
+      },
+      {
+        "chinese": "有想象力",
+        "meaning": "có trí tưởng tượng",
+        "category": []
+      },
+      {
+        "chinese": "有创造力",
+        "meaning": "có khả năng sáng tạo",
+        "category": []
+      },
+      {
+        "chinese": "有活力",
+        "meaning": "tràn đầy năng lượng",
+        "category": []
+      },
+      {
+        "chinese": "有精神",
+        "meaning": "tỉnh táo, có tinh thần",
+        "category": []
+      },
+      {
+        "chinese": "有资格",
+        "meaning": "có tư cách, đủ điều kiện",
+        "category": []
+      },
+      {
+        "chinese": "有道德",
+        "meaning": "có đạo đức",
+        "category": []
+      },
+      {
+        "chinese": "有背景",
+        "meaning": "có hậu thuẫn/quan hệ mạnh",
+        "category": []
+      },
+      {
+        "chinese": "有资源",
+        "meaning": "có nguồn lực",
+        "category": []
+      },
+      {
+        "chinese": "有实力",
+        "meaning": "có thực lực",
+        "category": []
+      },
+      {
+        "chinese": "有始有终",
+        "meaning": "làm việc có đầu có cuối",
+        "category": []
+      },
+      {
+        "chinese": "有条有理",
+        "meaning": "ngăn nắp, rõ ràng",
+        "category": []
+      },
+      {
+        "chinese": "有理有据",
+        "meaning": "có lý lẽ và bằng chứng",
+        "category": []
+      },
+      {
+        "chinese": "有板有眼",
+        "meaning": "chỉn chu, bài bản",
+        "category": []
+      },
+      {
+        "chinese": "有声有色",
+        "meaning": "sinh động, hấp dẫn",
+        "category": []
+      },
+      {
+        "chinese": "有说有笑",
+        "meaning": "vừa nói vừa cười",
+        "category": []
+      },
+      {
+        "chinese": "有吃有喝",
+        "meaning": "có ăn có uống",
+        "category": []
+      },
+      {
+        "chinese": "有来有往",
+        "meaning": "có đi có lại",
+        "category": []
+      },
+      {
+        "chinese": "有苦有甜",
+        "meaning": "có ngọt có đắng",
+        "category": []
+      },
+      {
+        "chinese": "有增有减",
+        "meaning": "có tăng có giảm",
+        "category": []
+      },
+      {
+        "chinese": "有快有慢",
+        "meaning": "có nhanh có chậm",
+        "category": []
+      },
+      {
+        "chinese": "有所不同",
+        "meaning": "có chỗ khác biệt",
+        "category": []
+      },
+      {
+        "chinese": "有所改善",
+        "meaning": "có được cải thiện",
+        "category": []
+      },
+      {
+        "chinese": "有所进步",
+        "meaning": "có tiến bộ",
+        "category": []
+      },
+      {
+        "chinese": "有所收获",
+        "meaning": "có thu hoạch",
+        "category": []
+      },
+      {
+        "chinese": "有所作为",
+        "meaning": "có cống hiến/đóng góp",
+        "category": []
+      },
+      {
+        "chinese": "有所提高",
+        "meaning": "có được nâng cao",
+        "category": []
+      },
+      {
+        "chinese": "有备无患",
+        "meaning": "chuẩn bị trước thì không lo",
+        "category": []
+      },
+      {
+        "chinese": "有名无实",
+        "meaning": "có tiếng không có miếng (hữu danh vô thực)",
+        "category": []
+      },
+      {
+        "chinese": "有话直说",
+        "meaning": "thẳng thắn nói ra",
+        "category": []
+      }
+    ],
+    "sentences": [
+      {
+        "chinese": "有钱能使鬼推磨",
+        "vietnamese": "có tiền mua tiên cũng được",
+        "category": []
+      },
+      {
+        "chinese": "有缘千里来相会",
+        "vietnamese": "có duyên nghìn dặm cũng gặp, hữu duyên thiên lí lai tương ngộ",
+        "category": []
+      },
+      {
+        "chinese": "有苦说不出",
+        "vietnamese": "cay đắng không thể giãi bày",
+        "category": []
+      },
+      {
+        "chinese": "有问必答",
+        "vietnamese": "hỏi gì đáp nấy",
+        "category": []
+      },
+      {
+        "chinese": "有利有弊",
+        "vietnamese": "mọi thứ đều có mặt lợi và hại",
+        "category": []
+      }
+    ]
   }
 }
