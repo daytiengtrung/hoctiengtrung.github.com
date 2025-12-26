@@ -827,7 +827,6 @@
             <button class="tab-btn active" data-page="page-hanzi">✏️ Học chữ Hán</button>
             <button class="tab-btn" data-page="page-vocab">📚 Bảng từ vựng</button>
             <button class="tab-btn" data-page="page-sentences">💬 Ví dụ câu</button>
-            <button class="tab-btn" data-page="page-vocab" data-category="giao tiếp">Giao tiếp 🗣️</button>
         </div>
 
 
@@ -2173,56 +2172,35 @@ function copyToClipboard() {
         console.error('Lỗi khi sao chép: ', err);
     });
 }
+		
 
 
 
 
+const searchBox = document.getElementById('global-search');
+const writerSection = document.getElementById('writer-section');
 
-// ================= TAB NAVIGATION =================
+// Mặc định ẩn search
+searchBox.style.display = 'none';
+writerSection.style.display = 'none';
+
 document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-
-        // active nút
-        document.querySelectorAll('.tab-btn').forEach(b =>
-            b.classList.remove('active')
-        );
-        btn.classList.add('active');
-
-        // ẩn toàn bộ page
-        document.querySelectorAll('.page-content').forEach(p =>
-            p.classList.remove('active')
-        );
-
         const pageId = btn.dataset.page;
-        const category = btn.dataset.category;
 
-        // hiện page
-        const page = document.getElementById(pageId);
-        if (page) page.classList.add('active');
-
-        // ===== LOGIC RIÊNG CHO TỪ VỰNG =====
-        if (pageId === 'page-vocab') {
-            if (category) {
-                // 👉 Bấm GIAO TIẾP
-                renderVocabByCategory(category);
-            } else {
-                // 👉 Bấm BẢNG TỪ VỰNG
-                renderAllVocab();
-            }
+        if (pageId === 'page-hanzi') {
+            searchBox.style.display = 'block';
+        } else {
+            searchBox.style.display = 'none';
+            writerSection.style.display = 'none';
         }
     });
 });
 
 
-function renderVocabByCategory(category) {
-    const filtered = vocabData.filter(item =>
-        item.category &&
-        item.category.toLowerCase() === category.toLowerCase()
-    );
-    renderVocabTable(filtered);
-}
 
-		
+
+
 		
     </script>
 </body>
