@@ -1101,7 +1101,7 @@
             if (dataPromise) return dataPromise;
             dataPromise = new Promise(async (resolve, reject) => {
                 try {
-                    const response = await fetch('https://hoctiengtrung.vercel.app/data/base.json');
+                    const response = await fetch('https://luyentiengtrung.com/data/base.json');
                     if (!response.ok) throw new Error('Failed to load base.json');
                     dictionaryData = await response.json();
 
