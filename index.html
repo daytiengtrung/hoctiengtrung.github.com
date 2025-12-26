@@ -2173,6 +2173,48 @@ function copyToClipboard() {
         console.error('Lỗi khi sao chép: ', err);
     });
 }
+
+
+
+
+
+// ================= TAB NAVIGATION =================
+document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+
+        // active nút
+        document.querySelectorAll('.tab-btn').forEach(b =>
+            b.classList.remove('active')
+        );
+        btn.classList.add('active');
+
+        // ẩn toàn bộ page
+        document.querySelectorAll('.page-content').forEach(p =>
+            p.classList.remove('active')
+        );
+
+        const pageId = btn.dataset.page;
+        const category = btn.dataset.category;
+
+        // hiện page
+        const page = document.getElementById(pageId);
+        if (page) page.classList.add('active');
+
+        // ===== LOGIC RIÊNG CHO TỪ VỰNG =====
+        if (pageId === 'page-vocab') {
+            if (category) {
+                // 👉 Bấm GIAO TIẾP
+                renderVocabByCategory(category);
+            } else {
+                // 👉 Bấm BẢNG TỪ VỰNG
+                renderAllVocab();
+            }
+        }
+    });
+});
+
+
+
 		
 		
     </script>
