@@ -1396,18 +1396,6 @@
         });
         
         async function triggerSearch(input) { 
-
-             // 🔁 ÉP CHUYỂN VỀ TAB "HỌC CHỮ HÁN"
-    document.querySelectorAll('.tab-btn').forEach(btn =>
-        btn.classList.remove('active')
-    );
-    document.querySelector('[data-page="page-hanzi"]').classList.add('active');
-
-    document.querySelectorAll('.page-content').forEach(p =>
-        p.classList.remove('active')
-    );
-    document.getElementById('page-hanzi').classList.add('active');
-
             if (!dataPromise) { 
                 await loadData(); 
             } 
@@ -2184,37 +2172,7 @@ function copyToClipboard() {
         console.error('Lỗi khi sao chép: ', err);
     });
 }
-
-
-
-		// ================= SEARCH CHỮ HÁN =================
-
-// Bấm nút "Học ngay"
-document.getElementById('search-btn').addEventListener('click', () => {
-    const value = document.getElementById('input-char').value.trim();
-    if (value) {
-        triggerSearch(value);
-    }
-});
-
-// Nhấn Enter trong ô input
-document.getElementById('input-char').addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
-        const value = e.target.value.trim();
-        if (value) {
-            triggerSearch(value);
-        }
-    }
-});
-
-// (Tuỳ chọn) Gõ là hiện luôn
-document.getElementById('input-char').addEventListener('input', (e) => {
-    const value = e.target.value.trim();
-    if (value.length > 0) {
-        triggerSearch(value);
-    }
-});
-
+		
 		
     </script>
 </body>
