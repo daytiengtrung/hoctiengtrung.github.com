@@ -824,9 +824,9 @@
         </div>
 
         <div class="tab-nav">
-            <button class="tab-btn" data-page="page-hanzi">✏️ Học chữ Hán</button>
-            <button class="tab-btn active" data-page="page-vocab">📚 Bảng từ vựng</button>
-            <button class="tab-btn" data-page="page-sentences">💬 Ví dụ câu</button>
+            <button class="tab-btn" data-page="page-hanzi">✏️ Chữ Hán</button>
+            <button class="tab-btn active" data-page="page-vocab">📚 Từ Vựng</button>
+            <button class="tab-btn" data-page="page-sentences">💬 Hội Thoại</button>
         </div>
 
 
@@ -1553,7 +1553,7 @@
         function createExamplesSection(char) { 
             const examples = dictionaryData[char]; 
             if (!examples) { 
-                return `<div class="examples-section"><div class="examples-title">📚 Từ vựng và ví dụ</div><div class="loading">Chưa có ví dụ cho chữ này trong cơ sở dữ liệu</div></div>`; 
+                return `<div class="examples-section"><div class="examples-title">📚 Từ Vựng & Hội Thoại</div><div class="loading">Chưa có ví dụ cho chữ này trong cơ sở dữ liệu</div></div>`; 
             } 
             
 			
@@ -1669,7 +1669,7 @@
                 }
                 html += `
                     <div class="sentences-char-section">
-                        <h2 class="sentences-char-title">Ví dụ câu (${sentences.length})</h2>
+                        <h2 class="sentences-char-title">Hội Thoại (${sentences.length})</h2>
                         <div class="sentences-list">
                             ${sentences.map(sentence => `
                                 <div class="sentence-item">
