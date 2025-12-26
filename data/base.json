@@ -5216,382 +5216,534 @@
       {
         "chinese": "有没有",
         "meaning": "Có hay không có",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有吗？",
         "meaning": "Có không",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有了",
         "meaning": "có rồi",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有点儿",
         "meaning": "Có chút",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有些",
         "meaning": "một số",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有空",
         "meaning": "rảnh",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有时间",
         "meaning": "có thời gian",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有事",
         "meaning": "có việc",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有钱",
         "meaning": "có tiền, giàu",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有名",
         "meaning": "nổi tiếng",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有意思",
         "meaning": "thú vị",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有用",
         "meaning": "có ích",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有希望",
         "meaning": "có hy vọng",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有可能",
         "meaning": "có thể, có khả năng",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有办法",
         "meaning": "có cách",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有关系",
         "meaning": "có liên quan",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有感觉",
         "meaning": "có cảm giác",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有想法",
         "meaning": "có ý tưởng",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有目标",
         "meaning": "có mục tiêu",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有经验",
         "meaning": "có kinh nghiệm",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有能力",
         "meaning": "có năng lực",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有信心",
         "meaning": "có tự tin",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有责任",
         "meaning": "có trách nhiệm",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有点难",
         "meaning": "hơi khó",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有点奇怪",
         "meaning": "hơi kỳ lạ",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有点过分",
         "meaning": "hơi quá đáng",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有准备",
         "meaning": "có chuẩn bị",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有安排",
         "meaning": "có sắp xếp",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有收获",
         "meaning": "có thu hoạch",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有变化",
         "meaning": "có thay đổi",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有风险",
         "meaning": "có rủi ro",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有毛病",
         "meaning": "có vấn đề",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有本事",
         "meaning": "có bản lĩnh",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有眼光",
         "meaning": "có con mắt tinh tế",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有水平",
         "meaning": "có trình độ",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有品味",
         "meaning": "có gu thẩm mỹ",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有天赋",
         "meaning": "có thiên phú",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有安全感",
         "meaning": "có cảm giác an toàn/yên tâm",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有幸福感",
         "meaning": "có cảm giác hạnh phúc",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有仪式感",
         "meaning": "có không khí, có cảm giác nghi thức",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有的是",
         "meaning": "đầy ra, nhiều vô kể",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有话直说",
         "meaning": "có gì nói thẳng",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有话好说",
         "meaning": "có gì bình tĩnh nói",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有来有往",
         "meaning": "có qua có lại",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有礼貌",
         "meaning": "lịch sự",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有耐心",
         "meaning": "kiên nhẫn",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有信念",
         "meaning": "có niềm tin",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有想象力",
         "meaning": "có trí tưởng tượng",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有创造力",
         "meaning": "có khả năng sáng tạo",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有活力",
         "meaning": "tràn đầy năng lượng",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有精神",
         "meaning": "tỉnh táo, có tinh thần",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有资格",
         "meaning": "có tư cách, đủ điều kiện",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有道德",
         "meaning": "có đạo đức",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有背景",
         "meaning": "có hậu thuẫn/quan hệ mạnh",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有资源",
         "meaning": "có nguồn lực",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有实力",
         "meaning": "có thực lực",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有始有终",
         "meaning": "làm việc có đầu có cuối",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有条有理",
         "meaning": "ngăn nắp, rõ ràng",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有理有据",
         "meaning": "có lý lẽ và bằng chứng",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有板有眼",
         "meaning": "chỉn chu, bài bản",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有声有色",
         "meaning": "sinh động, hấp dẫn",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有说有笑",
         "meaning": "vừa nói vừa cười",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有吃有喝",
         "meaning": "có ăn có uống",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有来有往",
         "meaning": "có đi có lại",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有苦有甜",
         "meaning": "có ngọt có đắng",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有增有减",
         "meaning": "có tăng có giảm",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有快有慢",
         "meaning": "có nhanh có chậm",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有所不同",
         "meaning": "có chỗ khác biệt",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有所改善",
         "meaning": "có được cải thiện",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有所进步",
         "meaning": "có tiến bộ",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有所收获",
         "meaning": "có thu hoạch",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有所作为",
         "meaning": "có cống hiến/đóng góp",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有所提高",
         "meaning": "có được nâng cao",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有备无患",
         "meaning": "chuẩn bị trước thì không lo",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有名无实",
         "meaning": "có tiếng không có miếng (hữu danh vô thực)",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "有话直说",
         "meaning": "thẳng thắn nói ra",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       }
     ],
     "sentences": [
