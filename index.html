@@ -1379,14 +1379,6 @@
             await triggerSearch(input); 
         });
         
-
-
-      document.getElementById('input-char').addEventListener('input', async function () {
-    const value = this.value.trim();
-    if (value.length > 0) {
-        await triggerSearch(value);
-    }
-});
         document.getElementById('input-char').addEventListener('keypress', async function(e) { 
             if (e.key === 'Enter') { 
                 const input = this.value.trim(); 
