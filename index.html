@@ -2214,6 +2214,13 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
 });
 
 
+function renderVocabByCategory(category) {
+    const filtered = vocabData.filter(item =>
+        item.category &&
+        item.category.toLowerCase() === category.toLowerCase()
+    );
+    renderVocabTable(filtered);
+}
 
 		
 		
