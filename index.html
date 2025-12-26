@@ -2184,7 +2184,37 @@ function copyToClipboard() {
         console.error('Lỗi khi sao chép: ', err);
     });
 }
-		
+
+
+
+		// ================= SEARCH CHỮ HÁN =================
+
+// Bấm nút "Học ngay"
+document.getElementById('search-btn').addEventListener('click', () => {
+    const value = document.getElementById('input-char').value.trim();
+    if (value) {
+        triggerSearch(value);
+    }
+});
+
+// Nhấn Enter trong ô input
+document.getElementById('input-char').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        const value = e.target.value.trim();
+        if (value) {
+            triggerSearch(value);
+        }
+    }
+});
+
+// (Tuỳ chọn) Gõ là hiện luôn
+document.getElementById('input-char').addEventListener('input', (e) => {
+    const value = e.target.value.trim();
+    if (value.length > 0) {
+        triggerSearch(value);
+    }
+});
+
 		
     </script>
 </body>
