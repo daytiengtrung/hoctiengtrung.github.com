@@ -1396,6 +1396,18 @@
         });
         
         async function triggerSearch(input) { 
+
+             // 🔁 ÉP CHUYỂN VỀ TAB "HỌC CHỮ HÁN"
+    document.querySelectorAll('.tab-btn').forEach(btn =>
+        btn.classList.remove('active')
+    );
+    document.querySelector('[data-page="page-hanzi"]').classList.add('active');
+
+    document.querySelectorAll('.page-content').forEach(p =>
+        p.classList.remove('active')
+    );
+    document.getElementById('page-hanzi').classList.add('active');
+
             if (!dataPromise) { 
                 await loadData(); 
             } 
