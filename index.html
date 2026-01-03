@@ -1676,7 +1676,7 @@
                             ${sentences.map(sentence => `
                                 <div class="sentence-item">
                                     <button class="audio-btn sentence-audio" onclick="playAudio('${sentence.chinese}')">🔊</button>
-                                    <div class="sentence-pinyin">${getPinyinWithTone(sentence.chinese)}</div>								
+                                    <div class="sentence-pinyin">${getPinyinWithTone(sentence.chinese)}</div>
                                     <div class="sentence-chinese">${sentence.chinese}</div>
                                     <div class="sentence-vietnamese">${sentence.vietnamese}</div>
                                 </div>
@@ -1846,10 +1846,7 @@
                             <div class="sentence-item">
                                 <button class="audio-btn sentence-audio" onclick="playAudio('${sentence.chinese}')">🔊</button>
                                 <div class="sentence-pinyin">${getPinyinWithTone(sentence.chinese)}</div>
-								<div class="sentence-chinese hanzi-click" data-hanzi="${sentence.chinese}">
-    ${sentence.chinese}
-</div>
-                                
+                                <div class="sentence-chinese">${sentence.chinese}</div>
                                 <div class="sentence-vietnamese">${sentence.vietnamese}</div>
                             </div>
                         `).join('')}
@@ -2205,6 +2202,31 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
 
 
 
+
+
+
+		// Hàm xử lý khi click vào các từ tiếng Trung trong trang
+document.addEventListener('click', function(e) {
+    // Kiểm tra nếu click vào phần tử có class chứa chữ Hán (trong từ vựng hoặc hội thoại)
+    const target = e.target.closest('.word-chinese, .sentence-chinese');
+    
+    if (target) {
+        // Lấy nội dung chữ Hán
+        const word = target.innerText;
+        
+        // Cuộn lên phần hiển thị cách viết (writer-section)
+        const writerSection = document.getElementById('writer-section');
+        writerSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        // Gán giá trị vào ô input và kích hoạt tìm kiếm
+        document.getElementById('input-char').value = word;
+        
+        // Gọi hàm triggerSearch (hàm này đã có sẵn trong index.js của bạn)
+        if (typeof triggerSearch === 'function') {
+            triggerSearch(word);
+        }
+    }
+});
 
 
 		
