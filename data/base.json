@@ -2026,9 +2026,604 @@
         "category": [
           "thời gian"
         ]
+      },
+      {
+        "chinese": "月末",
+        "meaning": "cuối tháng (văn viết trang trọng hơn)",
+        "category": [
+          "thời gian"
+        ]
+      },
+      {
+        "chinese": "当月",
+        "meaning": "tháng hiện tại",
+        "category": [
+          "thời gian"
+        ]
+      },
+      {
+        "chinese": "上月",
+        "meaning": "tháng trước",
+        "category": [
+          "thời gian"
+        ]
+      },
+      {
+        "chinese": "下月",
+        "meaning": "tháng sau",
+        "category": [
+          "thời gian"
+        ]
+      },
+      {
+        "chinese": "半月",
+        "meaning": "nửa tháng",
+        "category": [
+          "thời gian"
+        ]
+      },
+      {
+        "chinese": "月度",
+        "meaning": "hằng tháng",
+        "category": [
+          "thời gian"
+        ]
+      },
+      {
+        "chinese": "月度会议",
+        "meaning": "cuộc họp tháng",
+        "category": [
+          "thời gian"
+        ]
+      },
+      {
+        "chinese": "月薪",
+        "meaning": "lương tháng",
+        "category": [
+          "công việc"
+        ]
+      },
+      {
+        "chinese": "满月",
+        "meaning": "trăng tròn / đầy tháng (trẻ em)",
+        "category": [
+          "thời gian"
+        ]
+      },
+      {
+        "chinese": "月收入",
+        "meaning": "thu nhập tháng",
+        "category": [
+          "công việc"
+        ]
+      },
+      {
+        "chinese": "月供",
+        "meaning": "tiền trả góp hàng tháng",
+        "category": [
+          "công việc"
+        ]
+      },
+      {
+        "chinese": "月租",
+        "meaning": "tiền thuê tháng",
+        "category": [
+          "du lịch"
+        ]
+      },
+      {
+        "chinese": "月票",
+        "meaning": "vé tháng",
+        "category": [
+          "du lịch"
+        ]
+      },
+      {
+        "chinese": "月费",
+        "meaning": "phí duy trì tháng",
+        "category": [
+          "du lịch"
+        ]
+      },
+      {
+        "chinese": "月付",
+        "meaning": "thanh toán hàng tháng",
+        "category": [
+          "du lịch"
+        ]
+      },
+      {
+        "chinese": "月利息",
+        "meaning": "tiền lãi tháng",
+        "category": [
+          "du lịch"
+        ]
+      },
+      {
+        "chinese": "月支出",
+        "meaning": "chi tiêu tháng",
+        "category": [
+          "du lịch"
+        ]
+      },
+      {
+        "chinese": "月结",
+        "meaning": "kết toán tháng",
+        "category": [
+          "công việc"
+        ]
+      },
+      {
+        "chinese": "月账单",
+        "meaning": "hóa đơn tháng",
+        "category": [
+          "công việc"
+        ]
+      },
+      {
+        "chinese": "月费率",
+        "meaning": "tỷ lệ phí tháng",
+        "category": [
+          "công việc"
+        ]
+      },
+      {
+        "chinese": "月还款",
+        "meaning": "khoản trả tháng",
+        "category": [
+          "công việc"
+        ]
+      },
+      {
+        "chinese": "月光族",
+        "meaning": "hội \"vừa hết lương\"",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "月报",
+        "meaning": "báo cáo tháng",
+        "category": [
+          "công việc"
+        ]
+      },
+      {
+        "chinese": "月报表",
+        "meaning": "bảng biểu báo cáo tháng",
+        "category": [
+          "công việc"
+        ]
+      },
+      {
+        "chinese": "月计划",
+        "meaning": "kế hoạch tháng",
+        "category": [
+          "công việc"
+        ]
+      },
+      {
+        "chinese": "月任务",
+        "meaning": "nhiệm vụ tháng",
+        "category": [
+          "công việc"
+        ]
+      },
+      {
+        "chinese": "月工作量",
+        "meaning": "khối lượng công việc tháng",
+        "category": [
+          "công việc"
+        ]
+      },
+      {
+        "chinese": "月考",
+        "meaning": "bài kiểm tra tháng",
+        "category": [
+          "công việc"
+        ]
+      },
+      {
+        "chinese": "月进度",
+        "meaning": "tiến độ tháng",
+        "category": [
+          "công việc"
+        ]
+      },
+      {
+        "chinese": "月流水",
+        "meaning": "doanh thu tháng (kế toán)",
+        "category": [
+          "công việc"
+        ]
+      },
+      {
+        "chinese": "月成本",
+        "meaning": "chi phí tháng",
+        "category": [
+          "công việc"
+        ]
+      },
+      {
+        "chinese": "月产量",
+        "meaning": "sản lượng tháng",
+        "category": [
+          "công việc"
+        ]
+      },
+      {
+        "chinese": "月销量",
+        "meaning": "lượng bán ra tháng",
+        "category": [
+          "công việc"
+        ]
+      },
+      {
+        "chinese": "月库存",
+        "meaning": "hàng tồn kho tháng",
+        "category": [
+          "công việc"
+        ]
+      },
+      {
+        "chinese": "月更",
+        "meaning": "cập nhật mỗi tháng",
+        "category": [
+          "công việc"
+        ]
+      },
+      {
+        "chinese": "月卡",
+        "meaning": "thẻ tháng",
+        "category": [
+          "công việc"
+        ]
+      },
+      {
+        "chinese": "月抛",
+        "meaning": "kính áp tròng dùng 1 tháng",
+        "category": [
+          "công việc"
+        ]
+      },
+      {
+        "chinese": "月活",
+        "meaning": "người dùng hoạt động hàng tháng",
+        "category": [
+          "công việc"
+        ]
+      },
+      {
+        "chinese": "月下载量",
+        "meaning": "lượt tải về tháng",
+        "category": [
+          "công việc"
+        ]
+      },
+      {
+        "chinese": "月访问量",
+        "meaning": "lượt truy cập tháng",
+        "category": [
+          "công việc"
+        ]
+      },
+      {
+        "chinese": "月榜",
+        "meaning": "bảng xếp hạng tháng",
+        "category": [
+          "công việc"
+        ]
+      },
+      {
+        "chinese": "月爆",
+        "meaning": "chủ đề hot trong tháng",
+        "category": [
+          "công việc"
+        ]
+      },
+      {
+        "chinese": "月饼",
+        "meaning": "bánh trung thu",
+        "category": [
+          "nâng cao"
+        ]
+      },
+      {
+        "chinese": "月老",
+        "meaning": "ông Tơ (Nguyệt Lão)",
+        "category": [
+          "nâng cao"
+        ]
+      },
+      {
+        "chinese": "月桂",
+        "meaning": "cây nguyệt quế",
+        "category": [
+          "hoa quả"
+        ]
+      },
+      {
+        "chinese": "月桂叶",
+        "meaning": "lá nguyệt quế",
+        "category": [
+          "hoa quả"
+        ]
+      },
+      {
+        "chinese": "月琴",
+        "meaning": "đàn nguyệt",
+        "category": [
+          "nâng cao"
+        ]
+      },
+      {
+        "chinese": "月球",
+        "meaning": "mặt trăng (thiên thể)",
+        "category": [
+          "nâng cao"
+        ]
+      },
+      {
+        "chinese": "月相",
+        "meaning": "pha mặt trăng (các hình dạng mặt trăng)",
+        "category": [
+          "nâng cao"
+        ]
+      },
+      {
+        "chinese": "月食",
+        "meaning": "nguyệt thực",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "月全食",
+        "meaning": "nguyệt thực toàn phần",
+        "category": [
+          "nâng cao"
+        ]
+      },
+      {
+        "chinese": "月偏食",
+        "meaning": "nguyệt thực một phần",
+        "category": [
+          "nâng cao"
+        ]
+      },
+      {
+        "chinese": "月壤",
+        "meaning": "đất trên mặt trăng",
+        "category": [
+          "nâng cao"
+        ]
+      },
+      {
+        "chinese": "月轨",
+        "meaning": "quỹ đạo mặt trăng",
+        "category": [
+          "nâng cao"
+        ]
+      },
+      {
+        "chinese": "月面",
+        "meaning": "bề mặt mặt trăng",
+        "category": [
+          "nâng cao"
+        ]
+      },
+      {
+        "chinese": "月陨石",
+        "meaning": "thiên thạch từ mặt trăng",
+        "category": [
+          "nâng cao"
+        ]
+      },
+      {
+        "chinese": "月探测器",
+        "meaning": "tàu thám hiểm mặt trăng",
+        "category": [
+          "nâng cao"
+        ]
+      },
+      {
+        "chinese": "月华",
+        "meaning": "vầng sáng quanh mặt trăng",
+        "category": [
+          "nâng cao"
+        ]
+      },
+      {
+        "chinese": "月影",
+        "meaning": "bóng trăng",
+        "category": [
+          "nâng cao"
+        ]
+      },
+      {
+        "chinese": "月夜",
+        "meaning": "đêm trăng",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "月宫",
+        "meaning": "cung trăng",
+        "category": [
+          "nâng cao"
+        ]
+      },
+      {
+        "chinese": "月兔",
+        "meaning": "thỏ ngọc",
+        "category": [
+          "nâng cao"
+        ]
+      },
+      {
+        "chinese": "月轮",
+        "meaning": "vầng trăng tròn",
+        "category": [
+          "nâng cao"
+        ]
+      },
+      {
+        "chinese": "月眉",
+        "meaning": "lông mày hình trăng khuyết",
+        "category": [
+          "nâng cao"
+        ]
+      },
+      {
+        "chinese": "月色",
+        "meaning": "sắc trăng, ánh trăng",
+        "category": [
+          "nâng cao"
+        ]
+      },
+      {
+        "chinese": "月圆",
+        "meaning": "trăng tròn",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "月牙",
+        "meaning": "trăng lưỡi liềm",
+        "category": [
+          "nâng cao"
+        ]
+      },
+      {
+        "chinese": "月盈",
+        "meaning": "trăng dần tròn",
+        "category": [
+          "nâng cao"
+        ]
+      },
+      {
+        "chinese": "月亏",
+        "meaning": "trăng dần khuyết",
+        "category": [
+          "nâng cao"
+        ]
+      },
+      {
+        "chinese": "月色朦胧",
+        "meaning": "ánh trăng mờ ảo",
+        "category": [
+          "nâng cao"
+        ]
+      },
+      {
+        "chinese": "月经",
+        "meaning": "kinh nguyệt",
+        "category": [
+          "bệnh viện"
+        ]
+      },
+      {
+        "chinese": "月经期",
+        "meaning": "kỳ kinh nguyệt",
+        "category": [
+          "bệnh viện"
+        ]
+      },
+      {
+        "chinese": "月经量",
+        "meaning": "lượng kinh nguyệt",
+        "category": [
+          "bệnh viện"
+        ]
+      },
+      {
+        "chinese": "月经过多",
+        "meaning": "kinh nguyệt ra nhiều",
+        "category": [
+          "bệnh viện"
+        ]
+      },
+      {
+        "chinese": "月经痛",
+        "meaning": "đau bụng kinh",
+        "category": [
+          "bệnh viện"
+        ]
+      },
+      {
+        "chinese": "月经不调",
+        "meaning": "kinh nguyệt không đều",
+        "category": [
+          "bệnh viện"
+        ]
+      },
+      {
+        "chinese": "月经杯",
+        "meaning": "cốc nguyệt san",
+        "category": [
+          "nâng cao"
+        ]
+      },
+      {
+        "chinese": "月嫂",
+        "meaning": "bảo mẫu sau sinh",
+        "category": [
+          "bệnh viện"
+        ]
+      },
+      {
+        "chinese": "月子",
+        "meaning": "thời gian ở cữ",
+        "category": [
+          "bệnh viện"
+        ]
+      },
+      {
+        "chinese": "坐月子",
+        "meaning": "ở cữ",
+        "category": [
+          "bệnh viện"
+        ]
+      },
+      {
+        "chinese": "月子餐",
+        "meaning": "thực đơn cho phụ nữ sau sinh",
+        "category": [
+          "bệnh viện"
+        ]
+      },
+      {
+        "chinese": "月子中心",
+        "meaning": "trung tâm chăm sóc sau sinh",
+        "category": [
+          "bệnh viện"
+        ]
+      },
+      {
+        "chinese": "月龄",
+        "meaning": "số tháng tuổi (trẻ em)",
+        "category": [
+          "bệnh viện"
+        ]
+      },
+      {
+        "chinese": "月下老人",
+        "meaning": "ông Tơ bà Nguyệt",
+        "category": [
+          "bệnh viện"
+        ]
       }
     ],
     "sentences": [
+      {
+        "chinese": "花前月下",
+        "vietnamese": "khung cảnh lãng mạn dưới ánh trăng và hoa",
+        "category": [
+          "nâng cao"
+        ]
+      },
       {
         "chinese": "我每个月都去图书馆两次",
         "vietnamese": "Mỗi tháng tôi đều đến thư viện hai lần.",
@@ -2055,6 +2650,76 @@
         "vietnamese": "Hôm nay ngày mấy tháng mấy tuần thứ mấy",
         "category": [
           "thời gian"
+        ]
+      },
+      {
+        "chinese": "花好月圆",
+        "vietnamese": "hoa đẹp trăng tròn, đoàn tụ sum vầy (chúc hạnh phúc)",
+        "category": [
+          "nâng cao"
+        ]
+      },
+      {
+        "chinese": "月黑风高",
+        "vietnamese": "đêm tối gió lộng, trời cao mây đen che phủ ánh trăng",
+        "category": [
+          "nâng cao"
+        ]
+      },
+      {
+        "chinese": "月里嫦娥",
+        "vietnamese": "Hằng Nga trên cung trăng",
+        "category": [
+          "nâng cao"
+        ]
+      },
+      {
+        "chinese": "月白风清",
+        "vietnamese": "trăng thanh gió mát",
+        "category": [
+          "nâng cao"
+        ]
+      },
+      {
+        "chinese": "月明星稀",
+        "vietnamese": "trăng sáng sao thưa",
+        "category": [
+          "nâng cao"
+        ]
+      },
+      {
+        "chinese": "月下独酌",
+        "vietnamese": "một mình uống rượu dưới trăng",
+        "category": [
+          "nâng cao"
+        ]
+      },
+      {
+        "chinese": "闭月羞花",
+        "vietnamese": "hoa nhường nguyệt thẹn (ví người đẹp)",
+        "category": [
+          "nâng cao"
+        ]
+      },
+      {
+        "chinese": "日积月累",
+        "vietnamese": "tích lũy dần theo thời gian",
+        "category": [
+          "nâng cao"
+        ]
+      },
+      {
+        "chinese": "日新月异",
+        "vietnamese": "ngày càng đổi mới",
+        "category": [
+          "nâng cao"
+        ]
+      },
+      {
+        "chinese": "水中捞月",
+        "vietnamese": "Mò trăng đáy nước, mò kim đáy bể",
+        "category": [
+          "nâng cao"
         ]
       }
     ]
@@ -2426,9 +3091,394 @@
         "category": [
           "ẩm thực"
         ]
+      },
+      {
+        "chinese": "吃菜",
+        "meaning": "ăn món ăn",
+        "category": [
+          "ẩm thực"
+        ]
+      },
+      {
+        "chinese": "吃肉",
+        "meaning": "ăn thịt",
+        "category": [
+          "ẩm thực"
+        ]
+      },
+      {
+        "chinese": "吃鱼",
+        "meaning": "ăn cá",
+        "category": [
+          "ẩm thực"
+        ]
+      },
+      {
+        "chinese": "吃水果",
+        "meaning": "ăn trái cây",
+        "category": [
+          "ẩm thực"
+        ]
+      },
+      {
+        "chinese": "吃零食",
+        "meaning": "ăn vặt",
+        "category": [
+          "ẩm thực"
+        ]
+      },
+      {
+        "chinese": "吃点心",
+        "meaning": "ăn điểm tâm, bữa ăn nhẹ",
+        "category": [
+          "ẩm thực"
+        ]
+      },
+      {
+        "chinese": "吃甜的",
+        "meaning": "ăn đồ ngọt",
+        "category": [
+          "ẩm thực"
+        ]
+      },
+      {
+        "chinese": "吃辣",
+        "meaning": "ăn cay",
+        "category": [
+          "ẩm thực"
+        ]
+      },
+      {
+        "chinese": "吃素",
+        "meaning": "ăn chay",
+        "category": [
+          "ẩm thực"
+        ]
+      },
+      {
+        "chinese": "吃荤",
+        "meaning": "ăn mặn",
+        "category": [
+          "ẩm thực"
+        ]
+      },
+      {
+        "chinese": "吃清淡",
+        "meaning": "ăn thanh đạm",
+        "category": [
+          "ẩm thực"
+        ]
+      },
+      {
+        "chinese": "吃饱",
+        "meaning": "ăn no",
+        "category": [
+          "ẩm thực"
+        ]
+      },
+      {
+        "chinese": "吃光",
+        "meaning": "ăn sạch",
+        "category": [
+          "ẩm thực"
+        ]
+      },
+      {
+        "chinese": "吃完",
+        "meaning": "ăn xong",
+        "category": [
+          "ẩm thực"
+        ]
+      },
+      {
+        "chinese": "吃不下",
+        "meaning": "không ăn nổi",
+        "category": [
+          "ẩm thực"
+        ]
+      },
+      {
+        "chinese": "吃得下",
+        "meaning": "ăn được",
+        "category": [
+          "ẩm thực"
+        ]
+      },
+      {
+        "chinese": "吃不了",
+        "meaning": "không ăn hết",
+        "category": [
+          "ẩm thực"
+        ]
+      },
+      {
+        "chinese": "吃得了",
+        "meaning": "ăn được hết",
+        "category": [
+          "ẩm thực"
+        ]
+      },
+      {
+        "chinese": "吃早餐",
+        "meaning": "ăn sáng",
+        "category": [
+          "ẩm thực"
+        ]
+      },
+      {
+        "chinese": "吃午饭",
+        "meaning": "ăn trưa",
+        "category": [
+          "ẩm thực"
+        ]
+      },
+      {
+        "chinese": "吃晚饭",
+        "meaning": "ăn tối",
+        "category": [
+          "ẩm thực"
+        ]
+      },
+      {
+        "chinese": "吃夜宵",
+        "meaning": "ăn khuya",
+        "category": [
+          "ẩm thực"
+        ]
+      },
+      {
+        "chinese": "吃坏肚子",
+        "meaning": "đau bụng do thức ăn",
+        "category": [
+          "bệnh viện"
+        ]
+      },
+      {
+        "chinese": "吃撑",
+        "meaning": "ăn quá no",
+        "category": [
+          "ẩm thực"
+        ]
+      },
+      {
+        "chinese": "吃药",
+        "meaning": "uống thuốc",
+        "category": [
+          "bệnh viện"
+        ]
+      },
+      {
+        "chinese": "吃中药",
+        "meaning": "uống thuốc Đông y",
+        "category": [
+          "bệnh viện"
+        ]
+      },
+      {
+        "chinese": "吃西药",
+        "meaning": "uống thuốc Tây",
+        "category": [
+          "bệnh viện"
+        ]
+      },
+      {
+        "chinese": "吃补品",
+        "meaning": "dùng đồ bổ",
+        "category": [
+          "bệnh viện"
+        ]
+      },
+      {
+        "chinese": "吃上火",
+        "meaning": "ăn đồ gây nóng",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "吃亏",
+        "meaning": "chịu thiệt",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "吃惊",
+        "meaning": "giật mình / bất ngờ",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "吃醋",
+        "meaning": "ghen tuông",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "吃苦",
+        "meaning": "chịu cực, chịu khổ",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "吃力",
+        "meaning": "tốn sức, vất vả",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "吃紧",
+        "meaning": "căng thẳng (tình hình)",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "吃香",
+        "meaning": "được ưa chuộng",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "吃不消",
+        "meaning": "chịu không nổi",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "吃不惯",
+        "meaning": "ăn không quen",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "吃不来",
+        "meaning": "ăn không vô",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "吃土",
+        "meaning": "hết tiền, cạp đất mà ăn",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "吃干饭",
+        "meaning": "ăn hại / vô dụng",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "吃回扣",
+        "meaning": "ăn hoa hồng",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "吃红利",
+        "meaning": "hưởng cổ tức, lợi nhuận",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "吃官司",
+        "meaning": "dính kiện tụng",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "吃闭门羹",
+        "meaning": "bị từ chối phũ, đóng cửa không tiếp",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "吃皇粮",
+        "meaning": "ăn lương nhà nước",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "吃空饷",
+        "meaning": "ăn lương khống",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "吃拿卡要",
+        "meaning": "tham nhũng",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "吃瓜",
+        "meaning": "hóng drama",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "吃播",
+        "meaning": "mukbang",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "吃鸡",
+        "meaning": "chơi PUBG",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "吃草",
+        "meaning": "nghèo, hết tiền",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "吃席",
+        "meaning": "ăn tiệc",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "吃书",
+        "meaning": "tự mâu thuẫn",
+        "category": [
+          "giao tiếp"
+        ]
       }
     ],
     "sentences": [
+      {
+        "chinese": "吃老本",
+        "vietnamese": "ăn vào vốn cũ, dựa vào cái cũ",
+        "category": [
+          "giao tiếp"
+        ]
+      },
       {
         "chinese": "我们一起吃饭吧。",
         "vietnamese": "Chúng ta cùng ăn cơm đi.",
@@ -2441,6 +3491,90 @@
         "vietnamese": "Món ăn này rất ngon.",
         "category": [
           "ẩm thực"
+        ]
+      },
+      {
+        "chinese": "吃软饭",
+        "vietnamese": "đàn ông sống dựa phụ nữ",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "吃苦耐劳",
+        "vietnamese": "chịu thương chịu khó",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "吃力不讨好",
+        "vietnamese": "làm cực mà chẳng ai ghi nhận",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "吃瓜群众",
+        "vietnamese": "cộng đồng hóng drama",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "吃一堑长一智",
+        "vietnamese": "vấp một lần, khôn thêm một chút, đi một ngày đàng học một sàng khôn",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "吃喝玩乐",
+        "vietnamese": "ăn chơi hưởng thụ",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "吃里爬外",
+        "vietnamese": "ăn cây táo rào cây sung",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "吃哑巴亏",
+        "vietnamese": "bị thiệt mà không nói ra, ngậm bồ hòn, ngậm đắng nuốt cay",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "吃软不吃硬",
+        "vietnamese": "thích mềm, không thích bị cứng rắn, mềm nắn rắn buông, ưa nhẹ không ưa nặng",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "吃硬不吃软",
+        "vietnamese": "thích cứng không thích mềm, rượu mời không uống muốn uống rượu nhẹ",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "吃着碗里看着锅里",
+        "vietnamese": "đứng núi này trông núi nọ",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "吃现成饭",
+        "vietnamese": "ăn sẵn, ngồi mát ăn bát vàng",
+        "category": [
+          "giao tiếp"
         ]
       }
     ]
@@ -5780,470 +6914,1180 @@
       {
         "chinese": "公园",
         "meaning": "công viên",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "公共",
         "meaning": "công cộng",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "公交车",
         "meaning": "xe buýt",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "公寓",
         "meaning": "căn hộ chung cư",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "公斤",
         "meaning": "Kilogram (KG)",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "公里",
         "meaning": "Kilomet (KM)",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "公主",
         "meaning": "công chúa",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "公路",
         "meaning": "đường quốc lộ",
-        "category": []
+        "category": [
+          "du lịch"
+        ]
       },
       {
         "chinese": "高速公路",
         "meaning": "đường cao tốc",
-        "category": []
+        "category": [
+          "du lịch"
+        ]
       },
       {
         "chinese": "公交站",
         "meaning": "trạm xe buýt",
-        "category": []
+        "category": [
+          "du lịch"
+        ]
       },
       {
         "chinese": "公厕",
         "meaning": "nhà vệ sinh công cộng",
-        "category": []
+        "category": [
+          "du lịch"
+        ]
       },
       {
         "chinese": "公筷",
         "meaning": "đũa dùng chung",
-        "category": []
+        "category": [
+          "du lịch"
+        ]
       },
       {
         "chinese": "公鸡",
         "meaning": "gà trống",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "公牛",
         "meaning": "bò đực",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "公狗",
         "meaning": "chó đực",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "公猫",
         "meaning": "mèo đực",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "公费医疗",
         "meaning": "y tế miễn phí",
-        "category": []
+        "category": [
+          "bệnh viện"
+        ]
       },
       {
         "chinese": "公费留学",
         "meaning": "du học bằng ngân sách",
-        "category": []
+        "category": [
+          "du lịch"
+        ]
       },
       {
         "chinese": "公派留学",
         "meaning": "được cử đi du học",
-        "category": []
+        "category": [
+          "du lịch"
+        ]
       },
       {
         "chinese": "公开赛",
         "meaning": "giải đấu mở rộng",
-        "category": []
+        "category": [
+          "thể thao"
+        ]
       },
       {
         "chinese": "公司",
         "meaning": "công ty",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "办公室",
         "meaning": "văn phòng",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公务员",
         "meaning": "công chức",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公章",
         "meaning": "con dấu",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公文",
         "meaning": "công văn",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公安局",
         "meaning": "cục công an",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公证",
         "meaning": "công chứng",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公证处",
         "meaning": "phòng công chứng",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公积金",
         "meaning": "quỹ tích lũy",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公立学校",
         "meaning": "trường công",
-        "category": []
+        "category": [
+          "học tập"
+        ]
       },
       {
         "chinese": "公立医院",
         "meaning": "bệnh viện công",
-        "category": []
+        "category": [
+          "bệnh viện"
+        ]
       },
       {
         "chinese": "公司章程",
         "meaning": "điều lệ công ty",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公司地址",
         "meaning": "địa chỉ công ty",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公司法人",
         "meaning": "pháp nhân công ty",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公司邮箱",
         "meaning": "email công ty",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公司制度",
         "meaning": "quy định công ty",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公共费用",
         "meaning": "phí công cộng",
-        "category": []
+        "category": [
+          "du lịch"
+        ]
       },
       {
         "chinese": "公摊面积",
         "meaning": "diện tích chung",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公积金贷款",
         "meaning": "vay quỹ tích lũy",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "上市公司",
         "meaning": "công ty niêm yết",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公司账户",
         "meaning": "tài khoản công ty",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公司资产",
         "meaning": "tài sản công ty",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公司利润",
         "meaning": "lợi nhuận công ty",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公司股份",
         "meaning": "cổ phần công ty",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公司股东",
         "meaning": "cổ đông công ty",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公司品牌",
         "meaning": "thương hiệu công ty",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公司规模",
         "meaning": "quy mô công ty",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公司文化",
         "meaning": "văn hóa công ty",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公司形象",
         "meaning": "hình ảnh công ty",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公众号",
         "meaning": "tài khoản công chúng (weixin)",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公屏",
         "meaning": "khung chat livestream",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公认",
         "meaning": "được công nhận",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公共网络",
         "meaning": "mạng công cộng",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公共账号",
         "meaning": "tài khoản công cộng",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公共资源",
         "meaning": "tài nguyên công cộng",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公共平台",
         "meaning": "nền tảng công cộng",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公共场所",
         "meaning": "nơi công cộng",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公共交通",
         "meaning": "giao thông công cộng",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公共安全",
         "meaning": "an ninh công cộng",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公共卫生",
         "meaning": "y tế công cộng",
-        "category": []
+        "category": [
+          "bệnh viện"
+        ]
       },
       {
         "chinese": "公益活动",
         "meaning": "hoạt động từ thiện",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公共秩序",
         "meaning": "trật tự công cộng",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公共财产",
         "meaning": "tài sản công cộng",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公共设施",
         "meaning": "cơ sở vật chất công cộng",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公共管理",
         "meaning": "quản lý công cộng",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公共服务",
         "meaning": "dịch vụ công cộng",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公共利益",
         "meaning": "lợi ích công cộng",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公共事务",
         "meaning": "sự vụ công cộng",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公共建筑",
         "meaning": "công trình công cộng",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公共空间",
         "meaning": "không gian công cộng",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公共图书馆",
         "meaning": "thư viện công cộng",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公分",
         "meaning": "Centimet (cm)",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "公顷",
         "meaning": "hecta",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "公吨",
         "meaning": "tấn",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "公升",
         "meaning": "lít",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "公诉",
         "meaning": "khởi tố",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公诉人",
         "meaning": "kiểm sát viên",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公安机关",
         "meaning": "cơ quan công an",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公共法律",
         "meaning": "pháp luật công",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公司法",
         "meaning": "luật công ty",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公证法",
         "meaning": "luật công chứng",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公务员法",
         "meaning": "luật công chức",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公公",
         "meaning": "bố chồng",
-        "category": []
+        "category": [
+          "giao tiếp"
+        ]
       },
       {
         "chinese": "公平",
         "meaning": "công bằng",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公婆",
-        "meaning": "ố mẹ chồng",
-        "category": []
+        "meaning": "bố mẹ chồng",
+        "category": [
+          "giao tiếp"
+        ]
       }
     ],
     "sentences": [
       {
         "chinese": "公共安全法",
         "vietnamese": "luật an ninh công cộng",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公共卫生法",
         "vietnamese": "luật y tế công cộng",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公共招标法",
         "vietnamese": "luật đấu thầu công",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公共关系",
         "vietnamese": "quan hệ công chúng",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公事公办",
         "vietnamese": "việc công giải quyết theo đúng theo quy định, việc nào ra việc nấy",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公私分明",
         "vietnamese": "công tư phân minh, phân biệt rõ việc công tư",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公正无私",
         "vietnamese": "công bằng không tư lợi",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       },
       {
         "chinese": "公而忘私",
         "vietnamese": "quên mình vì việc chung",
-        "category": []
+        "category": [
+          "công việc"
+        ]
       }
     ]
+  },
+  "平": {
+    "hanviet": "Bình",
+    "words": [
+      {
+        "chinese": "平时",
+        "meaning": "bình thường",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平常",
+        "meaning": "thường ngày",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平安",
+        "meaning": "bình an",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平静",
+        "meaning": "yên tĩnh",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平凡",
+        "meaning": "bình thường",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平淡",
+        "meaning": "nhạt, đơn giản",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平均",
+        "meaning": "trung bình",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平均数",
+        "meaning": "số trung bình",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平衡",
+        "meaning": "cân bằng",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平稳",
+        "meaning": "ổn định",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平地",
+        "meaning": "mặt đất bằng",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平面",
+        "meaning": "mặt phẳng",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平原",
+        "meaning": "đồng bằng",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平方",
+        "meaning": "bình phương",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平米",
+        "meaning": "mét vuông",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平价",
+        "meaning": "giá bình dân",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平摊",
+        "meaning": "chia đều",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平分",
+        "meaning": "chia bằng nhau",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平手",
+        "meaning": "hòa",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平局",
+        "meaning": "trận hòa",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平放",
+        "meaning": "đặt nằm ngang",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平躺",
+        "meaning": "nằm ngửa",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平移",
+        "meaning": "tịnh tiến",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平躺睡",
+        "meaning": "ngủ nằm ngửa",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平和",
+        "meaning": "ôn hòa",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平息",
+        "meaning": "làm dịu, dập tắt (xung đột)",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平淡生活",
+        "meaning": "cuộc sống bình dị",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平台",
+        "meaning": "nền tảng",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平台经济",
+        "meaning": "kinh tế nền tảng",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平台运营",
+        "meaning": "vận hành nền tảng",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平账",
+        "meaning": "cân đối sổ sách",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平仓",
+        "meaning": "đóng vị thế",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平稳增长",
+        "meaning": "tăng ổn định",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平稳运行",
+        "meaning": "vận hành ổn định",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平价超市",
+        "meaning": "siêu thị bình dân",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平均值",
+        "meaning": "giá trị trung bình",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平均工资",
+        "meaning": "lương trung bình",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平均收益",
+        "meaning": "lợi nhuận trung bình",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平面图",
+        "meaning": "bản vẽ mặt bằng",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平行线",
+        "meaning": "đường song song",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平级",
+        "meaning": "ngang cấp",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平权",
+        "meaning": "quyền bình đẳng",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平板",
+        "meaning": "máy tính bảng",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平底锅",
+        "meaning": "chảo đáy bằng",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平整",
+        "meaning": "san phẳng",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平坦",
+        "meaning": "bằng phẳng",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平滑",
+        "meaning": "trơn tru",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平滑过渡",
+        "meaning": "chuyển tiếp mượt mà",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平直",
+        "meaning": "thẳng",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平缓",
+        "meaning": "dịu lại",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平铺",
+        "meaning": "rải phẳng",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平铺直叙",
+        "meaning": "kể thẳng",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平展",
+        "meaning": "trải phẳng",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "和平",
+        "meaning": "hòa bình",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "太平",
+        "meaning": "thái bình",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "太平洋",
+        "meaning": "Thái Bình Dương",
+        "category": [
+          "quốc gia"
+        ]
+      },
+      {
+        "chinese": "平替款",
+        "meaning": "mẫu thay thế",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平面波",
+        "meaning": "sóng phẳng",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平流层",
+        "meaning": "tầng bình lưu",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平衡点",
+        "meaning": "điểm cân bằng",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平衡力",
+        "meaning": "lực cân bằng",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平面设计",
+        "meaning": "thiết kế đồ họa",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平缓期",
+        "meaning": "giai đoạn dịu lại",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平装书",
+        "meaning": "sách bìa mềm",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平心而论",
+        "meaning": "nói công bằng",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平淡无奇",
+        "meaning": "bình thường",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平步青云",
+        "meaning": "thăng tiến nhanh",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平起平坐",
+        "meaning": "ngang hàng",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平分秋色",
+        "meaning": "ngang tài ngang sức",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平川",
+        "meaning": "đồng bằng",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平心静气",
+        "meaning": "giữ bình tĩnh",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "平平安安",
+        "meaning": "bình an vô sự",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "太平盛世",
+        "meaning": "thời thái bình",
+        "category": [
+          "giao tiếp"
+        ]
+      },
+      {
+        "chinese": "国泰民安",
+        "meaning": "quốc thái dân an",
+        "category": [
+          "giao tiếp"
+        ]
+      }
+    ],
+    "sentences": []
   }
 }
