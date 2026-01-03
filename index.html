@@ -2232,34 +2232,25 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
 
 
 		// Hàm xử lý khi click vào các từ tiếng Trung trong trang
+// Hàm xử lý khi click vào các từ tiếng Trung trong trang
 document.addEventListener('click', function(e) {
-    const target = e.target.closest('.word-chinese, .sentence-chinese, .char-button');
+    // Kiểm tra nếu click vào phần tử có class chứa chữ Hán (trong từ vựng hoặc hội thoại)
+    const target = e.target.closest('.word-chinese, .sentence-chinese');
     
     if (target) {
-        const word = target.innerText || target.getAttribute('data-char');
-        const writerSection = document.getElementById('writer-section');
+        // Lấy nội dung chữ Hán
+        const word = target.innerText;
         
-        // Hiển thị khung hướng dẫn
-        writerSection.style.display = 'block';
+        // Cuộn lên phần hiển thị cách viết (writer-section)
+        const writerSection = document.getElementById('writer-section');
         writerSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-        // Gọi hàm tìm kiếm chữ (hàm có sẵn của bạn)
+        // Gán giá trị vào ô input và kích hoạt tìm kiếm
+        document.getElementById('input-char').value = word;
+        
+        // Gọi hàm triggerSearch (hàm này đã có sẵn trong index.js của bạn)
         if (typeof triggerSearch === 'function') {
-            triggerSearch(word).then(() => {
-                // Sau khi nội dung đã load xong, kiểm tra và thêm nút ẩn nếu chưa có
-                if (!document.getElementById('close-writer')) {
-                    const closeBtn = document.createElement('button');
-                    closeBtn.id = 'close-writer';
-                    closeBtn.className = 'close-writer-btn';
-                    closeBtn.innerHTML = '❌ Đóng / Ẩn bảng hướng dẫn';
-                    closeBtn.onclick = function() {
-                        writerSection.style.display = 'none'; // Ẩn toàn bộ phần hướng dẫn
-                        // Tùy chọn: Cuộn về vị trí cũ nếu muốn
-                        // window.scrollTo({ top: target.offsetTop - 100, behavior: 'smooth' });
-                    };
-                    writerSection.appendChild(closeBtn);
-                }
-            });
+            triggerSearch(word);
         }
     }
 });
