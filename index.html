@@ -2231,32 +2231,43 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
 
 
 
-		
-// Hàm tạo và thêm nút đóng vào writer-section
-document.addEventListener('click', function(e) {
+
+
+
+
+
+
+
+
+		document.addEventListener('click', function(e) {
+    // 1. Xác định phần tử được click (từ vựng, hội thoại, hoặc nút chữ Hán)
     const target = e.target.closest('.word-chinese, .sentence-chinese, .char-button');
     
     if (target) {
         const word = target.innerText || target.getAttribute('data-char');
         const writerSection = document.getElementById('writer-section');
         
-        // Hiển thị khung hướng dẫn
+        // 2. XÓA SẠCH NỘI DUNG CŨ (Để tránh bị hiện 2 lần SVG/ô vuông)
+        writerSection.innerHTML = ''; 
+        
+        // 3. Hiển thị khung và cuộn lên
         writerSection.style.display = 'block';
         writerSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-        // Gọi hàm tìm kiếm chữ (hàm có sẵn của bạn)
+        // 4. Gọi hàm tìm kiếm chữ
         if (typeof triggerSearch === 'function') {
             triggerSearch(word).then(() => {
-                // Sau khi nội dung đã load xong, kiểm tra và thêm nút ẩn nếu chưa có
+                // 5. Sau khi load xong, thêm nút Đóng (dùng cho cả tìm kiếm và click từ vựng)
                 if (!document.getElementById('close-writer')) {
                     const closeBtn = document.createElement('button');
                     closeBtn.id = 'close-writer';
                     closeBtn.className = 'close-writer-btn';
                     closeBtn.innerHTML = '❌ Đóng / Ẩn bảng hướng dẫn';
+                    closeBtn.style.marginTop = '15px'; // Khoảng cách cho đẹp
+                    
                     closeBtn.onclick = function() {
-                        writerSection.style.display = 'none'; // Ẩn toàn bộ phần hướng dẫn
-                        // Tùy chọn: Cuộn về vị trí cũ nếu muốn
-                        // window.scrollTo({ top: target.offsetTop - 100, behavior: 'smooth' });
+                        writerSection.style.display = 'none';
+                        writerSection.innerHTML = ''; // Dọn sạch khi đóng
                     };
                     writerSection.appendChild(closeBtn);
                 }
@@ -2264,6 +2275,35 @@ document.addEventListener('click', function(e) {
         }
     }
 });
+
+// Xử lý riêng cho nút "Học ngay" (Tìm kiếm thủ công) để cũng có nút Đóng và không bị lặp
+const searchBtn = document.getElementById('search-btn');
+if (searchBtn) {
+    searchBtn.onclick = async function() {
+        const word = document.getElementById('input-char').value;
+        if (word) {
+            const writerSection = document.getElementById('writer-section');
+            writerSection.innerHTML = ''; // Xóa sạch nội dung cũ
+            writerSection.style.display = 'block';
+            
+            if (typeof triggerSearch === 'function') {
+                await triggerSearch(word);
+                // Tạo nút đóng sau khi tìm kiếm xong
+                const closeBtn = document.createElement('button');
+                closeBtn.className = 'close-writer-btn';
+                closeBtn.innerHTML = '❌ Đóng / Ẩn bảng hướng dẫn';
+                closeBtn.onclick = () => {
+                    writerSection.style.display = 'none';
+                    writerSection.innerHTML = '';
+                };
+                writerSection.appendChild(closeBtn);
+            }
+        }
+    };
+}
+
+		
+
 
 
 		
