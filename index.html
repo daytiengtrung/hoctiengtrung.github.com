@@ -1676,29 +1676,8 @@
                             ${sentences.map(sentence => `
                                 <div class="sentence-item">
                                     <button class="audio-btn sentence-audio" onclick="playAudio('${sentence.chinese}')">🔊</button>
-                                    <div class="sentence-pinyin">${getPinyinWithTone(sentence.chinese)}</div>
-									<div class="sentence-chinese hanzi-click" data-hanzi="${sentence.chinese}">
-    ${sentence.chinese}
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                                    <div class="sentence-pinyin">${getPinyinWithTone(sentence.chinese)}</div>								
+                                    <div class="sentence-chinese">${sentence.chinese}</div>
                                     <div class="sentence-vietnamese">${sentence.vietnamese}</div>
                                 </div>
                             `).join('')}
@@ -1867,7 +1846,10 @@
                             <div class="sentence-item">
                                 <button class="audio-btn sentence-audio" onclick="playAudio('${sentence.chinese}')">🔊</button>
                                 <div class="sentence-pinyin">${getPinyinWithTone(sentence.chinese)}</div>
-                                <div class="sentence-chinese">${sentence.chinese}</div>
+								<div class="sentence-chinese hanzi-click" data-hanzi="${sentence.chinese}">
+    ${sentence.chinese}
+</div>
+                                
                                 <div class="sentence-vietnamese">${sentence.vietnamese}</div>
                             </div>
                         `).join('')}
