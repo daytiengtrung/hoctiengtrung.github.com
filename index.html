@@ -1592,9 +1592,9 @@
             const wordsHtml = examples.words.map(word => `
                 <div class="word-item">
                     <button class="audio-btn" onclick="event.stopPropagation(); playAudio('${word.chinese}')">🔊</button>
-                    <div class="word-pinyin">${getPinyinWithTone(word.chinese2)}</div>
-                    <div class="word-chinese">${word.chinese}</div>
-                    <div class="word-meaning" style="font-size: 14px; color: #666;">${word.meaning}</div>
+                    <div class="word-pinyin">${getPinyinWithTone(word.chinese)}</div>
+                    <div class="word-chinese">${word.chinese2}</div>
+                    <div class="word-meaning" style="font-size: 14px; color: #666;">${word.meaning2}</div>
                 </div>`).join(''); 
             
             const sentencesHtml = examples.sentences.map(sentence => `
