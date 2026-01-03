@@ -2234,7 +2234,7 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
 		
 // Hàm tạo và thêm nút đóng vào writer-section
 document.addEventListener('click', function(e) {
-    const target = e.target.closest('.word-chinese, .sentence-chinese,.search-btn, .char-button');
+    const target = e.target.closest('.word-chinese, .sentence-chinese,.button, .char-button');
     
     if (target) {
         const word = target.innerText || target.getAttribute('data-char');
