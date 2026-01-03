@@ -112,56 +112,64 @@
         "chinese": "你在哪里",
         "meaning": "Bạn đang ở đâu",
         "category": [
-          "giao tiếp"
+          "giao tiếp",
+          "cơ bản"
         ]
       },
       {
         "chinese": "你多少岁?",
         "meaning": "Bạn bao nhiêu tuổi?",
         "category": [
-          "giao tiếp"
+          "giao tiếp",
+          "cơ bản"
         ]
       },
       {
         "chinese": "你好吗？",
         "meaning": "Bạn khỏe không?",
         "category": [
-          "giao tiếp"
+          "giao tiếp",
+          "cơ bản"
         ]
       },
       {
         "chinese": "你好",
         "meaning": "xin chào",
         "category": [
-          "giao tiếp"
+          "giao tiếp",
+          "cơ bản"
         ]
       },
       {
         "chinese": "你去哪",
         "meaning": "Bạn đi đâu vậy",
         "category": [
-          "giao tiếp"
+          "giao tiếp",
+          "cơ bản"
         ]
       },
       {
         "chinese": "你真漂亮",
         "meaning": "Bạn rất đẹp",
         "category": [
-          "giao tiếp"
+          "giao tiếp",
+          "cơ bản"
         ]
       },
       {
         "chinese": "你是谁",
         "meaning": "bạn là ai",
         "category": [
-          "giao tiếp"
+          "giao tiếp",
+          "cơ bản"
         ]
       },
       {
         "chinese": "你好可爱",
         "meaning": "bạn rất dễ thương",
         "category": [
-          "giao tiếp"
+          "giao tiếp",
+          "cơ bản"
         ]
       }
     ],
@@ -177,14 +185,16 @@
         "chinese": "你叫什么名字？",
         "vietnamese": "Tên bạn là gì",
         "category": [
-          "giao tiếp"
+          "giao tiếp",
+          "cơ bản"
         ]
       },
       {
         "chinese": "谢谢你！",
         "vietnamese": "Cảm ơn bạn!",
         "category": [
-          "giao tiếp"
+          "giao tiếp",
+          "cơ bản"
         ]
       },
       {
@@ -226,7 +236,8 @@
         "chinese": "你去玩吗",
         "vietnamese": "bạn có đi chơi không",
         "category": [
-          "giao tiếp"
+          "giao tiếp",
+          "cơ bản"
         ]
       },
       {
@@ -254,7 +265,8 @@
         "chinese": "你在干什么",
         "vietnamese": "bạn đang làm gì",
         "category": [
-          "giao tiếp"
+          "giao tiếp",
+          "cơ bản"
         ]
       },
       {
@@ -267,8 +279,15 @@
     ]
   },
   "我": {
-    "hanviet": "Ngã",
+    "hanviet": "Tôi",
     "words": [
+      {
+        "chinese": "我爱你",
+        "meaning": "tôi yêu bạn",
+        "category": [
+          "cơ bản"
+        ]
+      },
       {
         "chinese": "我们",
         "meaning": "chúng ta, chúng tôi",
