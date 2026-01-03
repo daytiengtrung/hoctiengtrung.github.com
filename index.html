@@ -793,22 +793,26 @@
 
 
 
+/* Nút ẩn bảng hướng dẫn viết chữ */
 .close-writer-btn {
     display: block;
     width: 100%;
-    margin-top: 15px;
+    max-width: 300px;
+    margin: 20px auto 10px;
     padding: 12px;
-    background: #ff4d4d;
+    background: linear-gradient(45deg, #ff4d4d, #d80e0e);
     color: white;
     border: none;
     border-radius: 12px;
     font-weight: bold;
     cursor: pointer;
-    transition: background 0.3s;
+    box-shadow: 0 4px 15px rgba(216, 14, 14, 0.2);
+    transition: all 0.3s ease;
 }
 
 .close-writer-btn:hover {
-    background: #cc0000;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(216, 14, 14, 0.3);
 }
 
 
@@ -2231,26 +2235,55 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
 
 
 
-		// Hàm xử lý khi click vào các từ tiếng Trung trong trang
-// Hàm xử lý khi click vào các từ tiếng Trung trong trang
-document.addEventListener('click', function(e) {
-    // Kiểm tra nếu click vào phần tử có class chứa chữ Hán (trong từ vựng hoặc hội thoại)
-    const target = e.target.closest('.word-chinese, .sentence-chinese');
+		
+// Hàm tạo và thêm nút đóng vào writer-section
+function addCloseButton() {
+    const writerSection = document.getElementById('writer-section');
     
-    if (target) {
-        // Lấy nội dung chữ Hán
-        const word = target.innerText;
-        
-        // Cuộn lên phần hiển thị cách viết (writer-section)
-        const writerSection = document.getElementById('writer-section');
-        writerSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // Xóa nút cũ nếu đã tồn tại để tránh trùng lặp
+    const oldBtn = document.getElementById('btn-close-manual');
+    if (oldBtn) oldBtn.remove();
 
-        // Gán giá trị vào ô input và kích hoạt tìm kiếm
-        document.getElementById('input-char').value = word;
+    const closeBtn = document.createElement('button');
+    closeBtn.id = 'btn-close-manual';
+    closeBtn.className = 'close-writer-btn';
+    closeBtn.innerHTML = '❌ Đóng / Ẩn bảng hướng dẫn';
+    
+    closeBtn.onclick = function() {
+        writerSection.style.display = 'none';
+        // Cuộn về thanh tìm kiếm để người dùng dễ nhìn
+        document.querySelector('.search-section').scrollIntoView({ behavior: 'smooth' });
+    };
+
+    writerSection.appendChild(closeBtn);
+}
+
+// Lắng nghe sự kiện click vào các nút chữ Hán có sẵn (data-char)
+document.querySelectorAll('.char-button').forEach(btn => {
+    btn.addEventListener('click', async () => {
+        const char = btn.dataset.char;
+        const writerSection = document.getElementById('writer-section');
         
-        // Gọi hàm triggerSearch (hàm này đã có sẵn trong index.js của bạn)
+        writerSection.style.display = 'block';
+        
+        // Gọi hàm search gốc của bạn
         if (typeof triggerSearch === 'function') {
-            triggerSearch(word);
+            await triggerSearch(char);
+            addCloseButton(); // Thêm nút đóng sau khi hiện kết quả
+        }
+    });
+});
+
+// Lắng nghe nút "Học ngay" ở ô tìm kiếm
+document.getElementById('search-btn').addEventListener('click', async () => {
+    const word = document.getElementById('input-char').value;
+    if (word) {
+        const writerSection = document.getElementById('writer-section');
+        writerSection.style.display = 'block';
+        
+        if (typeof triggerSearch === 'function') {
+            await triggerSearch(word);
+            addCloseButton(); // Thêm nút đóng sau khi hiện kết quả
         }
     }
 });
