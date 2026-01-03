@@ -2234,36 +2234,45 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
 		
 // Hàm tạo và thêm nút đóng vào writer-section
 document.addEventListener('click', function(e) {
-    const target = e.target.closest('.word-chinese, .sentence-chinese,.button, .char-button');
+    // Kiểm tra nếu click vào từ vựng hoặc hội thoại
+    const target = e.target.closest('.word-chinese, .sentence-chinese, .char-button');
     
     if (target) {
         const word = target.innerText || target.getAttribute('data-char');
         const writerSection = document.getElementById('writer-section');
         
-        // Hiển thị khung hướng dẫn
+        // --- BƯỚC QUAN TRỌNG: Xóa sạch nội dung cũ để không bị lặp 2 SVG ---
+        writerSection.innerHTML = ''; 
+        
+        // Hiển thị khung
         writerSection.style.display = 'block';
         writerSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-        // Gọi hàm tìm kiếm chữ (hàm có sẵn của bạn)
         if (typeof triggerSearch === 'function') {
+            // Gọi hàm tìm kiếm
             triggerSearch(word).then(() => {
-                // Sau khi nội dung đã load xong, kiểm tra và thêm nút ẩn nếu chưa có
-                if (!document.getElementById('close-writer')) {
-                    const closeBtn = document.createElement('button');
-                    closeBtn.id = 'close-writer';
-                    closeBtn.className = 'close-writer-btn';
-                    closeBtn.innerHTML = '❌ Đóng / Ẩn bảng hướng dẫn';
-                    closeBtn.onclick = function() {
-                        writerSection.style.display = 'none'; // Ẩn toàn bộ phần hướng dẫn
-                        // Tùy chọn: Cuộn về vị trí cũ nếu muốn
-                        // window.scrollTo({ top: target.offsetTop - 100, behavior: 'smooth' });
-                    };
-                    writerSection.appendChild(closeBtn);
-                }
+                // Thêm nút Đóng sau khi chữ đã load xong
+                addCloseButtonToSection(); 
             });
         }
     }
 });
+
+// Hàm thêm nút đóng (đảm bảo chỉ có 1 nút duy nhất)
+function addCloseButtonToSection() {
+    const writerSection = document.getElementById('writer-section');
+    if (!document.getElementById('btn-close-manual')) {
+        const closeBtn = document.createElement('button');
+        closeBtn.id = 'btn-close-manual';
+        closeBtn.className = 'close-writer-btn'; // Sử dụng class CSS đã tạo ở bước trước
+        closeBtn.innerHTML = '❌ Đóng / Ẩn bảng hướng dẫn';
+        closeBtn.onclick = function() {
+            writerSection.style.display = 'none';
+            writerSection.innerHTML = ''; // Xóa sạch để lần sau không bị đè
+        };
+        writerSection.appendChild(closeBtn);
+    }
+}
 
 
 		
