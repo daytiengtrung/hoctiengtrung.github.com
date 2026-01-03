@@ -1591,8 +1591,7 @@
 
             const wordsHtml = examples.words.map(word => `
                 <div class="word-item">
-                    
-					 <button class="audio-btn" onclick="event.stopPropagation(); playAudio('${word.vietnamese}')">🔊</button>
+                    <button class="audio-btn" onclick="event.stopPropagation(); playAudio('${word.chinese}')">🔊</button>
                     <div class="word-pinyin">${getPinyinWithTone(word.chinese)}</div>
                     <div class="word-chinese">${word.chinese}</div>
                     <div class="word-meaning" style="font-size: 14px; color: #666;">${word.meaning}</div>
@@ -2235,27 +2234,36 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
 
 // Hàm xử lý khi click vào các từ tiếng Trung trong trang
 document.addEventListener('click', function(e) {
-    // Kiểm tra nếu click vào phần tử có class chứa chữ Hán (trong từ vựng hoặc hội thoại)
-    const target = e.target.closest('.word-chinese, .sentence-chinese');
+    const target = e.target.closest('.word-chinese, .sentence-chinese, .char-button');
     
     if (target) {
-        // Lấy nội dung chữ Hán
-        const word = target.innerText;
-        
-        // Cuộn lên phần hiển thị cách viết (writer-section)
+        const word = target.innerText || target.getAttribute('data-char');
         const writerSection = document.getElementById('writer-section');
+        
+        // Hiển thị khung hướng dẫn
+        writerSection.style.display = 'block';
         writerSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-        // Gán giá trị vào ô input và kích hoạt tìm kiếm
-        document.getElementById('input-char').value = word;
-        
-        // Gọi hàm triggerSearch (hàm này đã có sẵn trong index.js của bạn)
+        // Gọi hàm tìm kiếm chữ (hàm có sẵn của bạn)
         if (typeof triggerSearch === 'function') {
-            triggerSearch(word);
+            triggerSearch(word).then(() => {
+                // Sau khi nội dung đã load xong, kiểm tra và thêm nút ẩn nếu chưa có
+                if (!document.getElementById('close-writer')) {
+                    const closeBtn = document.createElement('button');
+                    closeBtn.id = 'close-writer';
+                    closeBtn.className = 'close-writer-btn';
+                    closeBtn.innerHTML = '❌ Đóng / Ẩn bảng hướng dẫn';
+                    closeBtn.onclick = function() {
+                        writerSection.style.display = 'none'; // Ẩn toàn bộ phần hướng dẫn
+                        // Tùy chọn: Cuộn về vị trí cũ nếu muốn
+                        // window.scrollTo({ top: target.offsetTop - 100, behavior: 'smooth' });
+                    };
+                    writerSection.appendChild(closeBtn);
+                }
+            });
         }
     }
 });
-
 
 
 	
