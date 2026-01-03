@@ -2232,63 +2232,28 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
 
 
 
-// Hàm dùng chung để dọn dẹp và hiển thị hướng dẫn viết
-async function showHanziWriter(word) {
-    const writerSection = document.getElementById('writer-section');
-    
-    // 1. Xóa sạch nội dung cũ ngay lập tức để không bị lặp 2 hình
-    writerSection.innerHTML = ''; 
-    writerSection.style.display = 'block';
-    
-    // 2. Cuộn lên màn hình xem
-    writerSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-    // 3. Gọi hàm vẽ chữ gốc (triggerSearch)
-    if (typeof triggerSearch === 'function') {
-        await triggerSearch(word);
-        
-        // 4. Thêm nút Đóng vào cuối (Đảm bảo luôn có nút Đóng)
-        const closeBtn = document.createElement('button');
-        closeBtn.className = 'close-writer-btn'; // Dùng class CSS bạn đã có
-        closeBtn.innerHTML = '❌ Đóng bảng hướng dẫn';
-        closeBtn.style.cssText = "display:block; width:100%; margin-top:15px; padding:12px; background:#ff4d4d; color:white; border:none; border-radius:12px; cursor:pointer; font-weight:bold;";
-        
-        closeBtn.onclick = function() {
-            writerSection.style.display = 'none';
-            writerSection.innerHTML = ''; 
-        };
-        writerSection.appendChild(closeBtn);
-    }
-}
-
-// Lắng nghe sự kiện click trên toàn trang
+// Hàm xử lý khi click vào các từ tiếng Trung trong trang
 document.addEventListener('click', function(e) {
-    // Tìm thẻ chứa chữ hán (từ vựng, hội thoại, hoặc nút phổ biến)
-    const target = e.target.closest('.word-chinese, .sentence-chinese, .char-button');
+    // Kiểm tra nếu click vào phần tử có class chứa chữ Hán (trong từ vựng hoặc hội thoại)
+    const target = e.target.closest('.word-chinese, .sentence-chinese');
     
     if (target) {
-        // Ngăn chặn các sự kiện onclick cũ chạy chồng lên nhau
-        e.preventDefault();
-        e.stopPropagation();
+        // Lấy nội dung chữ Hán
+        const word = target.innerText;
+        
+        // Cuộn lên phần hiển thị cách viết (writer-section)
+        const writerSection = document.getElementById('writer-section');
+        writerSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-        const word = target.innerText || target.getAttribute('data-char');
-        if (word) {
-            showHanziWriter(word);
+        // Gán giá trị vào ô input và kích hoạt tìm kiếm
+        document.getElementById('input-char').value = word;
+        
+        // Gọi hàm triggerSearch (hàm này đã có sẵn trong index.js của bạn)
+        if (typeof triggerSearch === 'function') {
+            triggerSearch(word);
         }
     }
 });
-
-// Xử lý cho ô Tìm kiếm (nút Học ngay)
-const searchBtn = document.getElementById('search-btn');
-if (searchBtn) {
-    searchBtn.onclick = function() {
-        const word = document.getElementById('input-char').value;
-        if (word) {
-            showHanziWriter(word);
-        }
-    };
-}
-
 
 
 
