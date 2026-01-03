@@ -1434,7 +1434,7 @@
             
             const writerSection = document.getElementById('writer-section'); 
             writerSection.innerHTML = ''; // Clear previous content
-            writerSection.style.display = 'none'; 
+            writerSection.style.display = 'block'; 
             
             // Thêm lệnh cuộn trang ở đây
             setTimeout(() => {
@@ -2124,7 +2124,7 @@ async function triggerSearch(input) {
 
     const writerSection = document.getElementById('writer-section');
     writerSection.innerHTML = '';
-    writerSection.style.display = 'block';
+    writerSection.style.display = 'none';
 
     setTimeout(() => {
         writerSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
