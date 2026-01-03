@@ -1568,7 +1568,7 @@
         const wordItems = writerDiv.querySelectorAll('.word-item'); 
         wordItems.forEach(item => { 
             item.addEventListener('click', async function() { 
-                const chinese = this.querySelector('.word-chinese').textContent; 
+                const chinese = this.querySelector('.word-chinese2').textContent; 
                 document.getElementById('input-char').value = chinese; 
                 await triggerSearch(chinese); 
             }); 
@@ -1593,8 +1593,8 @@
                 <div class="word-item">
                     <button class="audio-btn" onclick="event.stopPropagation(); playAudio('${word.chinese}')">🔊</button>
                     <div class="word-pinyin">${getPinyinWithTone(word.chinese)}</div>
-                    <div class="word-chinese">${word.chinese2}</div>
-                    <div class="word-meaning" style="font-size: 14px; color: #666;">${word.meaning2}</div>
+                    <div class="word-chinese">${word.chinese}</div>
+                    <div class="word-meaning" style="font-size: 14px; color: #666;">${word.meaning}</div>
                 </div>`).join(''); 
             
             const sentencesHtml = examples.sentences.map(sentence => `
