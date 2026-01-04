@@ -2314,15 +2314,20 @@ document.addEventListener('touchstart', function() {
         "wo": "ủa",
         "ni": "ni",
         "ta": "tha"
+		"uò ": "ua"
+		"en ": "ân"
     };
     if (special[py]) return special[py];
 
     const rules = [
         ["zh", "tr"],
-        ["ch", "ch"],
+		["e", "ơ"],
+		["a", "a"],
+		["z", "ch"],
+        ["g", "c"],
         ["sh", "s"],
         ["w", "u"],
-        ["o", "a"],
+        
         ["x", "s"],
         ["q", "ch"],
         ["j", "z"]
