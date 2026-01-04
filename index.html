@@ -2217,7 +2217,7 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.addEventListener('click', () => {
         const pageId = btn.dataset.page;
 
-        if (pageId === 'page-vocab' && pageId === 'page-sentences' ) {
+        if (pageId === 'page-vocab' || pageId === 'page-sentences' ) {
             searchBox.style.display = 'none';
         } 
     });
