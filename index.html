@@ -2210,14 +2210,14 @@ const searchBox = document.getElementById('writer-section');
 const writerSection = document.getElementById('writer-section');
 
 // Mặc định ẩn search
-searchBox.style.display = 'block';
+searchBox.style.display = 'none';
 writerSection.style.display = 'none';
 
 document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.addEventListener('click', () => {
         const pageId = btn.dataset.page;
 
-        if (pageId === 'page-hanzi' && searchBox.style.display === 'none' ) {
+        if (pageId === 'page-hanzi' && searchBox.style.display === 'block' ) {
             searchBox.style.display = 'block';
         } else {
             searchBox.style.display = 'none';
