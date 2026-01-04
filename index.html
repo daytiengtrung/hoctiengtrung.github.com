@@ -1593,6 +1593,9 @@
                 <div class="word-item">
                     <button class="audio-btn" onclick="event.stopPropagation(); playAudio('${word.chinese}')">🔊</button>
                     <div class="word-pinyin">${getPinyinWithTone(word.chinese)}</div>
+					<div class="word-reading">
+    (${pinyinToVietnamese(getPinyinWithTone(word.chinese))})
+</div>
                     <div class="word-chinese">${word.chinese}</div>
                     <div class="word-meaning" style="font-size: 14px; color: #666;">${word.meaning}</div>
                 </div>`).join(''); 
@@ -2285,6 +2288,48 @@ document.addEventListener('touchstart', function() {
 
 
 
+
+
+
+
+
+
+
+
+		
+             function pinyinToVietnamese(pinyin) {
+    if (!pinyin) return "";
+
+    let py = pinyin.toLowerCase();
+
+    // Quy tắc đặc biệt
+    const special = {
+        "wo": "ủa",
+        "ni": "ni",
+        "ta": "tha"
+    };
+    if (special[py]) return special[py];
+
+    const rules = [
+        ["zh", "tr"],
+        ["ch", "ch"],
+        ["sh", "s"],
+        ["w", "u"],
+        ["o", "a"],
+        ["x", "s"],
+        ["q", "ch"],
+        ["j", "z"]
+    ];
+
+    rules.forEach(r => py = py.replaceAll(r[0], r[1]));
+    return py;
+}
+
+
+
+
+
+		
 		
     </script>
 </body>
