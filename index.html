@@ -870,7 +870,7 @@
                     💡 Chỉ có thể tìm kiếm bẳng chữ hán
                 </div>
             </div>
-		<div id="writer-section" class="writer-section" style="display: block;"></div>
+		<div id="writer-section" class="writer-section" style="display: none;"></div>
 		
 		
         
@@ -2218,7 +2218,7 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
         const pageId = btn.dataset.page;
 
         if (pageId === 'page-hanzi') {
-            searchBox.style.display = 'block';
+            searchBox.style.display = 'none';
         } else {
             searchBox.style.display = 'none';
             writerSection.style.display = 'none';
