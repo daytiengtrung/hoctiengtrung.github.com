@@ -2206,6 +2206,7 @@ function copyToClipboard() {
 
 
 
+
 const searchBox = document.getElementById('writer-section');
 const writerSection = document.getElementById('writer-section');
 
@@ -2217,14 +2218,18 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.addEventListener('click', () => {
         const pageId = btn.dataset.page;
 
-        if ('page-vocab' || 'page-sentences' === searchBox.style.display = 'block' ) {
-           page-hanzi.searchBox.style.display = 'block';
-        } else {
-
+        if (pageId === 'page-hanzi' && searchBox.style.display === 'block' ) {
+            searchBox.style.display = 'block';
+        } else if (pageID === 'page-vocab' || pageID === 'page-sentences') {
 			searchBox.style.display = 'none';
 		}
+		else {
+            searchBox.style.display = 'none';
+            writerSection.style.display = 'none';
+        }
     });
 });
+
 
 
 
