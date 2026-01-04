@@ -792,6 +792,16 @@
 
 
 
+.word-reading,
+.sentence-reading {
+    font-size: 13px;
+    color: #ff5722;
+    font-style: italic;
+}
+
+
+
+		
 
 .close-writer-btn {
     display: block;
@@ -2313,9 +2323,9 @@ document.addEventListener('touchstart', function() {
     const special = {
         "wo": "ủa",
         "ni": "ni",
-        "ta": "tha"
-		"uò ": "ua"
-		"en ": "ân"
+        "ta": "tha",
+		"uò ": "ua",
+		"en ": "ân",
     };
     if (special[py]) return special[py];
 
