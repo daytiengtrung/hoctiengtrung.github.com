@@ -2366,7 +2366,7 @@ document.addEventListener('touchstart', function() {
 
 
 
-         /* ===============================
+      /* ===============================
    Chuẩn hoá Unicode pinyin
 ================================ */
 function normalizePinyin(py) {
@@ -2390,8 +2390,7 @@ function pinyinToVietnamese(pinyin) {
         "tā": "tha",
         "uò": "ua",
         "iè": "ia",
-        "en": "ân",
-		"zì": "trư"
+        "en": "ân"
     };
 
     if (special[py]) return special[py];
@@ -2408,7 +2407,6 @@ function pinyinToVietnamese(pinyin) {
 
         ["ě", "ở"],
         ["è", "ơ"],
-		["e", "â"],
 
         ["ā", "a"],
         ["à", "a"],
@@ -2445,6 +2443,7 @@ function pinyinSentenceToVietnamese(sentence) {
         .map(py => pinyinToVietnamese(py))
         .join(" ");
 }
+
 
 		
 
