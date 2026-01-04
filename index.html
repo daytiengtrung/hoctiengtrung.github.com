@@ -1504,6 +1504,7 @@
     const examplesHtml = createExamplesSection(char);
     
     const pinyinInfo = getPinyinWithTone(char);
+	const vietnameseReading = pinyinToVietnamese(pinyinInfo);
     const hanVietInfo = dictionaryData[char] && dictionaryData[char].hanviet ? dictionaryData[char].hanviet : 'Chưa dịch';
     const componentsInfo = getComponentsInfo(char);
 
