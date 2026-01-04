@@ -1609,14 +1609,14 @@
                     <button class="audio-btn sentence-audio" onclick="playAudio('${sentence.chinese}')">🔊</button>
                     <div class="sentence-pinyin">${getPinyinWithTone(sentence.chinese)}</div>
                     <div class="sentence-chinese">${sentence.chinese}</div>
-                    <div class="sentence-vietnamese">${sentence.vietnamese}</div>
+                    <div class="sentence-vietnamese">${sentence.vietnamese}</div></div>`)
 
                        <div class="sentence-reading">
     (${pinyinToVietnamese(getPinyinWithTone(sentence.chinese))})
 </div>   
 
 					
-                </div>`).join(''); 
+                .join(''); 
             
             return `<div class="examples-section"><div class="examples-title">📚 Từ vựng phổ biến</div><div class="word-examples">${wordsHtml}</div><div class="sentence-examples"><div class="examples-title">💬 Ví dụ câu</div>${sentencesHtml}</div></div>`; 
         }
