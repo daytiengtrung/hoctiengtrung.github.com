@@ -1594,7 +1594,7 @@
                     <button class="audio-btn" onclick="event.stopPropagation(); playAudio('${word.chinese}')">🔊</button>
                     <div class="word-pinyin">${getPinyinWithTone(word.chinese)}</div>
                     <div class="word-chinese">${word.chinese}</div>
-                    <div class="word-meaning" style="font-size: 14px; color: #666;">${word.meaning}</div>
+                    <div class="word-meaning" style="font-size: 14px; color: #666;">${word.meaning}</div>  </div>`).join(''); 
 
 
 <div class="word-reading">
@@ -1602,7 +1602,7 @@
 </div>
 
 					
-                </div>`).join(''); 
+              
             
             const sentencesHtml = examples.sentences.map(sentence => `
                 <div class="sentence-item">
