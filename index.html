@@ -1702,6 +1702,9 @@
                                 <div class="word-item">
                                     <button class="audio-btn" onclick="playAudio('${word.chinese}')">🔊</button>
                                     <div class="word-pinyin">${getPinyinWithTone(word.chinese)}</div>
+									<div class="word-reading">
+                           (${pinyinToVietnamese(getPinyinWithTone(word.chinese))})
+                           </div>
                                     <div class="word-chinese">${word.chinese}</div>
                                     <div class="word-meaning" style="font-size: 14px; color: #666;">${word.meaning}</div>
                                 </div>
