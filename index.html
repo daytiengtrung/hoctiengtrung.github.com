@@ -2217,7 +2217,7 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.addEventListener('click', () => {
         const pageId = btn.dataset.page;
 
-        if (pageId === 'page-hanzi') {
+        if (pageId === 'page-hanzi'  && searchBox.style.display = 'block' ) {
             searchBox.style.display = 'block';
         } else {
             searchBox.style.display = 'none';
