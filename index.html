@@ -1604,6 +1604,9 @@
                 <div class="sentence-item">
                     <button class="audio-btn sentence-audio" onclick="playAudio('${sentence.chinese}')">🔊</button>
                     <div class="sentence-pinyin">${getPinyinWithTone(sentence.chinese)}</div>
+					<div class="sentence-reading">
+    (${pinyinToVietnamese(getPinyinWithTone(sentence.chinese))})
+</div>
                     <div class="sentence-chinese">${sentence.chinese}</div>
                     <div class="sentence-vietnamese">${sentence.vietnamese}</div></div>`)
 
