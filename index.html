@@ -2365,58 +2365,86 @@ document.addEventListener('touchstart', function() {
 
 
 
-		
-             function pinyinToVietnamese(pinyin) {
+
+         /* ===============================
+   Chuẩn hoá Unicode pinyin
+================================ */
+function normalizePinyin(py) {
+    return py.normalize("NFC");
+}
+
+/* ===============================
+   Chuyển 1 âm pinyin → cách đọc Việt
+================================ */
+function pinyinToVietnamese(pinyin) {
     if (!pinyin) return "";
 
-    let py = pinyin.toLowerCase();
+    let py = normalizePinyin(
+        pinyin.toLowerCase().trim()
+    );
 
-    // Quy tắc đặc biệt
+    /* Quy tắc đặc biệt – 1 âm */
     const special = {
         "wǒ": "ủa",
-        "ni": "ni",
-        "ta": "tha",
-		"uò": "ua",
-		"en": "ân",
-		"iè": "ia",
+        "nǐ": "ni",
+        "tā": "tha",
+        "uò": "ua",
+        "iè": "ia",
+        "en": "ân"
     };
+
     if (special[py]) return special[py];
 
+    /* Quy tắc chung
+       ⚠️ thứ tự: dài → ngắn
+    */
     const rules = [
         ["zh", "tr"],
-		["è", "ơ"],
-		["ě", "ẩ"],
-		
-		["ā", "a"],
-		["à", "a"],
-		
-		["k", "kh"],
-
-		
-		["ò", "a"],
-		["ǒ", "ả"],
-
-		["ǐ", "ỉ"],
-		
-
-
-
-		
-		["z", "ch"],
-        ["g", "c"],
         ["sh", "s"],
+
+        ["iè", "ia"],
+        ["uò", "ua"],
+
+        ["ě", "ở"],
+        ["è", "ơ"],
+
+        ["ā", "a"],
+        ["à", "a"],
+
+        ["ǒ", "ả"],
+        ["ò", "a"],
+        ["ǐ", "ỉ"],
+
+        ["k", "kh"],
         ["w", "u"],
-        
+
         ["x", "s"],
         ["q", "ch"],
-        ["j", "z"]
+        ["j", "z"],
+        ["z", "ch"],
+        ["g", "c"]
     ];
 
-    rules.forEach(r => py = py.replaceAll(r[0], r[1]));
+    rules.forEach(([from, to]) => {
+        py = py.replaceAll(from, to);
+    });
+
     return py;
 }
 
+/* ===============================
+   Chuyển CẢ CÂU pinyin → đọc Việt
+================================ */
+function pinyinSentenceToVietnamese(sentence) {
+    if (!sentence) return "";
 
+    return sentence
+        .split(/\s+/)
+        .map(py => pinyinToVietnamese(py))
+        .join(" ");
+}
+
+		
 
 
 
