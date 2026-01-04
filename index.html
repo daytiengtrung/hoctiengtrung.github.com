@@ -1615,14 +1615,7 @@
             const wordsHtml = examples.words.map(word => `
                 <div class="word-item">
                     <button class="audio-btn" onclick="event.stopPropagation(); playAudio('${word.chinese}')">🔊</button>
-                    <div class="word-pinyin">${getPinyinWithTone(word.chinese)}</div>
-
-					
-					
-
-	
-
-						   
+                    <div class="word-pinyin">${getPinyinWithTone(word.chinese)}</div>				   
                     <div class="word-chinese">${word.chinese}</div>
                     <div class="word-meaning" style="font-size: 14px; color: #666;">${word.meaning}</div> 
 					
@@ -1640,14 +1633,14 @@
                 <div class="sentence-item">
                     <button class="audio-btn sentence-audio" onclick="playAudio('${sentence.chinese}')">🔊</button>
                     <div class="sentence-pinyin">${getPinyinWithTone(sentence.chinese)}</div>
-
-					
-					<div class="sentence-reading">
-    (${pinyinToVietnamese(getPinyinWithTone(sentence.chinese))})
-</div>
-
                     <div class="sentence-chinese">${sentence.chinese}</div>
-                    <div class="sentence-vietnamese">${sentence.vietnamese}</div></div>`)
+                    <div class="sentence-vietnamese">${sentence.vietnamese}</div>
+					
+						<div class="sentence-reading">
+                                        <span style="color: red;">Phát âm:</span> ${pinyinToVietnamese(getPinyinWithTone(sentence.chinese))}
+                                        </div>
+					
+					</div>`)
 
                      
 
@@ -1758,22 +1751,15 @@
                                 <div class="sentence-item">
                                     <button class="audio-btn sentence-audio" onclick="playAudio('${sentence.chinese}')">🔊</button>
                                     <div class="sentence-pinyin">${getPinyinWithTone(sentence.chinese)}</div>
-
-
-
-
-
-                                     		<div class="sentence-reading">
-    (${pinyinToVietnamese(getPinyinWithTone(sentence.chinese))})
-</div>
-
-
-
-
-
-									
                                     <div class="sentence-chinese">${sentence.chinese}</div>
                                     <div class="sentence-vietnamese">${sentence.vietnamese}</div>
+
+
+
+                                   	<div class="sentence-reading">
+                                        <span style="color: red;">Phát âm:</span> ${pinyinToVietnamese(getPinyinWithTone(sentence.chinese))}
+                                        </div>
+									
                                 </div>
                             `).join('')}
                         </div>
@@ -1875,14 +1861,18 @@
                         ${wordsToDisplay.map(word => `
                             <div class="word-item">
                                 <button class="audio-btn" onclick="playAudio('${word.chinese}')">🔊</button>
-                                <div class="word-pinyin">${getPinyinWithTone(word.chinese)}</div>
-
-                                 <div class="word-reading">
-                           (${pinyinToVietnamese(getPinyinWithTone(word.chinese))})
-                           </div>
-								
+                                <div class="word-pinyin">${getPinyinWithTone(word.chinese)}</div>	
                                 <div class="word-chinese">${word.chinese}</div>
                                 <div class="word-meaning" style="font-size: 14px; color: #666;">${word.meaning}</div>
+
+
+
+                                <div class="word-reading">
+                           <span style="color: red;">Phát âm:</span> ${pinyinToVietnamese(getPinyinWithTone(word.chinese))}
+                           </div>
+
+
+								
                             </div>
                         `).join('')}
                     </div>
@@ -1946,21 +1936,16 @@
                             <div class="sentence-item">
                                 <button class="audio-btn sentence-audio" onclick="playAudio('${sentence.chinese}')">🔊</button>
                                 <div class="sentence-pinyin">${getPinyinWithTone(sentence.chinese)}</div>
-
-
-
-
-
-                                   		<div class="sentence-reading">
-    (${pinyinToVietnamese(getPinyinWithTone(sentence.chinese))})
-</div>
-
-
-
-
-								
                                 <div class="sentence-chinese">${sentence.chinese}</div>
                                 <div class="sentence-vietnamese">${sentence.vietnamese}</div>
+
+
+
+                               	<div class="sentence-reading">
+                                        <span style="color: red;">Phát âm:</span> ${pinyinToVietnamese(getPinyinWithTone(sentence.chinese))}
+                                        </div>
+
+								
                             </div>
                         `).join('')}
                     </div>
