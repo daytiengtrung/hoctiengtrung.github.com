@@ -1617,16 +1617,17 @@
                     <div class="word-pinyin">${getPinyinWithTone(word.chinese)}</div>
 
 					
-					<div class="word-reading">
-                           Phát âm: ${pinyinToVietnamese(getPinyinWithTone(word.chinese))}
-                           </div>
+					
 
 	
 
 						   
                     <div class="word-chinese">${word.chinese}</div>
                     <div class="word-meaning" style="font-size: 14px; color: #666;">${word.meaning}</div>  </div>`).join(''); 
-              
+			
+              <div class="word-reading">
+                           Phát âm: ${pinyinToVietnamese(getPinyinWithTone(word.chinese))}
+                           </div>
             
             const sentencesHtml = examples.sentences.map(sentence => `
                 <div class="sentence-item">
