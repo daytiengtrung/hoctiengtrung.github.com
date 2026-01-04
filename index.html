@@ -1594,14 +1594,14 @@
                     <button class="audio-btn" onclick="event.stopPropagation(); playAudio('${word.chinese}')">🔊</button>
                     <div class="word-pinyin">${getPinyinWithTone(word.chinese)}</div>
                     <div class="word-chinese">${word.chinese}</div>
-                    <div class="word-meaning" style="font-size: 14px; color: #666;">${word.meaning}</div>  </div>`).join(''); 
+                    <div class="word-meaning" style="font-size: 14px; color: #666;">${word.meaning}</div>  </div>`)
 
 
-<div class="word-reading">
-    (${pinyinToVietnamese(getPinyinWithTone(word.chinese))})
-</div>
+                     <div class="word-reading">
+                           (${pinyinToVietnamese(getPinyinWithTone(word.chinese))})
+                           </div>
 
-					
+					.join(''); 
               
             
             const sentencesHtml = examples.sentences.map(sentence => `
@@ -1610,6 +1610,12 @@
                     <div class="sentence-pinyin">${getPinyinWithTone(sentence.chinese)}</div>
                     <div class="sentence-chinese">${sentence.chinese}</div>
                     <div class="sentence-vietnamese">${sentence.vietnamese}</div>
+
+                       <div class="sentence-reading">
+    (${pinyinToVietnamese(getPinyinWithTone(sentence.chinese))})
+</div>   
+
+					
                 </div>`).join(''); 
             
             return `<div class="examples-section"><div class="examples-title">📚 Từ vựng phổ biến</div><div class="word-examples">${wordsHtml}</div><div class="sentence-examples"><div class="examples-title">💬 Ví dụ câu</div>${sentencesHtml}</div></div>`; 
