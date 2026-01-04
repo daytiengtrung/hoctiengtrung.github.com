@@ -2266,8 +2266,17 @@ document.addEventListener('click', function(e) {
 });
 
 
-	
+
+
+
 		
+		// Mẹo mở khóa âm thanh cho iPhone
+document.addEventListener('touchstart', function() {
+    const audio = new Audio();
+    audio.play().then(() => {
+        audio.pause();
+    }).catch(e => console.log("Chưa thể mở khóa âm thanh"));
+}, { once: true });
 
 
 
