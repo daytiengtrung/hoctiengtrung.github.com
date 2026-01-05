@@ -2362,7 +2362,6 @@ function pinyinToVietnamese(pinyin) {
     const special = {
         "wo": "ủa",
         "ni": "ni",
-		
         "ta": "tha"
 	
     };
@@ -2370,14 +2369,61 @@ function pinyinToVietnamese(pinyin) {
 
     const rules = [
         ["zh", "tr"],
-		["zì", "trư"],
-        ["ch", "ch"],
+["iǎo", "ẻo"],
+["iào", "eo"],
+["ā", "a"],
+["à", "a"],
+["ǎ", "ả"],
+["ér", "ơ"],
+["zì", "trư"],
+
+
+["uǒ", "ủa"],
+["uō", "ua"],
+
+["uǐ", "uổi"],
+["uì", "uôi"],
+["uí", "uối"],
+
+["ēn", "ân"],
+["en", "ân"],
+
+
+["ě", "ở"],
+["ě", "ơ"],
+
+["k", "kh"],
+["d", "t"],
+
+["ǒ", "ả"],
+         
+ ["ǐ", "ỉ"],
+ ["ī", "ư"],
+ ["ì", "ư"],
+
+["ù", "uy"],
+
+["p", "ph"],
+
+
+
+["iang", "eng"],
+
+["t", "th"],
+
+
+
+
+
+        ["ch", "s"],
         ["sh", "s"],
         ["w", "u"],
-        ["o", "a"],
-        ["x", "s"],
+ ["z", "ch"],
+        
+        ["ué", "uế"],
         ["q", "ch"],
-        ["j", "z"]
+        ["jỉ", "chỉ"],
+        ["ji", "ch"]
     ];
 
     rules.forEach(r => py = py.replaceAll(r[0], r[1]));
