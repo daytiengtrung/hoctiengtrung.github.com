@@ -805,26 +805,19 @@
     margin-left: 5px;
 }
 
-.word-meaning:hover::after, .sentence-vietnamese:hover::after {
-    opacity: 1;
-    color: #2196F3;
-}
-
-/* Thêm icon loa cho cả tiếng Việt và tiếng Trung */
-.word-meaning::after, 
-.sentence-vietnamese::after, 
-.word-chinese::after, 
-.sentence-chinese::after {
+/* Làm cho biểu tượng loa tách biệt và dễ bấm */
+.word-meaning::after, .word-chinese::after, .sentence-vietnamese::after, .sentence-chinese::after {
     content: " 🔊";
-    font-size: 0.8em;
-    cursor: pointer;
-    opacity: 0.5;
-    margin-left: 5px;
+    display: inline-block;
+    padding: 0 5px;
+    color: #2196F3;
+    opacity: 0.7;
+    transition: 0.3s;
 }
 
-/* Hiệu ứng khi chỉ chuột vào */
-.word-chinese:hover, .sentence-chinese:hover {
-    color: #ff5722; /* Tiếng Trung đổi màu cam khi rê chuột */
+.word-meaning:hover::after, .word-chinese:hover::after {
+    opacity: 1;
+    transform: scale(1.2); /* Phóng to loa một chút khi chỉ vào */
 }
 
 
