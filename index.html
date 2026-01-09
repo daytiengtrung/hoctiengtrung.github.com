@@ -2908,77 +2908,71 @@ function convertSyllable(py) {
 	
 <script>
 function playAudioSmart(text, lang) {
-    // Tốc độ mặc định là 1 (bình thường)
     let speed = 1;
-
-    // --- CHỈNH TỐC ĐỘ RIÊNG CHO TIẾNG TRUNG Ở ĐÂY ---
+    // Chỉnh tốc độ riêng cho tiếng Trung
     if (lang === 'zh-CN') {
-        speed = 0.5; // Chỉnh số này nhỏ đi để tiếng Trung đọc chậm lại (VD: 0.7 hoặc 0.8)
+        speed = 0.6; // Chỉnh 0.7 để đọc chậm hơn nữa nếu muốn
     }
 
-    if (navigator.onLine) {
-        // Sử dụng Google TTS API chuẩn nữ
-        // Tham số ttsspeed: 1 là nhanh, dưới 1 là chậm (tuy nhiên tùy trình duyệt hỗ trợ)
-        // Cách tốt nhất là dùng playbackRate của Audio Object
-        const url = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=${lang}&client=tw-ob`;
-        let audio = new Audio(url);
-        
-        audio.playbackRate = speed; // Áp dụng tốc độ
-        audio.play().catch(err => {
-            useFallbackSpeech(text, lang, speed);
-        });
-    } else {
-        useFallbackSpeech(text, lang, speed);
-    }
-}
+    // Sử dụng Proxy để ép trình duyệt tải giọng nữ Google mà không bị chặn
+    // Chúng ta dùng "translate.google.com.vn" hoặc thêm "client=tw-ob" để lấy giọng chuẩn
+    const googleUrl = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=${lang}&client=tw-ob&ttsspeed=${speed}`;
+    
+    // Xóa âm thanh cũ đang phát (nếu có)
+    window.currentAudio?.pause();
+    
+    const audio = new Audio(googleUrl);
+    window.currentAudio = audio; // Lưu lại để quản lý
+    
+    // Ép tốc độ phát bằng code (vì tham số ttsspeed của Google đôi khi không nhạy)
+    audio.playbackRate = speed; 
 
-function useFallbackSpeech(text, lang, speed) {
-    if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
+    audio.play().catch(err => {
+        console.log("Không tải được giọng Google, đang dùng giọng máy dự phòng...");
+        // Nếu vẫn lỗi (do mất mạng), dùng giọng máy trình duyệt
         const msg = new SpeechSynthesisUtterance(text);
         msg.lang = lang === 'vi' ? 'vi-VN' : 'zh-CN';
-        msg.rate = speed; 
+        msg.rate = speed;
+        window.speechSynthesis.cancel();
         window.speechSynthesis.speak(msg);
-    }
+    });
 }
 
 function setupSpeakButtons() {
-    // 1. Gắn nút cho TIẾNG TRUNG
+    // 1. Tiếng Trung: Gắn vào chữ Hán và Câu
     document.querySelectorAll('.word-chinese, .sentence-chinese').forEach(el => {
-        if (!el.getAttribute('data-has-speaker')) {
-            let btn = document.createElement('span');
+        if (!el.querySelector('.btn-speak')) {
+            let btn = document.createElement('button');
             btn.className = 'btn-speak';
             btn.innerHTML = '🔊';
-            btn.title = "Nghe tiếng Trung (Chậm)";
+            btn.type = 'button'; // Ngăn việc submit form nếu có
             btn.onclick = function(e) {
-                e.stopPropagation(); // Chặn mở bảng viết chữ
+                e.preventDefault();
+                e.stopPropagation(); // CHẶN MỞ BẢNG VIẾT CHỮ
                 let cleanText = el.innerText.replace('🔊', '').trim();
                 playAudioSmart(cleanText, 'zh-CN');
             };
             el.appendChild(btn);
-            el.setAttribute('data-has-speaker', 'true');
         }
     });
 
-    // 2. Gắn nút cho TIẾNG VIỆT
+    // 2. Tiếng Việt: Gắn vào nghĩa từ và câu
     document.querySelectorAll('.word-meaning, .sentence-vietnamese').forEach(el => {
-        if (!el.getAttribute('data-has-speaker')) {
-            let btn = document.createElement('span');
+        if (!el.querySelector('.btn-speak')) {
+            let btn = document.createElement('button');
             btn.className = 'btn-speak';
             btn.innerHTML = '🔊';
-            btn.title = "Nghe tiếng Việt";
             btn.onclick = function(e) {
-                e.stopPropagation(); 
+                e.stopPropagation();
                 let cleanText = el.innerText.replace('🔊', '').trim();
-                playAudioSmart(cleanText, 'vi'); // Tiếng Việt sẽ dùng speed = 1
+                playAudioSmart(cleanText, 'vi');
             };
             el.appendChild(btn);
-            el.setAttribute('data-has-speaker', 'true');
         }
     });
 }
 
-// Chạy kiểm tra liên tục để gắn nút vào các nội dung mới
+// Chạy liên tục để quét các phần tử mới được tạo ra từ file index.js
 setInterval(setupSpeakButtons, 1000);
 </script>
 	
