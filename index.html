@@ -2909,11 +2909,11 @@ function convertSyllable(py) {
 <script>
 function playAudioSmart(text, lang) {
     // Tốc độ mặc định là 1 (bình thường)
-    let speed = 0.6;
+    let speed = 1;
 
     // --- CHỈNH TỐC ĐỘ RIÊNG CHO TIẾNG TRUNG Ở ĐÂY ---
-    if (lang === 'vi-VN') {
-        speed = 1; // Chỉnh số này nhỏ đi để tiếng Trung đọc chậm lại (VD: 0.7 hoặc 0.8)
+    if (lang === 'zh-CN') {
+        speed = 0.6; // Chỉnh số này nhỏ đi để tiếng Trung đọc chậm lại (VD: 0.7 hoặc 0.8)
     }
 
     if (navigator.onLine) {
