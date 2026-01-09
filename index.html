@@ -2908,42 +2908,52 @@ function convertSyllable(py) {
 	
 <script>
 function playAudioSmart(text, lang) {
-    // Xóa âm thanh cũ nếu đang phát để không bị chồng tiếng
-    if (window.myAudio) {
-        window.myAudio.pause();
-        window.myAudio.src = "";
-    }
+    window.speechSynthesis.cancel(); // Dừng các giọng đang đọc
 
-    let speed = 1.0;
-    if (lang === 'zh-CN') {
-        speed = 0.6; // Tốc độ TIẾNG TRUNG: chỉnh 0.7 là chậm, 1.0 là bình thường
-    }
-
-    // Link API này ép lấy giọng nữ chuẩn của Google
-    const url = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=${lang}&client=tw-ob`;
+    const msg = new SpeechSynthesisUtterance(text);
     
-    window.myAudio = new Audio(url);
-    window.myAudio.playbackRate = speed; // ÉP TRÌNH DUYỆT ĐỌC CHẬM
+    // 1. Cấu hình ngôn ngữ
+    msg.lang = lang === 'vi' ? 'vi-VN' : 'zh-CN';
 
-    window.myAudio.play().catch(e => {
-        // Nếu vẫn không tải được từ Google (do chặn bảo mật), dùng giọng máy dự phòng
-        const msg = new SpeechSynthesisUtterance(text);
-        msg.lang = lang === 'vi' ? 'vi-VN' : 'zh-CN';
-        msg.rate = speed;
-        window.speechSynthesis.cancel();
-        window.speechSynthesis.speak(msg);
-    });
+    // 2. Chỉnh tốc độ (Tiếng Trung 0.7, Tiếng Việt 1)
+    msg.rate = (lang === 'zh-CN') ? 0.7 : 1.0;
+    msg.pitch = 0.7; // Chỉnh giọng thanh hơn một chút để ra giọng nữ
+
+    // 3. BỘ LỌC GIỌNG NỮ (Quan trọng nhất)
+    const voices = window.speechSynthesis.getVoices();
+    let selectedVoice = null;
+
+    if (lang === 'vi') {
+        // Tìm giọng nữ tiếng Việt: Ưu tiên Google, sau đó đến các giọng có tên "Linh", "Lan", "An"
+        selectedVoice = voices.find(v => v.lang.includes('vi') && (v.name.includes('Google') || v.name.includes('Natural') || v.name.includes('Linh')));
+    } else {
+        // Tìm giọng nữ tiếng Trung: Ưu tiên Google hoặc các giọng "Xiaoxiao", "Huihui"
+        selectedVoice = voices.find(v => v.lang.includes('zh') && (v.name.includes('Google') || v.name.includes('Xiaoxiao') || v.name.includes('Female')));
+    }
+
+    if (selectedVoice) {
+        msg.voice = selectedVoice;
+    }
+
+    window.speechSynthesis.speak(msg);
 }
 
+// Hàm này giúp trình duyệt tải danh sách giọng đọc ngay khi mở trang
+function loadVoices() {
+    window.speechSynthesis.getVoices();
+}
+window.speechSynthesis.onvoiceschanged = loadVoices;
+loadVoices();
+
 function setupSpeakButtons() {
-    // Thêm loa cho Tiếng Trung (Chữ Hán và Câu)
+    // Gắn cho Tiếng Trung
     document.querySelectorAll('.word-chinese, .sentence-chinese').forEach(el => {
         if (!el.querySelector('.btn-speak')) {
             let btn = document.createElement('span');
             btn.className = 'btn-speak';
             btn.innerHTML = '🔊';
             btn.onclick = function(e) {
-                e.stopPropagation(); // CHẶN KHÔNG CHO MỞ BẢNG VIẾT CHỮ
+                e.stopPropagation();
                 let cleanText = el.innerText.replace('🔊', '').trim();
                 playAudioSmart(cleanText, 'zh-CN');
             };
@@ -2951,14 +2961,14 @@ function setupSpeakButtons() {
         }
     });
 
-    // Thêm loa cho Tiếng Việt (Nghĩa từ và câu)
+    // Gắn cho Tiếng Việt
     document.querySelectorAll('.word-meaning, .sentence-vietnamese').forEach(el => {
         if (!el.querySelector('.btn-speak')) {
             let btn = document.createElement('span');
             btn.className = 'btn-speak';
             btn.innerHTML = '🔊';
             btn.onclick = function(e) {
-                e.stopPropagation(); // Không cho ảnh hưởng đến phần tử cha
+                e.stopPropagation();
                 let cleanText = el.innerText.replace('🔊', '').trim();
                 playAudioSmart(cleanText, 'vi');
             };
@@ -2967,7 +2977,6 @@ function setupSpeakButtons() {
     });
 }
 
-// Chạy liên tục để quét các phần tử mới được tạo ra
 setInterval(setupSpeakButtons, 1000);
 </script>
 	
