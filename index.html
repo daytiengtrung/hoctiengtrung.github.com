@@ -2912,45 +2912,40 @@ function convertSyllable(py) {
 	
 <script>
 function speakText(text, lang) {
-    if (navigator.onLine) {
-        // CÓ MẠNG: Dùng giọng Google nữ cực chuẩn
-        const url = "https://translate.google.com/translate_tts?ie=UTF-8&q=" + encodeURIComponent(text) + "&tl=" + lang + "&client=tw-ob";
-        let audio = new Audio(url);
-        audio.play().catch(e => useWebSpeech(text, lang));
-    } else {
-        // KHÔNG MẠNG: Dùng giọng máy trình duyệt
-        useWebSpeech(text, lang);
-    }
-}
-
-function useWebSpeech(text, lang) {
-    if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
+    // Ép sử dụng URL Google để có giọng nữ chuẩn 100% trên mọi thiết bị
+    const url = "https://translate.google.com/translate_tts?ie=UTF-8&q=" + encodeURIComponent(text) + "&tl=" + lang + "&client=tw-ob";
+    
+    let audio = new Audio(url);
+    audio.play().catch(e => {
+        // Nếu không có mạng hoặc bị chặn, mới dùng giọng máy trình duyệt
         const msg = new SpeechSynthesisUtterance(text);
         msg.lang = (lang === 'vi') ? 'vi-VN' : 'zh-CN';
         window.speechSynthesis.speak(msg);
-    }
+    });
 }
 
 document.addEventListener('click', function(e) {
-    // 1. Kiểm tra nếu bấm vào Tiếng Việt (Nghĩa từ hoặc câu)
+    // 1. Xử lý cho TIẾNG VIỆT
     const targetVi = e.target.closest('.word-meaning, .sentence-vietnamese');
     if (targetVi) {
+        e.stopPropagation(); // Ngăn việc kích hoạt các hàm khác của web
         let text = targetVi.innerText.replace(/🔊/g, "").trim();
         speakText(text, 'vi');
         return;
     }
 
-    // 2. Kiểm tra nếu bấm vào Tiếng Trung (Chữ Hán hoặc Câu)
+    // 2. Xử lý cho TIẾNG TRUNG (Ngăn mở bảng viết chữ)
     const targetZh = e.target.closest('.word-chinese, .sentence-chinese');
     if (targetZh) {
+        // Nếu người dùng bấm trúng cái loa hoặc vùng chữ
+        // Chúng ta vẫn để web mở bảng viết nếu bạn muốn, 
+        // nhưng nếu muốn CHỈ ĐỌC mà KHÔNG MỞ bảng viết, bạn thêm dòng dưới:
+        // e.preventDefault(); 
+        
         let text = targetZh.innerText.replace(/🔊/g, "").trim();
         speakText(text, 'zh-CN');
     }
-});
-
-// Nạp giọng đọc sẵn sàng
-window.speechSynthesis.getVoices();
+}, true); // Thêm 'true' ở đây để ưu tiên xử lý âm thanh trước
 </script>
 	
 	
