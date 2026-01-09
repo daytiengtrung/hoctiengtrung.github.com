@@ -1428,10 +1428,25 @@
         });
         
         document.querySelectorAll('.char-button').forEach(button => { 
-            button.addEventListener('click', async function() { 
-                const char = this.dataset.char; 
-                document.getElementById('input-char').value = char; 
-                await triggerSearch(char); 
+            
+
+
+
+
+
+                   button.addEventListener('click', async function(e) {
+    e.stopPropagation();
+    const char = this.dataset.char;
+    document.getElementById('input-char').value = char;
+    await triggerSearch(char);
+}, { once: true });
+
+
+
+
+
+
+				
             }); 
         });
         
