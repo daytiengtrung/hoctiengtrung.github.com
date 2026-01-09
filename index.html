@@ -793,6 +793,46 @@
 
 
 
+
+
+
+/* Tạo biểu tượng loa nhỏ sau mỗi chữ tiếng Việt */
+.word-meaning::after, .sentence-vietnamese::after {
+    content: " 🔊"; /* Thêm icon loa */
+    font-size: 0.8em;
+    cursor: pointer;
+    opacity: 0.6;
+    margin-left: 5px;
+}
+
+.word-meaning:hover::after, .sentence-vietnamese:hover::after {
+    opacity: 1;
+    color: #2196F3;
+}
+
+/* Thêm icon loa cho cả tiếng Việt và tiếng Trung */
+.word-meaning::after, 
+.sentence-vietnamese::after, 
+.word-chinese::after, 
+.sentence-chinese::after {
+    content: " 🔊";
+    font-size: 0.8em;
+    cursor: pointer;
+    opacity: 0.5;
+    margin-left: 5px;
+}
+
+/* Hiệu ứng khi chỉ chuột vào */
+.word-chinese:hover, .sentence-chinese:hover {
+    color: #ff5722; /* Tiếng Trung đổi màu cam khi rê chuột */
+}
+
+
+
+
+
+
+
 .word-reading,
 .sentence-reading {
     font-size: 14px;
@@ -1950,6 +1990,8 @@
                         ${sentencesToDisplay.map(sentence => `
                             <div class="sentence-item">
                                 <button class="audio-btn sentence-audio" onclick="playAudio('${sentence.chinese}')">🔊</button>
+								
+								
                                 <div class="sentence-pinyin">${getPinyinWithTone(sentence.chinese)}</div>
                                 <div class="sentence-chinese">${sentence.chinese}</div>
                                 <div class="sentence-vietnamese">${sentence.vietnamese}</div>
@@ -2862,14 +2904,57 @@ function convertSyllable(py) {
 
     return initial + final;
 }
-
-
-		
-
-
-
-		
-		
+	
     </script>
+	
+	
+	
+	
+<script>
+function speakText(text, lang) {
+    if (navigator.onLine) {
+        // CÓ MẠNG: Dùng giọng Google nữ cực chuẩn
+        const url = "https://translate.google.com/translate_tts?ie=UTF-8&q=" + encodeURIComponent(text) + "&tl=" + lang + "&client=tw-ob";
+        let audio = new Audio(url);
+        audio.play().catch(e => useWebSpeech(text, lang));
+    } else {
+        // KHÔNG MẠNG: Dùng giọng máy trình duyệt
+        useWebSpeech(text, lang);
+    }
+}
+
+function useWebSpeech(text, lang) {
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const msg = new SpeechSynthesisUtterance(text);
+        msg.lang = (lang === 'vi') ? 'vi-VN' : 'zh-CN';
+        window.speechSynthesis.speak(msg);
+    }
+}
+
+document.addEventListener('click', function(e) {
+    // 1. Kiểm tra nếu bấm vào Tiếng Việt (Nghĩa từ hoặc câu)
+    const targetVi = e.target.closest('.word-meaning, .sentence-vietnamese');
+    if (targetVi) {
+        let text = targetVi.innerText.replace(/🔊/g, "").trim();
+        speakText(text, 'vi');
+        return;
+    }
+
+    // 2. Kiểm tra nếu bấm vào Tiếng Trung (Chữ Hán hoặc Câu)
+    const targetZh = e.target.closest('.word-chinese, .sentence-chinese');
+    if (targetZh) {
+        let text = targetZh.innerText.replace(/🔊/g, "").trim();
+        speakText(text, 'zh-CN');
+    }
+});
+
+// Nạp giọng đọc sẵn sàng
+window.speechSynthesis.getVoices();
+</script>
+	
+	
+	
+	
 </body>
 </html>
