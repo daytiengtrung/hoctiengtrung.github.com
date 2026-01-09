@@ -2905,42 +2905,31 @@ function convertSyllable(py) {
 	
 <script>
 function speakText(text, lang) {
-    // Ép sử dụng URL Google để có giọng nữ chuẩn 100% trên mọi thiết bị
+    // lang: 'vi' cho tiếng Việt, 'zh-CN' cho tiếng Trung
     const url = "https://translate.google.com/translate_tts?ie=UTF-8&q=" + encodeURIComponent(text) + "&tl=" + lang + "&client=tw-ob";
     
     let audio = new Audio(url);
-    audio.play().catch(e => {
-        // Nếu không có mạng hoặc bị chặn, mới dùng giọng máy trình duyệt
-        const msg = new SpeechSynthesisUtterance(text);
-        msg.lang = (lang === 'vi') ? 'vi-VN' : 'zh-CN';
-        window.speechSynthesis.speak(msg);
-    });
+    audio.play().catch(e => console.error("Lỗi phát âm thanh:", e));
 }
 
 document.addEventListener('click', function(e) {
-    // 1. Xử lý cho TIẾNG VIỆT
+    // 1. Nếu bấm vào phần TIẾNG VIỆT
     const targetVi = e.target.closest('.word-meaning, .sentence-vietnamese');
     if (targetVi) {
-        e.stopPropagation(); // Ngăn việc kích hoạt các hàm khác của web
         let text = targetVi.innerText.replace(/🔊/g, "").trim();
         speakText(text, 'vi');
-        return;
+        return; // Dừng lại để không chạy xuống dưới
     }
 
-    // 2. Xử lý cho TIẾNG TRUNG (Ngăn mở bảng viết chữ)
-    const targetZh = e.target.closest('.word-chinese, .sentence-chinese');
+    // 2. Nếu bấm vào phần TIẾNG TRUNG
+    const targetZh = e.target.closest('.word-chinese, .sentence-chinese, .pinyin');
     if (targetZh) {
-        // Nếu người dùng bấm trúng cái loa hoặc vùng chữ
-        // Chúng ta vẫn để web mở bảng viết nếu bạn muốn, 
-        // nhưng nếu muốn CHỈ ĐỌC mà KHÔNG MỞ bảng viết, bạn thêm dòng dưới:
-        // e.preventDefault(); 
-        
-        let text = targetZh.innerText.replace(/🔊/g, "").trim();
+        let text = targetZh.innerText.trim();
+        // Nếu bạn muốn đọc cả câu thì chọn class sentence-chinese
         speakText(text, 'zh-CN');
     }
-}, true); // Thêm 'true' ở đây để ưu tiên xử lý âm thanh trước
+});
 </script>
-	
 	
 	
 	
