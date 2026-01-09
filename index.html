@@ -2907,77 +2907,78 @@ function convertSyllable(py) {
 	
 	
 <script>
-function playAudioSmart(text, lang) {
-    window.speechSynthesis.cancel(); // Dừng các giọng đang đọc
+// CẤU HÌNH TỐC ĐỘ Ở ĐÂY
+const SPEED_ZH = 0.7; // Tiếng Trung chậm
+const SPEED_VI = 1.0; // Tiếng Việt bình thường
 
-    const msg = new SpeechSynthesisUtterance(text);
-    
-    // 1. Cấu hình ngôn ngữ
-    msg.lang = lang === 'vi' ? 'vi-VN' : 'zh-CN';
+function playSmartVoice(text, lang) {
+    let speed = (lang === 'zh-CN') ? SPEED_ZH : SPEED_VI;
 
-    // 2. Chỉnh tốc độ (Tiếng Trung 0.7, Tiếng Việt 1)
-    msg.rate = (lang === 'zh-CN') ? 0.7 : 1.0;
-    msg.pitch = 0.7; // Chỉnh giọng thanh hơn một chút để ra giọng nữ
-
-    // 3. BỘ LỌC GIỌNG NỮ (Quan trọng nhất)
-    const voices = window.speechSynthesis.getVoices();
-    let selectedVoice = null;
-
-    if (lang === 'vi') {
-        // Tìm giọng nữ tiếng Việt: Ưu tiên Google, sau đó đến các giọng có tên "Linh", "Lan", "An"
-        selectedVoice = voices.find(v => v.lang.includes('vi') && (v.name.includes('Google') || v.name.includes('Natural') || v.name.includes('Linh')));
+    // 1. CHIẾN LƯỢC: ƯU TIÊN GOOGLE TRANSLATE (ONLINE)
+    if (navigator.onLine) {
+        // Dùng link này để lấy giọng nữ chuẩn, không cần API Key
+        const url = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=${lang}&client=tw-ob`;
+        
+        let audio = new Audio(url);
+        audio.playbackRate = speed; // Áp dụng tốc độ đọc
+        
+        audio.play().catch(() => {
+            // Nếu bị Google chặn hoặc lỗi mạng, nhảy xuống dùng giọng máy
+            playFallback(text, lang, speed);
+        });
     } else {
-        // Tìm giọng nữ tiếng Trung: Ưu tiên Google hoặc các giọng "Xiaoxiao", "Huihui"
-        selectedVoice = voices.find(v => v.lang.includes('zh') && (v.name.includes('Google') || v.name.includes('Xiaoxiao') || v.name.includes('Female')));
+        // 2. CHIẾN LƯỢC: MẤT MẠNG THÌ DÙNG GIỌNG MÁY (OFFLINE)
+        playFallback(text, lang, speed);
     }
+}
 
-    if (selectedVoice) {
-        msg.voice = selectedVoice;
-    }
+function playFallback(text, lang, speed) {
+    window.speechSynthesis.cancel();
+    const msg = new SpeechSynthesisUtterance(text);
+    msg.lang = (lang === 'vi') ? 'vi-VN' : 'zh-CN';
+    msg.rate = speed;
+    
+    // Cố gắng tìm giọng nữ trong máy nếu có
+    const voices = window.speechSynthesis.getVoices();
+    const femaleVoice = voices.find(v => v.lang.includes(lang) && (v.name.includes('Google') || v.name.includes('Female') || v.name.includes('Xiaoxiao')));
+    if (femaleVoice) msg.voice = femaleVoice;
 
     window.speechSynthesis.speak(msg);
 }
 
-// Hàm này giúp trình duyệt tải danh sách giọng đọc ngay khi mở trang
-function loadVoices() {
-    window.speechSynthesis.getVoices();
-}
-window.speechSynthesis.onvoiceschanged = loadVoices;
-loadVoices();
-
-function setupSpeakButtons() {
-    // Gắn cho Tiếng Trung
+// HÀM TỰ ĐỘNG GẮN NÚT (TÁCH BIỆT VỚI CHỮ)
+function injectAudioButtons() {
+    // Tiếng Trung
     document.querySelectorAll('.word-chinese, .sentence-chinese').forEach(el => {
-        if (!el.querySelector('.btn-speak')) {
-            let btn = document.createElement('span');
-            btn.className = 'btn-speak';
+        if (!el.querySelector('.btn-audio-pro')) {
+            let btn = document.createElement('button');
+            btn.className = 'btn-audio-pro';
             btn.innerHTML = '🔊';
             btn.onclick = function(e) {
-                e.stopPropagation();
-                let cleanText = el.innerText.replace('🔊', '').trim();
-                playAudioSmart(cleanText, 'zh-CN');
+                e.stopPropagation(); // CHẶN KHÔNG CHO MỞ BẢNG VIẾT
+                playSmartVoice(el.innerText.replace('🔊', '').trim(), 'zh-CN');
             };
             el.appendChild(btn);
         }
     });
 
-    // Gắn cho Tiếng Việt
+    // Tiếng Việt
     document.querySelectorAll('.word-meaning, .sentence-vietnamese').forEach(el => {
-        if (!el.querySelector('.btn-speak')) {
-            let btn = document.createElement('span');
-            btn.className = 'btn-speak';
+        if (!el.querySelector('.btn-audio-pro')) {
+            let btn = document.createElement('button');
+            btn.className = 'btn-audio-pro';
             btn.innerHTML = '🔊';
             btn.onclick = function(e) {
-                e.stopPropagation();
-                let cleanText = el.innerText.replace('🔊', '').trim();
-                playAudioSmart(cleanText, 'vi');
+                e.stopPropagation(); // CHẶN SỰ KIỆN CỦA THẺ CHA
+                playSmartVoice(el.innerText.replace('🔊', '').trim(), 'vi');
             };
             el.appendChild(btn);
         }
     });
 }
 
-setInterval(setupSpeakButtons, 1000);
+// Quét để gắn nút mỗi giây (vì dữ liệu load từ index.js)
+setInterval(injectAudioButtons, 1000);
 </script>
 	
 	
