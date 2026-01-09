@@ -796,28 +796,31 @@
 
 
 
-/* Tạo biểu tượng loa nhỏ sau mỗi chữ tiếng Việt */
-.word-meaning::after, .sentence-vietnamese::after {
-    content: " 🔊"; /* Thêm icon loa */
-    font-size: 0.8em;
+/* Tạo nút loa riêng biệt */
+.btn-speak {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    margin-left: 8px;
+    background: #e3f2fd;
+    border-radius: 50%;
     cursor: pointer;
-    opacity: 0.6;
-    margin-left: 5px;
-}
-
-/* Làm cho biểu tượng loa tách biệt và dễ bấm */
-.word-meaning::after, .word-chinese::after, .sentence-vietnamese::after, .sentence-chinese::after {
-    content: " 🔊";
-    display: inline-block;
-    padding: 0 5px;
-    color: #2196F3;
-    opacity: 0.7;
+    font-size: 14px;
     transition: 0.3s;
+    border: none;
+    vertical-align: middle;
 }
 
-.word-meaning:hover::after, .word-chinese:hover::after {
+.btn-speak:hover {
+    background: #2196F3;
+    color: white;
+}
+
+/* Ẩn hiện loa: chỉ hiện khi rê chuột vào dòng hoặc luôn hiện tùy bạn */
+.word-item:hover .btn-speak, .sentence-item:hover .btn-speak {
     opacity: 1;
-    transform: scale(1.2); /* Phóng to loa một chút khi chỉ vào */
 }
 
 
@@ -2904,31 +2907,51 @@ function convertSyllable(py) {
 	
 	
 <script>
-function speakText(text, lang) {
-    // lang: 'vi' cho tiếng Việt, 'zh-CN' cho tiếng Trung
-    const url = "https://translate.google.com/translate_tts?ie=UTF-8&q=" + encodeURIComponent(text) + "&tl=" + lang + "&client=tw-ob";
-    
-    let audio = new Audio(url);
-    audio.play().catch(e => console.error("Lỗi phát âm thanh:", e));
+// Hàm đọc chuẩn bằng Google (Ép giọng nữ)
+function playGoogleTTS(text, lang) {
+    const url = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=${lang}&client=tw-ob`;
+    const audio = new Audio(url);
+    audio.play().catch(e => {
+        // Nếu lỗi mạng mới dùng giọng máy
+        const msg = new SpeechSynthesisUtterance(text);
+        msg.lang = lang === 'vi' ? 'vi-VN' : 'zh-CN';
+        window.speechSynthesis.speak(msg);
+    });
 }
 
-document.addEventListener('click', function(e) {
-    // 1. Nếu bấm vào phần TIẾNG VIỆT
-    const targetVi = e.target.closest('.word-meaning, .sentence-vietnamese');
-    if (targetVi) {
-        let text = targetVi.innerText.replace(/🔊/g, "").trim();
-        speakText(text, 'vi');
-        return; // Dừng lại để không chạy xuống dưới
-    }
+// Hàm tự động thêm nút loa vào sau mỗi chữ khi trang tải xong
+function addSpeakButtons() {
+    // Thêm loa cho Tiếng Trung
+    document.querySelectorAll('.word-chinese, .sentence-chinese').forEach(el => {
+        if (!el.querySelector('.btn-speak')) {
+            const btn = document.createElement('button');
+            btn.className = 'btn-speak';
+            btn.innerHTML = '🔊';
+            btn.onclick = (e) => {
+                e.stopPropagation(); // CHẶN KHÔNG CHO MỞ BẢNG VIẾT
+                playGoogleTTS(el.innerText.replace('🔊', '').trim(), 'zh-CN');
+            };
+            el.appendChild(btn);
+        }
+    });
 
-    // 2. Nếu bấm vào phần TIẾNG TRUNG
-    const targetZh = e.target.closest('.word-chinese, .sentence-chinese, .pinyin');
-    if (targetZh) {
-        let text = targetZh.innerText.trim();
-        // Nếu bạn muốn đọc cả câu thì chọn class sentence-chinese
-        speakText(text, 'zh-CN');
-    }
-});
+    // Thêm loa cho Tiếng Việt
+    document.querySelectorAll('.word-meaning, .sentence-vietnamese').forEach(el => {
+        if (!el.querySelector('.btn-speak')) {
+            const btn = document.createElement('button');
+            btn.className = 'btn-speak';
+            btn.innerHTML = '🔊';
+            btn.onclick = (e) => {
+                e.stopPropagation(); // CHẶN KHÔNG CHO MỞ BẢNG VIẾT
+                playGoogleTTS(el.innerText.replace('🔊', '').trim(), 'vi');
+            };
+            el.appendChild(btn);
+        }
+    });
+}
+
+// Chạy hàm thêm loa liên tục (vì dữ liệu của bạn có thể load chậm hoặc đổi tab)
+setInterval(addSpeakButtons, 1000); 
 </script>
 	
 	
