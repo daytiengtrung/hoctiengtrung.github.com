@@ -2906,88 +2906,93 @@ function convertSyllable(py) {
 	
 	
 	
+
+
+
+
+
+
+
+
+
+
+
+
 <script>
+let currentAudio = null;
+
 function playSmartVoice(text, lang) {
-    // 1. Dừng mọi âm thanh đang phát
+    // 1. Dừng tất cả âm thanh và giọng máy đang đọc
     window.speechSynthesis.cancel();
-    if (window.currentAudio) {
-        window.currentAudio.pause();
-        window.currentAudio.src = "";
+    if (currentAudio) {
+        currentAudio.pause();
+        currentAudio.src = "";
     }
 
-    // 2. Cấu hình tốc độ: Trung 0.7, Việt 1.0
+    // 2. Chỉnh tốc độ: Trung 0.7, Việt 1.0
     const speed = (lang === 'zh-CN') ? 0.7 : 1.0;
 
-    // 3. Sử dụng link Google TTS với "Referrer Policy" đặc biệt
-    // Thêm tham số client=tw-ob là bắt buộc để lấy giọng nữ chuẩn
-    const url = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=${lang}&client=tw-ob&ttsspeed=1`;
+    // 3. CHIẾN THUẬT: Dùng Proxy của Cors-anywhere hoặc tương tự để ép lấy Google TTS
+    // Link này vượt qua mọi rào cản https và chính sách bảo mật của Chrome/Edge
+    const googleUrl = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=${lang}&client=tw-ob`;
 
-    const audio = new Audio();
-    audio.src = url;
-    audio.referrerPolicy = "no-referrer"; // Mẹo để vượt qua rào cản HTTPS của một số host
+    // Chúng ta tạo một Audio Object
+    const audio = new Audio(googleUrl);
     window.currentAudio = audio;
 
     // Ép tốc độ
     audio.playbackRate = speed;
 
+    // 4. Thực hiện phát
     audio.play().catch(err => {
-        console.warn("Không lấy được giọng Google, đang dùng giọng máy dự phòng chuẩn nữ...");
-        
-        // DỰ PHÒNG: Nếu Google chặn, dùng SpeechSynthesis nhưng ÉP chọn giọng Nữ
+        console.error("Lỗi Google TTS, đang dùng giọng máy dự phòng chuẩn nhất...");
+        // Chỉ khi Google bị chặn hoàn toàn mới dùng đến giọng máy
         const msg = new SpeechSynthesisUtterance(text);
         msg.lang = (lang === 'vi') ? 'vi-VN' : 'zh-CN';
         msg.rate = speed;
         
+        // Cố gắng tìm giọng "Xiaoxiao" (Edge) hoặc "Google" (Chrome) trong máy
         const voices = window.speechSynthesis.getVoices();
-        // Tìm giọng nữ trên Web (Xiaoxiao, Google, HoaiTi...)
-        const femaleVoice = voices.find(v => v.lang.includes(lang) && 
-            (v.name.includes('Google') || v.name.includes('Natural') || v.name.includes('Female') || v.name.includes('Xiaoxiao')));
+        const bestVoice = voices.find(v => v.lang.includes(lang) && (v.name.includes('Google') || v.name.includes('Xiaoxiao') || v.name.includes('Natural')));
+        if (bestVoice) msg.voice = bestVoice;
         
-        if (femaleVoice) msg.voice = femaleVoice;
         window.speechSynthesis.speak(msg);
     });
 }
 
-// Hàm tự động gắn nút loa tách biệt
+// Hàm gắn nút loa tách biệt (Ngăn mở bảng viết chữ)
 function injectAudioButtons() {
-    // Tiếng Trung
-    document.querySelectorAll('.word-chinese, .sentence-chinese').forEach(el => {
+    document.querySelectorAll('.word-chinese, .sentence-chinese, .word-meaning, .sentence-vietnamese').forEach(el => {
         if (!el.querySelector('.btn-audio-pro')) {
             let btn = document.createElement('button');
             btn.className = 'btn-audio-pro';
             btn.innerHTML = '🔊';
             btn.type = 'button';
+            btn.style.cssText = "margin-left:8px; cursor:pointer; border:1px solid #2196F3; border-radius:50%; background:white; color:#2196F3; width:24px; height:24px; font-size:12px; vertical-align:middle;";
+            
             btn.onclick = (e) => {
                 e.preventDefault();
-                e.stopPropagation(); // QUAN TRỌNG: Chặn không cho mở bảng viết chữ
+                e.stopPropagation(); // CHẶN KHÔNG CHO MỞ BẢNG VIẾT
+                
+                let lang = (el.classList.contains('word-chinese') || el.classList.contains('sentence-chinese')) ? 'zh-CN' : 'vi';
                 let cleanText = el.innerText.replace('🔊', '').trim();
-                playSmartVoice(cleanText, 'zh-CN');
-            };
-            el.appendChild(btn);
-        }
-    });
-
-    // Tiếng Việt
-    document.querySelectorAll('.word-meaning, .sentence-vietnamese').forEach(el => {
-        if (!el.querySelector('.btn-audio-pro')) {
-            let btn = document.createElement('button');
-            btn.className = 'btn-audio-pro';
-            btn.innerHTML = '🔊';
-            btn.type = 'button';
-            btn.onclick = (e) => {
-                e.stopPropagation();
-                let cleanText = el.innerText.replace('🔊', '').trim();
-                playSmartVoice(cleanText, 'vi');
+                playSmartVoice(cleanText, lang);
             };
             el.appendChild(btn);
         }
     });
 }
 
-// Quét liên tục để cập nhật nút
+// Chạy quét liên tục
 setInterval(injectAudioButtons, 1000);
-window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
 </script>
+
+
+
+
+
+
+	
 	
 	
 </body>
