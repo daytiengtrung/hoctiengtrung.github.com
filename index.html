@@ -1364,8 +1364,8 @@
             if (dataPromise) return dataPromise;
             dataPromise = new Promise(async (resolve, reject) => {
                 try {
-                    const response = await fetch('https://www.luyentiengtrung.com/data/base.json');
-                    if (!response.ok) throw new Error('Failed to load base.json');
+                    const response = await fetch('https://www.luyentiengtrung.com/data/tuvung.json');
+                    if (!response.ok) throw new Error('Failed to load tuvung.json');
                     dictionaryData = await response.json();
 
                     // Extract all words and sentences into flat arrays
@@ -1386,7 +1386,7 @@
                     
                     resolve();
                 } catch (error) {
-                    console.error('Error loading base.json:', error);
+                    console.error('Error loading tuvung.json:', error);
                     reject(error);
                 }
             });
