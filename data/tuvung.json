@@ -8590,7 +8590,15 @@
   },
   "笨": {
     "hanviet": "ngu : Chữ 笨 có bộ trúc (竹), liên quan đến tre. Trong Quảng Nhã có nói: phần màng trắng bên trong thân tre gọi là “笨”. Từ đó, chữ 笨 được mở rộng nghĩa thành: nội tâm như tờ giấy trắng, quá đơn thuần, thiếu trải nghiệm sống. 👉 Người “笨”: • Học chậm vì chưa có kinh nghiệm • Não không hỏng, chỉ là “CPU yếu” • Cho đủ thời gian thì vẫn làm được việc → Cần cù bù thông minh (笨鸟先飞,勤能补拙)",
-    "words": [],
+    "words": [
+      {
+        "chinese": "笨",
+        "meaning": "ngu",
+        "category": [
+          "từ đơn"
+        ]
+      }
+    ],
     "sentences": []
   }
 }
