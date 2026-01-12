@@ -901,10 +901,6 @@
             <button class="tab-btn" data-page="page-hanzi">✏️ Chữ Hán</button>
             <button class="tab-btn active" data-page="page-vocab">📚 Từ Vựng</button>
             <button class="tab-btn" data-page="page-sentences">💬 Hội Thoại</button>
-<a href="/chu-han" data-page="chu-han">✏️ Chữ Hán</a>
-<a href="/tu-vung" data-page="tu-vung">📚 Từ Vựng</a>
-<a href="/hoi-thoai" data-page="hoi-thoai">💬 Hội Thoại</a>
-
         </div>
 
 
@@ -2991,41 +2987,6 @@ function setupSpeakButtons() {
 setInterval(setupSpeakButtons, 1000);
 </script>
 	
-
-
-
-
-
-
-function loadPage(page) {
-  document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
-  document.getElementById(page).style.display = 'block';
-}
-
-// click menu
-document.querySelectorAll('a[data-page]').forEach(a => {
-  a.addEventListener('click', e => {
-    e.preventDefault();
-    const page = a.dataset.page;
-    history.pushState({ page }, '', a.getAttribute('href'));
-    loadPage(page);
-  });
-});
-
-// back / forward
-window.addEventListener('popstate', e => {
-  const page = e.state?.page || 'chu-han';
-  loadPage(page);
-});
-
-// load lần đầu
-const path = location.pathname.replace('/', '') || 'chu-han';
-loadPage(path);
-
-
-
-
-
 	
 </body>
 </html>
