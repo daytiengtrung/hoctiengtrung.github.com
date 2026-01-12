@@ -1,0 +1,54 @@
+{
+  "水": {
+    "hanviet": "",
+    "words": [],
+    "sentences": [
+      {
+        "chinese": "水中月是天上月，眼前人是心上人",
+        "vietnamese": "Trăng dưới nước là trăng trên trời, người trước mắt là người trong tim",
+        "category": [
+          "bài thơ"
+        ]
+      }
+    ]
+  },
+  "月": {
+    "hanviet": "",
+    "words": [],
+    "sentences": [
+      {
+        "chinese": "月满则亏，水满则溢",
+        "vietnamese": "Trăng tròn rồi khuyết, nước đầy rồi trà",
+        "category": [
+          "bài thơ"
+        ]
+      }
+    ]
+  },
+  "一": {
+    "hanviet": "",
+    "words": [],
+    "sentences": [
+      {
+        "chinese": "一年只有36个十天而已。 如果十天见一面只有36次， 30天见一面只有12次， 如果60天见一次，一年甚至只有6次， 人生短暂 去珍惜你想见面的那个人吧！",
+        "vietnamese": "一年只有36个十天而已。 如果十天见一面只有36次， 30天见一面只有12次， 如果60天见一次，一年甚至只有6次， 人生短暂 去珍惜你想见面的那个人吧！",
+        "category": [
+          "bài thơ"
+        ]
+      }
+    ]
+  },
+  "春": {
+    "hanviet": "",
+    "words": [],
+    "sentences": [
+      {
+        "chinese": "春风又绿江南岸，明月何时照我还？",
+        "vietnamese": "Gió xuân lại thổi xanh bờ Giang Nam, Khi nào trăng lên soi cho ta về.",
+        "category": [
+          "bài thơ"
+        ]
+      }
+    ]
+  }
+}
