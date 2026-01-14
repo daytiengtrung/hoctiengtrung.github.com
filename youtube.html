@@ -2916,111 +2916,79 @@ function convertSyllable(py) {
 	
 	
 <script>
-// 🔥 DÙNG 1 AUDIO CHUNG (rất quan trọng)
-let sharedAudio = new Audio();
-
-function playAudioSmart(text, lang) {
-    if (!text) return;
-
-    // Tốc độ mặc định
-    let speed = 1;
-
-    // Chậm riêng cho tiếng Trung
-    if (lang === 'zh-CN') {
-        speed = 0.6;
-    }
-
-    // ===== FALLBACK =====
-    function useFallback() {
-        if ('speechSynthesis' in window) {
-            window.speechSynthesis.cancel();
-            const msg = new SpeechSynthesisUtterance(text);
-            msg.lang = (lang === 'vi') ? 'vi-VN' : 'zh-CN';
-            msg.rate = speed;
-            window.speechSynthesis.speak(msg);
-        }
-    }
-
-    // ===== GOOGLE TTS =====
-    if (navigator.onLine) {
-        const url =
-            `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=${lang}&client=tw-ob`;
-
-        sharedAudio.pause();
-        sharedAudio.src = url;
-
-        // ⚠️ CHỈ chỉnh tốc độ cho tiếng Trung
-        sharedAudio.playbackRate = (lang === 'zh-CN') ? speed : 1;
-
-        let retried = false;
-
-        sharedAudio.onerror = () => {
-            // thử lại 1 lần (Google hay fail ngầm)
-            if (!retried) {
-                retried = true;
-                sharedAudio.src = url;
-                sharedAudio.play().catch(useFallback);
-            } else {
-                useFallback();
-            }
-        };
-
-        sharedAudio.play().catch(useFallback);
-    } else {
-        useFallback();
-    }
-}
-
-function useFallbackSpeech(text, lang, speed) {
-    // (giữ lại cho tương thích, nhưng thực tế đã dùng useFallback ở trên)
-    if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
+// 1. CÁC HÀM PHÁT ÂM (GIỮ NGUYÊN)
+function speakVietnamese(text) {
+    const url = "https://translate.google.com/translate_tts?ie=UTF-8&q=" + encodeURIComponent(text) + "&tl=vi&client=tw-ob";
+    let audio = new Audio(url);
+    audio.play().catch(() => {
         const msg = new SpeechSynthesisUtterance(text);
-        msg.lang = lang === 'vi' ? 'vi-VN' : 'zh-CN';
-        msg.rate = speed;
-        window.speechSynthesis.speak(msg);
+        msg.lang = 'vi-VN';
+        speechSynthesis.speak(msg);
+    });
+}
+
+function speakChinese(text) {
+    speechSynthesis.cancel();
+    const msg = new SpeechSynthesisUtterance(text);
+    msg.lang = 'zh-CN';
+    msg.rate = 0.5;
+    speechSynthesis.speak(msg);
+}
+
+// 2. HÀM GẮN LOA (CÓ THÊM STYLE ĐỂ CHẮC CHẮN NHÌN THẤY)
+function ensureSpeakerIcon(el, lang) {
+    if (el.querySelector('.btn-speak')) return;
+    
+    const btn = document.createElement('span');
+    btn.className = 'btn-speak';
+    btn.dataset.lang = lang;
+    btn.innerHTML = ' 🔊'; 
+    btn.style.cssText = "cursor:pointer;color:#1a73e8;";
+    
+    el.appendChild(btn);
+}
+
+// 3. HÀM QUÉT TẤT CẢ PHẦN TỬ
+function scanAndAdd() {
+    // Quét tiếng Việt
+    const viElements = document.querySelectorAll('.word-meaning, .sentence-vietnamese');
+    viElements.forEach(el => ensureSpeakerIcon(el, 'vi'));
+
+    // Quét tiếng Trung
+    const zhElements = document.querySelectorAll('.word-chinese, .sentence-chinese');
+    zhElements.forEach(el => ensureSpeakerIcon(el, 'zh'));
+}
+
+// 4. CƠ CHẾ CHẠY: THỬ LẠI LIÊN TỤC TRONG 5 GIÂY ĐẦU
+// Đảm bảo dù mạng chậm hay máy lag vẫn gắn được loa
+let retryCount = 0;
+const retryInterval = setInterval(() => {
+    scanAndAdd();
+    retryCount++;
+    if (retryCount > 20) clearInterval(retryInterval); // Sau 5 giây thì dừng thử lại
+}, 250);
+
+// Theo dõi nếu nội dung thay đổi (ví dụ bấm nút chuyển bài)
+const observer = new MutationObserver(scanAndAdd);
+observer.observe(document.body, { childList: true, subtree: true });
+
+// 5. XỬ LÝ CLICK
+document.addEventListener('click', function (e) {
+    const btn = e.target.closest('.btn-speak');
+    if (btn) {
+        e.stopPropagation();
+        const parent = btn.parentElement;
+        const text = parent.innerText.replace(/🔊/g, '').trim();
+        if (btn.dataset.lang === 'vi') speakVietnamese(text);
+        if (btn.dataset.lang === 'zh') speakChinese(text);
     }
-}
-
-function setupSpeakButtons() {
-    // 1. TIẾNG TRUNG
-    document.querySelectorAll('.word-chinese, .sentence-chinese').forEach(el => {
-        if (!el.getAttribute('data-has-speaker')) {
-            let btn = document.createElement('span');
-            btn.className = 'btn-speak';
-            btn.innerHTML = '🔊';
-            btn.title = "Nghe tiếng Trung (Chậm)";
-            btn.onclick = function(e) {
-                e.stopPropagation();
-                let cleanText = el.innerText.replace('🔊', '').trim();
-                playAudioSmart(cleanText, 'zh-CN');
-            };
-            el.appendChild(btn);
-            el.setAttribute('data-has-speaker', 'true');
-        }
-    });
-
-    // 2. TIẾNG VIỆT
-    document.querySelectorAll('.word-meaning, .sentence-vietnamese').forEach(el => {
-        if (!el.getAttribute('data-has-speaker')) {
-            let btn = document.createElement('span');
-            btn.className = 'btn-speak';
-            btn.innerHTML = '🔊';
-            btn.title = "Nghe tiếng Việt";
-            btn.onclick = function(e) {
-                e.stopPropagation();
-                let cleanText = el.innerText.replace('🔊', '').trim();
-                playAudioSmart(cleanText, 'vi');
-            };
-            el.appendChild(btn);
-            el.setAttribute('data-has-speaker', 'true');
-        }
-    });
-}
-
-// Giữ nguyên cơ chế cũ
-setInterval(setupSpeakButtons, 1000);
+});
 </script>
+
+
+
+
+
 
 	
 	
