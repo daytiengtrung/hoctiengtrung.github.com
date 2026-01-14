@@ -801,21 +801,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* Tạo nút loa riêng biệt */
 .btn-speak {
     display: inline-flex;
@@ -842,12 +827,6 @@
 .word-item:hover .btn-speak, .sentence-item:hover .btn-speak {
     opacity: 1;
 }
-
-
-
-
-
-
 
 
 
@@ -2937,74 +2916,66 @@ function convertSyllable(py) {
 	
 	
 <script>
-// 1. CÁC HÀM PHÁT ÂM (GIỮ NGUYÊN)
+// 1. CÁC HÀM PHÁT ÂM (ĐÃ KHỬ GIỌNG NGỌNG)
 function speakVietnamese(text) {
+    speechSynthesis.cancel(); // Chặn âm thanh đang phát dở
     const url = "https://translate.google.com/translate_tts?ie=UTF-8&q=" + encodeURIComponent(text) + "&tl=vi&client=tw-ob";
     let audio = new Audio(url);
     audio.play().catch(() => {
         const msg = new SpeechSynthesisUtterance(text);
         msg.lang = 'vi-VN';
+        // Lọc giọng chuẩn Google/Microsoft
+        const voices = speechSynthesis.getVoices();
+        const v = voices.find(v => v.lang.includes('vi') && (v.name.includes('Google') || v.name.includes('Natural')));
+        if (v) msg.voice = v;
         speechSynthesis.speak(msg);
     });
 }
 
 function speakChinese(text) {
-    speechSynthesis.cancel();
+    speechSynthesis.cancel(); // Chặn ngay lập tức giọng cũ để không bị chèn
     const msg = new SpeechSynthesisUtterance(text);
     msg.lang = 'zh-CN';
-    msg.rate = 0.5;
+    msg.rate = 0.5; // Tốc độ vừa phải
+
+    const voices = speechSynthesis.getVoices();
+    // Ưu tiên giọng chuẩn Trung Quốc (Mainland), bỏ qua giọng mặc định máy tính
+    const v = voices.find(v => v.lang.startsWith('zh') && (v.name.includes('Google') || v.name.includes('Huihui') || v.name.includes('Xiaoxiao')));
+    if (v) msg.voice = v;
+
     speechSynthesis.speak(msg);
 }
 
-// 2. HÀM GẮN LOA (CÓ THÊM STYLE ĐỂ CHẮC CHẮN NHÌN THẤY)
+// 2. HÀM GẮN LOA (LUÔN HIỆN)
 function ensureSpeakerIcon(el, lang) {
     if (el.querySelector('.btn-speak')) return;
-    
     const btn = document.createElement('span');
     btn.className = 'btn-speak';
     btn.dataset.lang = lang;
     btn.innerHTML = ' 🔊'; 
-    btn.style.cssText = "cursor:pointer;color:#1a73e8;";
-    
+    btn.style.cssText = "cursor:pointer; color:#1a73e8; display:inline-block; margin-left:5px;";
     el.appendChild(btn);
 }
 
-// 3. HÀM QUÉT TẤT CẢ PHẦN TỬ
+// 3. QUÉT VÀ THEO DÕI NỘI DUNG (GIÚP LOA LUÔN HIỆN)
 function scanAndAdd() {
-    // Quét tiếng Việt
-    const viElements = document.querySelectorAll('.word-meaning, .sentence-vietnamese');
-    viElements.forEach(el => ensureSpeakerIcon(el, 'vi'));
-
-    // Quét tiếng Trung
-    const zhElements = document.querySelectorAll('.word-chinese, .sentence-chinese');
-    zhElements.forEach(el => ensureSpeakerIcon(el, 'zh'));
+    document.querySelectorAll('.word-meaning, .sentence-vietnamese').forEach(el => ensureSpeakerIcon(el, 'vi'));
+    document.querySelectorAll('.word-chinese, .sentence-chinese').forEach(el => ensureSpeakerIcon(el, 'zh'));
 }
 
-// 4. CƠ CHẾ CHẠY: THỬ LẠI LIÊN TỤC TRONG 5 GIÂY ĐẦU
-// Đảm bảo dù mạng chậm hay máy lag vẫn gắn được loa
-let retryCount = 0;
-const retryInterval = setInterval(() => {
-    scanAndAdd();
-    retryCount++;
-    if (retryCount > 20) clearInterval(retryInterval); // Sau 5 giây thì dừng thử lại
-}, 250);
-
-// Theo dõi nếu nội dung thay đổi (ví dụ bấm nút chuyển bài)
+// Chạy liên tục để đảm bảo luôn có loa (kể cả khi chuyển bài)
 const observer = new MutationObserver(scanAndAdd);
 observer.observe(document.body, { childList: true, subtree: true });
+scanAndAdd();
 
-// 5. XỬ LÝ CLICK (ĐÃ FIX LỖI TRƯỢT TRANG CHO TIẾNG TRUNG)
+// 4. XỬ LÝ CLICK (CHẶN TRƯỢT TRANG)
 document.addEventListener('click', function (e) {
-    // Tìm các thành phần được click
     const btn = e.target.closest('.btn-speak');
     const viTarget = e.target.closest('.word-meaning, .sentence-vietnamese');
     const zhTarget = e.target.closest('.word-chinese, .sentence-chinese');
 
-    // Nếu click vào bất kỳ cái nào trong 3 cái trên
     if (btn || viTarget || zhTarget) {
-        
-        // CHẶN TRƯỢT TRANG:
-        // Nếu là thẻ <a> có href="#" thì chặn nó lại ngay lập tức
+        // NGĂN TRƯỢT TRANG:
         if (e.target.tagName === 'A' || e.target.closest('a')) {
             e.preventDefault(); 
         }
@@ -3025,16 +2996,15 @@ document.addEventListener('click', function (e) {
         }
 
         const cleanText = text.replace(/🔊/g, '').trim();
-        if (cleanText === "") return;
-
-        if (lang === 'vi') speakVietnamese(cleanText);
-        if (lang === 'zh') speakChinese(cleanText);
+        if (cleanText) {
+            if (lang === 'vi') speakVietnamese(cleanText);
+            if (lang === 'zh') speakChinese(cleanText);
+        }
     }
-}, true); // Thêm chữ 'true' ở đây để ưu tiên xử lý click trước các code khác
+}, true); // Dùng true để ưu tiên xử lý chặn trượt trang trước tiên
 
-
-
-
+// Kích hoạt nạp giọng nói của trình duyệt
+speechSynthesis.onvoiceschanged = () => speechSynthesis.getVoices();
 </script>
 
 
