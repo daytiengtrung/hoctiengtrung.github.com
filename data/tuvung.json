@@ -1489,6 +1489,13 @@
         "category": [
           "quốc gia"
         ]
+      },
+      {
+        "chinese": "火警",
+        "meaning": "Báo cháy",
+        "category": [
+          "công xưởng"
+        ]
       }
     ],
     "sentences": [
@@ -1751,6 +1758,20 @@
         "meaning": "Dụng cụ",
         "category": [
           "kỹ thuật"
+        ]
+      },
+      {
+        "chinese": "工人",
+        "meaning": "Công nhân",
+        "category": [
+          "công việc"
+        ]
+      },
+      {
+        "chinese": "工序",
+        "meaning": "Công đoạn",
+        "category": [
+          "công xưởng"
         ]
       }
     ],
@@ -4129,6 +4150,13 @@
     "hanviet": "Xe",
     "words": [
       {
+        "chinese": "车",
+        "meaning": "xe",
+        "category": [
+          "từ đơn"
+        ]
+      },
+      {
         "chinese": "汽车",
         "meaning": "ô tô",
         "category": [
@@ -4140,6 +4168,20 @@
         "meaning": "tàu hỏa",
         "category": [
           "giao thông"
+        ]
+      },
+      {
+        "chinese": "车间",
+        "meaning": "xưởng / phân xưởng",
+        "category": [
+          "công xưởng"
+        ]
+      },
+      {
+        "chinese": "车床",
+        "meaning": "máy tiện",
+        "category": [
+          "kỹ thuật"
         ]
       }
     ],
@@ -5574,6 +5616,20 @@
       {
         "chinese": "生产部",
         "meaning": "Bộ phận sản xuất",
+        "category": [
+          "công xưởng"
+        ]
+      },
+      {
+        "chinese": "生产计划",
+        "meaning": "Kế hoạch sản xuất",
+        "category": [
+          "công xưởng"
+        ]
+      },
+      {
+        "chinese": "生产",
+        "meaning": "sản xuất",
         "category": [
           "công xưởng"
         ]
@@ -7609,14 +7665,32 @@
     "hanviet": "Chủ",
     "words": [
       {
+        "chinese": "主",
+        "meaning": "",
+        "category": [
+          "từ đơn"
+        ]
+      },
+      {
         "chinese": "主人",
         "meaning": "Chủ nhân",
-        "category": []
+        "category": [
+          "nâng cao"
+        ]
       },
       {
         "chinese": "公主",
         "meaning": "Công chúa",
-        "category": []
+        "category": [
+          "nâng cao"
+        ]
+      },
+      {
+        "chinese": "主管",
+        "meaning": "Quản lý",
+        "category": [
+          "công xưởng"
+        ]
       }
     ],
     "sentences": []
@@ -8375,7 +8449,22 @@
   },
   "停": {
     "hanviet": "Ngưng | Dừng",
-    "words": [],
+    "words": [
+      {
+        "chinese": "停",
+        "meaning": "dừng",
+        "category": [
+          "từ đơn"
+        ]
+      },
+      {
+        "chinese": "停机",
+        "meaning": "dừng máy",
+        "category": [
+          "kỹ thuật"
+        ]
+      }
+    ],
     "sentences": []
   },
   "份": {
@@ -10479,6 +10568,27 @@
         "category": [
           "ẩm thực"
         ]
+      },
+      {
+        "chinese": "包装部",
+        "meaning": "Bộ phận đóng gói",
+        "category": [
+          "công xưởng"
+        ]
+      },
+      {
+        "chinese": "包装材料",
+        "meaning": "Vật liệu đóng gói",
+        "category": [
+          "công xưởng"
+        ]
+      },
+      {
+        "chinese": "包装",
+        "meaning": "Đóng gói",
+        "category": [
+          "công xưởng"
+        ]
       }
     ],
     "sentences": []
@@ -11115,6 +11225,13 @@
         "meaning": "Làm",
         "category": [
           "từ đơn"
+        ]
+      },
+      {
+        "chinese": "办公室",
+        "meaning": "văn phòng",
+        "category": [
+          "công xưởng"
         ]
       }
     ],
@@ -11819,6 +11936,13 @@
     "hanviet": "",
     "words": [
       {
+        "chinese": "标",
+        "meaning": "",
+        "category": [
+          "từ đơn"
+        ]
+      },
+      {
         "chinese": "标识",
         "meaning": "Ký hiệu",
         "category": [
@@ -11833,10 +11957,10 @@
         ]
       },
       {
-        "chinese": "标",
-        "meaning": "",
+        "chinese": "标准",
+        "meaning": "Tiêu chuẩn",
         "category": [
-          "từ đơn"
+          "công xưởng"
         ]
       }
     ],
@@ -11872,8 +11996,22 @@
     "hanviet": "",
     "words": [
       {
+        "chinese": "成",
+        "meaning": "",
+        "category": [
+          "từ đơn"
+        ]
+      },
+      {
         "chinese": "成品",
         "meaning": "Thành phẩm",
+        "category": [
+          "công xưởng"
+        ]
+      },
+      {
+        "chinese": "成品区",
+        "meaning": "Khu thành phẩm",
         "category": [
           "công xưởng"
         ]
@@ -11884,6 +12022,13 @@
   "半": {
     "hanviet": "",
     "words": [
+      {
+        "chinese": "半",
+        "meaning": "",
+        "category": [
+          "từ đơn"
+        ]
+      },
       {
         "chinese": "半品",
         "meaning": "Bán thành phẩm",
@@ -11897,6 +12042,13 @@
   "零": {
     "hanviet": "",
     "words": [
+      {
+        "chinese": "零",
+        "meaning": "",
+        "category": [
+          "từ đơn"
+        ]
+      },
       {
         "chinese": "零件",
         "meaning": "Linh kiện",
@@ -12135,8 +12287,29 @@
     "hanviet": "",
     "words": [
       {
+        "chinese": "装",
+        "meaning": "",
+        "category": [
+          "từ đơn"
+        ]
+      },
+      {
         "chinese": "装车",
         "meaning": "Chất hàng lên xe",
+        "category": [
+          "công xưởng"
+        ]
+      },
+      {
+        "chinese": "装配区",
+        "meaning": "khu lắp ráp",
+        "category": [
+          "công xưởng"
+        ]
+      },
+      {
+        "chinese": "装配",
+        "meaning": "lắp ráp",
         "category": [
           "công xưởng"
         ]
@@ -12187,6 +12360,13 @@
         "category": [
           "công xưởng"
         ]
+      },
+      {
+        "chinese": "检验区",
+        "meaning": "khu kiểm tra",
+        "category": [
+          "công xưởng"
+        ]
       }
     ],
     "sentences": []
@@ -12215,17 +12395,17 @@
     "hanviet": "",
     "words": [
       {
-        "chinese": "管控",
-        "meaning": "Kiểm soát",
-        "category": [
-          "công xưởng"
-        ]
-      },
-      {
         "chinese": "管",
         "meaning": "",
         "category": [
           "từ đơn"
+        ]
+      },
+      {
+        "chinese": "管控",
+        "meaning": "Kiểm soát",
+        "category": [
+          "công xưởng"
         ]
       },
       {
@@ -12239,11 +12419,11 @@
     "sentences": []
   },
   "记": {
-    "hanviet": "",
+    "hanviet": "Ghi",
     "words": [
       {
         "chinese": "记",
-        "meaning": "",
+        "meaning": "Ghi",
         "category": [
           "từ đơn"
         ]
@@ -12632,6 +12812,13 @@
         "meaning": "Máy gia công",
         "category": [
           "kỹ thuật"
+        ]
+      },
+      {
+        "chinese": "加工",
+        "meaning": "Gia công",
+        "category": [
+          "công xưởng"
         ]
       }
     ],
@@ -13219,6 +13406,13 @@
         "meaning": "Thực",
         "category": [
           "từ đơn"
+        ]
+      },
+      {
+        "chinese": "实习生",
+        "meaning": "Thực tập sinh",
+        "category": [
+          "học tập"
         ]
       }
     ],
@@ -15426,6 +15620,20 @@
         "category": [
           "quốc gia"
         ]
+      },
+      {
+        "chinese": "保安",
+        "meaning": "Bảo vệ",
+        "category": [
+          "công việc"
+        ]
+      },
+      {
+        "chinese": "保养",
+        "meaning": "bảo dưỡng",
+        "category": [
+          "kỹ thuật"
+        ]
       }
     ],
     "sentences": []
@@ -16071,6 +16279,13 @@
     "hanviet": "",
     "words": [
       {
+        "chinese": "机",
+        "meaning": "",
+        "category": [
+          "từ đơn"
+        ]
+      },
+      {
         "chinese": "机器",
         "meaning": "Máy móc",
         "category": [
@@ -16083,6 +16298,13 @@
   "设": {
     "hanviet": "",
     "words": [
+      {
+        "chinese": "设",
+        "meaning": "",
+        "category": [
+          "từ đơn"
+        ]
+      },
       {
         "chinese": "设备",
         "meaning": "Thiết bị",
@@ -16206,6 +16428,516 @@
       {
         "chinese": "品",
         "meaning": "Bộ phận chất lượng",
+        "category": [
+          "kỹ thuật"
+        ]
+      }
+    ],
+    "sentences": []
+  },
+  "组": {
+    "hanviet": "",
+    "words": [
+      {
+        "chinese": "组",
+        "meaning": "",
+        "category": [
+          "từ đơn"
+        ]
+      },
+      {
+        "chinese": "组装车间",
+        "meaning": "Xưởng lắp ráp",
+        "category": [
+          "công xưởng"
+        ]
+      },
+      {
+        "chinese": "组长",
+        "meaning": "Tổ trưởng",
+        "category": [
+          "công xưởng"
+        ]
+      },
+      {
+        "chinese": "组装",
+        "meaning": "Lắp ráp",
+        "category": [
+          "công xưởng"
+        ]
+      }
+    ],
+    "sentences": []
+  },
+  "维": {
+    "hanviet": "",
+    "words": [
+      {
+        "chinese": "维",
+        "meaning": "",
+        "category": [
+          "từ đơn"
+        ]
+      },
+      {
+        "chinese": "维修部",
+        "meaning": "Bộ phận sửa chữa",
+        "category": [
+          "kỹ thuật"
+        ]
+      },
+      {
+        "chinese": "维护",
+        "meaning": "bảo trì",
+        "category": [
+          "kỹ thuật"
+        ]
+      },
+      {
+        "chinese": "维修",
+        "meaning": "sửa chữa",
+        "category": [
+          "công xưởng"
+        ]
+      }
+    ],
+    "sentences": []
+  },
+  "原": {
+    "hanviet": "",
+    "words": [
+      {
+        "chinese": "原",
+        "meaning": "",
+        "category": [
+          "từ đơn"
+        ]
+      },
+      {
+        "chinese": "原料区",
+        "meaning": "Khu nguyên liệu",
+        "category": [
+          "công xưởng"
+        ]
+      }
+    ],
+    "sentences": []
+  },
+  "技": {
+    "hanviet": "",
+    "words": [
+      {
+        "chinese": "技",
+        "meaning": "",
+        "category": [
+          "từ đơn"
+        ]
+      },
+      {
+        "chinese": "技术员",
+        "meaning": "Kỹ thuật viên",
+        "category": [
+          "kỹ thuật"
+        ]
+      }
+    ],
+    "sentences": []
+  },
+  "操": {
+    "hanviet": "",
+    "words": [
+      {
+        "chinese": "操",
+        "meaning": "",
+        "category": [
+          "từ đơn"
+        ]
+      },
+      {
+        "chinese": "操作员",
+        "meaning": "Nhân viên vận hành",
+        "category": [
+          "công xưởng"
+        ]
+      },
+      {
+        "chinese": "操作",
+        "meaning": "Vận hành",
+        "category": [
+          "kỹ thuật"
+        ]
+      }
+    ],
+    "sentences": []
+  },
+  "班": {
+    "hanviet": "",
+    "words": [
+      {
+        "chinese": "班",
+        "meaning": "",
+        "category": [
+          "từ đơn"
+        ]
+      },
+      {
+        "chinese": "班长",
+        "meaning": "Trưởng ca",
+        "category": [
+          "công xưởng"
+        ]
+      }
+    ],
+    "sentences": []
+  },
+  "经": {
+    "hanviet": "",
+    "words": [
+      {
+        "chinese": "经",
+        "meaning": "",
+        "category": [
+          "từ đơn"
+        ]
+      },
+      {
+        "chinese": "经理",
+        "meaning": "Giám đốc",
+        "category": [
+          "công việc"
+        ]
+      }
+    ],
+    "sentences": []
+  },
+  "螺": {
+    "hanviet": "",
+    "words": [
+      {
+        "chinese": "螺",
+        "meaning": "",
+        "category": [
+          "từ đơn"
+        ]
+      },
+      {
+        "chinese": "螺丝",
+        "meaning": "Ốc vít",
+        "category": [
+          "công xưởng"
+        ]
+      }
+    ],
+    "sentences": []
+  },
+  "胶": {
+    "hanviet": "Keo",
+    "words": [
+      {
+        "chinese": "胶",
+        "meaning": "Keo",
+        "category": [
+          "từ đơn"
+        ]
+      },
+      {
+        "chinese": "胶水",
+        "meaning": "Keo",
+        "category": [
+          "kỹ thuật"
+        ]
+      }
+    ],
+    "sentences": []
+  },
+  "铁": {
+    "hanviet": "Sắt",
+    "words": [
+      {
+        "chinese": "铁",
+        "meaning": "Sắt",
+        "category": [
+          "từ đơn",
+          "giao tiếp"
+        ]
+      }
+    ],
+    "sentences": []
+  },
+  "塑": {
+    "hanviet": "",
+    "words": [
+      {
+        "chinese": "塑",
+        "meaning": "",
+        "category": [
+          "từ đơn"
+        ]
+      },
+      {
+        "chinese": "塑料",
+        "meaning": "Nhựa",
+        "category": [
+          "công xưởng"
+        ]
+      }
+    ],
+    "sentences": []
+  },
+  "铝": {
+    "hanviet": "Nhôm",
+    "words": [
+      {
+        "chinese": "铝",
+        "meaning": "Nhôm",
+        "category": [
+          "từ đơn",
+          "công xưởng"
+        ]
+      }
+    ],
+    "sentences": []
+  },
+  "运": {
+    "hanviet": "",
+    "words": [
+      {
+        "chinese": "运",
+        "meaning": "",
+        "category": [
+          "từ đơn"
+        ]
+      },
+      {
+        "chinese": "运输",
+        "meaning": "Vận chuyển",
+        "category": [
+          "công xưởng"
+        ]
+      }
+    ],
+    "sentences": []
+  },
+  "报": {
+    "hanviet": "Báo",
+    "words": [
+      {
+        "chinese": "报",
+        "meaning": "Báo",
+        "category": [
+          "từ đơn"
+        ]
+      },
+      {
+        "chinese": "报修",
+        "meaning": "Báo sửa chữa",
+        "category": [
+          "kỹ thuật"
+        ]
+      },
+      {
+        "chinese": "报表",
+        "meaning": "Báo cáo",
+        "category": [
+          "công xưởng"
+        ]
+      }
+    ],
+    "sentences": []
+  },
+  "流": {
+    "hanviet": "",
+    "words": [
+      {
+        "chinese": "流",
+        "meaning": "",
+        "category": [
+          "từ đơn"
+        ]
+      },
+      {
+        "chinese": "流程",
+        "meaning": "Quy trình",
+        "category": [
+          "công xưởng"
+        ]
+      }
+    ],
+    "sentences": []
+  },
+  "规": {
+    "hanviet": "",
+    "words": [
+      {
+        "chinese": "规",
+        "meaning": "",
+        "category": [
+          "từ đơn"
+        ]
+      },
+      {
+        "chinese": "规范",
+        "meaning": "Quy phạm",
+        "category": [
+          "công xưởng"
+        ]
+      }
+    ],
+    "sentences": []
+  },
+  "抽": {
+    "hanviet": "",
+    "words": [
+      {
+        "chinese": "抽",
+        "meaning": "",
+        "category": [
+          "từ đơn"
+        ]
+      },
+      {
+        "chinese": "抽样",
+        "meaning": "Lấy mẫu",
+        "category": [
+          "công xưởng"
+        ]
+      }
+    ],
+    "sentences": []
+  },
+  "排": {
+    "hanviet": "",
+    "words": [
+      {
+        "chinese": "排",
+        "meaning": "",
+        "category": [
+          "từ đơn"
+        ]
+      },
+      {
+        "chinese": "排班",
+        "meaning": "Xếp ca",
+        "category": [
+          "công xưởng"
+        ]
+      }
+    ],
+    "sentences": []
+  },
+  "警": {
+    "hanviet": "",
+    "words": [
+      {
+        "chinese": "警",
+        "meaning": "",
+        "category": [
+          "từ đơn"
+        ]
+      },
+      {
+        "chinese": "警告",
+        "meaning": "Cảnh báo",
+        "category": [
+          "công xưởng"
+        ]
+      }
+    ],
+    "sentences": []
+  },
+  "切": {
+    "hanviet": "",
+    "words": [
+      {
+        "chinese": "切",
+        "meaning": "",
+        "category": [
+          "từ đơn"
+        ]
+      },
+      {
+        "chinese": "切割机",
+        "meaning": "máy cắt",
+        "category": [
+          "công xưởng"
+        ]
+      }
+    ],
+    "sentences": []
+  },
+  "注": {
+    "hanviet": "",
+    "words": [
+      {
+        "chinese": "注",
+        "meaning": "",
+        "category": [
+          "từ đơn"
+        ]
+      },
+      {
+        "chinese": "注塑机",
+        "meaning": "máy ép nhựa",
+        "category": [
+          "công xưởng"
+        ]
+      }
+    ],
+    "sentences": []
+  },
+  "磨": {
+    "hanviet": "",
+    "words": [
+      {
+        "chinese": "磨",
+        "meaning": "",
+        "category": [
+          "từ đơn"
+        ]
+      },
+      {
+        "chinese": "磨床",
+        "meaning": "máy mài",
+        "category": [
+          "kỹ thuật"
+        ]
+      }
+    ],
+    "sentences": []
+  },
+  "开": {
+    "hanviet": "mở",
+    "words": [
+      {
+        "chinese": "开",
+        "meaning": "mở",
+        "category": [
+          "từ đơn"
+        ]
+      },
+      {
+        "chinese": "开机",
+        "meaning": "mở máy",
+        "category": [
+          "kỹ thuật"
+        ]
+      }
+    ],
+    "sentences": []
+  },
+  "拆": {
+    "hanviet": "",
+    "words": [
+      {
+        "chinese": "拆",
+        "meaning": "",
+        "category": [
+          "từ đơn"
+        ]
+      },
+      {
+        "chinese": "拆卸",
+        "meaning": "tháo dỡ",
         "category": [
           "kỹ thuật"
         ]
