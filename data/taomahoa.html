@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Tạo tuvung.enc.json</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: system-ui, sans-serif; background: #f0f4ff; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
+  .card { background: white; border-radius: 16px; padding: 36px; max-width: 560px; width: 100%; box-shadow: 0 8px 32px rgba(0,0,0,.1); }
+  h1 { font-size: 22px; color: #2a5bd7; margin-bottom: 6px; }
+  .sub { color: #666; font-size: 14px; margin-bottom: 28px; }
+  label { display: block; font-weight: 600; font-size: 14px; color: #333; margin-bottom: 6px; }
+  input[type=text] { width: 100%; padding: 10px 14px; border: 2px solid #e0e6ff; border-radius: 10px; font-size: 15px; outline: none; transition: border .2s; }
+  input[type=text]:focus { border-color: #2a5bd7; }
+  .upload-zone { border: 2px dashed #b0bcf0; border-radius: 12px; padding: 32px; text-align: center; cursor: pointer; transition: all .2s; margin-bottom: 20px; background: #f8f9ff; }
+  .upload-zone:hover, .upload-zone.drag { border-color: #2a5bd7; background: #eef1ff; }
+  .upload-zone input { display: none; }
+  .upload-zone .icon { font-size: 40px; margin-bottom: 8px; }
+  .upload-zone p { color: #555; font-size: 15px; }
+  .upload-zone .hint { font-size: 12px; color: #999; margin-top: 4px; }
+  .btn { width: 100%; padding: 14px; background: linear-gradient(135deg, #2a5bd7, #7c4dff); color: white; border: none; border-radius: 12px; font-size: 16px; font-weight: 700; cursor: pointer; transition: opacity .2s; margin-top: 8px; }
+  .btn:hover { opacity: .9; }
+  .btn:disabled { opacity: .5; cursor: not-allowed; }
+  .status { margin-top: 16px; padding: 14px 16px; border-radius: 10px; font-size: 14px; display: none; }
+  .status.ok { background: #e8f7ee; color: #146c43; display: block; }
+  .status.err { background: #fde7ea; color: #b42318; display: block; }
+  .status.loading { background: #eef1ff; color: #2a5bd7; display: block; }
+  .domain-row { margin-bottom: 20px; }
+  .file-name { margin-top: 8px; font-size: 13px; color: #2a5bd7; font-weight: 600; min-height: 20px; }
+  .steps { background: #f8f9ff; border-radius: 10px; padding: 16px; margin-bottom: 24px; }
+  .steps p { font-size: 13px; color: #555; line-height: 1.8; }
+  .steps strong { color: #2a5bd7; }
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>🔐 Tạo file tuvung.enc.json</h1>
+  <p class="sub">Mã hóa dữ liệu từ vựng — chỉ chạy được trên domain của bạn</p>
+
+  <div class="steps">
+    <p>
+      <strong>1.</strong> Điền đúng domain website của bạn<br>
+      <strong>2.</strong> Chọn file tuvung.json gốc<br>
+      <strong>3.</strong> Bấm "Tạo file mã hóa" → tải về<br>
+      <strong>4.</strong> Đưa file <code>tuvung.enc.json</code> lên GitHub (vào thư mục <code>/data/</code>)
+    </p>
+  </div>
+
+  <div class="domain-row">
+    <label>🌐 Domain website</label>
+    <input type="text" id="domain" value="luyentiengtrung.com" placeholder="vidu.com">
+  </div>
+
+  <label>📂 Chọn file tuvung.json</label>
+  <div class="upload-zone" id="dropzone">
+    <input type="file" id="fileInput" accept=".json">
+    <div class="icon">📄</div>
+    <p>Kéo thả hoặc click để chọn file</p>
+    <p class="hint">Chỉ nhận file .json</p>
+    <div class="file-name" id="fileName"></div>
+  </div>
+
+  <button class="btn" id="encBtn" disabled>🔒 Tạo file mã hóa & Tải về</button>
+
+  <div class="status" id="status"></div>
+</div>
+
+<script>
+let fileContent = null;
+
+// Click vào vùng upload
+const dropzone = document.getElementById('dropzone');
+const fileInput = document.getElementById('fileInput');
+
+dropzone.addEventListener('click', () => fileInput.click());
+dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('drag'); });
+dropzone.addEventListener('dragleave', () => dropzone.classList.remove('drag'));
+dropzone.addEventListener('drop', e => {
+  e.preventDefault();
+  dropzone.classList.remove('drag');
+  const file = e.dataTransfer.files[0];
+  if (file) readFile(file);
+});
+
+fileInput.addEventListener('change', e => {
+  if (e.target.files[0]) readFile(e.target.files[0]);
+});
+
+function readFile(file) {
+  if (!file.name.endsWith('.json')) {
+    showStatus('❌ Chỉ nhận file .json!', 'err');
+    return;
+  }
+  showStatus('⏳ Đang đọc file...', 'loading');
+  const reader = new FileReader();
+  reader.onload = ev => {
+    try {
+      JSON.parse(ev.target.result); // kiểm tra hợp lệ
+      fileContent = ev.target.result;
+      document.getElementById('fileName').textContent = '✅ ' + file.name + ' (' + (file.size / 1024).toFixed(0) + ' KB)';
+      document.getElementById('encBtn').disabled = false;
+      showStatus('✅ Đọc file thành công — sẵn sàng mã hóa!', 'ok');
+    } catch(e) {
+      showStatus('❌ File JSON không hợp lệ: ' + e.message, 'err');
+      fileContent = null;
+    }
+  };
+  reader.readAsText(file, 'UTF-8');
+}
+
+function xorEncrypt(jsonStr, key) {
+  const keyBytes = new TextEncoder().encode(key);
+  const dataBytes = new TextEncoder().encode(jsonStr);
+  const result = new Uint8Array(dataBytes.length);
+  for (let i = 0; i < dataBytes.length; i++) {
+    result[i] = dataBytes[i] ^ keyBytes[i % keyBytes.length];
+  }
+  // Dùng chunk để tránh lỗi stack overflow với file lớn
+  const chunkSize = 8192;
+  let base64 = '';
+  for (let i = 0; i < result.length; i += chunkSize) {
+    base64 += String.fromCharCode(...result.slice(i, i + chunkSize));
+  }
+  return btoa(base64);
+}
+
+document.getElementById('encBtn').addEventListener('click', () => {
+  const domain = document.getElementById('domain').value.trim();
+  if (!domain) { showStatus('❌ Chưa nhập domain!', 'err'); return; }
+  if (!fileContent) { showStatus('❌ Chưa chọn file!', 'err'); return; }
+
+  showStatus('⏳ Đang mã hóa...', 'loading');
+  document.getElementById('encBtn').disabled = true;
+
+  // Dùng setTimeout để không block UI
+  setTimeout(() => {
+    try {
+      const encrypted = xorEncrypt(fileContent, domain);
+      const output = JSON.stringify({ data: encrypted, v: 1 });
+
+      // Tạo file và tải về
+      const blob = new Blob([output], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'tuvung.enc.json';
+      a.click();
+      URL.revokeObjectURL(url);
+
+      const origKB = (fileContent.length / 1024).toFixed(0);
+      const encKB = (output.length / 1024).toFixed(0);
+      showStatus(`✅ Xong! File gốc ${origKB}KB → mã hóa ${encKB}KB<br>📁 Đưa <b>tuvung.enc.json</b> lên thư mục <b>/data/</b> trên GitHub`, 'ok');
+    } catch(e) {
+      showStatus('❌ Lỗi mã hóa: ' + e.message, 'err');
+    }
+    document.getElementById('encBtn').disabled = false;
+  }, 50);
+});
+
+function showStatus(msg, type) {
+  const el = document.getElementById('status');
+  el.innerHTML = msg;
+  el.className = 'status ' + type;
+}
+</script>
+</body>
+</html>
