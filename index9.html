@@ -1,0 +1,3060 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luyện Tiếng Trung</title>
+    
+	
+	
+	
+	<!-- SEO -->
+<meta name="description" content="Học chữ Hán online miễn phí, đầy đủ ví dụ và từ vựng.">
+
+<!-- Open Graph cho Facebook/Zalo -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Luyện Tiếng Trung" />
+<meta property="og:description" content="Học chữ Hán với cách viết,từ vựng tiếng trung phổ biến,ví dụ câu và nghĩa tiếng Trung." />
+<meta property="og:image" content="https://www.luyentiengtrung.com/data/share.png" />
+<meta property="og:url" content="https://www.luyentiengtrung.com/" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Luyện Tiếng Trung">
+<meta name="twitter:description" content="Học chữ Hán với cách viết,từ vựng thường dùng, ví dụ và nghĩa tiếng Trung.">
+<meta name="twitter:image" content="https://www.luyentiengtrung.com/data/share.png">
+
+	
+	<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LB5NPTKGFX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LB5NPTKGFX');
+</script>
+	
+	
+	<script src="https://www.luyentiengtrung.com/data/writer.min.js"></script>
+    <script src="https://www.luyentiengtrung.com/data/index.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 5px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 5px;
+        }
+        
+        .title h1 {
+            color: white;
+            font-size: 48px;
+            font-weight: bold;
+        }
+        
+        .panda {
+            font-size: 48px;
+        }
+        
+        .subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .tab-nav {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .tab-btn {
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: 600;
+            color: white;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+			text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .tab-btn.active {
+            background: white;
+            color: #667eea;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .page-content {
+            display: none;
+        }
+
+        .page-content.active {
+            display: block;
+        }
+
+        .search-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 5px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .search-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            font-size: 20px;
+            color: #333;
+            font-weight: 600;
+        }
+        
+        .search-bar {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        #input-char, .input-search {
+            flex: 1;
+            padding: 15px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s;
+        }
+        
+        #input-char:focus, .input-search:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .search-btn {
+            padding: 15px 15px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .search-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .search-hint {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 10px;
+        }
+        
+        .category-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px 10px 20px 20px;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .category-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .category-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .toggle-arrow {
+            font-size: 14px;
+            color: #666;
+            transition: transform 0.3s ease;
+        }
+        
+        .category-card.collapsed .toggle-arrow {
+            transform: rotate(-90deg);
+        }
+        
+        .char-grid {
+            overflow: hidden;
+            transition: all 0.3s ease;
+            max-height: 200px;
+        }
+        
+        .category-card.collapsed .char-grid {
+            max-height: 0;
+            margin-top: 0;
+        }
+        
+        .category-icon {
+            font-size: 20px;
+        }
+        
+        .char-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+    gap: 10px;
+    overflow-y: auto; /* Thay đổi ở đây */
+    max-height: 250px; /* Thêm dòng này để giới hạn chiều cao */
+    padding-right: 15px; /* Thêm khoảng trống để tránh nút bị che bởi thanh cuộn */
+              }
+        
+        .char-button {
+            aspect-ratio: 1;
+            border: none;
+            border-radius: 12px;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .char-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .char-button:active {
+            transform: scale(0.95);
+        }
+        
+        .work .char-button { background: linear-gradient(45deg, #36D1DC, #5B86E5); }
+        .nature .char-button { background: linear-gradient(45deg, #11998E, #38EF7D); }
+        .people .char-button { background: linear-gradient(45deg, #FC466B, #3F5EFB); }
+        .basic .char-button { background: linear-gradient(45deg, #FDBB2D, #22C1C3); }
+        
+        .writer-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 10px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-top: 10px;
+        }
+        
+        /* New styles for multi-character results */
+        .char-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+        .char-tab-btn {
+            padding: 10px 15px;
+            font-size: 24px;
+            font-weight: bold;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: color 0.2s, transform 0.2s;
+            color: #999;
+            transform: translateY(2px);
+        }
+        .char-tab-btn.active {
+            color: #667eea;
+            border-bottom: 2px solid #667eea;
+            transform: translateY(0);
+        }
+        .char-content-container {
+            position: relative;
+            min-height: 400px; /* Adjusted for better layout */
+        }
+        .character-display {
+            display: none; /* Hide all by default */
+            grid-template-columns: 250px 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        .character-display.active {
+            display: grid; /* Show active one */
+        }
+        
+        .writer-container {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 15px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+        
+        .writer-div {
+            width: 220px;
+            height: 220px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            background: white;
+        }
+        
+        .info-panel h3 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        
+        .info-item {
+            display: flex;
+            margin-bottom: 15px;
+        }
+        
+        .info-label {
+            font-weight: 600;
+            color: #666;
+            width: 110px;
+            flex-shrink: 0;
+        }
+        
+        .info-value {
+            color: #d80e0e;
+            flex: 1;
+			font-weight: bold;
+        }
+        
+        .pinyin-display {
+            font-size: 18px;
+            color: #2196F3;
+            font-weight: bold;
+        }
+        
+        .radical-display {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .radical-char {
+            font-size: 12px;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+        
+        .radical-meaning {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .writer-controls {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .control-btn {
+            padding: 10px 20px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: transform 0.2s;
+        }
+        
+        .control-btn:hover {
+            transform: translateY(-1px);
+        }
+        
+        .examples-section {
+            margin-top: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .examples-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        
+        .word-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .word-item {
+            background: white;
+            padding: 12px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            position: relative;
+        }
+        
+        .word-item:hover {
+            background: #e3f2fd;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .word-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            flex: 1;
+        }
+        
+        .word-chinese {
+            font-weight: bold;
+            color: #333;
+            margin-right: 10px;
+            font-size: 16px;
+        }
+        .word-pinyin {
+            font-size: 14px;
+            color: #2196F3;
+			margin-bottom: 5px;
+            
+        }
+        
+        .word-meaning {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .audio-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 15px 30px;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: all 0.2s;
+            color: #667eea;
+            opacity: 0.7;
+            position: absolute;
+            top: 5px;
+            right: 5px;
+        }
+        
+        .audio-btn:hover {
+            background: #2196F3;
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        
+        .sentence-examples {
+            border-top: 1px solid #e0e0e0;
+            padding-top: 15px;
+        }
+        
+        .sentence-item {
+            margin-bottom: 10px;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+            border-left: 3px solid #4caf50;
+            position: relative;
+        }
+        
+        .sentence-audio {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        
+        .sentence-chinese {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 16px;
+            padding-right: 40px;
+        }
+        
+        .sentence-pinyin {
+            font-size: 14px;
+            color: #2196F3;
+            margin-bottom: 5px;
+        }
+        
+        .sentence-vietnamese {
+            color: #666;
+            font-style: italic;
+            font-size: 14px;
+        }
+        
+        .loading {
+            color: #999;
+            font-style: italic;
+        }
+
+        .vocab-char-section {
+            margin-bottom: 30px;
+            border-left: 4px solid #667eea;
+            padding-left: 10px;
+        }
+        .vocab-char-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        #page-vocab {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 0px;
+			margin-top: 10px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        #page-sentences {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 0px;
+			margin-top: 10px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        .sentences-char-section {
+            margin-bottom: 30px;
+            border-left: 4px solid #4caf50;
+            padding-left: 5px;
+        }
+        .sentences-char-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .sentences-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+        }
+        .section-separator {
+            width: 100%;
+            height: 1px;
+            background-color: #e0e0e0;
+            margin: 40px 0;
+        }
+        .search-results-info {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .pagination-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+            padding-top: 10px;
+            border-top: 1px solid #e0e0e0;
+        }
+        .pagination-btn {
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            background-color: #f8f9fa;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .pagination-btn:hover:not(.active) {
+            background-color: #e0e0e0;
+        }
+        .pagination-btn.active {
+            background-color: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding: 20px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 24px;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            margin: 5px 10px;
+            font-size: 20px;
+            transition: transform 0.2s;
+            display: inline-block;
+        }
+        
+        .footer-links a:hover {
+            transform: scale(1.2);
+        }
+
+        .search-results-info {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #666;
+        }
+        /* New styles for category buttons */
+        .category-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .filter-btn {
+            padding: 10px 20px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            background-color: white;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 14px;
+        }
+        .filter-btn:hover {
+            background-color: #f0f0f0;
+        }
+        .filter-btn.active {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border-color: #667eea;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+
+
+          a {
+            text-decoration: none;
+           }
+
+
+
+
+
+
+
+/* Container chính, nền trắng và tự động co giãn */
+.support-section {
+	display: none;
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Căn chỉnh nội dung QR và tài khoản nằm ngang hàng, căn lề trái */
+.support-content {
+    display: flex;
+    justify-content: center; /* Sửa ở đây để căn lề trái */
+    align-items: flex-start; /* Căn chỉnh nội dung lên đầu (top) */
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.qr-code img {
+    max-width: 200px;
+    height: auto;
+    border-radius: 5px;
+}
+
+.account-info {
+    text-align: left;
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.support-section h3 {
+    color: #4a4a4a;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+.support-section p {
+    color: #666;
+    margin-bottom: 10px;
+}
+.qr-code img {
+    width: 180px;
+    height: 200px;
+    border-radius: 5px;
+}
+.account-info {
+    text-align: left; /* Căn chỉnh thông tin tài khoản sang trái */
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+}
+.copy-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+.copy-btn:hover {
+    background-color: #45a049;
+}
+
+
+
+		/* Hiệu ứng khi di chuyển chuột vào các chữ Hán trong danh sách */
+.word-chinese, .sentence-chinese {
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.word-chinese:hover, .sentence-chinese:hover {
+    color: #ff0303; /* Đổi màu khi hover */
+    text-decoration: underline;
+}
+
+
+
+
+
+
+
+
+/* Tạo nút loa riêng biệt */
+.btn-speak {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    margin-left: 8px;
+    background: #e3f2fd;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+    border: none;
+    vertical-align: middle;
+}
+
+.btn-speak:hover {
+    background: #2196F3;
+    color: white;
+	padding:13px;
+}
+
+/* Ẩn hiện loa: chỉ hiện khi rê chuột vào dòng hoặc luôn hiện tùy bạn */
+.word-item:hover .btn-speak, .sentence-item:hover .btn-speak {
+    opacity: 1;
+}
+
+
+
+
+
+
+
+.word-reading,
+.sentence-reading {
+    font-size: 14px;
+    color: #7307e5;
+    font-style: italic;
+}
+
+
+
+		
+
+.close-writer-btn {
+    display: block;
+    width: 100%;
+    margin-top: 15px;
+    padding: 12px;
+    background: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.close-writer-btn:hover {
+    background: #cc0000;
+}
+
+
+
+
+
+
+
+        @media (max-width: 768px) {
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .character-display {
+                grid-template-columns: 1fr;
+                text-align: left;
+            }
+            
+            .title h1 {
+                font-size: 32px;
+            }
+            
+            .char-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="title">
+              <a href="https://www.luyentiengtrung.com/" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 15px;">
+               <h1>Luyện Tiếng Trung</h1>
+                 <div class="panda">🐼</div>
+                   </a>
+            </div>
+            <div class="subtitle">Khám phá thế giới chữ Hán một cách dễ dàng</div>
+        </div>
+
+        <div class="tab-nav">
+            <button class="tab-btn" data-page="page-hanzi">✏️ Chữ Hán</button>
+            <button class="tab-btn active" data-page="page-vocab">📚 Từ Vựng</button>
+            <button class="tab-btn" data-page="page-sentences">💬 Hội Thoại</button>
+        </div>
+
+
+
+		<div class="search-section">
+                <div class="search-title">
+                    <span>🔍</span>
+                    <span>Tìm kiếm chữ Hán</span>
+                </div>
+                <div class="search-bar">
+                    <input type="text" id="input-char" placeholder="Nhập chữ Hán (ví dụ: 山, 作, 工)">
+                    <button type="button" class="search-btn" id="search-btn">Học ngay</button>
+                </div>
+                <div class="search-hint">
+                    💡 Chỉ có thể tìm kiếm bẳng chữ hán
+                </div>
+            </div>
+		<div id="writer-section" class="writer-section" style="display: none;"></div>
+		
+		
+        
+        <div id="page-hanzi" class="page-content"> 
+			
+            
+
+            
+            
+			
+			
+			 
+			
+			
+            <div class="categories-grid">
+                <div class="category-card work">
+                    <div class="category-header" onclick="toggleCategory(this)">
+                        <div class="category-title"><span class="category-icon">👥</span><span>Bộ Thủ : Nhân - 人(亻) </span></div>
+                        <span class="toggle-arrow">▼</span>
+                    </div>
+                    <div class="char-grid">
+                        <button class="char-button" data-char="人">人</button> 
+                        <button class="char-button" data-char="他">他</button> 
+                        <button class="char-button" data-char="个">个</button> 
+                        <button class="char-button" data-char="们">们</button> 
+                        <button class="char-button" data-char="会">会</button> 
+                        <button class="char-button" data-char="你">你</button>
+                        <button class="char-button" data-char="作">作</button>
+                        <button class="char-button" data-char="从">从</button>
+                        <button class="char-button" data-char="体">体</button>
+						<button class="char-button" data-char="什">什</button> 
+                        <button class="char-button" data-char="做">做</button> 
+                        <button class="char-button" data-char="住">住</button> 
+                        <button class="char-button" data-char="今">今</button> 
+                        <button class="char-button" data-char="候">候</button>
+                        <button class="char-button" data-char="假">假</button>
+                        <button class="char-button" data-char="介">介</button>
+                        <button class="char-button" data-char="休">休</button>
+						<button class="char-button" data-char="以">以</button> 
+                        <button class="char-button" data-char="但">但</button> 
+                        <button class="char-button" data-char="使">使</button> 
+                        <button class="char-button" data-char="信">信</button> 
+                        <button class="char-button" data-char="位">位</button>
+                        <button class="char-button" data-char="件">件</button>
+                        <button class="char-button" data-char="便">便</button>
+                        <button class="char-button" data-char="像">像</button>
+						<button class="char-button" data-char="例">例</button> 
+                        <button class="char-button" data-char="低">低</button> 
+                        <button class="char-button" data-char="倒">倒</button> 
+                        <button class="char-button" data-char="停">停</button> 
+                        <button class="char-button" data-char="份">份</button>
+						<button class="char-button" data-char="何">何</button>
+                        
+                    </div>
+                </div>
+                <div class="category-card nature">
+                    <div class="category-header" onclick="toggleCategory(this)">
+                        <div class="category-title"><span class="category-icon">🏔️</span><span>Bộ Thủ : Khẩu - 口(kǒu) </span></div>
+                        <span class="toggle-arrow">▼</span>
+                    </div>
+                    <div class="char-grid">
+                        <button class="char-button" data-char="和">和</button> 
+                        <button class="char-button" data-char="后">后</button> 
+                        <button class="char-button" data-char="同">同</button> 
+                        <button class="char-button" data-char="名">名</button> 
+                        <button class="char-button" data-char="听">听</button> 
+                        <button class="char-button" data-char="告">告</button>
+                        <button class="char-button" data-char="呢">呢</button>
+                        <button class="char-button" data-char="叫">叫</button>
+                        <button class="char-button" data-char="商">商</button>
+						<button class="char-button" data-char="吗">吗</button> 
+                        <button class="char-button" data-char="吧">吧</button> 
+                        <button class="char-button" data-char="吃">吃</button> 
+                        <button class="char-button" data-char="号">号</button> 
+                        <button class="char-button" data-char="哪">哪</button>
+                        <button class="char-button" data-char="喜">喜</button>
+                        <button class="char-button" data-char="右">右</button>
+                        <button class="char-button" data-char="哥">哥</button>
+						<button class="char-button" data-char="喝">喝</button> 
+                        <button class="char-button" data-char="唱">唱</button> 
+                        <button class="char-button" data-char="可">可</button> 
+                        <button class="char-button" data-char="只">只</button> 
+                        <button class="char-button" data-char="向">向</button>
+                        <button class="char-button" data-char="合">合</button>
+                        <button class="char-button" data-char="司">司</button>
+                        <button class="char-button" data-char="周">周</button>
+						<button class="char-button" data-char="响">响</button> 
+                        <button class="char-button" data-char="句">句</button> 
+                        <button class="char-button" data-char="啊">啊</button> 
+                        <button class="char-button" data-char="味">味</button> 
+                    </div>
+                </div>
+                <div class="category-card people">
+                    <div class="category-header" onclick="toggleCategory(this)">
+                        <div class="category-title"><span class="category-icon">💼</span><span>Bộ thủ : Đại - 大(dà)</span></div>
+                        <span class="toggle-arrow">▼</span>
+                    </div>
+                    <div class="char-grid">
+                        <button class="char-button" data-char="大">大</button> 
+<button class="char-button" data-char="天">天</button> 
+<button class="char-button" data-char="太">太</button> 
+<button class="char-button" data-char="头">头</button> 
+<button class="char-button" data-char="套">套</button> 
+<button class="char-button" data-char="失">失</button> 
+<button class="char-button" data-char="夫">夫</button> 
+<button class="char-button" data-char="奇">奇</button> 
+<button class="char-button" data-char="奖">奖</button> 
+<button class="char-button" data-char="奋">奋</button> 
+<button class="char-button" data-char="央">央</button> 
+<button class="char-button" data-char="奈">奈</button> 
+<button class="char-button" data-char="夹">夹</button> 
+<button class="char-button" data-char="夺">夺</button> 
+<button class="char-button" data-char="奔">奔</button> 
+<button class="char-button" data-char="奉">奉</button> 
+<button class="char-button" data-char="秦">秦</button> 
+<button class="char-button" data-char="奥">奥</button> 
+<button class="char-button" data-char="契">契</button> 
+<button class="char-button" data-char="夸">夸</button> 
+<button class="char-button" data-char="夷">夷</button> 
+<button class="char-button" data-char="奠">奠</button> 
+<button class="char-button" data-char="奢">奢</button> 
+
+                    </div>
+                </div>
+                <div class="category-card basic">
+                    <div class="category-header" onclick="toggleCategory(this)">
+                        <div class="category-title"><span class="category-icon">🔤</span><span>Bộ Thủ : Nhi - 儿(ér)</span></div>
+                        <span class="toggle-arrow">▼</span>
+                    </div>
+                    <div class="char-grid">
+             <button class="char-button" data-char="先">先</button> 
+             <button class="char-button" data-char="光">光</button> 
+             <button class="char-button" data-char="兄">兄</button> 
+             <button class="char-button" data-char="党">党</button> 					
+             <button class="char-button" data-char="允">允</button> 
+             <button class="char-button" data-char="兆">兆</button> 
+             <button class="char-button" data-char="兜">兜</button> 
+             <button class="char-button" data-char="兢">兢</button> 
+                    </div>
+                </div>
+                    
+
+                   <div class="category-card basic">
+                    <div class="category-header" onclick="toggleCategory(this)">
+                        <div class="category-title"><span class="category-icon">🔤</span><span>Bộ Thủ : Con - 子(zǐ)</span></div>
+                        <span class="toggle-arrow">▼</span>
+                    </div>
+                    <div class="char-grid">
+                        			
+             <button class="char-button" data-char="学">学</button> 
+			 <button class="char-button" data-char="字">字</button> 
+			 <button class="char-button" data-char="孩">孩</button> 
+			 <button class="char-button" data-char="存">存</button> 
+			 <button class="char-button" data-char="孙">孙</button> 
+			 <button class="char-button" data-char="季">季</button> 
+			 <button class="char-button" data-char="孤">孤</button> 
+			 <button class="char-button" data-char="孕">孕</button> 
+			 <button class="char-button" data-char="孝">孝</button> 
+			 <button class="char-button" data-char="孵">孵</button> 
+			 <button class="char-button" data-char="孪">孪</button>
+                    </div>
+                </div>
+                  
+
+
+                      <div class="category-card basic">
+                    <div class="category-header" onclick="toggleCategory(this)">
+                        <div class="category-title"><span class="category-icon">🔤</span><span>Bộ Thủ : Thân - 身(shēn)</span></div>
+                        <span class="toggle-arrow">▼</span>
+                    </div>
+                    <div class="char-grid">
+                         <button class="char-button" data-char="身">身</button> 
+			 <button class="char-button" data-char="躺">躺</button> 
+			 <button class="char-button" data-char="躲">躲</button> 
+			 <button class="char-button" data-char="躯">躯</button> 
+			 <button class="char-button" data-char="躬">躬</button> 
+                    </div>
+                </div>
+                 
+				 
+				     <div class="category-card basic collapsed">
+                    <div class="category-header" onclick="toggleCategory(this)">
+                        <div class="category-title"><span class="category-icon">🔤</span><span>Bộ Thủ : Thủ - 手(扌)</span></div>
+                        <span class="toggle-arrow">▼</span>
+                    </div>
+                    <div class="char-grid">
+                        <button class="char-button" data-char="打">打</button> 
+			 <button class="char-button" data-char="找">找</button>
+			 <button class="char-button" data-char="拿">拿</button> 
+			 <button class="char-button" data-char="提">提</button> 
+			 <button class="char-button" data-char="报">报</button> 
+			 <button class="char-button" data-char="才">才</button> 
+			 <button class="char-button" data-char="接">接</button> 
+			 <button class="char-button" data-char="拉">拉</button> 
+			 <button class="char-button" data-char="推">推</button> 
+			 <button class="char-button" data-char="护">护</button> 
+			 <button class="char-button" data-char="排">排</button>
+			 <button class="char-button" data-char="换">换</button> 
+			 <button class="char-button" data-char="掉">掉</button>
+			 <button class="char-button" data-char="挺">挺</button> 
+			 <button class="char-button" data-char="把">把</button> 
+			 <button class="char-button" data-char="指">指</button> 
+			 <button class="char-button" data-char="据">据</button> 
+			 <button class="char-button" data-char="持">持</button> 
+			 <button class="char-button" data-char="技">技</button> 
+			 <button class="char-button" data-char="批">批</button> 
+			 <button class="char-button" data-char="按">按</button> 
+			 <button class="char-button" data-char="抓">抓</button>
+			 <button class="char-button" data-char="握">握</button> 
+			 <button class="char-button" data-char="拍">拍</button>
+			 <button class="char-button" data-char="挂">挂</button> 
+			 <button class="char-button" data-char="播">播</button> 
+			 <button class="char-button" data-char="搬">搬</button> 
+			 <button class="char-button" data-char="投">投</button> 
+			 <button class="char-button" data-char="担">担</button> 
+                    </div>
+                </div>
+				
+				
+				   <div class="category-card basic collapsed">
+                    <div class="category-header" onclick="toggleCategory(this)">
+                        <div class="category-title"><span class="category-icon">🔤</span><span>Bộ Thủ : Thân - 身(shēn)</span></div>
+                        <span class="toggle-arrow">▼</span>
+                    </div>
+                    <div class="char-grid">
+                         <button class="char-button" data-char="身">身</button> 
+			 <button class="char-button" data-char="躺">躺</button> 
+			 <button class="char-button" data-char="躲">躲</button> 
+			 <button class="char-button" data-char="躯">躯</button> 
+			 <button class="char-button" data-char="躬">躬</button> 
+                    </div>
+                </div>
+                  
+				   <div class="category-card basic collapsed">
+                    <div class="category-header" onclick="toggleCategory(this)">
+                        <div class="category-title"><span class="category-icon">🔤</span><span>Bộ Thủ : Thân - 身(shēn)</span></div>
+                        <span class="toggle-arrow">▼</span>
+                    </div>
+                    <div class="char-grid">
+                        <button class="char-button" data-char="身">身</button> 
+			 <button class="char-button" data-char="躺">躺</button> 
+			 <button class="char-button" data-char="躲">躲</button> 
+			 <button class="char-button" data-char="躯">躯</button> 
+			 <button class="char-button" data-char="躬">躬</button> 
+                    </div>
+                </div>
+                  
+                  
+
+
+
+                   
+
+
+
+
+            </div>
+        </div>
+
+        <div id="page-vocab" class="page-content active">
+            <div class="search-section">
+                <div class="search-bar">
+                    <input type="text" class="input-search" placeholder="Tìm kiếm từ vựng">
+                </div>
+                <div class="category-buttons">
+                    <button class="filter-btn active" data-category="all">Tất cả</button>
+					<button class="filter-btn" data-category="cơ bản">Cấp tốc 🏯️</button>
+					<button class="filter-btn" data-category="giao tiếp">Giao tiếp 🗣️</button>
+                    <button class="filter-btn" data-category="kỹ thuật">Kỹ thuật 🛠️</button>
+					<button class="filter-btn" data-category="công việc">Công việc 💼</button>
+					<button class="filter-btn" data-category="công xưởng">Công xưởng 🏠</button>
+					<button class="filter-btn" data-category="bệnh viện">Bệnh viện 💊</button>
+					<button class="filter-btn" data-category="hoa quả">Hoa quả 🏔️</button>
+					<button class="filter-btn" data-category="ẩm thực">Ẩm thực 🍜️</button>
+					<button class="filter-btn" data-category="quốc gia">Quốc gia 🌍️</button>
+					<button class="filter-btn" data-category="thời gian">Thời gian 🕦️</button>
+					<button class="filter-btn" data-category="học tập">Học tập 📚</button>
+					<button class="filter-btn" data-category="du lịch">Du lịch ✈️</button>
+					<button class="filter-btn" data-category="nâng cao">Nâng cao 🙆</button>
+					<button class="filter-btn" data-category="bộ thủ">Bộ thủ 🉑</button>
+					<button class="filter-btn" data-category="từ đơn">Chữ hán 🈲</button>	
+                    <a href="/baitho.html" class="filter-btn">Bài thơ 🐦</a>
+                </div>
+                <div class="content-wrapper"></div>
+            </div>
+        </div>
+
+        <div id="page-sentences" class="page-content">
+            <div class="search-section">
+                <div class="search-bar">
+                    <input type="text" class="input-search" placeholder="Tìm kiếm ví dụ">
+                </div>
+                <div class="category-buttons">
+                    
+
+
+					<button class="filter-btn active" data-category="all">Tất cả</button>
+					<button class="filter-btn" data-category="cơ bản">Cấp tốc 🏯️</button>
+					<button class="filter-btn" data-category="giao tiếp">Giao tiếp 🗣️</button>
+                    <button class="filter-btn" data-category="kỹ thuật">Kỹ thuật 🛠️</button>
+					<button class="filter-btn" data-category="công việc">Công việc 💼</button>
+					<button class="filter-btn" data-category="công xưởng">Công xưởng 🏠</button>
+					<button class="filter-btn" data-category="bệnh viện">Bệnh viện 💊</button>
+					<button class="filter-btn" data-category="hoa quả">Hoa quả 🏔️</button>
+					<button class="filter-btn" data-category="ẩm thực">Ẩm thực 🍜️</button>
+					<button class="filter-btn" data-category="quốc gia">Quốc gia 🌍️</button>
+					<button class="filter-btn" data-category="thời gian">Thời gian 🕦️</button>
+					<button class="filter-btn" data-category="học tập">Học tập 📚</button>
+					<button class="filter-btn" data-category="du lịch">Du lịch ✈️</button>
+					<button class="filter-btn" data-category="nâng cao">Nâng cao 🙆</button>
+					<button class="filter-btn" data-category="bộ thủ">Bộ thủ 🉑</button>
+					<button class="filter-btn" data-category="từ đơn">Chữ hán 🈲</button>	
+                    <a href="/baitho.html" class="filter-btn">Bài thơ 🐦</a>
+					
+                </div>
+                <div class="content-wrapper"></div>
+            </div>
+        </div>
+    </div>
+            
+    <footer class="footer">
+	<div class="footer-links">
+            
+            
+        
+			
+		
+		
+	<div class="container support-section">
+    <h3>💌 Ủng hộ tác giả</h3>
+    <p>Đây là trang Học Tiếng Trung miễn phí không lợi nhuận nếu bạn thấy ứng dụng này hữu ích, hãy ủng hộ tác giả để dự án được duy trì và phát triển nhé!</p>
+    
+    <div class="support-content">
+        <div class="qr-code">
+            <img src="https://www.luyentiengtrung.com/data/vietcombank.jpg" alt="Mã QR ủng hộ tác giả" />
+        </div>
+        <div class="account-info">
+            <p><strong>Số tài khoản:</strong> <span id="accountNumber">0351001084744</span></p>
+            <p><strong>Tài khoản:</strong> Tran Van Nghia</p>
+            <p><strong>Ngân hàng:</strong> Vietcombank</p>
+    <button class="copy-btn" onclick="copyToClipboard()">Sao chép số tài khoản</button>
+			
+        </div>
+    </div>
+    
+   
+</div>
+		
+		
+        <p>© 27/08/2025 - <script>document.write(new Date().getFullYear());</script>📘Luyện Tiếng Trung | <a href="https://www.facebook.com/profile.php?id=100007963391487" target="_blank">🙎Tác giả: Nghĩa Anh </a></p>
+
+
+
+		<div class="tab-nav">
+			<a href="https://www.luyentiengtrung.com/tacgia.html" class="tab-btn" target="_blank" data-page="page-hanzi">💝 Ủng hộ tác giả</a>
+			<a href="https://tinhluongtaowine.vercel.app" class="tab-btn" target="_blank" data-page="page-hanzi">🌐 Tính lương taoWine</a>
+			
+			
+			
+        </div>
+
+ <!-- hitwebcounter Code START -->
+<a href="/" target="_blank">
+<img src="https://hitwebcounter.com/counter/counter.php?page=21434466&style=0050&nbdigits=4&type=ip&initCount=0" title="P-D-F Convert" Alt="P-D-F Convert"   border="0" /></a>                                    
+                                    
+                                        
+                                          
+                            
+
+		
+    </footer>
+
+    <script>
+        let dictionaryMap = null;
+        let dataPromise = null;
+        let dictionaryData = null; 
+        let allWords = [];
+        let allSentences = [];
+        
+        let filteredWords = [];
+        let filteredSentences = [];
+        let currentVocabPage = 1;
+        let currentSentencePage = 1;
+
+        const WORDS_PER_PAGE = 96;
+        const SENTENCES_PER_PAGE = 96;
+        
+        const radicalData = {
+            '山': { radical: '山', meaning: 'núi', strokes: 3, position: 'độc lập' },
+            '大': { radical: '大', meaning: 'lớn', strokes: 3, position: 'độc lập' },
+            '小': { radical: '小', meaning: 'nhỏ', strokes: 3, position: 'độc lập' },
+            '你': { radical: '亻', meaning: 'người', strokes: 2, position: 'bên trái' },
+            '我': { radical: '戈', meaning: 'thương', strokes: 4, position: 'bên phải' },
+            '他': { radical: '亻', meaning: 'người', strokes: 2, position: 'bên trái' },
+            '好': { radical: '女', meaning: 'con gái', strokes: 3, position: 'bên trái' },
+            '人': { radical: '人', meaning: 'người', strokes: 2, position: 'độc lập' },
+            '土': { radical: '土', meaning: 'đất', strokes: 3, position: 'độc lập' },
+            '水': { radical: '水', meaning: 'nước', strokes: 4, position: 'độc lập' },
+            '火': { radical: '火', meaning: 'lửa', strokes: 4, position: 'độc lập' },
+            '天': { radical: '大', meaning: 'lớn', strokes: 3, position: 'phía dưới' },
+            '地': { radical: '土', meaning: 'đất', strokes: 3, position: 'bên trái' },
+            '作': { radical: '亻', meaning: 'người', strokes: 2, position: 'bên trái' },
+            '工': { radical: '工', meaning: 'thợ', strokes: 3, position: 'độc lập' },
+            '做': { radical: '亻', meaning: 'người', strokes: 2, position: 'bên trái' },
+            '业': { radical: '一', meaning: 'một', strokes: 1, position: 'phía trên' },
+            '职': { radical: '耳', meaning: 'tai', strokes: 6, position: 'bên trái' },
+            '学': { radical: '子', meaning: 'con', strokes: 3, position: 'phía dưới' },
+            '们': { radical: '亻', meaning: 'người', strokes: 2, position: 'bên trái' },
+            '会': { radical: '人', meaning: 'người', strokes: 2, position: 'phía trên' },
+            '不': { radical: '一', meaning: 'một', strokes: 1, position: 'phía trên' },
+            '是': { radical: '日', meaning: 'mặt trời', strokes: 4, position: 'phía trên' },
+            '的': { radical: '白', meaning: 'trắng', strokes: 5, position: 'bên trái' },
+            '恶': { radical: '心', meaning: 'tim, lòng', strokes: 4, position: 'phía dưới' },
+            '点': { radical: '灬', meaning: 'lửa nhỏ', strokes: 4, position: 'phía dưới' },
+            '中': { radical: '丨', meaning: 'thẳng', strokes: 1, position: 'giữa' },
+            '国': { radical: '囗', meaning: 'vây quanh', strokes: 3, position: 'bao quanh' },
+            '文': { radical: '文', meaning: 'văn', strokes: 4, position: 'độc lập' },
+            '年': { radical: '干', meaning: 'khô', strokes: 3, position: 'phía trên' },
+            '月': { radical: '月', meaning: 'mặt trăng', strokes: 4, position: 'độc lập' },
+            '日': { radical: '日', meaning: 'mặt trời', strokes: 4, position: 'độc lập' },
+            '时': { radical: '日', meaning: 'mặt trời', strokes: 4, position: 'bên trái' },
+            '분': { radical: '八', meaning: 'tám', strokes: 2, position: 'phía trên' },
+            '종': { radical: '禾', meaning: 'lúa', strokes: 5, position: 'bên trái' },
+            '想': { radical: '心', meaning: 'tim', strokes: 4, position: 'phía dưới' },
+            '看': { radical: '目', meaning: 'mắt', strokes: 5, position: 'phía dưới' },
+            '听': { radical: '口', meaning: 'miệng', strokes: 3, position: 'bên trái' },
+            '说': { radical: '讠', meaning: 'lời nói', strokes: 2, position: 'bên trái' },
+            '来': { radical: '木', meaning: 'cây', strokes: 4, position: 'phía trên' },
+            '去': { radical: '土', meaning: 'đất', strokes: 3, position: 'phía dưới' },
+            '上': { radical: '一', meaning: 'một', strokes: 1, position: 'phía dưới' },
+            '하': { radical: '一', meaning: 'một', strokes: 1, position: 'phía trên' },
+            '전': { radical: '刂', meaning: 'dao', strokes: 2, position: 'bên phải' },
+            '후': { radical: '口', meaning: 'miệng', strokes: 3, position: 'phía trên' },
+            '좌': { radical: '工', meaning: 'thợ', strokes: 3, position: 'phía dưới' },
+            '우': { radical: '口', meaning: 'miệng', strokes: 3, position: 'phía trên' }
+        };
+
+        async function loadDictionary() { 
+            if (dictionaryMap) return; 
+            dictionaryMap = new Map(); 
+            try { 
+                const response = await fetch('https://www.luyentiengtrung.com/data/dictionary.txt'); 
+                if (!response.ok) throw new Error('Failed to load dictionary'); 
+                const text = await response.text(); 
+                const lines = text.trim().split('\n'); 
+                for (let line of lines) { 
+                    if (line) { 
+                        const entry = JSON.parse(line); 
+                        if (entry.character && entry.decomposition) { 
+                            dictionaryMap.set(entry.character, entry); 
+                        } 
+                    } 
+                } 
+            } catch (error) { 
+                console.error('Error loading dictionary:', error); 
+            } 
+        }
+
+        // ── Giải mã XOR + base64 ──
+        // Tạo key từ hash — không lộ tên miền trong source
+        async function _dk() {
+            const _p = ["093fd21d", "9d37f8eb", "3f737ea6", "1488ff07",
+                         "cc2c2c1f", "563fdc40", "51990ed6", "31ffb251"];
+            return _p.join("");
+        }
+
+        // Hash hostname để so sánh — không lộ domain thật
+        async function _sh(s) {
+            const b = new TextEncoder().encode(s);
+            const h = await crypto.subtle.digest("SHA-256", b);
+            return Array.from(new Uint8Array(h)).map(x => x.toString(16).padStart(2,"0")).join("");
+        }
+
+        function xorDecrypt(base64Str, key) {
+            const keyBytes = new TextEncoder().encode(key);
+            const encrypted = Uint8Array.from(atob(base64Str), c => c.charCodeAt(0));
+            const result = new Uint8Array(encrypted.length);
+            for (let i = 0; i < encrypted.length; i++) {
+                result[i] = encrypted[i] ^ keyBytes[i % keyBytes.length];
+            }
+            return new TextDecoder('utf-8').decode(result);
+        }
+
+        function processJsonData(data) {
+            dictionaryData = data;
+            allWords = [];
+            allSentences = [];
+            Object.keys(dictionaryData).forEach(char => {
+                if (dictionaryData[char].words) {
+                    dictionaryData[char].words.forEach(word => allWords.push(word));
+                }
+                if (dictionaryData[char].sentences) {
+                    dictionaryData[char].sentences.forEach(sentence => allSentences.push(sentence));
+                }
+            });
+        }
+
+        async function loadData() {
+            if (dataPromise) return dataPromise;
+            dataPromise = new Promise(async (resolve, reject) => {
+                try {
+                    // So sánh bằng hash — không lộ tên miền
+                    const _hv = "093fd21d9d37f8eb3f737ea61488ff07cc2c2c1f563fdc4051990ed631ffb251";
+                    const _hw = "36abb05990b30799980a975248daf003b3833191587a31e00c92f7a1e9665a0b";
+                    const _hc = await _sh(window.location.hostname);
+                    const isOwner = (_hc === _hv || _hc === _hw);
+
+                    const response = await fetch('https://www.luyentiengtrung.com/data/tuvung.enc.json');
+                    if (!response.ok) throw new Error('Không tải được dữ liệu');
+                    const enc = await response.json();
+
+                    if (enc.v === 1 && enc.data) {
+                        if (!isOwner) {
+                            document.querySelectorAll('.content-wrapper').forEach(c => {
+                                c.innerHTML = '<p style="text-align:center;padding:40px;color:#999;">Dữ liệu không khả dụng.</p>';
+                            });
+                            resolve();
+                            return;
+                        }
+                        const _k = await _dk();
+                        const raw = xorDecrypt(enc.data, _k);
+                        processJsonData(JSON.parse(raw));
+                    } else {
+                        processJsonData(enc);
+                    }
+                    resolve();
+                } catch (error) {
+                    console.error('Lỗi tải dữ liệu:', error);
+                    reject(error);
+                }
+            });
+            return dataPromise;
+        }
+        
+        function playAudio(text, lang = 'zh-CN') { 
+            if ('speechSynthesis' in window) { 
+                speechSynthesis.cancel(); 
+                const utterance = new SpeechSynthesisUtterance(text); 
+                utterance.lang = lang; 
+                utterance.rate = 0.8; 
+                utterance.pitch = 1; 
+                utterance.volume = 1; 
+                speechSynthesis.speak(utterance); 
+            } else { 
+                alert('Trình duyệt của bạn không hỗ trợ phát âm vui lòng dùng trình duyệt "Chrome" để nghe'); 
+            } 
+        }
+
+        function getPinyinWithTone(char) {
+            try {
+                if (typeof window.pinyinPro !== 'undefined' && window.pinyinPro.pinyin) {
+                    const pinyin = window.pinyinPro.pinyin(char, { 
+                        toneType: 'symbol',
+                        type: 'array'
+                    });
+                    if (pinyin && pinyin.length > 0) {
+                        return pinyin.join(' ');
+                    }
+                }
+                
+                if (typeof pinyinPro !== 'undefined') {
+                    const pinyin = pinyinPro.pinyin(char, { 
+                        toneType: 'symbol',
+                        type: 'array'
+                    });
+                    if (pinyin && pinyin.length > 0) {
+                        return pinyin.join(' ');
+                    }
+                }
+            } catch (error) {
+                console.log('Lỗi pinyin-pro:', error);
+            }
+            
+            return getPinyinFallback(char);
+        }
+
+        function getComponentsInfo(char) {
+            const entry = dictionaryMap.get(char);
+            if (entry && entry.decomposition) {
+                const components = entry.decomposition.split('');
+                const filteredComponents = components.filter(c => c !== '?' && !['⿰', '⿱', '⿲', '⿳', '⿴', '⿵', '⿶', '⿷', '⿸', '⿹', '⿺', '⿻'].includes(c));
+                return filteredComponents.map(comp => {
+                    const hanViet = getHanViet(comp);
+                    return {
+                        char: comp,
+                        meaning: hanViet
+                    };
+                });
+            }
+            return null;
+        }
+
+        document.getElementById('search-btn').addEventListener('click', async function() { 
+            const input = document.getElementById('input-char').value.trim(); 
+            if (!input) return; 
+            await triggerSearch(input); 
+        });
+        
+        document.getElementById('input-char').addEventListener('keypress', async function(e) { 
+            if (e.key === 'Enter') { 
+                const input = this.value.trim(); 
+                if (!input) return; 
+                await triggerSearch(input); 
+            } 
+        });
+        
+        document.querySelectorAll('.char-button').forEach(button => { 
+            
+
+
+          
+
+
+                   button.addEventListener('click', async function(e) {
+    e.stopPropagation();
+    const char = this.dataset.char;
+    document.getElementById('input-char').value = char;
+    await triggerSearch(char);
+}, { once: true });
+
+
+
+
+
+
+				
+          
+        });
+        
+        async function triggerSearch(input) { 
+            if (!dataPromise) { 
+                await loadData(); 
+            } 
+            if (!dictionaryMap) {
+                await loadDictionary();
+            }
+            
+            const writerSection = document.getElementById('writer-section'); 
+            writerSection.innerHTML = ''; // Clear previous content
+            writerSection.style.display = 'block'; 
+            
+            // Thêm lệnh cuộn trang ở đây
+            setTimeout(() => {
+    writerSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}, 50);
+
+            
+            const uniqueChars = [...new Set(input.split(''))].filter(isChineseChar);
+            
+            if (uniqueChars.length === 0) {
+                writerSection.style.display = 'none';
+                return;
+            }
+
+            // Create tabs and content container
+            const tabsContainer = document.createElement('div');
+            tabsContainer.className = 'char-tabs';
+            const contentContainer = document.createElement('div');
+            contentContainer.className = 'char-content-container';
+
+            writerSection.appendChild(tabsContainer);
+            writerSection.appendChild(contentContainer);
+
+            uniqueChars.forEach((char, index) => {
+                // Create tab button
+                const tabBtn = document.createElement('button');
+                tabBtn.className = 'char-tab-btn';
+                tabBtn.textContent = char;
+                tabBtn.dataset.char = char;
+                tabsContainer.appendChild(tabBtn);
+
+                // Create and append character content
+                const charContent = createCharacterContent(char);
+                contentContainer.appendChild(charContent);
+
+                if (index === 0) {
+                    tabBtn.classList.add('active');
+                    charContent.classList.add('active');
+                }
+
+                // Add click event listener to the tab
+                tabBtn.addEventListener('click', () => {
+                    // Remove active class from all tabs and content
+                    document.querySelectorAll('.char-tab-btn').forEach(btn => btn.classList.remove('active'));
+                    document.querySelectorAll('.character-display').forEach(content => content.classList.remove('active'));
+
+                    // Add active class to clicked tab and corresponding content
+                    tabBtn.classList.add('active');
+                    charContent.classList.add('active');
+                });
+            });
+        }
+        
+                       function createCharacterContent(char) {
+    const writerDiv = document.createElement('div');
+    writerDiv.className = 'character-display';
+    const examplesHtml = createExamplesSection(char);
+    
+    const pinyinInfo = getPinyinWithTone(char);
+	const vietnameseReading = pinyinToVietnamese(pinyinInfo);
+    const hanVietInfo = dictionaryData[char] && dictionaryData[char].hanviet ? dictionaryData[char].hanviet : 'Chưa dịch';
+    const componentsInfo = getComponentsInfo(char);
+
+    let componentsHtml = '<div class="info-value">Chưa có thông tin phân tách</div>';
+    if (componentsInfo && componentsInfo.length > 0) {
+        // Gộp bộ thủ và nghĩa của nó vào một chuỗi duy nhất
+        const combinedComponents = componentsInfo.map(c => `${c.char} (${c.meaning})`).join(', ');
+        componentsHtml = `
+            <div class="info-value">${combinedComponents}</div>
+        `;
+    }
+
+    writerDiv.innerHTML = `
+        <div class="writer-container">
+            <div class="writer-div" id="writer-${char}"></div>
+        </div>
+        <div class="info-panel">
+            <h3>🔍 Chữ: ${char}</h3>
+            <div class="info-item">
+                <div class="info-label">💬️ Dịch:</div>
+                <div class="info-value">${hanVietInfo}</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">🗣️ Pinyin:</div>
+                <div class="info-value pinyin-display">${pinyinInfo}</div>
+            </div>
+
+
+
+<div class="info-item">
+    <div class="info-label">🗣️ Phát âm:</div>
+    <div class="info-value">${vietnameseReading}</div>
+</div>
+
+
+
+			
+            <div class="info-item">
+                <div class="info-label">🧩 Bộ thủ:</div>
+                ${componentsHtml}
+            </div>
+            <div class="writer-controls" id="controls-${char}">
+                <button class="control-btn">🔄 Vẽ lại</button>
+                <button class="control-btn">✏️ Tập viết</button>
+                <button class="control-btn">🔊 Nghe</button>
+            </div>
+            ${examplesHtml}
+        </div>
+    `;
+    
+    setTimeout(() => {
+        const writer = HanziWriter.create(`writer-${char}`, char, { 
+            width: 220, 
+            height: 220, 
+            padding: 10, 
+            strokeColor: '#333', 
+            radicalColor: '#168F16', 
+            showOutline: true, 
+            showCharacter: true, 
+            strokeAnimationSpeed: 1, 
+            delayBetweenStrokes: 200 
+        }); 
+        
+        writer.animateCharacter(); 
+        
+        const controls = writerDiv.querySelector(`#controls-${char}`); 
+        controls.querySelector('button:nth-child(1)').addEventListener('click', () => { 
+            writer.animateCharacter(); 
+        }); 
+        controls.querySelector('button:nth-child(2)').addEventListener('click', () => { 
+            writer.quiz({ 
+                showHintAfterMisses: 3, 
+                highlightOnComplete: true, 
+                onComplete: function() { 
+                    alert('🎉 Tuyệt vời! Bạn đã viết đúng chữ ' + char); 
+                } 
+            }); 
+        }); 
+        controls.querySelector('button:nth-child(3)').addEventListener('click', () => { 
+            playAudio(char); 
+        }); 
+    
+        const wordItems = writerDiv.querySelectorAll('.word-item'); 
+        wordItems.forEach(item => { 
+            item.addEventListener('click', async function() { 
+                const chinese = this.querySelector('.word-chinese2').textContent; 
+                document.getElementById('input-char').value = chinese; 
+                await triggerSearch(chinese); 
+            }); 
+        });
+    }, 0);
+    
+    return writerDiv;
+}
+        
+        function createExamplesSection(char) { 
+            const examples = dictionaryData[char]; 
+            if (!examples) { 
+                return `<div class="examples-section"><div class="examples-title">📚 Từ Vựng & Hội Thoại</div><div class="loading">Chưa có ví dụ cho chữ này trong cơ sở dữ liệu</div></div>`; 
+            } 
+            
+			
+			
+			
+			
+
+            const wordsHtml = examples.words.map(word => `
+                <div class="word-item">
+                    <button class="audio-btn" onclick="event.stopPropagation(); playAudio('${word.chinese}')">🔊</button>
+                    <div class="word-pinyin">${getPinyinWithTone(word.chinese)}</div>				   
+                    <div class="word-chinese">${word.chinese}</div>
+                    <div class="word-meaning" style="font-size: 14px; color: #666;">${word.meaning}</div> 
+					
+
+                    <div class="word-reading">
+                           <span style="color: red;">Phát âm:</span> ${pinyinToVietnamese(getPinyinWithTone(word.chinese))}
+                           </div>
+					
+					
+					</div>`).join(''); 
+			
+              
+            
+            const sentencesHtml = examples.sentences.map(sentence => `
+                <div class="sentence-item">
+                    <button class="audio-btn sentence-audio" onclick="playAudio('${sentence.chinese}')">🔊</button>
+                    <div class="sentence-pinyin">${getPinyinWithTone(sentence.chinese)}</div>
+                    <div class="sentence-chinese">${sentence.chinese}</div>
+                    <div class="sentence-vietnamese">${sentence.vietnamese}</div>
+					
+						<div class="sentence-reading">
+                                        <span style="color: red;">Phát âm:</span> ${pinyinToVietnamese(getPinyinWithTone(sentence.chinese))}
+                                        </div>
+					
+					</div>`)
+
+                     
+
+					
+                .join(''); 
+            
+            return `<div class="examples-section"><div class="examples-title">📚 Từ vựng phổ biến</div><div class="word-examples">${wordsHtml}</div><div class="sentence-examples"><div class="examples-title">💬 Ví dụ câu</div>${sentencesHtml}</div></div>`; 
+        }
+        
+        function getHanViet(char) { 
+            const hanViet = dictionaryData[char] && dictionaryData[char].hanviet ? dictionaryData[char].hanviet : '';
+            return hanViet || 'False'; 
+        }
+        
+        function getPinyinFallback(char) { 
+            const pinyinMap = { 
+                '山': 'shān', '大': 'dà', '小': 'xiǎo', '你': 'nǐ', '我': 'wǒ', 'ta': 'tā', 
+                'hǎo': 'hǎo', 'rén': 'rén', 'tǔ': 'tǔ', 'shuǐ': 'shuǐ', 'huǒ': 'huǒ', 'tiān': 'tiān', 
+                'dì': 'dì', 'zuò': 'zuò', 'gōng': 'gōng', 'zuò': 'zuò', 'yè': 'yè', 'zhí': 'zhí', 
+                'xué': 'xué', 'men': 'men', 'huì': 'huì', 'bù': 'bù', 'shì': 'shì', 'de': 'de',
+                'è': 'è', 'diǎn': 'diǎn', 'zhōng': 'zhōng', 'guó': 'guó', 'wén': 'wén', 'nián': 'nián',
+                'yuè': 'yuè', 'rì': 'rì', 'shí': 'shí', 'fēn': 'fēn', 'zhǒng': 'zhǒng',
+                'xiǎng': 'xiǎng', 'kàn': 'kàn', 'tīng': 'tīng', 'shuō': 'shuō', 'lái': 'lái',
+                'qù': 'qù', 'shàng': 'shàng', 'xià': 'xià', 'qián': 'qián', 'hòu': 'hòu',
+                'zuǒ': 'zuǒ', 'yòu': 'yòu'
+            }; 
+            return pinyinMap[char] || 'Chưa có pinyin'; 
+        }
+        
+        function isChineseChar(char) { 
+            return /[\u4e00-\u9fff]/.test(char); 
+        }
+        
+        function toggleCategory(header) { 
+            const categoryCard = header.closest('.category-card'); 
+            categoryCard.classList.toggle('collapsed'); 
+            if (!categoryCard.classList.contains('collapsed')) { 
+                const charButtons = categoryCard.querySelectorAll('.char-button'); 
+                charButtons.forEach((button, index) => { 
+                    button.style.opacity = '0'; 
+                    button.style.transform = 'scale(0.8)'; 
+                    setTimeout(() => { 
+                        button.style.transition = 'all 0.3s ease'; 
+                        button.style.opacity = '1'; 
+                        button.style.transform = 'scale(1)'; 
+                    }, index * 50); 
+                }); 
+            } 
+        }
+        
+        function normalizeString(str) {
+            if (!str) return '';
+            return str.toLowerCase()
+                      .normalize('NFD')
+                      .replace(/[\u0300-\u036f]/g, "")
+                      .replace(/đ/g, 'd').replace(/Đ/g, 'D');
+        }
+        
+        function renderCombinedResults(words, sentences) {
+            const activeTab = document.querySelector('.page-content.active');
+            const contentWrapper = activeTab.querySelector('.content-wrapper');
+            const searchInput = activeTab.querySelector('.input-search');
+
+            if (!contentWrapper) return;
+            
+            let totalResults = words.length + sentences.length;
+
+            if (totalResults === 0) {
+                contentWrapper.innerHTML = `<div class="search-results-info">Không tìm thấy kết quả nào.</div>`;
+                return;
+            }
+
+            let html = `<div class="search-results-info">Tìm thấy ${totalResults} kết quả</div>`;
+
+            if (words.length > 0) {
+                html += `
+                    <div class="vocab-char-section">
+                        <h2 class="vocab-char-title">Từ vựng (${words.length})</h2>
+                        <div class="vocab-grid">
+                            ${words.map(word => `
+                                <div class="word-item">
+                                    <button class="audio-btn" onclick="playAudio('${word.chinese}')">🔊</button>
+                                    <div class="word-pinyin">${getPinyinWithTone(word.chinese)}</div>
+                                    <div class="word-chinese">${word.chinese}</div>
+                                    <div class="word-meaning" style="font-size: 14px; color: #666;">${word.meaning}</div>
+
+
+                                     <div class="word-reading">
+                           <span style="color: red;">Phát âm:</span> ${pinyinToVietnamese(getPinyinWithTone(word.chinese))}
+                           </div>
+									
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            if (sentences.length > 0) {
+                 if (words.length > 0) {
+                    html += `<div class="section-separator"></div>`;
+                }
+                html += `
+                    <div class="sentences-char-section">
+                        <h2 class="sentences-char-title">Hội Thoại (${sentences.length})</h2>
+                        <div class="sentences-list">
+                            ${sentences.map(sentence => `
+                                <div class="sentence-item">
+                                    <button class="audio-btn sentence-audio" onclick="playAudio('${sentence.chinese}')">🔊</button>
+                                    <div class="sentence-pinyin">${getPinyinWithTone(sentence.chinese)}</div>
+                                    <div class="sentence-chinese">${sentence.chinese}</div>
+                                    <div class="sentence-vietnamese">${sentence.vietnamese}</div>
+
+
+
+                                   	<div class="sentence-reading">
+                                        <span style="color: red;">Phát âm:</span> ${pinyinToVietnamese(getPinyinWithTone(sentence.chinese))}
+                                        </div>
+									
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            contentWrapper.innerHTML = html;
+        }
+
+        function clearSearchResults() {
+            const activeTab = document.querySelector('.page-content.active');
+            if (!activeTab) return;
+            const searchInput = activeTab.querySelector('.input-search');
+            if (searchInput) {
+                searchInput.value = '';
+            }
+
+            // Reset category button state
+            document.querySelectorAll(`#${activeTab.id} .filter-btn`).forEach(btn => btn.classList.remove('active'));
+            const allBtn = activeTab.querySelector('[data-category="all"]');
+            if (allBtn) {
+                allBtn.classList.add('active');
+            }
+
+            if (activeTab.id === 'page-vocab') {
+                filteredWords = allWords;
+                currentVocabPage = 1;
+                generateVocabularyPage(filteredWords);
+            } else if (activeTab.id === 'page-sentences') {
+                filteredSentences = allSentences;
+                currentSentencePage = 1;
+                generateSentencesPage(filteredSentences);
+            }
+        }
+        
+        function searchAll(event) {
+            const query = event.target.value.trim();
+            if (query === '') {
+                // Return to default state if search query is empty
+                clearSearchResults();
+                return;
+            }
+
+            const normalizedQuery = normalizeString(query);
+
+            const words = allWords.filter(word => {
+                const normalizedPinyin = normalizeString(getPinyinWithTone(word.chinese));
+                const pinyinMatches = normalizedPinyin.includes(normalizedQuery);
+                const chineseMatches = word.chinese.includes(query);
+                const normalizedMeaning = normalizeString(word.meaning);
+                const meaningMatches = normalizedMeaning.includes(normalizedQuery);
+                return chineseMatches || pinyinMatches || meaningMatches;
+            });
+            
+            const sentences = allSentences.filter(sentence => {
+                const normalizedPinyin = normalizeString(getPinyinWithTone(sentence.chinese));
+                const pinyinMatches = normalizedPinyin.includes(normalizedQuery);
+                const chineseMatches = sentence.chinese.includes(query);
+                const normalizedVietnamese = normalizeString(sentence.vietnamese);
+                const vietnameseMatches = normalizedVietnamese.includes(normalizedQuery);
+                return chineseMatches || pinyinMatches || vietnameseMatches;
+            });
+
+            renderCombinedResults(words, sentences);
+
+            // Deactivate all category buttons when searching
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+        }
+
+        function filterContent(category) {
+            if (category === 'all') {
+                filteredWords = allWords;
+                filteredSentences = allSentences;
+                currentVocabPage = 1;
+                currentSentencePage = 1;
+                generateVocabularyPage(filteredWords);
+                generateSentencesPage(filteredSentences);
+            } else {
+                const words = allWords.filter(word => word.category && word.category.includes(category));
+                const sentences = allSentences.filter(sentence => sentence.category && sentence.category.includes(category));
+                renderCombinedResults(words, sentences);
+            }
+        }
+
+        function generateVocabularyPage(dataToDisplay = allWords) {
+            const vocabContainer = document.querySelector('#page-vocab .content-wrapper');
+            const totalItems = dataToDisplay.length;
+            const totalPages = Math.ceil(totalItems / WORDS_PER_PAGE);
+            const startIndex = (currentVocabPage - 1) * WORDS_PER_PAGE;
+            const endIndex = startIndex + WORDS_PER_PAGE;
+            const wordsToDisplay = dataToDisplay.slice(startIndex, endIndex);
+
+            let html = `
+                <div class="search-results-info">Tổng cộng ${totalItems} từ vựng</div>
+                <div class="vocab-char-section">
+                    <h2 class="vocab-char-title">Bảng từ vựng</h2>
+                    <div class="vocab-grid">
+                        ${wordsToDisplay.map(word => `
+                            <div class="word-item">
+                                <button class="audio-btn" onclick="playAudio('${word.chinese}')">🔊</button>
+                                <div class="word-pinyin">${getPinyinWithTone(word.chinese)}</div>	
+                                <div class="word-chinese">${word.chinese}</div>
+                                <div class="word-meaning" style="font-size: 14px; color: #666;">${word.meaning}</div>
+
+
+
+                                <div class="word-reading">
+                           <span style="color: red;">Phát âm:</span> ${pinyinToVietnamese(getPinyinWithTone(word.chinese))}
+                           </div>
+
+
+								
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+            
+            vocabContainer.innerHTML = html;
+            setupVocabularyPagination(totalPages, currentVocabPage, dataToDisplay);
+        }
+
+        function setupVocabularyPagination(totalPages, currentPage, data) {
+            const vocabContainer = document.querySelector('#page-vocab .content-wrapper');
+            let paginationHtml = `<div class="pagination-controls">`;
+
+            paginationHtml += `<button class="pagination-btn" onclick="goToVocabPage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>&larr; Trước</button>`;
+
+            let startPage = Math.max(1, currentPage - 2);
+            let endPage = Math.min(totalPages, currentPage + 2);
+            
+            if (startPage > 1) {
+                paginationHtml += `<button class="pagination-btn" onclick="goToVocabPage(1)">1</button>`;
+                if (startPage > 2) paginationHtml += `<span>...</span>`;
+            }
+
+            for (let i = startPage; i <= endPage; i++) {
+                paginationHtml += `<button class="pagination-btn ${i === currentPage ? 'active' : ''}" onclick="goToVocabPage(${i})">${i}</button>`;
+            }
+
+            if (endPage < totalPages) {
+                if (endPage < totalPages - 1) paginationHtml += `<span>...</span>`;
+                paginationHtml += `<button class="pagination-btn" onclick="goToVocabPage(${totalPages})">${totalPages}</button>`;
+            }
+
+
+            paginationHtml += `<button class="pagination-btn" onclick="goToVocabPage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>Sau &rarr;</button>`;
+            
+            paginationHtml += `</div>`;
+
+            vocabContainer.innerHTML += paginationHtml;
+        }
+
+        function goToVocabPage(page) {
+            currentVocabPage = page;
+            generateVocabularyPage(filteredWords);
+        }
+
+        function generateSentencesPage(dataToDisplay = allSentences) {
+            const sentencesContainer = document.querySelector('#page-sentences .content-wrapper');
+            const totalItems = dataToDisplay.length;
+            const totalPages = Math.ceil(totalItems / SENTENCES_PER_PAGE);
+            const startIndex = (currentSentencePage - 1) * SENTENCES_PER_PAGE;
+            const endIndex = startIndex + SENTENCES_PER_PAGE;
+            const sentencesToDisplay = dataToDisplay.slice(startIndex, endIndex);
+
+            let html = `
+                <div class="search-results-info">Tổng cộng ${totalItems} câu giao tiếp tiếng trung</div>
+                <div class="sentences-char-section">
+                    <h2 class="sentences-char-title">Hội Thoại Tiếng Trung</h2>
+                    <div class="sentences-list">
+                        ${sentencesToDisplay.map(sentence => `
+                            <div class="sentence-item">
+                                <button class="audio-btn sentence-audio" onclick="playAudio('${sentence.chinese}')">🔊</button>
+								
+								
+                                <div class="sentence-pinyin">${getPinyinWithTone(sentence.chinese)}</div>
+                                <div class="sentence-chinese">${sentence.chinese}</div>
+                                <div class="sentence-vietnamese">${sentence.vietnamese}</div>
+
+
+
+                               	<div class="sentence-reading">
+                                        <span style="color: red;">Phát âm:</span> ${pinyinToVietnamese(getPinyinWithTone(sentence.chinese))}
+                                        </div>
+
+								
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+
+            sentencesContainer.innerHTML = html;
+            setupSentencesPagination(totalPages, currentSentencePage, dataToDisplay);
+        }
+        
+        function setupSentencesPagination(totalPages, currentPage, data) {
+            const sentencesContainer = document.querySelector('#page-sentences .content-wrapper');
+            let paginationHtml = `<div class="pagination-controls">`;
+
+            paginationHtml += `<button class="pagination-btn" onclick="goToSentencePage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>&larr; Trước</button>`;
+
+            let startPage = Math.max(1, currentPage - 2);
+            let endPage = Math.min(totalPages, currentPage + 2);
+            
+            if (startPage > 1) {
+                paginationHtml += `<button class="pagination-btn" onclick="goToSentencePage(1)">1</button>`;
+                if (startPage > 2) paginationHtml += `<span>...</span>`;
+            }
+            
+            for (let i = startPage; i <= endPage; i++) {
+                paginationHtml += `<button class="pagination-btn ${i === currentPage ? 'active' : ''}" onclick="goToSentencePage(${i})">${i}</button>`;
+            }
+
+            if (endPage < totalPages) {
+                if (endPage < totalPages - 1) paginationHtml += `<span>...</span>`;
+                paginationHtml += `<button class="pagination-btn" onclick="goToSentencePage(${totalPages})">${totalPages}</button>`;
+            }
+
+            paginationHtml += `<button class="pagination-btn" onclick="goToSentencePage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>Sau &rarr;</button>`;
+            
+            paginationHtml += `</div>`;
+
+            sentencesContainer.innerHTML += paginationHtml;
+        }
+
+        function goToSentencePage(page) {
+            currentSentencePage = page;
+            generateSentencesPage(filteredSentences);
+        }
+
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const pages = document.querySelectorAll('.page-content');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                pages.forEach(page => page.classList.remove('active'));
+
+                button.classList.add('active');
+                const pageId = button.dataset.page;
+                document.getElementById(pageId).classList.add('active');
+                
+                // Reset search bar and category buttons when switching tabs
+                document.querySelectorAll('.input-search').forEach(input => input.value = '');
+                document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                const allBtn = document.querySelector(`#${pageId} [data-category="all"]`);
+                if (allBtn) {
+                    allBtn.classList.add('active');
+                }
+                
+                // Load the full list with pagination for Vocab and Sentences tabs
+                if (pageId === 'page-vocab') {
+                    filteredWords = allWords;
+                    currentVocabPage = 1;
+                    generateVocabularyPage(filteredWords);
+                } else if (pageId === 'page-sentences') {
+                    filteredSentences = allSentences;
+                    currentSentencePage = 1;
+                    generateSentencesPage(filteredSentences);
+                }
+            });
+        });
+
+        const sharedSearchInputs = document.querySelectorAll('.input-search');
+        sharedSearchInputs.forEach(input => {
+            input.addEventListener('keyup', searchAll);
+        });
+
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const currentTabButtons = this.closest('.search-section').querySelectorAll('.filter-btn');
+                currentTabButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                
+                const category = this.dataset.category;
+                
+                // Clear search input when a filter button is clicked
+                const searchInput = this.closest('.search-section').querySelector('.input-search');
+                if(searchInput) {
+                    searchInput.value = '';
+                }
+
+                if (category === 'all') {
+                    // Revert to paginated view
+                    if(this.closest('#page-vocab')) {
+                        filteredWords = allWords;
+                        currentVocabPage = 1;
+                        generateVocabularyPage(filteredWords);
+                    } else if (this.closest('#page-sentences')) {
+                        filteredSentences = allSentences;
+                        currentSentencePage = 1;
+                        generateSentencesPage(filteredSentences);
+                    }
+                } else {
+                    // Switch to combined results for filtered content
+                    const words = allWords.filter(word => word.category && word.category.includes(category));
+                    const sentences = allSentences.filter(sentence => sentence.category && sentence.category.includes(category));
+                    renderCombinedResults(words, sentences);
+                }
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', async function() {
+            try {
+                await loadData();
+                await loadDictionary();
+                console.log('Dữ liệu từ vựng và câu đã được tải thành công!');
+                
+                // Tải trang từ vựng và câu mặc định khi khởi động
+                filteredWords = allWords;
+                filteredSentences = allSentences;
+                generateVocabularyPage(allWords);
+                generateSentencesPage(allSentences);
+
+            } catch (error) {
+                console.error('Không thể tải dữ liệu:', error);
+            }
+            
+            const cards = document.querySelectorAll('.category-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.6s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+
+        const hanziSearchBar = document.querySelector('#page-hanzi .search-section');
+        const inputChar = document.getElementById('input-char');
+        inputChar.addEventListener('focus', function() { 
+            hanziSearchBar.style.transform = 'translateY(-2px)'; 
+            hanziSearchBar.style.boxShadow = '0 15px 40px rgba(0, 0, 0, 0.15)'; 
+        });
+        inputChar.addEventListener('blur', function() { 
+            hanziSearchBar.style.transform = 'translateY(0)'; 
+            hanziSearchBar.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.1)'; 
+        });
+
+
+
+// Khi trang load, kiểm tra nếu có ?word=... thì tự động tìm
+window.addEventListener("DOMContentLoaded", async () => {
+    const params = new URLSearchParams(window.location.search);
+    const word = params.get("word");
+    if (word) {
+        document.getElementById("input-char").value = word;
+        await triggerSearch(word);
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+ function updateMeta(word) {
+  document.title = `Học chữ hán với từ "${word}" - Học Tiếng Trung`;
+
+  let descText = "";
+  if (dictionaryMap && dictionaryMap[word]) {
+    const entry = dictionaryMap[word];
+    const mean = entry.mean || "";
+
+    let words = "";
+    if (entry.words && entry.words.length > 0) {
+      words = entry.words.slice(0, 2).map(w => `${w.chinese} (${w.pinyin}: ${w.meaning})`).join("; ");
+    }
+
+    let example = "";
+    if (entry.examples && entry.examples.length > 0) {
+      const ex = entry.examples[0];
+      example = `${ex.chinese} (${ex.pinyin}: ${ex.meaning})`;
+    }
+
+    descText = `Học chữ Hán "${word}" nghĩa là "${mean}". `
+             + (words ? `Ví dụ từ vựng: ${words}. ` : "")
+             + (example ? `Ví dụ câu: ${example}.` : "");
+  }
+
+  // Meta description
+  let desc = document.querySelector("meta[name='description']");
+  if (!desc) {
+    desc = document.createElement("meta");
+    desc.name = "description";
+    document.head.appendChild(desc);
+  }
+  desc.content = descText;
+
+  // 👉 Open Graph tags
+  setOgMeta("og:title", document.title);
+  setOgMeta("og:description", descText);
+  setOgMeta("og:image", "https://luyentiengtrung.com/data/vietcombank.jpg"); // ảnh đại diện khi share
+  setOgMeta("og:url", window.location.href);
+}
+
+function setOgMeta(property, content) {
+  let tag = document.querySelector(`meta[property='${property}']`);
+  if (!tag) {
+    tag = document.createElement("meta");
+    tag.setAttribute("property", property);
+    document.head.appendChild(tag);
+  }
+  tag.setAttribute("content", content);
+}
+
+
+
+		
+		
+// Sửa triggerSearch để cập nhật URL khi tìm kiếm
+async function triggerSearch(input) {
+    if (!dataPromise) await loadData();
+    if (!dictionaryMap) await loadDictionary();
+
+    // ---- thêm đoạn này để đổi URL ----
+    const url = new URL(window.location);
+    url.searchParams.set("word", input);
+	
+	
+ window.history.pushState({}, "", `/search/word/${encodeURIComponent(input)}.html`);
+    updateMeta(input);
+
+    // ---------------------------------
+
+    const writerSection = document.getElementById('writer-section');
+    writerSection.innerHTML = '';
+    writerSection.style.display = 'block';
+
+    setTimeout(() => {
+        writerSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 50);
+
+    const uniqueChars = [...new Set(input.split(''))].filter(isChineseChar);
+    if (uniqueChars.length === 0) {
+        writerSection.style.display = 'none';
+        return;
+    }
+
+    const tabsContainer = document.createElement('div');
+    tabsContainer.className = 'char-tabs';
+    const contentContainer = document.createElement('div');
+    contentContainer.className = 'char-content-container';
+
+    writerSection.appendChild(tabsContainer);
+    writerSection.appendChild(contentContainer);
+
+    uniqueChars.forEach((char, index) => {
+        const tabBtn = document.createElement('button');
+        tabBtn.className = 'char-tab-btn';
+        tabBtn.textContent = char;
+        tabBtn.dataset.char = char;
+        tabsContainer.appendChild(tabBtn);
+
+        const charContent = createCharacterContent(char);
+        contentContainer.appendChild(charContent);
+
+        if (index === 0) {
+            tabBtn.classList.add('active');
+            charContent.classList.add('active');
+        }
+
+        tabBtn.addEventListener('click', () => {
+            document.querySelectorAll('.char-tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.character-display').forEach(content => content.classList.remove('active'));
+            tabBtn.classList.add('active');
+            charContent.classList.add('active');
+        });
+    });
+}
+
+
+
+
+
+
+
+     window.addEventListener("DOMContentLoaded", async () => {
+  const path = window.location.pathname;
+  // Hỗ trợ cả dạng /search/word/xxx và /search/word/xxx.html
+  const match = path.match(/^\/search\/word\/(.+?)(?:\.html)?$/);
+  if (match) {
+    const word = decodeURIComponent(match[1]);
+    document.getElementById("input-char").value = word;
+
+    if (!dataPromise) await loadData();
+    if (!dictionaryMap) await loadDictionary();
+
+    await triggerSearch(word);
+	   updateMeta(word); // 👉 title mô tả chữ hán
+  }
+});
+
+
+
+
+function copyToClipboard() {
+    const accountNumber = document.getElementById('accountNumber').innerText;
+    navigator.clipboard.writeText(accountNumber).then(() => {
+        alert('Đã sao chép số tài khoản ' + accountNumber);
+    }).catch(err => {
+        console.error('Lỗi khi sao chép: ', err);
+    });
+}
+		
+
+
+
+
+
+const searchBox = document.getElementById('writer-section');
+const writerSection = document.getElementById('writer-section');
+
+// Mặc định ẩn search
+searchBox.style.display = 'none';
+writerSection.style.display = 'none';
+
+document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const pageId = btn.dataset.page;
+
+        if (pageId === 'page-hanzi' && searchBox.style.display === 'block') {
+            searchBox.style.display = 'block';
+        } else if (pageId === 'page-vocab' || pageId === 'page-sentences' && searchBox.style.display === 'block') {
+			searchBox.style.display = 'none';
+		}
+		else {
+            searchBox.style.display = 'none';
+            writerSection.style.display = 'none';
+        }
+    });
+});
+
+
+
+
+
+
+
+
+// Hàm xử lý khi click vào các từ tiếng Trung trong trang
+document.addEventListener('click', function(e) {
+    const target = e.target.closest('.word-chinese, .sentence-chinese, .char-button');
+    
+    if (target) {
+        const word = target.innerText || target.getAttribute('data-char');
+        const writerSection = document.getElementById('writer-section');
+        
+        // Hiển thị khung hướng dẫn
+        writerSection.style.display = 'block';
+        writerSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        // Gọi hàm tìm kiếm chữ (hàm có sẵn của bạn)
+        if (typeof triggerSearch === 'function') {
+            triggerSearch(word).then(() => {
+                // Sau khi nội dung đã load xong, kiểm tra và thêm nút ẩn nếu chưa có
+                if (!document.getElementById('close-writer')) {
+                    const closeBtn = document.createElement('button');
+                    closeBtn.id = 'close-writer';
+                    closeBtn.className = 'close-writer-btn';
+                    closeBtn.innerHTML = '❌ Đóng / Ẩn bảng hướng dẫn';
+                    closeBtn.onclick = function() {
+                        writerSection.style.display = 'none'; // Ẩn toàn bộ phần hướng dẫn
+                        // Tùy chọn: Cuộn về vị trí cũ nếu muốn
+                        // window.scrollTo({ top: target.offsetTop - 100, behavior: 'smooth' });
+                    };
+                    writerSection.appendChild(closeBtn);
+                }
+            });
+        }
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+function pinyinToVietnamese(pinyin) {
+    if (!pinyin) return "";
+
+    // Chuẩn hoá
+    let text = pinyin.toLowerCase().replace(/ü/g, "u");
+
+    // Tách từng âm tiết
+    const syllables = text.split(/\s+/);
+
+    return syllables.map(py => convertSyllable(py)).join(" ");
+}
+
+/* ================== CHUYỂN 1 ÂM TIẾT ================== */
+function convertSyllable(py) {
+
+    // 1️⃣ ÂM TIẾT ĐẶC BIỆT (ưu tiên tuyệt đối)
+    const specialMap = {
+      
+		"chī": "sư",
+		"chí": "sứ",
+		"chǐ": "sủ",
+		"chì": "sư",
+		
+		"qū": "truy", 
+		"qú": "trúy", 
+		"qǔ": "trủy", 
+		"qù": "truy",
+                 
+               
+                "quān": "troen",
+		"quán": "troén",
+		"quǎn": "troẻn",
+		"quàn": "troen",
+		
+
+
+		
+		"mēi": "mây", 
+		"méi": "mấy", 
+		"měi": "mẩy", 
+		"mèi": "mây",
+		
+		"wu": "u",
+		"wú": "ú",
+		"wǔ": "ủ",
+		"wù": "u",
+		
+		"wō": "ua",
+		"wó": "uá",
+		"wǒ": "ủa",
+	        "wò": "ua",
+		
+		"wāi": "goai", 
+		"wái": "goái", 
+		"wǎi": "goải",
+		"wài": "goai",
+		
+		"wāng": "oang", 
+		"wáng": "oáng", 
+		"wǎng": "oảng",
+		"wàng": "oang",
+
+		"wān": "oan", 
+		"wán": "oán", 
+		"wǎn": "oản",
+		"wàn": "oan",
+		
+		"wéi": "guấy",
+		"wěi": "guẩy",
+		"wèi": "guây",
+		
+		"wēn": "guân",
+		"wén": "guấn",
+		"wěn": "guẩn",
+		"wèn": "guân",
+		
+		"wēi": "guây",
+		"wéi": "guấy",
+		"wěi": "guẩy",
+		"wèi": "guây",
+		
+		"shi": "sư",
+		"shī": "sư",
+		"shí": "sứ",
+		"shǐ": "sử",
+		"shì": "sư",
+		
+		"sī": "sư",
+		"sí": "sứ", 
+		"sǐ": "sử",
+		"sì": "sư",
+		
+		"zhī": "trư",
+		"zhí": "trứ", 
+		"zhǐ": "trử",
+		"zhì": "trư",
+		
+		"zi": "chư",
+		"zī": "chư",
+		"zí": "chứ",
+		"zǐ": "chử",
+		"zì": "chư",
+		
+		"yī": "y",
+		"yí": "ý",
+		"yǐ": "ỷ",
+		"yì": "y",
+		
+		"yūn": "ruyn", 
+		"yún": "ruýn",
+		"yǔn": "ruỷn",
+		"yùn": "ruyn",
+		
+		"yū": "ruy",
+		"yú": "ruý",
+		"yǔ": "ruỷ", 
+		"yù": "ruy",
+		
+		"yē": "rê", 
+		"yé": "rế",
+		"yě": "rể",
+		"yè": "rê",
+		
+		"yān": "ren",
+		"yán": "rén", 
+		"yǎn": "rẻn", 
+		"yàn": "ren",
+		
+		"yuān": "roen",
+		"yuán": "roén", 
+		"yuǎn": "roẻn", 
+		"yuàn": "roen",
+		
+		"yāo": "eo", 
+		"yáo": "éo", 
+		"yǎo": "ẻo", 
+		"yào": "eo",
+		
+		"yē": "rê", 
+		"yé": "rế", 
+		"yě": "rể",
+		"yè": "rê",
+		
+		"jū": "truy", 
+		"jú": "trúy", 
+		"jǔ": "trủy", 
+		"jù": "truy",
+		
+		"jūn": "truyn", 
+		"jún": "truýn", 
+		"jǔn": "truỷn", 
+		"jùn": "truyn",
+		
+		"jiā": "cha", 
+		"jiá": "chá", 
+		"jiǎ": "chả", 
+		"jià": "cha",
+	
+		"jiāo": "cheo", 
+		"jiáo": "chéo", 
+		"jiǎo": "chẻo", 
+		"jiào": "cheo",	 
+		
+		"er": "ơ",
+		"ēr": "ơ", 
+		"ér": "ớ", 
+		"ěr": "ở", 
+		"èr": "ơ",
+		
+		"cī": "sư", 
+		"cí": "sứ", 
+		"cǐ": "sử", 
+		"cì": "sư",
+		
+		"rēn": "rân",
+		"rén": "rấn",
+		"rěn": "rẩn",
+		"rèn": "rân",
+		
+		"rī": "rư", 
+		"rí": "rứ", 
+		"rǐ": "rử", 
+		"rì": "rư",
+		
+		"rū": "ru", 
+		"rú": "rú", 
+		"rǔ": "rủ", 
+		"rù": "ru",
+		
+		"ruan": "roan",
+		"ruān": "roan",
+		"ruán": "roán",
+		"ruǎn": "roản",
+		"ruàn": "roan",
+		
+		"rāng": "rang", 
+		"ráng": "ráng", 
+		"rǎng": "rảng", 
+		"ràng": "rang",
+		
+		"rūn": "ruân", 
+		"rún": "ruấn", 
+		"rǔn": "ruẩn", 
+		"rùn": "ruân",
+		
+		"xuē": "xuê", 
+		"xué": "xuế", 
+		"xuě": "xuể", 
+		"xuè": "xuê",
+		
+		"xiē": "xia", 
+		"xié": "xía", 
+		"xiě": "xỉa", 
+		"xiè": "xia",
+		
+		"xiū": "xiêu", 
+		"xiú": "xiếu", 
+		"xiǔ": "xiểu", 
+		"xiù": "xiêu",
+		
+		"xiāo": "xeo",
+		"xiáo": "xéo",
+		"xiǎo": "xẻo",
+		"xiào": "xeo",
+		
+		"xiā": "sa", 
+		"xiá": "sá", 
+		"xiǎ": "sả",
+		"xià": "sa",
+		
+		"xī": "xi", 
+		"xí": "xí", 
+		"xǐ": "xỉ", 
+		"xì": "xi",
+		
+		"xīn": "xin", 
+		"xín": "xín", 
+		"xǐn": "xỉn", 
+		"xìn": "xin",
+		
+		"xiāng": "xeng", 
+		"xiáng": "xéng", 
+		"xiǎng": "xẻng", 
+		"xiàng": "xeng",
+		
+		"xīng": "xing",
+		"xíng": "xíng", 
+		"xǐng": "xỉng", 
+		"xìng": "xing",
+		
+		"xiān": "xen", 
+		"xián": "xén", 
+		"xiǎn": "xẻn", 
+		"xiàn": "xen",
+		
+		"xū": "xuy",
+		"xú": "xúy",
+		"xǔ": "xủy",
+		"xù": "xuy",
+		
+		"guāng": "quang", 
+		"guáng": "quáng", 
+		"guǎng": "quảng", 
+		"guàng": "quang",
+		
+		"guān": "quan", 
+		"guán": "quán", 
+		"guǎn": "quản", 
+		"guàn": "quan",
+		
+		"guāi": "quai", 
+		"guái": "quái", 
+		"guǎi": "quải", 
+		"guài": "quai",
+		
+		"guā": "qua",
+		"guá": "quá",
+		"guǎ": "quả",
+		"guà": "qua",
+		
+		"piāo": "pheo", 
+		"piáo": "phéo", 
+		"piǎo": "phẻo", 
+		"piào": "pheo"
+       
+    };
+    if (specialMap[py]) return specialMap[py];
+
+    // 2️⃣ Phụ âm đầu (kép → đơn)
+    const initialMap = {
+        "zh": "tr",
+        "ch": "s",
+        "sh": "s",
+        "b": "p",
+        "p": "ph",
+        "m": "m",
+        "f": "ph",
+        "d": "t",
+        "t": "th",
+        "n": "n",
+        "l": "l",
+        "g": "c",
+        "k": "kh",
+        "h": "h",
+        "j": "ch",
+        "q": "tr",
+        "w": "u",
+        "y": "r",
+        "z": "ch",
+        "c": "s",
+        "s": "s"
+    };
+
+    // 3️⃣ Vần (dài → ngắn)
+    const finalMap = {
+        
+		"iǎn": "ẻn",
+		
+		
+	    "iang": "eng",
+		"iāng": "eng",
+		"iáng": "éng",
+		"iǎng": "ẻng",
+		"iàng": "eng",
+		
+		
+        "iao": "phiào".includes(py) ? "iao" : "eo",
+		"iāo": "eo",
+		"iáo": "éo",
+		"iǎo": "ẻo",
+		"iào": "eo",
+		
+		"īng": "ing",
+		"íng": "íng",
+		"ǐng": "ỉng",
+		"ìng": "ing",
+		
+		"iū": "iêu",
+                "iú": "iếu",
+		"iǔ": "iểu",
+		"iù": "iêu",
+		
+		"iē": "ia",
+		"ié": "ía",
+		"iě": "ỉa",
+		"iè": "ia",
+
+		"īn": "in",
+		"ín": "ín",
+		"ǐn": "ỉn",
+		"ìn": "in",
+		
+		"iān": "en",
+		"ián": "én",
+		"iǎn": "ẻn", 
+		"iàn": "en",
+		
+		"ī": "i",
+		"í": "í",
+		"ǐ": "ỉ",
+		"ì": "i",
+		
+		"ān": "an",
+		"án": "án",
+		"ǎn": "ản",
+		"àn": "an",
+		
+		"āng": "ang",
+		"áng": "áng",
+		"ǎng": "ảng",
+		"àng": "ang",
+		
+		"ōu": "âu",
+		"óu": "ấu",
+		"ǒu": "ẩu",
+		"òu": "âu",
+		 
+		"ūn": "uân",
+		"ún": "uấn",
+		"ǔn": "uẩn",
+		"ùn": "uân",
+		
+		"uō": "ua",
+		"uó": "úa",
+		"uǒ": "ủa",
+                "uò": "ua",
+		
+		"uā": "oa",
+		"uá": "oá",
+		"uǎ": "oả",
+		"uà": "oa",
+		
+		"uan": "oan",
+		"uān": "oan",
+		"uán": "oán",
+		"uǎn": "oản",
+		"uàn": "oan",
+		
+		"uāng": "oang",
+		"uáng": "oáng",
+		"uǎng": "oảng",
+		"uàng": "oang",
+		
+		"uī": "uôi",
+		"uí": "uối",
+		"uǐ": "uổi",
+		"uì": "uôi",
+		
+		"uē": "uê",
+		"ué": "uế",
+		"uě": "uể",
+		"uè": "uê",
+		
+		"ūn": "uân",
+		"ún": "uấn",
+		"ǔn": "uẩn",
+		"ùn": "uân",
+		
+		"ong": "ung",
+		"ōng": "ung",
+		"óng": "úng",
+		"ǒng": "ủng",
+		"òng": "ung",
+		
+		"ōu": "âu",
+		"óu": "ấu",
+		"ǒu": "ẩu",
+		"òu": "âu",
+		
+		"eng": "âng",
+		"ēng": "âng",
+		"éng": "ấng",
+		"ěng": "ẩng",
+		"èng": "âng",
+		 
+		"ei": "ây",
+		"ēi": "ây",
+		"éi": "ấy",
+		"ěi": "ẩy",
+		"èi": "ây",
+		
+		"en": "ân",
+		"ēn": "ân",
+		"én": "ấn",
+		"ěn": "ẩn",
+		"èn": "ân",
+		
+		"ā": "a",
+		"á": "á",
+		"ǎ": "ả",
+		"à": "a",
+		
+        "ū": "u",
+		"ú": "ú",
+		"ǔ": "ủ",
+		"ù": "u",
+		
+		"ǖ": "uy",
+		"ǘ": "uý",
+		"ǚ": "uỷ",
+		"ǜ": "uy",
+		
+		"ō": "o",
+		"ó": "ó",
+		"ǒ": "ỏ",
+		"ò": "o",
+		
+		"ī": "i",
+		"í": "í",
+		"ǐ": "ỉ",
+		"ì": "i",
+		
+        "e": "ơ",
+		"ē": "ơ",
+		"é": "ớ",
+		"ě": "ở",
+		"è": "ơ"
+		
+        
+    };
+
+    let initial = "";
+    let final = py;
+
+    // Tách phụ âm đầu
+    for (let key of Object.keys(initialMap).sort((a,b)=>b.length-a.length)) {
+        if (py.startsWith(key)) {
+            initial = initialMap[key];
+            final = py.slice(key.length);
+            break;
+        }
+    }
+
+    // Tách vần
+    for (let key of Object.keys(finalMap).sort((a,b)=>b.length-a.length)) {
+        if (final.startsWith(key)) {
+            final = finalMap[key] + final.slice(key.length);
+            break;
+        }
+    }
+
+    return initial + final;
+}
+	
+    </script>
+	
+	
+	
+	
+<script>
+function playAudioSmart(text, lang) {
+    // Tốc độ mặc định là 1 (bình thường)
+    let speed = 1;
+
+    // --- CHỈNH TỐC ĐỘ RIÊNG CHO TIẾNG TRUNG Ở ĐÂY ---
+    if (lang === 'zh-CN') {
+        speed = 0.6; // Chỉnh số này nhỏ đi để tiếng Trung đọc chậm lại (VD: 0.7 hoặc 0.8)
+    }
+
+    if (navigator.onLine) {
+        // Sử dụng Google TTS API chuẩn nữ
+        // Tham số ttsspeed: 1 là nhanh, dưới 1 là chậm (tuy nhiên tùy trình duyệt hỗ trợ)
+        // Cách tốt nhất là dùng playbackRate của Audio Object
+        const url = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=${lang}&client=tw-ob`;
+        let audio = new Audio(url);
+        
+        audio.playbackRate = speed; // Áp dụng tốc độ
+        audio.play().catch(err => {
+            useFallbackSpeech(text, lang, speed);
+        });
+    } else {
+        useFallbackSpeech(text, lang, speed);
+    }
+}
+
+function useFallbackSpeech(text, lang, speed) {
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const msg = new SpeechSynthesisUtterance(text);
+        msg.lang = lang === 'vi' ? 'vi-VN' : 'zh-CN';
+        msg.rate = speed; 
+        window.speechSynthesis.speak(msg);
+    }
+}
+
+function setupSpeakButtons() {
+    // 1. Gắn nút cho TIẾNG TRUNG
+    document.querySelectorAll('.word-chinese, .sentence-chinese').forEach(el => {
+        if (!el.getAttribute('data-has-speaker')) {
+            let btn = document.createElement('span');
+            btn.className = 'btn-speak';
+            btn.innerHTML = '🔊';
+            btn.title = "Nghe tiếng Trung (Chậm)";
+            btn.onclick = function(e) {
+                e.stopPropagation(); // Chặn mở bảng viết chữ
+                let cleanText = el.innerText.replace('🔊', '').trim();
+                playAudioSmart(cleanText, 'zh-CN');
+            };
+            el.appendChild(btn);
+            el.setAttribute('data-has-speaker', 'true');
+        }
+    });
+
+    // 2. Gắn nút cho TIẾNG VIỆT
+    document.querySelectorAll('.word-meaning, .sentence-vietnamese').forEach(el => {
+        if (!el.getAttribute('data-has-speaker')) {
+            let btn = document.createElement('span');
+            btn.className = 'btn-speak';
+            btn.innerHTML = '🔊';
+            btn.title = "Nghe tiếng Việt";
+            btn.onclick = function(e) {
+                e.stopPropagation(); 
+                let cleanText = el.innerText.replace('🔊', '').trim();
+                playAudioSmart(cleanText, 'vi'); // Tiếng Việt sẽ dùng speed = 1
+            };
+            el.appendChild(btn);
+            el.setAttribute('data-has-speaker', 'true');
+        }
+    });
+}
+
+// Chạy kiểm tra liên tục để gắn nút vào các nội dung mới
+setInterval(setupSpeakButtons, 1000);
+</script>
+	
+	
+</body>
+</html>
