@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel - Quản lý Từ vựng</title>
+  <style>
+    body { font-family: system-ui, Arial, sans-serif; background:#f5f7fb; margin:0; padding:24px; }
+    .container { max-width: 980px; margin:auto; background:#fff; border-radius:14px; padding:20px 24px; box-shadow:0 8px 24px rgba(0,0,0,.08); }
+    h1 { margin: 0 0 16px; color:#2a5bd7; font-size:24px; }
+    h2 { margin-top: 24px; font-size:18px; }
+    label { display:block; margin-top:12px; font-weight:600; }
+    input[type="text"], input[type="file"], textarea { width:100%; box-sizing:border-box; padding:10px 12px; border:1px solid #dfe3eb; border-radius:10px; outline:none; }
+    input[type="text"]:focus, textarea:focus { border-color:#2a5bd7; }
+    button { border:0; border-radius:10px; background:#2a5bd7; color:#fff; padding:10px 14px; cursor:pointer; margin: 2px;}
+    button[disabled] { background:#a3b5ee; cursor:not-allowed; }
+    .row { display:flex; gap:10px; align-items:center; }
+    .row > * { flex: 1; }
+    .hint { color:#666; font-size:12px; margin-top:4px; }
+    #message { display:none; margin-top:12px; padding:10px 12px; border-radius:10px; }
+    #message.success { background:#e8f7ee; color:#146c43; }
+    #message.error { background:#fde7ea; color:#b42318; }
+    table { width:100%; border-collapse: collapse; margin-top: 10px; }
+    th, td { border:1px solid #e9edf4; padding:8px 10px; text-align:left; vertical-align:top; }
+    th { background:#f1f4fb; }
+    .list-item { display:flex; gap:6px; margin:6px 0; }
+    .list-item input { flex:1; }
+    .pill { display:inline-block; padding:2px 8px; border-radius:999px; background:#f1f4fb; font-size:12px; color:#2a5bd7; margin-left:6px; }
+    .danger { background:#e03b3b !important; }
+    .muted { background:#eef2ff !important; color:#7180c5 !important; }
+	
+	
+	
+	
+	
+	
+	
+	
+	table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  table-layout: fixed; /* ✅ bắt buộc để cột theo width */
+}
+
+th, td {
+  border: 1px solid #e9edf4;
+  padding: 8px 10px;
+  text-align: left;
+  vertical-align: top;
+  word-wrap: break-word; /* ✅ xuống dòng nếu dài */
+}
+
+/* Đặt chiều rộng cho từng cột */
+th:nth-child(1), td:nth-child(1) { width: 6%; }   /* Chữ Hán */
+th:nth-child(2), td:nth-child(2) { width: 7%; }  /* Hán Việt */
+th:nth-child(3), td:nth-child(3) { width: 40%; }  /* Từ vựng */
+th:nth-child(4), td:nth-child(4) { width: 40%; }  /* Ví dụ câu */
+th:nth-child(5), td:nth-child(5) { width: 7%; }  /* Hành động */
+
+
+.category {
+  color: #e53935;   /* đỏ đậm */
+  font-weight: 600; /* in đậm cho nổi bật */
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🛠️ Quản lý Từ vựng & Câu</h1>
+
+    <div style="background:#eef2ff;border:1px solid #c7d2fe;border-radius:10px;padding:12px 16px;margin-bottom:16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+      <span style="font-size:18px;">🌐</span>
+      <label style="margin:0;font-weight:700;color:#3730a3;">Domain mã hóa:</label>
+      <input type="text" id="domainInput" value="" placeholder="vidu.com" style="flex:1;min-width:200px;padding:8px 12px;border:2px solid #a5b4fc;border-radius:8px;font-size:15px;font-weight:600;" />
+      <button type="button" id="saveDomainBtn" style="padding:8px 16px;background:#4f46e5;color:white;border:none;border-radius:8px;font-weight:700;cursor:pointer;">💾 Lưu domain</button>
+      <span id="domainStatus" style="font-size:13px;color:#666;"></span>
+    </div>
+
+    <div>
+      <label>Nhập file JSON từ máy</label>
+      <input type="file" id="jsonFile" accept=".json" />
+    </div>
+
+    <div>
+      <label>Nhập JSON từ URL</label>
+      <div class="row">
+        <input type="text" id="jsonUrl" placeholder="https://.../tuvung.json (link phải cho phép CORS)" />
+        <button id="loadUrlBtn" type="button">Tải từ URL</button>
+      </div>
+      <div class="hint">https://www.luyentiengtrung.com/data/tuvung.jso</div>
+    </div>
+
+    <div id="message"></div>
+
+    <form id="word-form" style="margin-top:12px;">
+         
+      <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;">
+        <button type="submit">💾 Lưu</button>
+        <button type="button" id="clearBtn">Làm mới</button>
+        <button type="button" id="exportBtn">⬇️ Xuất JSON gốc</button>
+        <button type="button" id="exportEncBtn">🔐 Xuất JSON mã hóa</button>
+      </div>
+
+
+
+
+
+      <label>Chữ Hán</label>
+      <input type="text" id="hanzi" placeholder="Ví dụ: 学" required />
+
+      <label>Hán Việt</label>
+      <input type="text" id="hanviet" placeholder="Ví dụ: Học" />
+
+      <h2>Từ vựng liên quan <br>từ đơn </br></h2>
+      <div id="words-list"></div>
+      <button type="button" id="addWordBtn">+ Thêm từ vựng</button>
+
+      <h2>Hội thoại</h2>
+      <div id="sentences-list"></div>
+      <button type="button" id="addSentenceBtn">+ Thêm câu</button>
+
+      <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;">
+        <button type="submit">💾 Lưu</button>
+        <button type="button" id="clearBtn">Làm mới</button>
+        <button type="button" id="exportBtn">⬇️ Xuất JSON gốc</button>
+        <button type="button" id="exportEncBtn">🔐 Xuất JSON mã hóa</button>
+      </div>
+    </form>
+
+    <h2>Danh sách từ vựng</h2>
+    <div class="row">
+      <input type="text" id="searchInput" placeholder="Tìm theo chữ Hán / Hán Việt / nghĩa / câu..." />
+      <button id="searchBtn" type="button">Tìm</button>
+      <button id="resetSearchBtn" type="button" class="muted">Reset</button>
+    </div>
+    <div class="hint">Các mục có <span class="pill">CSDL gốc</span> là dữ liệu bảo vệ: <b>không thể xóa</b>.</div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Chữ Hán</th>
+          <th>Hán Việt</th>
+          <th>Từ vựng</th>
+		  <th>Ví dụ câu</th>
+          <th>Hành động</th>
+        </tr>
+      </thead>
+      <tbody id="vocabTable"></tbody>
+    </table>
+  </div>
+<div id="pagination" style="margin-top: 12px; text-align:center;"></div>
+
+<script>
+let fullData = {};               // Dữ liệu hiện tại
+let protectedKeys = new Set();   // Các chữ Hán thuộc CSDL gốc (không cho xóa)
+
+// ✅ Thêm biến phân trang ở đây
+let currentPage = 1;
+const rowsPerPage = 100;
+
+const vocabTableBody = document.getElementById('vocabTable');
+const wordsList = document.getElementById('words-list');
+const sentencesList = document.getElementById('sentences-list');
+const messageDiv = document.getElementById('message');
+
+function showMessage(msg, type='success', allowHTML=false) {
+  if (allowHTML) {
+    messageDiv.innerHTML = msg;
+  } else {
+    messageDiv.textContent = msg;
+  }
+  messageDiv.className = type === 'success' ? 'success' : 'error';
+  messageDiv.style.display = 'block';
+  setTimeout(()=>{ messageDiv.style.display = 'none'; }, 10000);
+}
+function saveProtectedToLS() {
+  localStorage.setItem('protectedKeys', JSON.stringify(Array.from(protectedKeys)));
+}
+function loadProtectedFromLS() {
+  const raw = localStorage.getItem('protectedKeys');
+  if (raw) {
+    try { protectedKeys = new Set(JSON.parse(raw)); }
+    catch { protectedKeys = new Set(); }
+  }
+}
+
+function addInputRow(list, type) {
+  const wrapper = document.createElement('div');
+  wrapper.className = 'list-item';
+  wrapper.innerHTML = `
+    <input type="text" class="${type}-chinese" placeholder="${type==='word' ? 'Từ vựng tiếng Trung' : 'Câu tiếng Trung'}" />
+    <input type="text" class="${type}-vietnamese" placeholder="${type==='word' ? 'Nghĩa tiếng Việt' : 'Dịch tiếng Việt'}" />
+    <input type="text" class="${type}-category" placeholder="Phân loại (cách nhau bởi dấu phẩy)" />
+    <button type="button" onclick="this.parentNode.remove()">-</button>
+  `;
+  list.appendChild(wrapper);
+}
+
+document.getElementById('addWordBtn').onclick = ()=> addInputRow(wordsList, 'word');
+document.getElementById('addSentenceBtn').onclick = ()=> addInputRow(sentencesList, 'sentence');
+document.getElementById('clearBtn').onclick = clearForm;
+document.getElementById('exportBtn').onclick = exportJSON;
+document.getElementById('exportEncBtn').onclick = exportEncJSON;
+
+document.getElementById('searchBtn').onclick = ()=> {
+  const q = document.getElementById('searchInput').value.trim().toLowerCase();
+  if (!q) { 
+    currentPage = 1; // ✅ reset trang về 1
+    renderTable(fullData); 
+    return; 
+  }
+  const filtered = {};
+  for (const h in fullData) {
+    const e = fullData[h] || {};
+    const hv = (e.hanviet || '').toLowerCase();
+    const matchWords = (e.words || []).some(w => (w.chinese||'').includes(q) || (w.meaning||'').toLowerCase().includes(q));
+    const matchSentences = (e.sentences || []).some(s => (s.chinese||'').includes(q) || (s.vietnamese||'').toLowerCase().includes(q));
+    if (h.includes(q) || hv.includes(q) || matchWords || matchSentences) filtered[h] = e;
+  }
+  currentPage = 1; // ✅ reset trang khi tìm
+  renderTable(filtered);
+};
+
+document.getElementById('resetSearchBtn').onclick = ()=> {
+  document.getElementById('searchInput').value='';
+  renderTable(fullData);
+};
+
+function clearForm() {
+  document.getElementById('word-form').reset();
+  wordsList.innerHTML = '';
+  sentencesList.innerHTML = '';
+  addInputRow(wordsList, 'word');
+  addInputRow(sentencesList, 'sentence');
+  const hanziInput = document.getElementById('hanzi');
+  hanziInput.readOnly = false; // trở về chế độ thêm mới
+}
+
+function renderTable(data) {
+  vocabTableBody.innerHTML = '';
+  const keys = Object.keys(data).sort((a,b)=>a.localeCompare(b, 'zh-Hans-CN'));
+
+  // Tính vị trí phân trang
+  const start = (currentPage - 1) * rowsPerPage;
+  const end = start + rowsPerPage;
+  const pageKeys = keys.slice(start, end);
+
+  for (const hanzi of pageKeys) {
+    const entry = data[hanzi] || {};
+
+   const wstr = (entry.words || [])
+  .map(w => {
+    const cats = (w.category || []).join(', ');
+    return `${w.chinese} (${w.meaning}${cats ? ' | <span class="category">' + cats + '</span>' : ''})`;
+  })
+  .join('<br/>');
+
+    const sstr = (entry.sentences || [])
+  .map(s => {
+    const cats = (s.category || []).join(', ');
+    return `${s.chinese} (${s.vietnamese}${cats ? ' | <span class="category">' + cats + '</span>' : ''})`;
+  })
+  .join('<br/>');
+
+
+    const isProtected = protectedKeys.has(hanzi);
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${hanzi}${isProtected ? ' <span class="pill">CSDL gốc</span>' : ''}</td>
+      <td>${entry.hanviet || ''}</td>
+      <td>${wstr}</td>
+      <td>${sstr}</td>
+      <td>
+        <button type="button" onclick="editEntry('${hanzi.replace(/'/g, "\\'")}')">Sửa</button>
+        <button type="button" ${isProtected ? 'disabled title="Không thể xóa mục thuộc CSDL gốc"' : ''}
+          class="${isProtected ? 'muted' : 'danger'}" onclick="deleteEntry('${hanzi.replace(/'/g, "\\'")}')">Xóa</button>
+      </td>
+    `;
+    vocabTableBody.appendChild(tr);
+  }
+
+  renderPagination(Object.keys(data).length);
+
+}
+
+
+
+
+function renderPagination(totalItems) {
+  const totalPages = Math.ceil(totalItems / rowsPerPage);
+  const paginationDiv = document.getElementById('pagination');
+  paginationDiv.innerHTML = '';
+
+  if (totalPages <= 1) return;
+
+  // Hàm tạo nút
+  function createBtn(text, page, active=false, disabled=false) {
+    const btn = document.createElement('button');
+    btn.textContent = text;
+    if (active) btn.className = 'active';
+    if (!disabled) {
+      btn.onclick = () => {
+        currentPage = page;
+        renderTable(fullData);
+      };
+    } else {
+      btn.disabled = true;
+    }
+    paginationDiv.appendChild(btn);
+  }
+
+  // Nút prev
+  createBtn('«', Math.max(1, currentPage - 1), false, currentPage === 1);
+
+  // Hiển thị 2 trang đầu
+  if (currentPage > 3) {
+    createBtn(1, 1, currentPage === 1);
+    if (currentPage > 4) {
+      const dot = document.createElement('span');
+      dot.textContent = '...';
+      paginationDiv.appendChild(dot);
+    }
+  }
+
+  // Hiển thị các trang quanh currentPage
+  for (let i = Math.max(1, currentPage - 2); i <= Math.min(totalPages, currentPage + 2); i++) {
+    createBtn(i, i, currentPage === i);
+  }
+
+  // Hiển thị 2 trang cuối
+  if (currentPage < totalPages - 2) {
+    if (currentPage < totalPages - 3) {
+      const dot = document.createElement('span');
+      dot.textContent = '...';
+      paginationDiv.appendChild(dot);
+    }
+    createBtn(totalPages, totalPages, currentPage === totalPages);
+  }
+
+  // Nút next
+  createBtn('»', Math.min(totalPages, currentPage + 1), false, currentPage === totalPages);
+}
+
+
+
+
+
+
+
+function editEntry(hanzi) {
+  clearForm();
+  const entry = fullData[hanzi] || {};
+  const hanziInput = document.getElementById('hanzi');
+  hanziInput.value = hanzi;
+  hanziInput.readOnly = true; // đang ở chế độ sửa
+  document.getElementById('hanviet').value = entry.hanviet || '';
+  (entry.words || []).forEach(w => {
+    addInputRow(wordsList, 'word');
+    const last = wordsList.lastElementChild;
+    last.querySelector('.word-chinese').value = w.chinese || '';
+    last.querySelector('.word-vietnamese').value = w.meaning || '';
+    last.querySelector('.word-category').value = (w.category || []).join(', ');
+  });
+  (entry.sentences || []).forEach(s => {
+    addInputRow(sentencesList, 'sentence');
+    const last = sentencesList.lastElementChild;
+    last.querySelector('.sentence-chinese').value = s.chinese || '';
+    last.querySelector('.sentence-vietnamese').value = s.vietnamese || '';
+    last.querySelector('.sentence-category').value = (s.category || []).join(', ');
+  });
+}
+
+function deleteEntry(hanzi) {
+  if (protectedKeys.has(hanzi)) {
+    showMessage("❌ Không thể xóa mục thuộc CSDL gốc", 'error');
+    return;
+  }
+  if (!confirm("Bạn chắc chắn xóa '" + hanzi + "'?")) return;
+  delete fullData[hanzi];
+  localStorage.setItem('tuvung', JSON.stringify(fullData));
+  renderTable(fullData);
+  showMessage("🗑️ Đã xóa '" + hanzi + "'");
+}
+
+document.getElementById('word-form').addEventListener('submit', (e)=>{
+  e.preventDefault();
+  const hanzi = document.getElementById('hanzi').value.trim();
+  if (!hanzi) { showMessage('❌ Chữ Hán không được trống', 'error'); return; }
+  const hanviet = document.getElementById('hanviet').value.trim();
+  const words = [...wordsList.querySelectorAll('.list-item')].map(row=>{
+    const c = row.querySelector('.word-chinese').value.trim();
+    const v = row.querySelector('.word-vietnamese').value.trim();
+    const cat = row.querySelector('.word-category').value.split(',').map(s=>s.trim()).filter(Boolean);
+    if (!c && !v) return null;
+    return { chinese:c, meaning:v, category:cat };
+  }).filter(Boolean);
+  const sentences = [...sentencesList.querySelectorAll('.list-item')].map(row=>{
+    const c = row.querySelector('.sentence-chinese').value.trim();
+    const v = row.querySelector('.sentence-vietnamese').value.trim();
+    const cat = row.querySelector('.sentence-category').value.split(',').map(s=>s.trim()).filter(Boolean);
+    if (!c && !v) return null;
+    return { chinese:c, vietnamese:v, category:cat };
+  }).filter(Boolean);
+
+  const isEditMode = document.getElementById('hanzi').readOnly;
+
+  // ✅ Chặn thêm trùng: nếu đang thêm mới mà đã tồn tại -> báo lỗi
+ if (!isEditMode && fullData[hanzi]) {
+  showMessage(`
+    ⚠️ Chữ <b>${hanzi}</b> đã tồn tại trong cơ sở dữ liệu.
+    <br><br>
+    <button type="button" onclick="editEntry('${hanzi.replace(/'/g, "\\'")}')">
+      ✏️ Sửa chữ này ngay
+    </button>
+  `, 'error', true);
+  return;
+}
+
+
+  fullData[hanzi] = { hanviet, words, sentences };
+  localStorage.setItem('tuvung', JSON.stringify(fullData));
+  renderTable(fullData);
+  showMessage(isEditMode ? "✅ Đã cập nhật" : "✅ Đã thêm mới");
+  clearForm();
+});
+
+// ====== Import JSON từ file (KHÔNG MERGE) ======
+// ====== Mã hóa / Giải mã XOR ======
+function getDomain() {
+    return localStorage.getItem('enc_domain') || "luyentiengtrung.com";
+}
+
+function xorDecrypt(base64Str, key) {
+    const keyBytes = new TextEncoder().encode(key);
+    const encrypted = Uint8Array.from(atob(base64Str), c => c.charCodeAt(0));
+    const result = new Uint8Array(encrypted.length);
+    for (let i = 0; i < encrypted.length; i++)
+        result[i] = encrypted[i] ^ keyBytes[i % keyBytes.length];
+    return new TextDecoder('utf-8').decode(result);
+}
+
+function xorEncrypt(str, key) {
+    const keyBytes = new TextEncoder().encode(key);
+    const dataBytes = new TextEncoder().encode(str);
+    const result = new Uint8Array(dataBytes.length);
+    for (let i = 0; i < dataBytes.length; i++)
+        result[i] = dataBytes[i] ^ keyBytes[i % keyBytes.length];
+    const chunkSize = 8192;
+    let b64 = '';
+    for (let i = 0; i < result.length; i += chunkSize)
+        b64 += String.fromCharCode(...result.slice(i, i + chunkSize));
+    return btoa(b64);
+}
+
+// Nhận object JSON bất kỳ (gốc hoặc mã hóa) → trả về dữ liệu thực
+function decodeAny(obj) {
+    if (obj && obj.v === 1 && obj.data) {
+        return JSON.parse(xorDecrypt(obj.data, getDomain()));
+    }
+    return obj;
+}
+
+// ====== Load từ File (nhận .json gốc hoặc .enc.json) ======
+document.getElementById('jsonFile').addEventListener('change', (e)=>{
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    try {
+      const obj = JSON.parse(reader.result);
+      fullData = decodeAny(obj);
+      protectedKeys = new Set(Object.keys(fullData));
+      saveProtectedToLS();
+      // Lưu localStorage dạng mã hóa
+      localStorage.setItem('tuvung', JSON.stringify({ data: xorEncrypt(JSON.stringify(fullData), getDomain()), v: 1 }));
+      renderTable(fullData);
+      const isEnc = obj.v === 1 && obj.data;
+      showMessage('✅ Đã tải ' + (isEnc ? 'file mã hóa' : 'file JSON gốc') + '. Các mục gốc đã được bảo vệ.');
+    } catch (err) {
+      console.error(err);
+      showMessage('❌ File không hợp lệ: ' + err.message, 'error');
+    }
+  };
+  reader.readAsText(file);
+});
+
+// ====== Import từ URL (nhận cả .enc.json) ======
+document.getElementById('loadUrlBtn').addEventListener('click', async ()=>{
+  const url = document.getElementById('jsonUrl').value.trim();
+  if (!url) { showMessage('❌ Bạn chưa nhập URL', 'error'); return; }
+  try {
+    const bust = (url.includes('?') ? '&' : '?') + 't=' + Date.now();
+    const res = await fetch(url + bust, { method: 'GET' });
+    if (!res.ok) throw new Error(res.status + ' ' + res.statusText);
+    const obj = await res.json();
+    fullData = decodeAny(obj);
+    protectedKeys = new Set(Object.keys(fullData));
+    saveProtectedToLS();
+    localStorage.setItem('tuvung', JSON.stringify({ data: xorEncrypt(JSON.stringify(fullData), getDomain()), v: 1 }));
+    renderTable(fullData);
+    const isEnc = obj.v === 1 && obj.data;
+    showMessage('✅ Đã tải ' + (isEnc ? 'file mã hóa' : 'file JSON') + ' từ URL. Các mục gốc đã được bảo vệ.');
+  } catch (err) {
+    console.error(err);
+    const hint = (err instanceof TypeError) ? ' (Có thể do CORS. Dùng link GitHub Raw/Vercel/Netlify.)' : '';
+    showMessage('❌ Lỗi: ' + err.message + hint, 'error');
+  }
+});
+
+// ====== Xuất JSON gốc ======
+function exportJSON() {
+  const blob = new Blob([JSON.stringify(fullData, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'tuvung.json';
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+// ====== Xuất JSON mã hóa ======
+function exportEncJSON() {
+  const encrypted = xorEncrypt(JSON.stringify(fullData), getDomain());
+  const output = JSON.stringify({ data: encrypted, v: 1 });
+  const blob = new Blob([output], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'tuvung.enc.json';
+  a.click();
+  URL.revokeObjectURL(a.href);
+  showMessage('✅ Đã xuất tuvung.enc.json — đưa file này lên GitHub /data/');
+}
+
+// ====== Quản lý Domain ======
+document.getElementById('saveDomainBtn').addEventListener('click', () => {
+    const val = document.getElementById('domainInput').value.trim();
+    if (!val) { 
+        document.getElementById('domainStatus').textContent = '❌ Chưa nhập domain!';
+        document.getElementById('domainStatus').style.color = '#b42318';
+        return; 
+    }
+    localStorage.setItem('enc_domain', val);
+    document.getElementById('domainStatus').textContent = '✅ Đã lưu: ' + val;
+    document.getElementById('domainStatus').style.color = '#146c43';
+    setTimeout(() => document.getElementById('domainStatus').textContent = '', 3000);
+});
+
+// ====== Khởi tạo ======
+(function init(){
+  // Load domain đã lưu vào ô input
+  const savedDomain = localStorage.getItem('enc_domain') || 'luyentiengtrung.com';
+  document.getElementById('domainInput').value = savedDomain;
+  document.getElementById('domainStatus').textContent = 'Domain hiện tại: ' + savedDomain;
+  document.getElementById('domainStatus').style.color = '#4f46e5';
+
+  loadProtectedFromLS();
+  const saved = localStorage.getItem('tuvung');
+  if (saved) {
+    try {
+      const obj = JSON.parse(saved);
+      fullData = decodeAny(obj);
+    }
+    catch { fullData = {}; }
+  }
+  renderTable(fullData);
+  clearForm();
+})();
+</script>
+</body>
+</html>
