@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel - Quản lý Từ vựng</title>
+  <style>
+    body { font-family: system-ui, Arial, sans-serif; background:#f5f7fb; margin:0; padding:24px; }
+    .container { max-width: 980px; margin:auto; background:#fff; border-radius:14px; padding:20px 24px; box-shadow:0 8px 24px rgba(0,0,0,.08); }
+    h1 { margin: 0 0 16px; color:#2a5bd7; font-size:24px; }
+    h2 { margin-top: 24px; font-size:18px; }
+    label { display:block; margin-top:12px; font-weight:600; }
+    input[type="text"], input[type="file"], textarea { width:100%; box-sizing:border-box; padding:10px 12px; border:1px solid #dfe3eb; border-radius:10px; outline:none; }
+    input[type="text"]:focus, textarea:focus { border-color:#2a5bd7; }
+    button { border:0; border-radius:10px; background:#2a5bd7; color:#fff; padding:10px 14px; cursor:pointer; margin: 2px;}
+    button[disabled] { background:#a3b5ee; cursor:not-allowed; }
+    .row { display:flex; gap:10px; align-items:center; }
+    .row > * { flex: 1; }
+    .hint { color:#666; font-size:12px; margin-top:4px; }
+    #message { display:none; margin-top:12px; padding:10px 12px; border-radius:10px; }
+    #message.success { background:#e8f7ee; color:#146c43; }
+    #message.error { background:#fde7ea; color:#b42318; }
+    table { width:100%; border-collapse: collapse; margin-top: 10px; }
+    th, td { border:1px solid #e9edf4; padding:8px 10px; text-align:left; vertical-align:top; }
+    th { background:#f1f4fb; }
+    .list-item { display:flex; gap:6px; margin:6px 0; }
+    .list-item input { flex:1; }
+    .pill { display:inline-block; padding:2px 8px; border-radius:999px; background:#f1f4fb; font-size:12px; color:#2a5bd7; margin-left:6px; }
+    .danger { background:#e03b3b !important; }
+    .muted { background:#eef2ff !important; color:#7180c5 !important; }
+	
+	
+	
+	
+	
+	
+	
+	
+	table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  table-layout: fixed; /* ✅ bắt buộc để cột theo width */
+}
+
+th, td {
+  border: 1px solid #e9edf4;
+  padding: 8px 10px;
+  text-align: left;
+  vertical-align: top;
+  word-wrap: break-word; /* ✅ xuống dòng nếu dài */
+}
+
+/* Đặt chiều rộng cho từng cột */
+th:nth-child(1), td:nth-child(1) { width: 6%; }   /* Chữ Hán */
+th:nth-child(2), td:nth-child(2) { width: 7%; }  /* Hán Việt */
+th:nth-child(3), td:nth-child(3) { width: 40%; }  /* Từ vựng */
+th:nth-child(4), td:nth-child(4) { width: 40%; }  /* Ví dụ câu */
+th:nth-child(5), td:nth-child(5) { width: 7%; }  /* Hành động */
+
+
+.category {
+  color: #e53935;   /* đỏ đậm */
+  font-weight: 600; /* in đậm cho nổi bật */
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🛠️ Quản lý Từ vựng & Câu</h1>
+    <div style="background:#eef2ff;border:1px solid #c7d2fe;border-radius:10px;padding:10px 14px;margin-bottom:14px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+      <span>🌐</span>
+      <label style="margin:0;font-weight:700;color:#3730a3;">Domain mã hóa:</label>
+      <input type="text" id="domainInput" placeholder="luyentiengtrung.com" style="flex:1;min-width:180px;padding:7px 10px;border:2px solid #a5b4fc;border-radius:8px;font-size:14px;font-weight:600;" />
+      <button type="button" id="saveDomainBtn" style="padding:7px 14px;background:#4f46e5;color:white;border:none;border-radius:8px;font-weight:700;cursor:pointer;">💾 Lưu</button>
+      <span id="domainStatus" style="font-size:13px;color:#4f46e5;"></span>
+    </div>
+
+    <div>
+      <label>Nhập file JSON từ máy</label>
+      <input type="file" id="jsonFile" accept=".json" />
+    </div>
+
+    <div>
+      <label>Nhập JSON từ URL</label>
+      <div class="row">
+        <input type="text" id="jsonUrl" placeholder="https://.../tuvung.json (link phải cho phép CORS)" />
+        <button id="loadUrlBtn" type="button">Tải từ URL</button>
+      </div>
+      <div class="hint">https://www.luyentiengtrung.com/data/tuvung.jso</div>
+    </div>
+
+    <div id="message"></div>
+
+    <form id="word-form" style="margin-top:12px;">
+         
+      <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;">
+        <button type="submit">💾 Lưu</button>
+        <button type="button" id="clearBtn">Làm mới</button>
+        <button type="button" id="exportBtn">⬇️ Xuất JSON gốc</button>
+        <button type="button" id="exportEncBtn">🔐 Xuất mã hóa (.enc.json)</button>
+      </div>
+
+
+
+
+
+      <label>Chữ Hán</label>
+      <input type="text" id="hanzi" placeholder="Ví dụ: 学" required />
+
+      <label>Hán Việt</label>
+      <input type="text" id="hanviet" placeholder="Ví dụ: Học" />
+
+      <h2>Từ vựng liên quan <br>từ đơn </br></h2>
+      <div id="words-list"></div>
+      <button type="button" id="addWordBtn">+ Thêm từ vựng</button>
+
+      <h2>Hội thoại</h2>
+      <div id="sentences-list"></div>
+      <button type="button" id="addSentenceBtn">+ Thêm câu</button>
+
+      <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;">
+        <button type="submit">💾 Lưu</button>
+        <button type="button" id="clearBtn">Làm mới</button>
+        <button type="button" id="exportBtn">⬇️ Xuất JSON gốc</button>
+        <button type="button" id="exportEncBtn">🔐 Xuất mã hóa (.enc.json)</button>
+      </div>
+    </form>
+
+    <h2>Danh sách từ vựng</h2>
+    <div class="row">
+      <input type="text" id="searchInput" placeholder="Tìm theo chữ Hán / Hán Việt / nghĩa / câu..." />
+      <button id="searchBtn" type="button">Tìm</button>
+      <button id="resetSearchBtn" type="button" class="muted">Reset</button>
+    </div>
+    <div class="hint">Các mục có <span class="pill">CSDL gốc</span> là dữ liệu bảo vệ: <b>không thể xóa</b>.</div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Chữ Hán</th>
+          <th>Hán Việt</th>
+          <th>Từ vựng</th>
+		  <th>Ví dụ câu</th>
+          <th>Hành động</th>
+        </tr>
+      </thead>
+      <tbody id="vocabTable"></tbody>
+    </table>
+  </div>
+<div id="pagination" style="margin-top: 12px; text-align:center;"></div>
+
+<script>
+let fullData = {};
+let protectedKeys = new Set();
+let currentPage = 1;
+const rowsPerPage = 100;
+
+const vocabTableBody = document.getElementById('vocabTable');
+const wordsList      = document.getElementById('words-list');
+const sentencesList  = document.getElementById('sentences-list');
+const messageDiv     = document.getElementById('message');
+
+// ── Helpers ──────────────────────────────────────────
+function showMessage(msg, type='success', allowHTML=false) {
+  if (allowHTML) messageDiv.innerHTML = msg;
+  else messageDiv.textContent = msg;
+  messageDiv.className = type === 'success' ? 'success' : 'error';
+  messageDiv.style.display = 'block';
+  setTimeout(()=>{ messageDiv.style.display='none'; }, 10000);
+}
+function saveProtectedToLS() {
+  localStorage.setItem('protectedKeys', JSON.stringify([...protectedKeys]));
+}
+function loadProtectedFromLS() {
+  try { protectedKeys = new Set(JSON.parse(localStorage.getItem('protectedKeys')||'[]')); }
+  catch { protectedKeys = new Set(); }
+}
+function getDomain() {
+  return (document.getElementById('domainInput').value.trim()) ||
+         localStorage.getItem('enc_domain') || 'luyentiengtrung.com';
+}
+
+// ── Mã hóa / Giải mã ─────────────────────────────────
+async function getKey(domain) {
+  const b = new TextEncoder().encode(domain || getDomain());
+  const h = await crypto.subtle.digest('SHA-256', b);
+  return Array.from(new Uint8Array(h)).map(x=>x.toString(16).padStart(2,'0')).join('');
+}
+function xorCrypt(str, key) {
+  const kB = new TextEncoder().encode(key);
+  const dB = new TextEncoder().encode(str);
+  const r  = new Uint8Array(dB.length);
+  for (let i=0;i<dB.length;i++) r[i]=dB[i]^kB[i%kB.length];
+  const chunk=8192; let b64='';
+  for (let i=0;i<r.length;i+=chunk) b64+=String.fromCharCode(...r.slice(i,i+chunk));
+  return btoa(b64);
+}
+function xorDecrypt(b64, key) {
+  const kB = new TextEncoder().encode(key);
+  const enc = Uint8Array.from(atob(b64), c=>c.charCodeAt(0));
+  const r   = new Uint8Array(enc.length);
+  for (let i=0;i<enc.length;i++) r[i]=enc[i]^kB[i%kB.length];
+  return new TextDecoder('utf-8').decode(r);
+}
+async function encodeToSave(data) {
+  const key = await getKey();
+  return JSON.stringify({ data: xorCrypt(JSON.stringify(data), key), v:1 });
+}
+async function decodeFromSave(obj) {
+  if (obj && obj.v===1 && obj.data) {
+    const domain = getDomain();
+
+    // Thử cách 1: key = SHA-256 hash của domain (phiên bản mới)
+    try {
+      const hashKey = await getKey(domain);
+      const raw = xorDecrypt(obj.data, hashKey);
+      return JSON.parse(raw);
+    } catch(e1) {}
+
+    // Thử cách 2: key = domain thẳng (phiên bản cũ)
+    try {
+      const raw = xorDecrypt(obj.data, domain);
+      return JSON.parse(raw);
+    } catch(e2) {}
+
+    throw new Error('Không giải mã được — kiểm tra lại domain mã hóa');
+  }
+  return obj; // JSON gốc thường
+}
+
+// ── Form helpers ──────────────────────────────────────
+function addInputRow(list, type) {
+  const w = document.createElement('div');
+  w.className = 'list-item';
+  w.innerHTML = `
+    <input type="text" class="${type}-chinese"    placeholder="${type==='word'?'Từ vựng tiếng Trung':'Câu tiếng Trung'}" />
+    <input type="text" class="${type}-vietnamese" placeholder="${type==='word'?'Nghĩa tiếng Việt':'Dịch tiếng Việt'}" />
+    <input type="text" class="${type}-category"   placeholder="Phân loại (cách nhau bởi dấu phẩy)" />
+    <button type="button" onclick="this.parentNode.remove()">-</button>
+  `;
+  list.appendChild(w);
+}
+function clearForm() {
+  document.getElementById('word-form').reset();
+  wordsList.innerHTML=''; sentencesList.innerHTML='';
+  addInputRow(wordsList,'word'); addInputRow(sentencesList,'sentence');
+  document.getElementById('hanzi').readOnly=false;
+}
+
+// ── Bảng / Phân trang ─────────────────────────────────
+function renderTable(data) {
+  vocabTableBody.innerHTML='';
+  const keys = Object.keys(data).sort((a,b)=>a.localeCompare(b,'zh-Hans-CN'));
+  const start=(currentPage-1)*rowsPerPage, end=start+rowsPerPage;
+  for (const hanzi of keys.slice(start,end)) {
+    const e=data[hanzi]||{};
+    const wstr=(e.words||[]).map(w=>{
+      const c=(w.category||[]).join(', ');
+      return `${w.chinese} (${w.meaning}${c?' | <span class="category">'+c+'</span>':''})`;
+    }).join('<br/>');
+    const sstr=(e.sentences||[]).map(s=>{
+      const c=(s.category||[]).join(', ');
+      return `${s.chinese} (${s.vietnamese}${c?' | <span class="category">'+c+'</span>':''})`;
+    }).join('<br/>');
+    const prot=protectedKeys.has(hanzi);
+    const tr=document.createElement('tr');
+    tr.innerHTML=`
+      <td>${hanzi}${prot?' <span class="pill">CSDL gốc</span>':''}</td>
+      <td>${e.hanviet||''}</td><td>${wstr}</td><td>${sstr}</td>
+      <td>
+        <button type="button" onclick="editEntry('${hanzi.replace(/'/g,"\'")}')">Sửa</button>
+        <button type="button" ${prot?'disabled':''} class="${prot?'muted':'danger'}"
+          onclick="deleteEntry('${hanzi.replace(/'/g,"\'")}')">Xóa</button>
+      </td>`;
+    vocabTableBody.appendChild(tr);
+  }
+  renderPagination(keys.length);
+}
+function renderPagination(total) {
+  const totalPages=Math.ceil(total/rowsPerPage);
+  const div=document.getElementById('pagination'); div.innerHTML='';
+  if (totalPages<=1) return;
+  const btn=(txt,page,active,disabled)=>{
+    const b=document.createElement('button');
+    b.textContent=txt; if(active) b.className='active'; b.disabled=!!disabled;
+    if(!disabled) b.onclick=()=>{ currentPage=page; renderTable(fullData); };
+    div.appendChild(b);
+  };
+  btn('«',Math.max(1,currentPage-1),false,currentPage===1);
+  for(let i=Math.max(1,currentPage-2);i<=Math.min(totalPages,currentPage+2);i++)
+    btn(i,i,currentPage===i);
+  btn('»',Math.min(totalPages,currentPage+1),false,currentPage===totalPages);
+}
+
+// ── CRUD ──────────────────────────────────────────────
+function editEntry(hanzi) {
+  clearForm();
+  const e=fullData[hanzi]||{};
+  const inp=document.getElementById('hanzi');
+  inp.value=hanzi; inp.readOnly=true;
+  document.getElementById('hanviet').value=e.hanviet||'';
+  (e.words||[]).forEach(w=>{ addInputRow(wordsList,'word'); const l=wordsList.lastElementChild;
+    l.querySelector('.word-chinese').value=w.chinese||'';
+    l.querySelector('.word-vietnamese').value=w.meaning||'';
+    l.querySelector('.word-category').value=(w.category||[]).join(', ');
+  });
+  (e.sentences||[]).forEach(s=>{ addInputRow(sentencesList,'sentence'); const l=sentencesList.lastElementChild;
+    l.querySelector('.sentence-chinese').value=s.chinese||'';
+    l.querySelector('.sentence-vietnamese').value=s.vietnamese||'';
+    l.querySelector('.sentence-category').value=(s.category||[]).join(', ');
+  });
+}
+function deleteEntry(hanzi) {
+  if (protectedKeys.has(hanzi)) { showMessage('❌ Không thể xóa mục CSDL gốc','error'); return; }
+  if (!confirm("Xóa '"+hanzi+"'?")) return;
+  delete fullData[hanzi];
+  encodeToSave(fullData).then(s=>localStorage.setItem('tuvung',s));
+  renderTable(fullData);
+  showMessage("🗑️ Đã xóa '"+hanzi+"'");
+}
+document.getElementById('word-form').addEventListener('submit', async (e)=>{
+  e.preventDefault();
+  const hanzi=document.getElementById('hanzi').value.trim();
+  if (!hanzi) { showMessage('❌ Chữ Hán không được trống','error'); return; }
+  const isEdit=document.getElementById('hanzi').readOnly;
+  if (!isEdit && fullData[hanzi]) {
+    showMessage(`⚠️ <b>${hanzi}</b> đã tồn tại. <button type="button" onclick="editEntry('${hanzi}')">✏️ Sửa ngay</button>`,'error',true);
+    return;
+  }
+  const hanviet=document.getElementById('hanviet').value.trim();
+  const words=[...wordsList.querySelectorAll('.list-item')].map(r=>{
+    const c=r.querySelector('.word-chinese').value.trim(), v=r.querySelector('.word-vietnamese').value.trim();
+    const cat=r.querySelector('.word-category').value.split(',').map(s=>s.trim()).filter(Boolean);
+    return (c||v)?{chinese:c,meaning:v,category:cat}:null;
+  }).filter(Boolean);
+  const sentences=[...sentencesList.querySelectorAll('.list-item')].map(r=>{
+    const c=r.querySelector('.sentence-chinese').value.trim(), v=r.querySelector('.sentence-vietnamese').value.trim();
+    const cat=r.querySelector('.sentence-category').value.split(',').map(s=>s.trim()).filter(Boolean);
+    return (c||v)?{chinese:c,vietnamese:v,category:cat}:null;
+  }).filter(Boolean);
+  fullData[hanzi]={hanviet,words,sentences};
+  localStorage.setItem('tuvung', await encodeToSave(fullData));
+  renderTable(fullData);
+  showMessage(isEdit?'✅ Đã cập nhật':'✅ Đã thêm mới');
+  clearForm();
+});
+
+// ── Tìm kiếm ─────────────────────────────────────────
+document.getElementById('searchBtn').onclick=()=>{
+  const q=document.getElementById('searchInput').value.trim().toLowerCase();
+  if (!q) { currentPage=1; renderTable(fullData); return; }
+  const r={};
+  for (const h in fullData) {
+    const e=fullData[h]||{};
+    if (h.includes(q)||(e.hanviet||'').toLowerCase().includes(q)||
+        (e.words||[]).some(w=>(w.chinese||'').includes(q)||(w.meaning||'').toLowerCase().includes(q))||
+        (e.sentences||[]).some(s=>(s.chinese||'').includes(q)||(s.vietnamese||'').toLowerCase().includes(q)))
+      r[h]=e;
+  }
+  currentPage=1; renderTable(r);
+};
+document.getElementById('resetSearchBtn').onclick=()=>{ document.getElementById('searchInput').value=''; renderTable(fullData); };
+
+// ── Load file ─────────────────────────────────────────
+document.getElementById('jsonFile').addEventListener('change',(e)=>{
+  const file=e.target.files[0]; if(!file) return;
+  const reader=new FileReader();
+  reader.onload=async ()=>{
+    try {
+      const obj=JSON.parse(reader.result);
+      const isEnc=obj.v===1&&obj.data;
+      fullData=await decodeFromSave(obj);
+      protectedKeys=new Set(Object.keys(fullData)); saveProtectedToLS();
+      localStorage.setItem('tuvung', await encodeToSave(fullData));
+      renderTable(fullData);
+      showMessage('✅ Đã tải '+(isEnc?'file mã hóa':'file JSON gốc')+'. Các mục gốc đã được bảo vệ.');
+    } catch(err) { showMessage('❌ File không hợp lệ: '+err.message,'error'); }
+  };
+  reader.readAsText(file);
+});
+
+// ── Load URL ──────────────────────────────────────────
+document.getElementById('loadUrlBtn').addEventListener('click',async()=>{
+  const url=document.getElementById('jsonUrl').value.trim();
+  if(!url){showMessage('❌ Chưa nhập URL','error');return;}
+  try {
+    const bust=(url.includes('?')?'&':'?')+'t='+Date.now();
+    const res=await fetch(url+bust);
+    if(!res.ok) throw new Error(res.status+' '+res.statusText);
+    const obj=await res.json();
+    const isEnc=obj.v===1&&obj.data;
+    fullData=await decodeFromSave(obj);
+    protectedKeys=new Set(Object.keys(fullData)); saveProtectedToLS();
+    localStorage.setItem('tuvung', await encodeToSave(fullData));
+    renderTable(fullData);
+    showMessage('✅ Đã tải '+(isEnc?'file mã hóa':'file JSON')+' từ URL.');
+  } catch(err) {
+    const hint=(err instanceof TypeError)?' (Lỗi CORS — dùng link GitHub Raw/Vercel)':'';
+    showMessage('❌ Lỗi: '+err.message+hint,'error');
+  }
+});
+
+// ── Xuất file ─────────────────────────────────────────
+document.getElementById('addWordBtn').onclick=()=>addInputRow(wordsList,'word');
+document.getElementById('addSentenceBtn').onclick=()=>addInputRow(sentencesList,'sentence');
+document.getElementById('clearBtn').onclick=clearForm;
+
+document.getElementById('exportBtn').onclick=()=>{
+  const blob=new Blob([JSON.stringify(fullData,null,2)],{type:'application/json'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='tuvung.json'; a.click();
+};
+document.getElementById('exportEncBtn').onclick=async()=>{
+  const key=await getKey();
+  const enc=xorCrypt(JSON.stringify(fullData),key);
+  const blob=new Blob([JSON.stringify({data:enc,v:1})],{type:'application/json'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='tuvung.enc.json'; a.click();
+  showMessage('✅ Đã xuất tuvung.enc.json — đưa file này lên GitHub /data/');
+};
+
+// ── Domain ────────────────────────────────────────────
+document.getElementById('saveDomainBtn').onclick=()=>{
+  const v=getDomain();
+  if(!v){showMessage('❌ Chưa nhập domain','error');return;}
+  localStorage.setItem('enc_domain',v);
+  document.getElementById('domainStatus').textContent='✅ Đã lưu: '+v;
+  setTimeout(()=>document.getElementById('domainStatus').textContent='Domain: '+v,2000);
+};
+
+// ── Khởi tạo ─────────────────────────────────────────
+(async function init(){
+  const savedDomain=localStorage.getItem('enc_domain')||'luyentiengtrung.com';
+  document.getElementById('domainInput').value=savedDomain;
+  document.getElementById('domainStatus').textContent='Domain: '+savedDomain;
+  loadProtectedFromLS();
+  const saved=localStorage.getItem('tuvung');
+  if (saved) {
+    try {
+      const obj=JSON.parse(saved);
+      fullData=await decodeFromSave(obj);
+    } catch { fullData={}; }
+  }
+  renderTable(fullData);
+  clearForm();
+})();
+</script>
+</body>
+</html>
