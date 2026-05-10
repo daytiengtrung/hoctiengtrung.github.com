@@ -1457,11 +1457,72 @@
             return dataPromise;
         }
         
-        function playAudio(text, lang = 'zh-CN') {
-    if (!window.speechSynthesis) return;
+       <script>
+/* =========================
+   TEXT TO SPEECH ĐA TRÌNH DUYỆT
+   ========================= */
+
+const audioCache = {};
+
+function playAudio(text, lang = 'zh-CN') {
+
+    if (!text) return;
+
+    const key = text + "_" + lang;
+
+    // URL Google TTS
+    const url =
+        `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=${lang}&client=tw-ob`;
+
+    // Nếu chưa có cache thì tạo mới
+    if (!audioCache[key]) {
+        audioCache[key] = new Audio(url);
+
+        // Âm lượng
+        audioCache[key].volume = 1;
+
+        // Tải trước
+        audioCache[key].preload = "auto";
+    }
+
+    const audio = audioCache[key];
+
+    // Reset nếu đang phát
+    audio.pause();
+    audio.currentTime = 0;
+
+    // Phát
+    audio.play().catch(error => {
+
+        console.log("Google TTS lỗi:", error);
+
+        // Fallback sang speechSynthesis
+        fallbackSpeech(text, lang);
+
+    });
+}
+
+/* =========================
+   FALLBACK
+   ========================= */
+
+function fallbackSpeech(text, lang = 'zh-CN') {
+
+    if (!window.speechSynthesis) {
+        alert("Trình duyệt không hỗ trợ phát âm");
+        return;
+    }
+
+    speechSynthesis.cancel();
 
     const utterance = new SpeechSynthesisUtterance(text);
 
+    utterance.lang = lang;
+    utterance.rate = 0.8;
+    utterance.pitch = 1;
+    utterance.volume = 1;
+
+    // Tự tìm voice tiếng Trung
     const voices = speechSynthesis.getVoices();
 
     const chineseVoice = voices.find(v =>
@@ -1472,11 +1533,19 @@
         utterance.voice = chineseVoice;
     }
 
-    utterance.lang = lang;
-    utterance.rate = 0.8;
-
     speechSynthesis.speak(utterance);
 }
+
+/* =========================
+   LOAD VOICES
+   ========================= */
+
+if (window.speechSynthesis) {
+    speechSynthesis.onvoiceschanged = () => {
+        speechSynthesis.getVoices();
+    };
+}
+</script>
 
         function getPinyinWithTone(char) {
             try {
