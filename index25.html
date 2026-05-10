@@ -1457,94 +1457,19 @@
             return dataPromise;
         }
         
-       function playAudio(text, lang = 'zh-CN') {
-
-    if (!text) return;
-
-    try {
-
-        // Dừng speech cũ
-        if (window.speechSynthesis) {
-            speechSynthesis.cancel();
+        function playAudio(text, lang = 'zh-CN') { 
+            if ('speechSynthesis' in window) { 
+                speechSynthesis.cancel(); 
+                const utterance = new SpeechSynthesisUtterance(text); 
+                utterance.lang = lang; 
+                utterance.rate = 0.8; 
+                utterance.pitch = 1; 
+                utterance.volume = 1; 
+                speechSynthesis.speak(utterance); 
+            } else { 
+                alert('Trình duyệt của bạn không hỗ trợ phát âm vui lòng dùng trình duyệt "Chrome" để nghe'); 
+            } 
         }
-
-        // Google Translate TTS
-        const url =
-            "https://translate.google.com/translate_tts?ie=UTF-8&q=" +
-            encodeURIComponent(text) +
-            "&tl=" + lang +
-            "&client=tw-ob";
-
-        // Tạo audio
-        const audio = new Audio(url);
-
-        audio.volume = 1;
-        audio.preload = "auto";
-
-        // Nếu Google lỗi thì fallback
-        audio.onerror = function () {
-
-            console.log("Google TTS lỗi -> dùng speechSynthesis");
-
-            if (!window.speechSynthesis) {
-                alert("Trình duyệt không hỗ trợ phát âm");
-                return;
-            }
-
-            const utterance = new SpeechSynthesisUtterance(text);
-
-            utterance.lang = lang;
-            utterance.rate = 0.8;
-            utterance.pitch = 1;
-            utterance.volume = 1;
-
-            // tìm voice tiếng Trung
-            const voices = speechSynthesis.getVoices();
-
-            const chineseVoice = voices.find(v =>
-                v.lang.includes('zh')
-            );
-
-            if (chineseVoice) {
-                utterance.voice = chineseVoice;
-            }
-
-            speechSynthesis.speak(utterance);
-        };
-
-        // phát audio
-        audio.play().catch(err => {
-
-            console.log("Play lỗi:", err);
-
-            // fallback tiếp
-            if (window.speechSynthesis) {
-
-                const utterance = new SpeechSynthesisUtterance(text);
-
-                utterance.lang = lang;
-                utterance.rate = 0.8;
-
-                speechSynthesis.speak(utterance);
-            }
-        });
-
-    } catch (error) {
-
-        console.log("TTS lỗi:", error);
-
-    }
-}
-
-// load voices
-if (window.speechSynthesis) {
-
-    speechSynthesis.onvoiceschanged = () => {
-
-        speechSynthesis.getVoices();
-
-    };
-}
 
         function getPinyinWithTone(char) {
             try {
@@ -3057,38 +2982,44 @@ function convertSyllable(py) {
 	
 	
 <script>
-function playAudioSmart(text, lang) {
-    // Tốc độ mặc định là 1 (bình thường)
-    let speed = 1;
+const _ttsAudio = document.createElement('audio');
+document.body.appendChild(_ttsAudio);
 
-    // --- CHỈNH TỐC ĐỘ RIÊNG CHO TIẾNG TRUNG Ở ĐÂY ---
-    if (lang === 'zh-CN') {
-        speed = 0.6; // Chỉnh số này nhỏ đi để tiếng Trung đọc chậm lại (VD: 0.7 hoặc 0.8)
-    }
-
-    if (navigator.onLine) {
-        // Sử dụng Google TTS API chuẩn nữ
-        // Tham số ttsspeed: 1 là nhanh, dưới 1 là chậm (tuy nhiên tùy trình duyệt hỗ trợ)
-        // Cách tốt nhất là dùng playbackRate của Audio Object
-        const url = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=${lang}&client=tw-ob`;
-        let audio = new Audio(url);
-        
-        audio.playbackRate = speed; // Áp dụng tốc độ
-        audio.play().catch(err => {
-            useFallbackSpeech(text, lang, speed);
-        });
-    } else {
-        useFallbackSpeech(text, lang, speed);
-    }
+// Cache danh sách giọng đọc sau khi load xong
+let _voices = [];
+function loadVoices() {
+    _voices = window.speechSynthesis.getVoices();
+}
+if ('speechSynthesis' in window) {
+    loadVoices();
+    window.speechSynthesis.onvoiceschanged = loadVoices;
 }
 
-function useFallbackSpeech(text, lang, speed) {
+function playAudioSmart(text, lang) {
+    let speed = lang === 'zh-CN' ? 0.7 : 1.0;
+    // Thử Web Speech API trước — hoạt động trên Samsung, Firefox, Safari không cần internet
     if ('speechSynthesis' in window) {
+        const voices = _voices.length ? _voices : window.speechSynthesis.getVoices();
+        const targetLang = lang === 'vi' ? 'vi' : 'zh';
+        const voice = voices.find(v => v.lang.toLowerCase().startsWith(targetLang));
+
         window.speechSynthesis.cancel();
         const msg = new SpeechSynthesisUtterance(text);
         msg.lang = lang === 'vi' ? 'vi-VN' : 'zh-CN';
-        msg.rate = speed; 
-        window.speechSynthesis.speak(msg);
+        msg.rate = speed;
+        if (voice) msg.voice = voice;
+
+        // Samsung Browser cần delay nhỏ sau cancel()
+        setTimeout(() => window.speechSynthesis.speak(msg), 100);
+        return;
+    }
+
+    // Fallback: Google Translate TTS (chỉ Chrome mới dùng được)
+    if (navigator.onLine) {
+        const url = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=${lang}&client=tw-ob`;
+        _ttsAudio.src = url;
+        _ttsAudio.playbackRate = speed;
+        _ttsAudio.play().catch(() => {});
     }
 }
 
