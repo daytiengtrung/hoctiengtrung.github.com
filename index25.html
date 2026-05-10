@@ -1457,18 +1457,24 @@
             return dataPromise;
         }
         
-        function playAudio(text, lang = 'zh-CN') { 
-            if ('speechSynthesis' in window) { 
-                speechSynthesis.cancel(); 
-                const utterance = new SpeechSynthesisUtterance(text); 
-                utterance.lang = lang; 
-                utterance.rate = 0.8; 
-                utterance.pitch = 1; 
-                utterance.volume = 1; 
-                speechSynthesis.speak(utterance); 
-            } else { 
-                alert('Trình duyệt của bạn không hỗ trợ phát âm vui lòng dùng trình duyệt "Chrome" để nghe'); 
-            } 
+        function playAudio(text, lang = 'zh-CN') {
+            if (!('speechSynthesis' in window)) {
+                alert('Trình duyệt của bạn không hỗ trợ phát âm');
+                return;
+            }
+            speechSynthesis.cancel();
+            setTimeout(() => {
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = lang;
+                utterance.rate = lang === 'zh-CN' ? 0.7 : 1.0;
+                utterance.pitch = 1;
+                utterance.volume = 1;
+                const voices = speechSynthesis.getVoices();
+                const target = lang.startsWith('zh') ? 'zh' : lang.substring(0, 2);
+                const voice = voices.find(v => v.lang.toLowerCase().startsWith(target));
+                if (voice) utterance.voice = voice;
+                speechSynthesis.speak(utterance);
+            }, 100);
         }
 
         function getPinyinWithTone(char) {
@@ -2982,45 +2988,19 @@ function convertSyllable(py) {
 	
 	
 <script>
-const _ttsAudio = document.createElement('audio');
-document.body.appendChild(_ttsAudio);
-
-// Cache danh sách giọng đọc sau khi load xong
+// Cache giọng đọc sau khi load xong
 let _voices = [];
-function loadVoices() {
-    _voices = window.speechSynthesis.getVoices();
-}
 if ('speechSynthesis' in window) {
-    loadVoices();
-    window.speechSynthesis.onvoiceschanged = loadVoices;
+    _voices = speechSynthesis.getVoices();
+    speechSynthesis.onvoiceschanged = () => { _voices = speechSynthesis.getVoices(); };
 }
 
 function playAudioSmart(text, lang) {
-    let speed = lang === 'zh-CN' ? 0.7 : 1.0;
-    // Thử Web Speech API trước — hoạt động trên Samsung, Firefox, Safari không cần internet
-    if ('speechSynthesis' in window) {
-        const voices = _voices.length ? _voices : window.speechSynthesis.getVoices();
-        const targetLang = lang === 'vi' ? 'vi' : 'zh';
-        const voice = voices.find(v => v.lang.toLowerCase().startsWith(targetLang));
+    playAudio(text, lang === 'vi' ? 'vi-VN' : 'zh-CN');
+}
 
-        window.speechSynthesis.cancel();
-        const msg = new SpeechSynthesisUtterance(text);
-        msg.lang = lang === 'vi' ? 'vi-VN' : 'zh-CN';
-        msg.rate = speed;
-        if (voice) msg.voice = voice;
-
-        // Samsung Browser cần delay nhỏ sau cancel()
-        setTimeout(() => window.speechSynthesis.speak(msg), 100);
-        return;
-    }
-
-    // Fallback: Google Translate TTS (chỉ Chrome mới dùng được)
-    if (navigator.onLine) {
-        const url = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=${lang}&client=tw-ob`;
-        _ttsAudio.src = url;
-        _ttsAudio.playbackRate = speed;
-        _ttsAudio.play().catch(() => {});
-    }
+function useFallbackSpeech(text, lang, speed) {
+    playAudio(text, lang === 'vi' ? 'vi-VN' : 'zh-CN');
 }
 
 function setupSpeakButtons() {
