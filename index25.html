@@ -1458,15 +1458,25 @@
         }
         
         function playAudio(text, lang = 'zh-CN') {
-    const audio = new Audio(
-        `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=${lang}&client=tw-ob`
+    if (!window.speechSynthesis) return;
+
+    const utterance = new SpeechSynthesisUtterance(text);
+
+    const voices = speechSynthesis.getVoices();
+
+    const chineseVoice = voices.find(v =>
+        v.lang.includes('zh')
     );
 
-    audio.play().catch(err => {
-        console.log("Lỗi phát audio:", err);
-    });
+    if (chineseVoice) {
+        utterance.voice = chineseVoice;
+    }
+
+    utterance.lang = lang;
+    utterance.rate = 0.8;
+
+    speechSynthesis.speak(utterance);
 }
-        
 
         function getPinyinWithTone(char) {
             try {
