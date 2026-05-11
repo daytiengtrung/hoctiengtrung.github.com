@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">Luyện Tiếng Trung</title>
+<meta name="description" id="page-desc" content="">
+<link rel="canonical" id="page-canonical" href="">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
+<style>
+  :root {
+    --ink: #1a1a2e;
+    --red: #c0392b;
+    --gold: #d4a017;
+    --cream: #fdf6e3;
+    --paper: #f5ead6;
+    --muted: #7a6652;
+    --border: #d9c9a8;
+    --green: #27ae60;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Be Vietnam Pro', sans-serif; background: var(--cream); color: var(--ink); min-height: 100vh; }
+
+  nav { background: var(--ink); padding: 14px 24px; display: flex; align-items: center; gap: 12px; }
+  nav a { color: var(--gold); text-decoration: none; font-weight: 700; font-size: 18px; }
+  nav span { color: rgba(255,255,255,0.35); font-size: 14px; }
+  nav .bc { color: rgba(255,255,255,0.6); font-size: 13px; }
+
+  .hero { background: var(--ink); padding: 36px 24px 44px; text-align: center; position: relative; overflow: hidden; }
+  .hero::before { content:''; position:absolute; inset:0; background: radial-gradient(ellipse at center, #2d1b4e 0%, var(--ink) 70%); }
+  .hero-inner { position: relative; z-index: 1; }
+  .char-display { font-family: 'Noto Serif SC', serif; font-size: clamp(80px,18vw,130px); color: white; line-height: 1; text-shadow: 0 4px 30px rgba(212,160,23,0.4); }
+  .char-pinyin { font-size: 22px; color: var(--gold); margin-top: 10px; font-weight: 600; letter-spacing: 2px; }
+  .char-hanviet { font-size: 15px; color: rgba(255,255,255,0.55); margin-top: 5px; }
+  .hero-meta { display:inline-block; margin-top:12px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); color:rgba(255,255,255,0.5); font-size:12px; padding:4px 14px; border-radius:20px; }
+
+  .tabs-wrap { background: white; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 10; }
+  .tabs { max-width: 880px; margin: 0 auto; display: flex; }
+  .tab-btn { flex: 1; padding: 14px 8px; font-size: 13px; font-weight: 600; color: var(--muted); background: none; border: none; border-bottom: 3px solid transparent; cursor: pointer; transition: all 0.2s; font-family: inherit; }
+  .tab-btn.active { color: var(--ink); border-bottom-color: var(--gold); }
+  .tab-btn:hover:not(.active) { color: var(--ink); background: var(--paper); }
+
+  main { max-width: 880px; margin: 0 auto; padding: 24px 16px 60px; }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  .section { background: white; border: 1px solid var(--border); border-radius: 12px; margin-bottom: 18px; overflow: hidden; }
+  .section-header { display:flex; align-items:center; gap:10px; padding:14px 18px; border-bottom:1px solid var(--border); background:var(--paper); }
+  .section-header h2 { font-size: 15px; font-weight: 700; }
+  .section-icon { width:28px; height:28px; background:var(--ink); border-radius:7px; display:flex; align-items:center; justify-content:center; font-size:14px; flex-shrink:0; }
+  .badge { margin-left:auto; background:var(--ink); color:var(--gold); font-size:11px; font-weight:700; padding:3px 10px; border-radius:20px; }
+
+  .tone-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); }
+  .tone-card { background: white; padding: 18px 12px; text-align: center; }
+  .tone-num { font-size: 11px; font-weight: 700; color: var(--muted); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1px; }
+  .tone-mark { font-size: 28px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+  .tone-desc { font-size: 11px; color: var(--muted); line-height: 1.5; white-space: pre-line; }
+  .tone-card.highlight { background: #fff8e7; }
+  .tone-card.highlight .tone-mark { color: var(--red); }
+  .tone-card.highlight .tone-num { color: var(--red); }
+
+  .speak-wrap { padding: 24px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+  .speak-btn { display:inline-flex; align-items:center; gap:10px; background:var(--ink); color:white; border:none; padding:14px 32px; border-radius:12px; font-size:16px; font-weight:700; cursor:pointer; transition:all 0.2s; font-family:inherit; }
+  .speak-btn:hover { background: #2d2d4e; transform: translateY(-2px); }
+  .speak-btn.speaking { background: var(--red); }
+  .speak-hint { font-size: 13px; color: var(--muted); text-align: center; line-height: 1.6; }
+
+  .hanzi-wrap { padding: 24px; display: flex; flex-direction: column; align-items: center; gap: 16px; }
+  #hanzi-anim-container { background: white; border: 2px solid var(--border); border-radius: 12px; }
+  .hanzi-controls { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+  .ctrl-btn { display:inline-flex; align-items:center; gap:6px; padding:10px 20px; border-radius:10px; border:2px solid var(--border); background:white; font-size:13px; font-weight:600; cursor:pointer; transition:all 0.2s; font-family:inherit; color:var(--ink); }
+  .ctrl-btn:hover { border-color: var(--ink); background: var(--paper); }
+  .ctrl-btn.primary { background: var(--ink); color: var(--gold); border-color: var(--ink); }
+  .ctrl-btn.primary:hover { opacity: 0.85; }
+  .stroke-info { font-size: 13px; color: var(--muted); text-align: center; min-height: 20px; }
+
+  .practice-wrap { padding: 24px; display: flex; flex-direction: column; align-items: center; gap: 16px; }
+  #hanzi-quiz-container { background: white; border: 2px solid var(--border); border-radius: 12px; cursor: crosshair; touch-action: none; }
+  .quiz-status { font-size: 14px; color: var(--muted); text-align: center; min-height: 22px; }
+  .quiz-status.correct { color: var(--green); font-weight: 600; }
+  .quiz-status.wrong { color: var(--red); font-weight: 600; }
+  .score-wrap { display:flex; gap:30px; }
+  .score-item { text-align:center; }
+  .score-num { font-size: 32px; font-weight: 700; color: var(--ink); }
+  .score-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+
+  .words-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(185px, 1fr)); gap: 1px; background: var(--border); }
+  .word-card { background: white; padding: 14px 16px; transition: background 0.15s; }
+  .word-card:hover { background: #fdf8f0; }
+  .word-zh { font-family: 'Noto Serif SC', serif; font-size: 20px; font-weight: 700; margin-bottom: 3px; }
+  .word-py { font-size: 12px; color: var(--red); font-weight: 600; margin-bottom: 3px; }
+  .word-vn { font-size: 13px; color: #444; }
+  .word-cat { margin-top: 5px; display:inline-block; font-size:10px; color:var(--muted); background:var(--paper); padding:2px 7px; border-radius:4px; border:1px solid var(--border); }
+
+  .sentence-item { padding: 14px 18px; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: 26px 1fr; gap: 0 14px; }
+  .sentence-item:last-child { border-bottom: none; }
+  .sentence-num { font-size:11px; font-weight:700; color:var(--gold); background:var(--ink); width:24px; height:24px; border-radius:6px; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px; }
+  .sentence-zh { font-family: 'Noto Serif SC', serif; font-size: 16px; color: var(--ink); line-height: 1.6; }
+  .sentence-py { font-size: 12px; color: var(--red); margin: 2px 0; }
+  .sentence-vn { font-size: 13px; color: var(--muted); font-style: italic; }
+
+  .related-wrap { padding: 16px 18px; display: flex; flex-wrap: wrap; gap: 10px; }
+  .related-char { font-family:'Noto Serif SC',serif; font-size:22px; font-weight:700; width:52px; height:52px; display:flex; align-items:center; justify-content:center; background:var(--paper); border:1.5px solid var(--border); border-radius:10px; color:var(--ink); text-decoration:none; transition:all 0.15s; }
+  .related-char:hover { background:var(--ink); color:var(--gold); border-color:var(--ink); transform:translateY(-2px); }
+
+  .back-wrap { text-align:center; padding:10px 0 10px; }
+  .back-btn { display:inline-flex; align-items:center; gap:8px; background:var(--ink); color:var(--gold); text-decoration:none; font-weight:700; font-size:14px; padding:12px 28px; border-radius:10px; }
+  .back-btn:hover { opacity: 0.85; }
+
+  .state-msg { text-align:center; padding:80px 20px; color:var(--muted); font-size:16px; }
+  .state-msg .big { font-size:48px; margin-bottom:12px; }
+
+  @media (max-width: 480px) {
+    .tone-grid { grid-template-columns: repeat(2,1fr); }
+    .tab-btn { font-size: 11px; padding: 12px 4px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://www.luyentiengtrung.com/">🐼 Luyện Tiếng Trung</a>
+  <span>›</span>
+  <span class="bc" id="nav-bc">Đang tải...</span>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="char-display" id="hero-char">...</div>
+    <div class="char-pinyin" id="hero-pinyin"></div>
+    <div class="char-hanviet" id="hero-hanviet"></div>
+    <div class="hero-meta" id="hero-meta"></div>
+  </div>
+</div>
+
+<div class="tabs-wrap">
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('phat-am')">🔊 Phát âm</button>
+    <button class="tab-btn" onclick="switchTab('tap-ve')">✍️ Tập vẽ</button>
+    <button class="tab-btn" onclick="switchTab('tu-vung')">📚 Từ vựng</button>
+    <button class="tab-btn" onclick="switchTab('vi-du')">💬 Ví dụ</button>
+  </div>
+</div>
+
+<main id="main-content">
+  <div class="state-msg"><div class="big">⏳</div>Đang tải dữ liệu...</div>
+</main>
+
+<script>
+// =============================================
+// ĐỔI CHỮ HÁN Ở ĐÂY — chỉ cần sửa dòng này!
+// =============================================
+const CHAR = "大";
+// =============================================
+
+const DATA_URL = "https://www.luyentiengtrung.com/data/code.json";
+
+let writerAnim = null;
+let writerQuiz = null;
+let quizCorrect = 0;
+let quizMistakes = 0;
+let isSpeaking = false;
+
+function switchTab(id) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  const panel = document.getElementById('tab-' + id);
+  if (panel) panel.classList.add('active');
+  const idx = ['phat-am','tap-ve','tu-vung','vi-du'].indexOf(id);
+  document.querySelectorAll('.tab-btn')[idx]?.classList.add('active');
+  if (id === 'tap-ve' && !writerAnim) initWriters();
+}
+
+function speak() {
+  if (!window.speechSynthesis) { alert('Trình duyệt không hỗ trợ phát âm!'); return; }
+  const btn = document.getElementById('speak-btn');
+  if (isSpeaking) { window.speechSynthesis.cancel(); return; }
+  const utter = new SpeechSynthesisUtterance(CHAR);
+  utter.lang = 'zh-CN';
+  utter.rate = 0.8;
+  isSpeaking = true;
+  btn.classList.add('speaking');
+  btn.innerHTML = '⏹ Dừng';
+  utter.onend = utter.onerror = () => {
+    isSpeaking = false;
+    btn.classList.remove('speaking');
+    btn.innerHTML = '🔊 Nghe phát âm: ' + CHAR;
+  };
+  window.speechSynthesis.speak(utter);
+}
+
+function initWriters() {
+  if (!document.getElementById('hanzi-anim-container')) return;
+  if (!writerAnim) {
+    writerAnim = HanziWriter.create('hanzi-anim-container', CHAR, {
+      width: 220, height: 220, padding: 20,
+      showOutline: true,
+      strokeColor: '#1a1a2e',
+      outlineColor: '#d9c9a8',
+      strokeAnimationSpeed: 1,
+      delayBetweenStrokes: 300,
+    });
+  }
+  if (!writerQuiz) {
+    writerQuiz = HanziWriter.create('hanzi-quiz-container', CHAR, {
+      width: 220, height: 220, padding: 20,
+      showCharacter: false,
+      showOutline: true,
+      strokeColor: '#c0392b',
+      outlineColor: '#d9c9a8',
+      drawingColor: '#1a1a2e',
+      highlightOnComplete: true,
+      highlightColor: '#27ae60',
+    });
+    startQuiz();
+  }
+}
+
+function animateStrokes() {
+  if (!writerAnim) return;
+  document.getElementById('stroke-info').textContent = 'Đang vẽ từng nét...';
+  writerAnim.animateCharacter({
+    onComplete: () => { document.getElementById('stroke-info').textContent = 'Hoàn thành! Nhấn lại để xem lại.'; }
+  });
+}
+
+function loopAnimation() {
+  if (!writerAnim) return;
+  writerAnim.loopCharacterAnimation();
+  document.getElementById('stroke-info').textContent = 'Đang lặp — nhấn Dừng để thoát';
+}
+
+function stopAnimation() {
+  if (!writerAnim) return;
+  writerAnim.stopAnimation();
+  writerAnim.showCharacter();
+  document.getElementById('stroke-info').textContent = '';
+}
+
+function startQuiz() {
+  if (!writerQuiz) return;
+  quizCorrect = 0; quizMistakes = 0;
+  updateScore();
+  setQuizStatus('Dùng chuột hoặc ngón tay vẽ theo nét mờ', '');
+  writerQuiz.quiz({
+    onMistake: () => { quizMistakes++; updateScore(); setQuizStatus('Sai nét! Thử lại', 'wrong'); },
+    onCorrectStroke: () => { setQuizStatus('✓ Đúng! Tiếp tục...', 'correct'); },
+    onComplete: (s) => {
+      quizCorrect++;
+      updateScore();
+      setQuizStatus('🎉 Xong! ' + (s.totalMistakes === 0 ? 'Hoàn hảo không lỗi!' : s.totalMistakes + ' lỗi'), 'correct');
+      setTimeout(startQuiz, 2000);
+    }
+  });
+}
+
+function updateScore() {
+  document.getElementById('score-correct').textContent = quizCorrect;
+  document.getElementById('score-mistakes').textContent = quizMistakes;
+}
+
+function setQuizStatus(msg, cls) {
+  const el = document.getElementById('quiz-status');
+  el.textContent = msg;
+  el.className = 'quiz-status' + (cls ? ' ' + cls : '');
+}
+
+function getToneNum(py) {
+  if (!py) return 0;
+  const map = {'ā':1,'á':2,'ǎ':3,'à':4,'ē':1,'é':2,'ě':3,'è':4,'ī':1,'í':2,'ǐ':3,'ì':4,'ō':1,'ó':2,'ǒ':3,'ò':4,'ū':1,'ú':2,'ǔ':3,'ù':4};
+  for (const [k,v] of Object.entries(map)) if (py.includes(k)) return v;
+  return 5;
+}
+
+const TONE_DATA = [
+  { num:1, mark:'ā', desc:'Thanh bằng\nGiọng cao đều, giữ nguyên' },
+  { num:2, mark:'á', desc:'Thanh sắc\nGiọng đi lên như câu hỏi' },
+  { num:3, mark:'ǎ', desc:'Thanh hỏi\nXuống thấp rồi lên lại' },
+  { num:4, mark:'à', desc:'Thanh nặng\nGiọng đổ xuống mạnh, dứt khoát' },
+  { num:5, mark:'a', desc:'Thanh nhẹ\nĐọc nhanh, nhẹ, không nhấn' },
+];
+
+async function loadPage() {
+  const main = document.getElementById('main-content');
+  try {
+    const res = await fetch(DATA_URL);
+    if (!res.ok) throw new Error('Không tải được data');
+    const data = await res.json();
+    const info = data[CHAR];
+    if (!info) {
+      main.innerHTML = `<div class="state-msg"><div class="big">🔍</div>Không tìm thấy chữ <strong>${CHAR}</strong></div>`;
+      return;
+    }
+
+    const hanviet = info.hanviet || '';
+    const words = info.words || [];
+    const sentences = info.sentences || [];
+    let pinyin = info.pinyin || '';
+    if (!pinyin && words.length > 0) {
+      const exact = words.find(w => w.chinese === CHAR);
+      pinyin = exact ? (exact.pinyin || '') : '';
+    }
+    const toneNum = getToneNum(pinyin);
+
+    document.getElementById('page-title').textContent = `Chữ ${CHAR}${pinyin?' ('+pinyin+')':''} - ${hanviet} | Luyện Tiếng Trung`;
+    document.getElementById('page-desc').setAttribute('content', `Tra từ điển chữ Hán ${CHAR}, phiên âm ${pinyin}, nghĩa Hán Việt: ${hanviet}. ${words.length} từ vựng và ${sentences.length} ví dụ câu.`);
+    document.getElementById('page-canonical').setAttribute('href', window.location.href);
+    document.getElementById('hero-char').textContent = CHAR;
+    document.getElementById('hero-pinyin').textContent = pinyin;
+    document.getElementById('hero-hanviet').textContent = hanviet;
+    document.getElementById('hero-meta').textContent = `${words.length} từ vựng · ${sentences.length} ví dụ câu`;
+    document.getElementById('nav-bc').textContent = `Chữ ${CHAR}`;
+
+    // Tone cards
+    const toneCardsHTML = TONE_DATA.map(t => `
+      <div class="tone-card ${toneNum===t.num?'highlight':''}">
+        <div class="tone-num">Thanh ${t.num===5?'nhẹ':t.num}${toneNum===t.num?' ◀ chữ này':''}</div>
+        <div class="tone-mark">${t.mark}</div>
+        <div class="tone-desc">${t.desc}</div>
+      </div>`).join('');
+
+    // Words
+    const wordsHTML = words.map(w => `
+      <div class="word-card">
+        <div class="word-zh">${w.chinese||''}</div>
+        <div class="word-py">${w.pinyin||''}</div>
+        <div class="word-vn">${w.meaning||''}</div>
+        ${(w.category||[]).length?`<div class="word-cat">${w.category.join(', ')}</div>`:''}
+      </div>`).join('');
+
+    // Sentences
+    const sentHTML = sentences.map((s,i) => `
+      <div class="sentence-item">
+        <div class="sentence-num">${i+1}</div>
+        <div>
+          <div class="sentence-zh">${s.chinese||''}</div>
+          <div class="sentence-py">${s.pinyin||''}</div>
+          <div class="sentence-vn">${s.vietnamese||''}</div>
+        </div>
+      </div>`).join('');
+
+    // Related
+    const related = new Set();
+    for (const w of words) for (const c of (w.chinese||''))
+      if (c!==CHAR && c>='\u4e00' && c<='\u9fff' && data[c]) related.add(c);
+    const relatedHTML = [...related].slice(0,16).map(rc =>
+      `<a class="related-char" href="${rc}.html">${rc}</a>`).join('');
+
+    main.innerHTML = `
+      <!-- TAB: PHÁT ÂM -->
+      <div id="tab-phat-am" class="tab-panel active">
+        <div class="section">
+          <div class="section-header">
+            <div class="section-icon">🔊</div>
+            <h2>Nghe phát âm</h2>
+            ${pinyin?`<span class="badge">${pinyin}</span>`:''}
+          </div>
+          <div class="speak-wrap">
+            <button class="speak-btn" id="speak-btn" onclick="speak()">🔊 Nghe phát âm: ${CHAR}</button>
+            <div class="speak-hint">Phát âm giọng tiếng Trung Phổ thông (zh-CN)<br>Tốc độ chậm để dễ nghe</div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-header">
+            <div class="section-icon">🎵</div>
+            <h2>4 thanh điệu tiếng Trung</h2>
+            ${toneNum?`<span class="badge">${CHAR} = thanh ${toneNum===5?'nhẹ':toneNum}</span>`:''}
+          </div>
+          <div class="tone-grid">${toneCardsHTML}</div>
+        </div>
+
+        ${relatedHTML?`
+        <div class="section">
+          <div class="section-header"><div class="section-icon">🔗</div><h2>Chữ liên quan</h2></div>
+          <div class="related-wrap">${relatedHTML}</div>
+        </div>`:''}
+
+        <div class="back-wrap"><a class="back-btn" href="https://www.luyentiengtrung.com/">← Về trang chủ</a></div>
+      </div>
+
+      <!-- TAB: TẬP VẼ -->
+      <div id="tab-tap-ve" class="tab-panel">
+        <div class="section">
+          <div class="section-header">
+            <div class="section-icon">🎬</div>
+            <h2>Animation thứ tự nét bút</h2>
+          </div>
+          <div class="hanzi-wrap">
+            <div id="hanzi-anim-container"></div>
+            <div class="hanzi-controls">
+              <button class="ctrl-btn primary" onclick="animateStrokes()">▶ Xem animation</button>
+              <button class="ctrl-btn" onclick="loopAnimation()">🔁 Lặp liên tục</button>
+              <button class="ctrl-btn" onclick="stopAnimation()">⏹ Dừng</button>
+            </div>
+            <div class="stroke-info" id="stroke-info">Nhấn "Xem animation" để bắt đầu</div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-header">
+            <div class="section-icon">✍️</div>
+            <h2>Tập vẽ theo nét</h2>
+          </div>
+          <div class="practice-wrap">
+            <div class="score-wrap">
+              <div class="score-item">
+                <div class="score-num" id="score-correct">0</div>
+                <div class="score-label">Lần đúng</div>
+              </div>
+              <div class="score-item">
+                <div class="score-num" id="score-mistakes">0</div>
+                <div class="score-label">Số lỗi</div>
+              </div>
+            </div>
+            <div id="hanzi-quiz-container"></div>
+            <div class="quiz-status" id="quiz-status"></div>
+            <button class="ctrl-btn" onclick="quizCorrect=0;quizMistakes=0;updateScore();startQuiz()">🔄 Làm lại từ đầu</button>
+          </div>
+        </div>
+
+        <div class="back-wrap"><a class="back-btn" href="https://www.luyentiengtrung.com/">← Về trang chủ</a></div>
+      </div>
+
+      <!-- TAB: TỪ VỰNG -->
+      <div id="tab-tu-vung" class="tab-panel">
+        ${words.length>0?`
+        <div class="section">
+          <div class="section-header">
+            <div class="section-icon">📚</div>
+            <h2>Từ vựng có chứa chữ ${CHAR}</h2>
+            <span class="badge">${words.length} từ</span>
+          </div>
+          <div class="words-grid">${wordsHTML}</div>
+        </div>`:'<div class="state-msg"><div class="big">📭</div>Chưa có từ vựng</div>'}
+        <div class="back-wrap"><a class="back-btn" href="https://www.luyentiengtrung.com/">← Về trang chủ</a></div>
+      </div>
+
+      <!-- TAB: VÍ DỤ -->
+      <div id="tab-vi-du" class="tab-panel">
+        ${sentences.length>0?`
+        <div class="section">
+          <div class="section-header">
+            <div class="section-icon">💬</div>
+            <h2>Ví dụ câu</h2>
+            <span class="badge">${sentences.length} câu</span>
+          </div>
+          ${sentHTML}
+        </div>`:'<div class="state-msg"><div class="big">📭</div>Chưa có ví dụ câu</div>'}
+        <div class="back-wrap"><a class="back-btn" href="https://www.luyentiengtrung.com/">← Về trang chủ</a></div>
+      </div>
+    `;
+
+  } catch(err) {
+    main.innerHTML = `<div class="state-msg"><div class="big">⚠️</div>Lỗi: ${err.message}</div>`;
+  }
+}
+
+loadPage();
+</script>
+</body>
+</html>
