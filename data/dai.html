@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">Luyện Tiếng Trung</title>
+<meta name="description" id="page-desc" content="">
+<link rel="canonical" id="page-canonical" href="">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a2e;
+    --red: #c0392b;
+    --gold: #d4a017;
+    --cream: #fdf6e3;
+    --paper: #f5ead6;
+    --muted: #7a6652;
+    --border: #d9c9a8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    min-height: 100vh;
+  }
+
+  /* NAV */
+  nav {
+    background: var(--ink);
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  nav a {
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+  }
+  nav span { color: rgba(255,255,255,0.35); font-size: 14px; }
+  nav .breadcrumb { color: rgba(255,255,255,0.6); font-size: 13px; }
+
+  /* HERO */
+  .hero {
+    background: var(--ink);
+    padding: 40px 24px 50px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at center, #2d1b4e 0%, var(--ink) 70%);
+  }
+  .hero-inner { position: relative; z-index: 1; }
+  .char-display {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(80px, 20vw, 140px);
+    color: white;
+    line-height: 1;
+    text-shadow: 0 4px 30px rgba(212,160,23,0.4);
+    animation: fadeDown 0.6s ease both;
+  }
+  .char-pinyin {
+    font-size: 22px;
+    color: var(--gold);
+    margin-top: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    animation: fadeDown 0.6s 0.1s ease both;
+  }
+  .char-hanviet {
+    font-size: 16px;
+    color: rgba(255,255,255,0.6);
+    margin-top: 6px;
+    animation: fadeDown 0.6s 0.2s ease both;
+  }
+  .char-stroke-count {
+    display: inline-block;
+    margin-top: 14px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.5);
+    font-size: 12px;
+    padding: 4px 14px;
+    border-radius: 20px;
+    animation: fadeDown 0.6s 0.3s ease both;
+  }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* MAIN */
+  main {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 28px 16px 60px;
+  }
+
+  /* SECTION */
+  .section {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    animation: fadeUp 0.5s ease both;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+    background: var(--paper);
+  }
+  .section-header h2 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: 0.3px;
+  }
+  .section-icon {
+    width: 30px; height: 30px;
+    background: var(--ink);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+  .badge {
+    margin-left: auto;
+    background: var(--ink);
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+
+  /* WORDS GRID */
+  .words-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 1px;
+    background: var(--border);
+  }
+  .word-card {
+    background: white;
+    padding: 16px 18px;
+    cursor: default;
+    transition: background 0.15s;
+  }
+  .word-card:hover { background: #fdf8f0; }
+  .word-zh {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .word-py { font-size: 12px; color: var(--red); font-weight: 600; margin-bottom: 3px; }
+  .word-vn { font-size: 13px; color: #444; line-height: 1.4; }
+  .word-cat {
+    margin-top: 6px;
+    display: inline-block;
+    font-size: 10px;
+    color: var(--muted);
+    background: var(--paper);
+    padding: 2px 8px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+  }
+
+  /* SENTENCES */
+  .sentences-list { padding: 4px 0; }
+  .sentence-item {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0 16px;
+    align-items: start;
+  }
+  .sentence-item:last-child { border-bottom: none; }
+  .sentence-num {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--gold);
+    background: var(--ink);
+    width: 24px; height: 24px;
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .sentence-content {}
+  .sentence-zh {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 16px;
+    color: var(--ink);
+    line-height: 1.6;
+    margin-bottom: 3px;
+  }
+  .sentence-py { font-size: 12px; color: var(--red); margin-bottom: 3px; }
+  .sentence-vn { font-size: 13px; color: var(--muted); font-style: italic; }
+
+  /* RELATED */
+  .related-wrap { padding: 16px 20px; display: flex; flex-wrap: wrap; gap: 10px; }
+  .related-char {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 22px;
+    font-weight: 700;
+    width: 52px; height: 52px;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--paper);
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    color: var(--ink);
+    text-decoration: none;
+    transition: all 0.15s;
+  }
+  .related-char:hover {
+    background: var(--ink);
+    color: var(--gold);
+    border-color: var(--ink);
+    transform: translateY(-2px);
+  }
+
+  /* BACK */
+  .back-wrap { text-align: center; padding: 10px 0 20px; }
+  .back-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--ink); color: var(--gold);
+    text-decoration: none; font-weight: 700; font-size: 14px;
+    padding: 12px 28px; border-radius: 10px;
+    transition: opacity 0.15s;
+  }
+  .back-btn:hover { opacity: 0.85; }
+
+  /* LOADING / ERROR */
+  .state-msg {
+    text-align: center;
+    padding: 80px 20px;
+    color: var(--muted);
+    font-size: 16px;
+  }
+  .state-msg .big { font-size: 48px; margin-bottom: 12px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://www.luyentiengtrung.com/">🐼 Luyện Tiếng Trung</a>
+  <span>›</span>
+  <span class="breadcrumb" id="nav-breadcrumb">Đang tải...</span>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="char-display" id="hero-char">...</div>
+    <div class="char-pinyin" id="hero-pinyin"></div>
+    <div class="char-hanviet" id="hero-hanviet"></div>
+    <div class="char-stroke-count" id="hero-extra"></div>
+  </div>
+</div>
+
+<main id="main-content">
+  <div class="state-msg"><div class="big">⏳</div>Đang tải dữ liệu...</div>
+</main>
+
+<script>
+// =============================================
+// ĐỔI CHỮ HÁN Ở ĐÂY — chỉ cần sửa dòng này!
+// =============================================
+const CHAR = "大";
+// =============================================
+
+const DATA_URL = "https://www.luyentiengtrung.com/data/code.json";
+
+// Pinyin đơn giản từ data (nếu có) hoặc để trống
+function getPinyin(data, char) {
+  // Lấy pinyin từ từ vựng đầu tiên chứa đúng chữ đó
+  const info = data[char];
+  if (!info) return '';
+  if (info.pinyin) return info.pinyin;
+  // Thử lấy từ words
+  if (info.words && info.words.length > 0) {
+    for (const w of info.words) {
+      if (w.chinese === char && w.pinyin) return w.pinyin;
+    }
+  }
+  return '';
+}
+
+async function loadPage() {
+  const main = document.getElementById('main-content');
+
+  try {
+    const res = await fetch(DATA_URL);
+    if (!res.ok) throw new Error('Không tải được data');
+    const data = await res.json();
+
+    const info = data[CHAR];
+    if (!info) {
+      main.innerHTML = `<div class="state-msg"><div class="big">🔍</div>Không tìm thấy chữ "<strong>${CHAR}</strong>" trong dữ liệu.</div>`;
+      return;
+    }
+
+    const hanviet = info.hanviet || '';
+    const words = info.words || [];
+    const sentences = info.sentences || [];
+    const pinyin = getPinyin(data, CHAR);
+
+    // Cập nhật SEO meta
+    const title = `Chữ ${CHAR}${pinyin ? ' (' + pinyin + ')' : ''} - ${hanviet} | Luyện Tiếng Trung`;
+    document.getElementById('page-title').textContent = title;
+    document.getElementById('page-desc').setAttribute('content',
+      `Tra từ điển chữ Hán ${CHAR}, nghĩa Hán Việt: ${hanviet}. ${words.length} từ vựng và ${sentences.length} ví dụ câu tiếng Trung.`
+    );
+    document.getElementById('page-canonical').setAttribute('href', window.location.href);
+
+    // Cập nhật hero
+    document.getElementById('hero-char').textContent = CHAR;
+    document.getElementById('hero-pinyin').textContent = pinyin;
+    document.getElementById('hero-hanviet').textContent = hanviet;
+    document.getElementById('hero-extra').textContent = `${words.length} từ vựng · ${sentences.length} ví dụ câu`;
+    document.getElementById('nav-breadcrumb').textContent = `Chữ ${CHAR}`;
+
+    // Build HTML
+    let html = '';
+
+    // --- Từ vựng ---
+    if (words.length > 0) {
+      let wordsHTML = '';
+      for (const w of words) {
+        const cats = (w.category || []).join(', ');
+        wordsHTML += `
+          <div class="word-card">
+            <div class="word-zh">${w.chinese || ''}</div>
+            <div class="word-py">${w.pinyin || ''}</div>
+            <div class="word-vn">${w.meaning || ''}</div>
+            ${cats ? `<div class="word-cat">${cats}</div>` : ''}
+          </div>`;
+      }
+      html += `
+        <div class="section" style="animation-delay:0.1s">
+          <div class="section-header">
+            <div class="section-icon">📚</div>
+            <h2>Từ vựng có chứa chữ ${CHAR}</h2>
+            <span class="badge">${words.length} từ</span>
+          </div>
+          <div class="words-grid">${wordsHTML}</div>
+        </div>`;
+    }
+
+    // --- Ví dụ câu ---
+    if (sentences.length > 0) {
+      let sentHTML = '';
+      sentences.forEach((s, i) => {
+        sentHTML += `
+          <div class="sentence-item">
+            <div class="sentence-num">${i + 1}</div>
+            <div class="sentence-content">
+              <div class="sentence-zh">${s.chinese || ''}</div>
+              <div class="sentence-py">${s.pinyin || ''}</div>
+              <div class="sentence-vn">${s.vietnamese || ''}</div>
+            </div>
+          </div>`;
+      });
+      html += `
+        <div class="section" style="animation-delay:0.2s">
+          <div class="section-header">
+            <div class="section-icon">💬</div>
+            <h2>Ví dụ câu</h2>
+            <span class="badge">${sentences.length} câu</span>
+          </div>
+          <div class="sentences-list">${sentHTML}</div>
+        </div>`;
+    }
+
+    // --- Chữ liên quan ---
+    const related = new Set();
+    for (const w of words) {
+      for (const c of (w.chinese || '')) {
+        if (c !== CHAR && c >= '\u4e00' && c <= '\u9fff' && data[c]) related.add(c);
+      }
+    }
+    if (related.size > 0) {
+      let relHTML = '';
+      [...related].slice(0, 16).forEach(rc => {
+        relHTML += `<a class="related-char" href="${rc}.html" title="${rc}">${rc}</a>`;
+      });
+      html += `
+        <div class="section" style="animation-delay:0.3s">
+          <div class="section-header">
+            <div class="section-icon">🔗</div>
+            <h2>Chữ liên quan</h2>
+          </div>
+          <div class="related-wrap">${relHTML}</div>
+        </div>`;
+    }
+
+    // --- Nút về trang chủ ---
+    html += `
+      <div class="back-wrap">
+        <a class="back-btn" href="https://www.luyentiengtrung.com/">← Về trang chủ</a>
+      </div>`;
+
+    main.innerHTML = html;
+
+  } catch (err) {
+    main.innerHTML = `<div class="state-msg"><div class="big">⚠️</div>Lỗi tải dữ liệu: ${err.message}</div>`;
+  }
+}
+
+loadPage();
+</script>
+</body>
+</html>
