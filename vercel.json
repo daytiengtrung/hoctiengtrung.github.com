@@ -1,6 +1,6 @@
 {
   "rewrites": [
-    { "source": "/word/:word.html", "destination": "/" },
-    { "source": "/word/:word", "destination": "/" }
+    { "source": "/hanzi/:word.html", "destination": "/" },
+    { "source": "/hanzi/:word", "destination": "/" }
   ]
 }
