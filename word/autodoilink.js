@@ -1,4 +1,4 @@
-const SITE_URL = "https://www.luyentiengtrung.c1om";
+const SITE_URL = "https://www.luyentiengtrung.com";
 
 const HANZI_BASE = "/hanzi/";
 
