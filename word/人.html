@@ -281,7 +281,7 @@ h1.char-title {
 </div>
 
 <script>
-const DATA_URL = "https://www.luyentiengtrung.com/data/code.json";
+const DATA_URL = "https://www.luyentiengtrung.com/data/code.enc.json";
 
 // Tự động cập nhật iframe và toàn bộ trang theo CHAR
 function applyChar(char) {
@@ -295,7 +295,7 @@ function applyChar(char) {
 function updateMeta(char, hanviet, pinyin, wordCount, sentCount) {
   const title = `Chữ ${char}${pinyin?' ('+pinyin+')':''} - ${hanviet} | Luyện Tiếng Trung`;
   const desc = `Chữ Hán ${char}${pinyin?' ('+pinyin+')':''} - ${hanviet}. Xem cách viết, phát âm, ${wordCount} từ vựng và ${sentCount} ví dụ câu tiếng Trung có chứa chữ ${char}. Học tiếng Trung miễn phí.`;
-  const url = `https://www.luyentiengtrung.com/word/${char}.html`;
+  const url = `https://www.luyentiengtrung.com/hanzi/${char}.html`;
 
   document.getElementById('pg-title').textContent = title;
   document.getElementById('pg-desc').setAttribute('content', desc);
