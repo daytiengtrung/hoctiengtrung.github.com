@@ -1,4 +1,5 @@
-const HANZI_BASE = "/hanzi/";
+const SITE_URL = "https://www.luyentiengtrung.c1om";
+const HANZI_BASE = "/hanzi1/";
 
 document.querySelectorAll(".learn-btn").forEach(btn => {
 
