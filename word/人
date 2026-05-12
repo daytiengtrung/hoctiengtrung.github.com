@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ================================================
+  ĐỔI CHỮ HÁN: Ctrl+H trong Notepad
+  Tìm "人" → thay bằng chữ mới
+  Tìm "rén" → pinyin mới
+  Tìm "rǎn" → phát âm Việt mới  
+  Tìm "Nhân, người" → nghĩa Hán Việt mới
+================================================ -->
+
+<title>Chữ 人 (rén) - Nhân, người | Luyện Tiếng Trung</title>
+<meta name="description" content="Tra chữ Hán 人 (rén) - Nhân, người. Xem cách viết, phát âm, bộ thủ và 25 từ vựng tiếng Trung có chứa chữ 人. Học tiếng Trung miễn phí tại Luyện Tiếng Trung.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Chữ 人 (rén) - Nhân, người | Luyện Tiếng Trung">
+<meta property="og:description" content="Tra chữ Hán 人 (rén) - Nhân, người. Cách viết, phát âm và 25 từ vựng tiếng Trung.">
+<meta property="og:url" content="https://www.luyentiengtrung.com/word/人.html">
+<meta property="og:image" content="https://www.luyentiengtrung.com/data/share.png">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://www.luyentiengtrung.com/word/人.html">
+
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Chữ 人 (rén) - Nhân, người trong tiếng Trung",
+  "description": "Tra chữ Hán 人, phiên âm rén, nghĩa Hán Việt: Nhân, người. Gồm 25 từ vựng và ví dụ câu.",
+  "url": "https://www.luyentiengtrung.com/word/人.html",
+  "publisher": {"@type":"Organization","name":"Luyện Tiếng Trung","url":"https://www.luyentiengtrung.com"}
+}</script>
+
+<script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: 'Be Vietnam Pro', sans-serif; background: #eef0fb; min-height: 100vh; color: #222; }
+
+/* NAV */
+nav {
+  background: white;
+  border-bottom: 1px solid #dde;
+  padding: 11px 20px;
+  display: flex; align-items: center; gap: 10px;
+  position: sticky; top: 0; z-index: 100;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+nav a.logo { color: #5c6bc0; text-decoration: none; font-weight: 700; font-size: 16px; }
+nav .sep { color: #bbb; }
+nav .bc { color: #888; font-size: 13px; }
+nav a.home { margin-left: auto; font-size: 12px; color: #5c6bc0; text-decoration: none; font-weight: 600; padding: 5px 12px; border: 1px solid #5c6bc0; border-radius: 6px; }
+nav a.home:hover { background: #5c6bc0; color: white; }
+
+/* SEO HEADER — Google đọc, người dùng thấy */
+.seo-header {
+  background: white;
+  border-bottom: 2px solid #e8eaf6;
+  padding: 20px 20px 18px;
+  text-align: center;
+}
+.seo-header h1 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #3949ab;
+  margin-bottom: 6px;
+}
+.seo-header p.seo-desc {
+  font-size: 13px;
+  color: #666;
+  max-width: 640px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+.seo-breadcrumb {
+  font-size: 12px;
+  color: #999;
+  margin-bottom: 8px;
+}
+.seo-breadcrumb a { color: #5c6bc0; text-decoration: none; }
+.seo-breadcrumb a:hover { text-decoration: underline; }
+
+/* MAIN CONTAINER */
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 20px 14px 60px;
+}
+
+/* CHAR TITLE */
+.char-title-bar {
+  text-align: center;
+  padding: 10px 0 16px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 22px;
+  color: #3949ab;
+  font-weight: 700;
+  border-bottom: 2px solid #5c6bc0;
+  display: inline-block;
+  margin: 0 auto 20px;
+  padding: 0 20px 8px;
+}
+.char-title-wrap { text-align: center; }
+
+/* INFO CARD */
+.info-card {
+  background: white;
+  border-radius: 14px;
+  padding: 18px;
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 12px rgba(92,107,192,0.08);
+  border: 1px solid #e8eaf6;
+}
+
+/* HANZI BOX */
+.hanzi-box {
+  width: 120px; min-width: 120px; height: 120px;
+  background: #f8f9ff;
+  border: 1.5px solid #c5cae9;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+#hanzi-writer-target { display: block; }
+
+/* INFO ROWS */
+.info-rows { flex: 1; }
+.info-title {
+  font-size: 18px; font-weight: 700; color: #222;
+  margin-bottom: 10px;
+  display: flex; align-items: center; gap: 6px;
+}
+.info-row {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; color: #444;
+  margin-bottom: 7px;
+}
+.info-row .icon { font-size: 15px; }
+.info-row .label { color: #888; min-width: 70px; }
+.info-row .val { font-weight: 600; color: #e53935; }
+.info-row .val-blue { font-weight: 600; color: #3949ab; }
+
+/* BUTTONS */
+.btn-row {
+  display: flex; gap: 8px; flex-wrap: wrap;
+  margin-top: 14px;
+}
+.btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 7px 16px; border-radius: 8px;
+  font-size: 13px; font-weight: 600;
+  border: none; cursor: pointer;
+  font-family: inherit; transition: all 0.15s;
+}
+.btn-purple { background: #5c6bc0; color: white; }
+.btn-purple:hover { background: #3949ab; }
+.btn-green { background: #43a047; color: white; }
+.btn-green:hover { background: #2e7d32; }
+.btn-blue { background: #1e88e5; color: white; }
+.btn-blue:hover { background: #1565c0; }
+
+/* MODAL OVERLAY */
+.modal-overlay {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,0.55); z-index: 200;
+  align-items: center; justify-content: center;
+}
+.modal-overlay.open { display: flex; }
+.modal-box {
+  background: white; border-radius: 16px;
+  padding: 24px; max-width: 320px; width: 90%;
+  text-align: center;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.2);
+}
+.modal-box h3 { font-size: 16px; font-weight: 700; margin-bottom: 16px; color: #3949ab; }
+.modal-close {
+  margin-top: 16px; padding: 8px 24px;
+  background: #eee; border: none; border-radius: 8px;
+  font-size: 13px; font-weight: 600; cursor: pointer;
+  font-family: inherit;
+}
+.modal-close:hover { background: #ddd; }
+.modal-controls { display: flex; gap: 8px; justify-content: center; margin-top: 12px; }
+
+/* QUIZ */
+#quiz-container { margin: 0 auto; }
+.quiz-status { font-size: 13px; color: #888; margin-top: 8px; min-height: 20px; text-align: center; }
+.quiz-status.ok { color: #43a047; font-weight: 600; }
+.quiz-status.err { color: #e53935; font-weight: 600; }
+
+/* WORDS SECTION */
+.words-section {
+  background: white;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 2px 12px rgba(92,107,192,0.08);
+  border: 1px solid #e8eaf6;
+}
+.words-section h2 {
+  font-size: 15px; font-weight: 700; color: #3949ab;
+  margin-bottom: 14px;
+  display: flex; align-items: center; gap: 6px;
+}
+.words-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+@media (max-width: 640px) { .words-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 360px) { .words-grid { grid-template-columns: repeat(1, 1fr); } }
+
+.word-card {
+  background: #f8f9ff;
+  border: 1px solid #e8eaf6;
+  border-radius: 10px;
+  padding: 10px 12px;
+  position: relative;
+  transition: box-shadow 0.15s;
+}
+.word-card:hover { box-shadow: 0 3px 12px rgba(92,107,192,0.15); }
+.word-pinyin { font-size: 11px; color: #888; margin-bottom: 2px; }
+.word-zh {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 20px; font-weight: 700; color: #222;
+  margin-bottom: 2px;
+}
+.word-vn { font-size: 12px; color: #555; }
+.word-phatamdesc { font-size: 10px; color: #888; margin-top: 4px; font-style: italic; }
+.word-speak {
+  position: absolute; top: 8px; right: 8px;
+  background: none; border: none; cursor: pointer;
+  font-size: 14px; color: #9fa8da; padding: 2px;
+  line-height: 1;
+}
+.word-speak:hover { color: #5c6bc0; }
+
+/* BACK */
+.back-wrap { text-align: center; margin-top: 24px; }
+.back-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #5c6bc0; color: white;
+  text-decoration: none; font-weight: 700; font-size: 14px;
+  padding: 11px 28px; border-radius: 10px;
+}
+.back-btn:hover { background: #3949ab; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="https://www.luyentiengtrung.com/">🐼 Luyện Tiếng Trung</a>
+  <span class="sep">›</span>
+  <span class="bc">Tra từ › 人</span>
+  <a class="home" href="https://www.luyentiengtrung.com/">Trang chủ</a>
+</nav>
+
+<!-- SEO HEADER — Google đọc nội dung này -->
+<div class="seo-header">
+  <div class="seo-breadcrumb">
+    <a href="https://www.luyentiengtrung.com/">Trang chủ</a> › <a href="https://www.luyentiengtrung.com/">Tra từ</a> › Chữ 人
+  </div>
+  <h1>Chữ 人 (rén) — Nhân, người trong tiếng Trung</h1>
+  <p class="seo-desc">
+    Tra cứu chữ Hán <strong>人</strong> (phiên âm: <strong>rén</strong>), nghĩa Hán Việt: <strong>Nhân, người</strong>.
+    Trang gồm cách viết từng nét, phát âm chuẩn, bộ thủ và <strong>25 từ vựng</strong> tiếng Trung có chứa chữ 人.
+    Học tiếng Trung miễn phí, tra từ điển Hán Việt nhanh chóng.
+  </p>
+</div>
+
+<!-- MAIN -->
+<div class="container">
+
+  <div class="char-title-wrap">
+    <div class="char-title-bar">人</div>
+  </div>
+
+  <!-- INFO CARD -->
+  <div class="info-card">
+    <!-- Ô vẽ chữ (click để xem animation) -->
+    <div class="hanzi-box" onclick="showAnim()" title="Nhấn để xem cách viết">
+      <div id="hanzi-writer-target"></div>
+    </div>
+
+    <div class="info-rows">
+      <div class="info-title">🔍 Chữ: 人</div>
+      <div class="info-row"><span class="icon">🌐</span><span class="label">Dịch:</span><span class="val">Nhân, người</span></div>
+      <div class="info-row"><span class="icon">💬</span><span class="label">Pinyin:</span><span class="val-blue">rén</span></div>
+      <div class="info-row"><span class="icon">🗣</span><span class="label">Phát âm:</span><span class="val-blue">rǎn</span></div>
+      <div class="info-row"><span class="icon">🧩</span><span class="label">Bộ thủ:</span><span class="val-blue">人 (Nhân)</span></div>
+
+      <div class="btn-row">
+        <button class="btn btn-purple" onclick="showAnim()">✏️ Vẽ lại</button>
+        <button class="btn btn-green" onclick="showQuiz()">✍️ Tập viết</button>
+        <button class="btn btn-blue" onclick="speakChar()">🔊 Nghe</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TỪ VỰNG PHỔ BIẾN -->
+  <div class="words-section">
+    <h2>🟢 Từ vựng phổ biến</h2>
+    <div class="words-grid">
+
+      <!-- Mỗi word-card: thêm/xóa/sửa tùy ý -->
+      <div class="word-card">
+        <div class="word-pinyin">rén</div>
+        <div class="word-zh">人 <button class="word-speak" onclick="speak('人')" title="Nghe">🔊</button></div>
+        <div class="word-vn">Nhân</div>
+        <div class="word-phatamdesc">Phát âm: rǎn</div>
+      </div>
+      <div class="word-card">
+        <div class="word-pinyin">bié rén</div>
+        <div class="word-zh">别人 <button class="word-speak" onclick="speak('别人')" title="Nghe">🔊</button></div>
+        <div class="word-vn">người khác</div>
+        <div class="word-phatamdesc">Phát âm: pia rǎn</div>
+      </div>
+      <div class="word-card">
+        <div class="word-pinyin">rén lèi</div>
+        <div class="word-zh">人类 <button class="word-speak" onclick="speak('人类')" title="Nghe">🔊</button></div>
+        <div class="word-vn">nhân loại</div>
+        <div class="word-phatamdesc">Phát âm: rǎn lày</div>
+      </div>
+      <div class="word-card">
+        <div class="word-pinyin">gōng rén</div>
+        <div class="word-zh">工人 <button class="word-speak" onclick="speak('工人')" title="Nghe">🔊</button></div>
+        <div class="word-vn">công nhân</div>
+        <div class="word-phatamdesc">Phát âm: cung rǎn</div>
+      </div>
+      <div class="word-card">
+        <div class="word-pinyin">bìng rén</div>
+        <div class="word-zh">病人 <button class="word-speak" onclick="speak('病人')" title="Nghe">🔊</button></div>
+        <div class="word-vn">Người bệnh</div>
+        <div class="word-phatamdesc">Phát âm: ping rǎn</div>
+      </div>
+      <div class="word-card">
+        <div class="word-pinyin">jiā rén</div>
+        <div class="word-zh">家人 <button class="word-speak" onclick="speak('家人')" title="Nghe">🔊</button></div>
+        <div class="word-vn">Người nhà</div>
+        <div class="word-phatamdesc">Phát âm: cha rǎn</div>
+      </div>
+      <div class="word-card">
+        <div class="word-pinyin">lǎo rén</div>
+        <div class="word-zh">老人 <button class="word-speak" onclick="speak('老人')" title="Nghe">🔊</button></div>
+        <div class="word-vn">Người Già</div>
+        <div class="word-phatamdesc">Phát âm: lào rǎn</div>
+      </div>
+      <div class="word-card">
+        <div class="word-pinyin">nán rén</div>
+        <div class="word-zh">男人 <button class="word-speak" onclick="speak('男人')" title="Nghe">🔊</button></div>
+        <div class="word-vn">Nam nhân</div>
+        <div class="word-phatamdesc">Phát âm: nán rǎn</div>
+      </div>
+      <div class="word-card">
+        <div class="word-pinyin">nǚ rén</div>
+        <div class="word-zh">女人 <button class="word-speak" onclick="speak('女人')" title="Nghe">🔊</button></div>
+        <div class="word-vn">Nữ nhân</div>
+        <div class="word-phatamdesc">Phát âm: nuý rǎn</div>
+      </div>
+      <div class="word-card">
+        <div class="word-pinyin">rén cái</div>
+        <div class="word-zh">人才 <button class="word-speak" onclick="speak('人才')" title="Nghe">🔊</button></div>
+        <div class="word-vn">nhân tài</div>
+        <div class="word-phatamdesc">Phát âm: rǎn sái</div>
+      </div>
+      <div class="word-card">
+        <div class="word-pinyin">rén xīn</div>
+        <div class="word-zh">人心 <button class="word-speak" onclick="speak('人心')" title="Nghe">🔊</button></div>
+        <div class="word-vn">lòng người</div>
+        <div class="word-phatamdesc">Phát âm: rǎn xin</div>
+      </div>
+      <div class="word-card">
+        <div class="word-pinyin">rén qíng</div>
+        <div class="word-zh">人情 <button class="word-speak" onclick="speak('人情')" title="Nghe">🔊</button></div>
+        <div class="word-vn">tình người</div>
+        <div class="word-phatamdesc">Phát âm: rǎn tríng</div>
+      </div>
+      <div class="word-card">
+        <div class="word-pinyin">rén xìng</div>
+        <div class="word-zh">人性 <button class="word-speak" onclick="speak('人性')" title="Nghe">🔊</button></div>
+        <div class="word-vn">nhân tính</div>
+        <div class="word-phatamdesc">Phát âm: rǎn xing</div>
+      </div>
+      <div class="word-card">
+        <div class="word-pinyin">rén pǐn</div>
+        <div class="word-zh">人品 <button class="word-speak" onclick="speak('人品')" title="Nghe">🔊</button></div>
+        <div class="word-vn">nhân phẩm</div>
+        <div class="word-phatamdesc">Phát âm: rǎn phǐn</div>
+      </div>
+      <div class="word-card">
+        <div class="word-pinyin">rén quán</div>
+        <div class="word-zh">人权 <button class="word-speak" onclick="speak('人权')" title="Nghe">🔊</button></div>
+        <div class="word-vn">nhân quyền</div>
+        <div class="word-phatamdesc">Phát âm: rǎn troén</div>
+      </div>
+      <div class="word-card">
+        <div class="word-pinyin">rén kǒu</div>
+        <div class="word-zh">人口 <button class="word-speak" onclick="speak('人口')" title="Nghe">🔊</button></div>
+        <div class="word-vn">nhân khẩu, dân số</div>
+        <div class="word-phatamdesc">Phát âm: rǎn khẩu</div>
+      </div>
+      <div class="word-card">
+        <div class="word-pinyin">rén shēng</div>
+        <div class="word-zh">人生 <button class="word-speak" onclick="speak('人生')" title="Nghe">🔊</button></div>
+        <div class="word-vn">nhân sinh</div>
+        <div class="word-phatamdesc">Phát âm: rǎn săng</div>
+      </div>
+      <div class="word-card">
+        <div class="word-pinyin">rén jiān</div>
+        <div class="word-zh">人间 <button class="word-speak" onclick="speak('人间')" title="Nghe">🔊</button></div>
+        <div class="word-vn">nhân gian</div>
+        <div class="word-phatamdesc">Phát âm: rǎn chen</div>
+      </div>
+      <div class="word-card">
+        <div class="word-pinyin">rén hǎi</div>
+        <div class="word-zh">人海 <button class="word-speak" onclick="speak('人海')" title="Nghe">🔊</button></div>
+        <div class="word-vn">biển người</div>
+        <div class="word-phatamdesc">Phát âm: rǎn hải</div>
+      </div>
+      <div class="word-card">
+        <div class="word-pinyin">rén zào</div>
+        <div class="word-zh">人造 <button class="word-speak" onclick="speak('人造')" title="Nghe">🔊</button></div>
+        <div class="word-vn">nhân tạo</div>
+        <div class="word-phatamdesc">Phát âm: rǎn chao</div>
+      </div>
+      <div class="word-card">
+        <div class="word-pinyin">rén lèi xué</div>
+        <div class="word-zh">人类学 <button class="word-speak" onclick="speak('人类学')" title="Nghe">🔊</button></div>
+        <div class="word-vn">nhân chủng học</div>
+        <div class="word-phatamdesc">Phát âm: rǎn lày xuê</div>
+      </div>
+      <div class="word-card">
+        <div class="word-pinyin">rén wén</div>
+        <div class="word-zh">人文 <button class="word-speak" onclick="speak('人文')" title="Nghe">🔊</button></div>
+        <div class="word-vn">nhân văn</div>
+        <div class="word-phatamdesc">Phát âm: rǎn guǎn</div>
+      </div>
+      <div class="word-card">
+        <div class="word-pinyin">rén wù</div>
+        <div class="word-zh">人物 <button class="word-speak" onclick="speak('人物')" title="Nghe">🔊</button></div>
+        <div class="word-vn">nhân vật</div>
+        <div class="word-phatamdesc">Phát âm: rǎn u</div>
+      </div>
+      <div class="word-card">
+        <div class="word-pinyin">rén mín</div>
+        <div class="word-zh">人民 <button class="word-speak" onclick="speak('人民')" title="Nghe">🔊</button></div>
+        <div class="word-vn">nhân dân</div>
+        <div class="word-phatamdesc">Phát âm: rǎn mín</div>
+      </div>
+      <div class="word-card">
+        <div class="word-pinyin">rén shì</div>
+        <div class="word-zh">人事 <button class="word-speak" onclick="speak('人事')" title="Nghe">🔊</button></div>
+        <div class="word-vn">nhân sự</div>
+        <div class="word-phatamdesc">Phát âm: rǎn shì</div>
+      </div>
+
+      <!-- Thêm từ vựng mới theo mẫu trên -->
+
+    </div>
+  </div>
+
+  <div class="back-wrap">
+    <a class="back-btn" href="https://www.luyentiengtrung.com/">← Về trang chủ</a>
+  </div>
+</div>
+
+<!-- MODAL: VẼ LẠI ANIMATION -->
+<div class="modal-overlay" id="modal-anim" onclick="closeModal('modal-anim')">
+  <div class="modal-box" onclick="event.stopPropagation()">
+    <h3>✏️ Cách viết chữ 人</h3>
+    <div id="anim-container" style="margin:0 auto;width:200px;height:200px;"></div>
+    <div class="modal-controls">
+      <button class="btn btn-purple" onclick="replayAnim()">▶ Xem lại</button>
+      <button class="btn btn-blue" onclick="loopAnim()">🔁 Lặp</button>
+      <button class="btn btn-green" onclick="stopAnim()">⏹ Dừng</button>
+    </div>
+    <button class="modal-close" onclick="closeModal('modal-anim')">Đóng</button>
+  </div>
+</div>
+
+<!-- MODAL: TẬP VIẾT -->
+<div class="modal-overlay" id="modal-quiz" onclick="closeModal('modal-quiz')">
+  <div class="modal-box" onclick="event.stopPropagation()">
+    <h3>✍️ Tập viết chữ 人</h3>
+    <div id="quiz-container"></div>
+    <div class="quiz-status" id="quiz-status">Dùng chuột hoặc ngón tay vẽ theo nét mờ</div>
+    <button class="modal-close" onclick="closeModal('modal-quiz')">Đóng</button>
+  </div>
+</div>
+
+<script>
+const CHAR = "人";
+let writerAnim = null;
+let writerQuiz = null;
+let animInited = false;
+let quizInited = false;
+
+// Phát âm
+function speakChar() { speak(CHAR); }
+function speak(text) {
+  if (!window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'zh-CN'; u.rate = 0.8;
+  window.speechSynthesis.speak(u);
+}
+
+// Mở/đóng modal
+function closeModal(id) {
+  document.getElementById(id).classList.remove('open');
+  if (writerAnim) writerAnim.stopAnimation();
+}
+
+// ANIMATION
+function showAnim() {
+  document.getElementById('modal-anim').classList.add('open');
+  if (!animInited) {
+    writerAnim = HanziWriter.create('anim-container', CHAR, {
+      width: 200, height: 200, padding: 16,
+      showOutline: true,
+      strokeColor: '#3949ab',
+      outlineColor: '#c5cae9',
+      strokeAnimationSpeed: 1,
+      delayBetweenStrokes: 400,
+    });
+    animInited = true;
+  }
+  setTimeout(() => writerAnim.animateCharacter(), 300);
+}
+function replayAnim() { if (writerAnim) writerAnim.animateCharacter(); }
+function loopAnim() { if (writerAnim) writerAnim.loopCharacterAnimation(); }
+function stopAnim() { if (writerAnim) { writerAnim.stopAnimation(); writerAnim.showCharacter(); } }
+
+// QUIZ
+function showQuiz() {
+  document.getElementById('modal-quiz').classList.add('open');
+  if (!quizInited) {
+    writerQuiz = HanziWriter.create('quiz-container', CHAR, {
+      width: 220, height: 220, padding: 16,
+      showCharacter: false, showOutline: true,
+      strokeColor: '#e53935',
+      outlineColor: '#c5cae9',
+      drawingColor: '#3949ab',
+      highlightOnComplete: true,
+      highlightColor: '#43a047',
+    });
+    quizInited = true;
+    startQuiz();
+  }
+}
+function startQuiz() {
+  if (!writerQuiz) return;
+  setQS('Dùng chuột hoặc ngón tay vẽ theo nét mờ', '');
+  writerQuiz.quiz({
+    onMistake: () => setQS('Sai nét! Thử lại ↗', 'err'),
+    onCorrectStroke: () => setQS('✓ Đúng! Tiếp tục...', 'ok'),
+    onComplete: (s) => {
+      setQS('🎉 Hoàn thành! ' + (s.totalMistakes === 0 ? 'Hoàn hảo!' : s.totalMistakes + ' lỗi'), 'ok');
+      setTimeout(startQuiz, 2000);
+    }
+  });
+}
+function setQS(msg, cls) {
+  const el = document.getElementById('quiz-status');
+  el.textContent = msg;
+  el.className = 'quiz-status' + (cls ? ' ' + cls : '');
+}
+
+// Init ô chữ nhỏ trong info-card (hiển thị tĩnh)
+window.addEventListener('DOMContentLoaded', () => {
+  HanziWriter.create('hanzi-writer-target', CHAR, {
+    width: 110, height: 110, padding: 8,
+    showOutline: true,
+    strokeColor: '#3949ab',
+    outlineColor: '#c5cae9',
+    showCharacter: true,
+    delayBetweenStrokes: 300,
+  });
+});
+</script>
+</body>
+</html>
