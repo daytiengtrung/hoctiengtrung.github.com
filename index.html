@@ -2308,7 +2308,7 @@ async function triggerSearch(input) {
     url.searchParams.set("word", input);
 	
 	
- window.history.pushState({}, "", `/search/word/${encodeURIComponent(input)}.html`);
+ window.history.pushState({}, "", `/search/${encodeURIComponent(input)}.html`);
     updateMeta(input);
 
     // ---------------------------------
@@ -2368,7 +2368,7 @@ async function triggerSearch(input) {
      window.addEventListener("DOMContentLoaded", async () => {
   const path = window.location.pathname;
   // Hỗ trợ cả dạng /search/word/xxx và /search/word/xxx.html
-  const match = path.match(/^\/search\/word\/(.+?)(?:\.html)?$/);
+  const match = path.match(/^\/search\/(.+?)(?:\.html)?$/);
   if (match) {
     const word = decodeURIComponent(match[1]);
     document.getElementById("input-char").value = word;
