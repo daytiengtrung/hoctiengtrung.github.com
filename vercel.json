@@ -1,10 +1,4 @@
 {
-   "$comment": "vercel là chạy mặc định không thể đổi tên",
-  "$comment": "khi tải lại word đã tim kiếm nó sẽ hiện thị ra",
- 
-
-
-
   
   "rewrites": [
     { "source": "/word/:word.html", "destination": "/" },
